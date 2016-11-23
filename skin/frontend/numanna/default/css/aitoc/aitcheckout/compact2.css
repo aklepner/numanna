@@ -1,0 +1,178 @@
+#aitcheckout-login .col-2 {
+  width:100%; margin:0;
+}
+#aitcheckout-login .col-2 #login-noticeLogin,
+#aitcheckout-login .col-2 #login-noticeForgot { margin-bottom:20px; display:block; }
+
+.opc .active .step-title h2  {  color:#222; }
+
+.opc #co-payment-form dt input { display:inline-block; margin-right:10px; }
+.opc #co-payment-form dt label { display:inline-block; }
+
+.opc #checkout-subscribe-newsletter {  padding:20px !important; }
+
+.opc #checkout-subscribe-newsletter input,
+.opc #checkout-subscribe-newsletter label  { display:inline-block; }
+
+#co-checkout-form .opc .step {
+  padding-left:20px;
+  padding-right:20px !important;
+}
+
+#co-checkout-form #checkoutSteps {
+  border:0;
+  background:transparent;
+}
+#left_collumn .opc {
+  border:0 !important;
+}
+
+#right_collumn,
+#right_collumn_top {
+  border:0;
+}
+#right_collumn .opc.sub {
+  margin-bottom:0;
+}
+
+#opc-newsletter {
+  border-top:0 !important; border-bottom:0 !important;
+}
+
+#opc-shipping_method,
+#opc-payment {
+  margin:0; width:100%; float:none;
+}
+
+#co-checkout-form #checkoutSteps li.section {
+  border:1px solid #dedede !important;
+}
+
+#checkoutSteps li#right_collumn {
+    width: 66%;
+}
+
+#checkoutSteps li#right_collumn ol.sub li.section {
+    min-height: 150px;
+}
+
+#co-checkout-form #checkoutSteps li.section {
+    display: block;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+#checkoutSteps li#right_collumn ol.opc {
+    clear: both;
+}
+
+#co-checkout-form #checkoutSteps li#right_collumn ol.sub li.section {
+    border:1px solid #dedede !important;
+    margin: 0;
+    width: 99.8%;
+    margin-bottom:10px;
+}
+
+#co-checkout-form #checkoutSteps #left_collumn
+{
+    margin-right: 1%;
+}
+
+#checkoutSteps
+{
+    background: transparent;
+    background-image: none;
+    border:0;
+    padding:0;
+}
+
+#co-checkout-form #left_collumn .form-list
+{
+    padding-left: 20px;
+}
+
+#co-checkout-form .opc .step
+{
+    padding-right: 0px;
+}
+
+#co-checkout-form .opc .active .step-title h2
+{
+    background: none;
+}
+
+#co-checkout-form #checkout-step-billing,
+#co-checkout-form #checkout-step-shipping2
+{
+    padding:0;
+}
+
+
+#co-checkout-form #checkoutSteps .form-list .compact .input-box input,
+#co-checkout-form #checkoutSteps .form-list .name-firstname .input-box input,
+#co-checkout-form #checkoutSteps .form-list .name-lastname .input-box input {
+    width: 111px;
+}
+
+#co-checkout-form #checkoutSteps .form-list .compact .input-box,
+#co-checkout-form #checkoutSteps .form-list .name-firstname .input-box,
+#co-checkout-form #checkoutSteps .form-list .name-lastname .input-box {
+    width: 114px;
+}
+
+#co-checkout-form #checkoutSteps .form-list .compact,
+#co-checkout-form #checkoutSteps .form-list .name-firstname,
+#co-checkout-form #checkoutSteps .form-list .name-lastname {
+    width: 136px;
+}
+
+#co-checkout-form #checkoutSteps .form-list select {
+    width: 254px;
+}
+
+#co-checkout-form #checkoutSteps .form-list li.wide .input-box,
+#co-checkout-form #checkoutSteps .form-list .input-box {
+    width: 251px;
+}
+
+#co-checkout-form #checkoutSteps .form-list li.wide input.input-text,
+#co-checkout-form #checkoutSteps .form-list input.input-text,
+#co-checkout-form #checkoutSteps .form-list textarea {
+    width: 247px;
+}
+
+#co-checkout-form #co-billing-form .control label,
+#co-checkout-form #co-shipping-form .control label {
+    padding-left: 19px;
+}
+
+#co-checkout-form #checkoutSteps li#left_collumn {
+    width: 33%;
+}
+
+#co-checkout-form .buttons-set {
+    margin-left: 14px;
+}
+.page-title.title-buttons{
+    clear: both;
+}
+.cart-table {
+    width: 100% !important;
+}
+.cart-totals-wrapper .cart-totals{
+    background: none;
+    border: none;
+}
+#co-billing-form .form-list > li.control > input {
+    margin-left: 0px;
+}
+
+#checkoutSteps .form-list input[id*='aitoc_checkout_'][type="text"] {
+    max-width: 247px;
+    width: auto;
+    min-width: 230px;
+}
+#co-checkout-form #checkoutSteps .form-list .name-middlename input.input-text{
+    float:left;
+    width:45px;
+}

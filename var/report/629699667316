@@ -1,0 +1,27 @@
+a:5:{i:0;s:1755:"Error in file: "/home/numannadev/public_html/app/code/core/Mage/Weee/sql/weee_setup/install-1.6.0.0.php" - SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'weee_tax' already exists, query was: CREATE TABLE `weee_tax` (
+  `value_id` int NOT NULL auto_increment COMMENT 'Value Id' ,
+  `website_id` smallint UNSIGNED NOT NULL default '0' COMMENT 'Website Id' ,
+  `entity_id` int UNSIGNED NOT NULL default '0' COMMENT 'Entity Id' ,
+  `country` varchar(2) NULL COMMENT 'Country' ,
+  `value` decimal(12,4) NOT NULL default '0.0000' COMMENT 'Value' ,
+  `state` varchar(255) NOT NULL default '*' COMMENT 'State' ,
+  `attribute_id` smallint UNSIGNED NOT NULL COMMENT 'Attribute Id' ,
+  `entity_type_id` smallint UNSIGNED NOT NULL COMMENT 'Entity Type Id' ,
+  PRIMARY KEY (`value_id`),
+  INDEX `IDX_WEEE_TAX_WEBSITE_ID` (`website_id`),
+  INDEX `IDX_WEEE_TAX_ENTITY_ID` (`entity_id`),
+  INDEX `IDX_WEEE_TAX_COUNTRY` (`country`),
+  INDEX `IDX_WEEE_TAX_ATTRIBUTE_ID` (`attribute_id`),
+  CONSTRAINT `FK_WEEE_TAX_COUNTRY_DIRECTORY_COUNTRY_COUNTRY_ID` FOREIGN KEY (`country`) REFERENCES `directory_country` (`country_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_WEEE_TAX_ENTITY_ID_CATALOG_PRODUCT_ENTITY_ENTITY_ID` FOREIGN KEY (`entity_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_WEEE_TAX_WEBSITE_ID_CORE_WEBSITE_WEBSITE_ID` FOREIGN KEY (`website_id`) REFERENCES `core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_WEEE_TAX_ATTRIBUTE_ID_EAV_ATTRIBUTE_ATTRIBUTE_ID` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) COMMENT='Weee Tax' ENGINE=INNODB charset=utf8 COLLATE=utf8_general_ci";i:1;s:984:"#0 /home/numannadev/public_html/app/code/core/Mage/Core/Model/Resource/Setup.php(645): Mage::exception('Mage_Core', 'Error in file: ...')
+#1 /home/numannadev/public_html/app/code/core/Mage/Core/Model/Resource/Setup.php(421): Mage_Core_Model_Resource_Setup->_modifyResourceDb('install', '', '1.6.0.0')
+#2 /home/numannadev/public_html/app/code/core/Mage/Core/Model/Resource/Setup.php(327): Mage_Core_Model_Resource_Setup->_installResourceDb('1.6.0.0')
+#3 /home/numannadev/public_html/app/code/core/Mage/Core/Model/Resource/Setup.php(235): Mage_Core_Model_Resource_Setup->applyUpdates()
+#4 /home/numannadev/public_html/app/code/core/Mage/Core/Model/App.php(428): Mage_Core_Model_Resource_Setup::applyAllUpdates()
+#5 /home/numannadev/public_html/app/code/core/Mage/Core/Model/App.php(354): Mage_Core_Model_App->_initModules()
+#6 /home/numannadev/public_html/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#7 /home/numannadev/public_html/index.php(83): Mage::run('', 'store')
+#8 {main}";s:3:"url";s:50:"/powerprepper/sitemap-pt-nav_menu_item-2016-09.xml";s:11:"script_name";s:10:"/index.php";s:4:"skin";s:7:"default";}

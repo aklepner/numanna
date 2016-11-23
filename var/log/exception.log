@@ -1,0 +1,459 @@
+2016-10-12T13:46:33+00:00 ERR (3): 
+exception 'Mage_Core_Exception' with message 'Invalid block type: Mage_Googlecheckout_Block_Link' in /chroot/home/transfor/numanna.transformagency.com/html/app/Mage.php:595
+Stack trace:
+#0 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/Layout.php(495): Mage::throwException('Invalid block t...')
+#1 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('googlecheckout/...', Array)
+#2 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/Layout.php(472): Mage_Core_Model_Layout->createBlock('googlecheckout/...', 'checkout.cart.m...')
+#3 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/Layout.php(239): Mage_Core_Model_Layout->addBlock('googlecheckout/...', 'checkout.cart.m...')
+#4 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#5 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/Layout.php(206): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#6 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#7 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Controller/Varien/Action.php(344): Mage_Core_Model_Layout->generateBlocks()
+#8 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Controller/Varien/Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#9 /chroot/home/transfor/numanna.transformagency.com/html/app/code/local/Aitoc/Aitcheckout/controllers/CheckoutController.php(173): Mage_Core_Controller_Varien_Action->loadLayout()
+#10 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aitoc_Aitcheckout_CheckoutController->indexAction()
+#11 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#12 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#13 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#14 /chroot/home/transfor/numanna.transformagency.com/html/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#15 /chroot/home/transfor/numanna.transformagency.com/html/index.php(83): Mage::run('', 'store')
+#16 {main}
+2016-10-12T22:15:38+00:00 ERR (3): 
+exception 'Varien_Exception' with message 'Invalid method Mage_Catalog_Model_Category::categoryAttribute(Array
+(
+    [0] => Mage_Catalog_Model_Category Object
+        (
+            [_eventPrefix:protected] => catalog_category
+            [_eventObject:protected] => category
+            [_cacheTag:protected] => catalog_category
+            [_useFlatResource:protected] => 
+            [_designAttributes:Mage_Catalog_Model_Category:private] => Array
+                (
+                    [0] => custom_design
+                    [1] => custom_design_from
+                    [2] => custom_design_to
+                    [3] => page_layout
+                    [4] => custom_layout_update
+                    [5] => custom_apply_to_products
+                )
+
+            [_treeModel:protected] => 
+            [_urlModel:protected] => 
+            [_defaultValues:protected] => Array
+                (
+                )
+
+            [_storeValuesFlags:protected] => Array
+                (
+                )
+
+            [_lockedAttributes:protected] => Array
+                (
+                )
+
+            [_isDeleteable:protected] => 1
+            [_isReadonly:protected] => 
+            [_resourceName:protected] => catalog/category
+            [_resource:protected] => 
+            [_resourceCollectionName:protected] => catalog/category_collection
+            [_dataSaveAllowed:protected] => 1
+            [_isObjectNew:protected] => 
+            [_data:protected] => Array
+                (
+                    [entity_id] => 14
+                    [entity_type_id] => 3
+                    [attribute_set_id] => 3
+                    [parent_id] => 13
+                    [created_at] => 2016-10-12 20:56:59
+                    [updated_at] => 2016-10-12 20:56:59
+                    [path] => 1/2/13/14
+                    [position] => 1
+                    [level] => 3
+                    [children_count] => 0
+                    [request_path] => products/organic.html
+                    [is_active] => 1
+                    [name] => Organic
+                    [url_key] => organic
+                    [is_anchor] => 0
+                )
+
+            [_hasDataChanges:protected] => 1
+            [_origData:protected] => Array
+                (
+                    [entity_id] => 14
+                    [entity_type_id] => 3
+                    [attribute_set_id] => 3
+                    [parent_id] => 13
+                    [created_at] => 2016-10-12 20:56:59
+                    [updated_at] => 2016-10-12 20:56:59
+                    [path] => 1/2/13/14
+                    [position] => 1
+                    [level] => 3
+                    [children_count] => 0
+                    [request_path] => products/organic.html
+                    [is_active] => 1
+                    [name] => Organic
+                    [url_key] => organic
+                    [is_anchor] => 0
+                )
+
+            [_idFieldName:protected] => entity_id
+            [_isDeleted:protected] => 
+            [_oldFieldsMap:protected] => Array
+                (
+                )
+
+            [_syncFieldsMap:protected] => Array
+                (
+                )
+
+        )
+
+    [1] => 
+    [2] => description
+)
+)' in /chroot/home/transfor/numanna.transformagency.com/html/lib/Varien/Object.php:653
+Stack trace:
+#0 /chroot/home/transfor/numanna.transformagency.com/html/app/design/frontend/numanna/default/template/categories/custom_cat.phtml(40): Varien_Object->__call('categoryAttribu...', Array)
+#1 /chroot/home/transfor/numanna.transformagency.com/html/app/design/frontend/numanna/default/template/categories/custom_cat.phtml(40): Mage_Catalog_Model_Category->categoryAttribute(Object(Mage_Catalog_Model_Category), NULL, 'description')
+#2 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(241): include('/chroot/home/tr...')
+#3 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(272): Mage_Core_Block_Template->fetchView('frontend/numann...')
+#4 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(286): Mage_Core_Block_Template->renderView()
+#5 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Core_Block_Template->_toHtml()
+#6 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/Email/Template/Filter.php(196): Mage_Core_Block_Abstract->toHtml()
+#7 [internal function]: Mage_Core_Model_Email_Template_Filter->blockDirective(Array)
+#8 /chroot/home/transfor/numanna.transformagency.com/html/lib/Varien/Filter/Template.php(163): call_user_func(Array, Array)
+#9 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/Email/Template/Filter.php(548): Varien_Filter_Template->filter('<p>{{block type...')
+#10 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Cms/Block/Block.php(69): Mage_Core_Model_Email_Template_Filter->filter('<p>{{block type...')
+#11 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Cms_Block_Block->_toHtml()
+#12 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Catalog/Block/Category/View.php(111): Mage_Core_Block_Abstract->toHtml()
+#13 /chroot/home/transfor/numanna.transformagency.com/html/app/design/frontend/numanna/default/template/catalog/category/view.phtml(22): Mage_Catalog_Block_Category_View->getCmsBlockHtml()
+#14 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(241): include('/chroot/home/tr...')
+#15 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(272): Mage_Core_Block_Template->fetchView('frontend/numann...')
+#16 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(286): Mage_Core_Block_Template->renderView()
+#17 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Core_Block_Template->_toHtml()
+#18 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Text/List.php(43): Mage_Core_Block_Abstract->toHtml()
+#19 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Core_Block_Text_List->_toHtml()
+#20 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(637): Mage_Core_Block_Abstract->toHtml()
+#21 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(581): Mage_Core_Block_Abstract->_getChildHtml('content', true)
+#22 /chroot/home/transfor/numanna.transformagency.com/html/app/design/frontend/numanna/default/template/page/1column.phtml(73): Mage_Core_Block_Abstract->getChildHtml('content')
+#23 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(241): include('/chroot/home/tr...')
+#24 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(272): Mage_Core_Block_Template->fetchView('frontend/numann...')
+#25 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(286): Mage_Core_Block_Template->renderView()
+#26 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Core_Block_Template->_toHtml()
+#27 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/Layout.php(555): Mage_Core_Block_Abstract->toHtml()
+#28 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Controller/Varien/Action.php(390): Mage_Core_Model_Layout->getOutput()
+#29 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Catalog/controllers/CategoryController.php(161): Mage_Core_Controller_Varien_Action->renderLayout()
+#30 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Mage_Catalog_CategoryController->viewAction()
+#31 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('view')
+#32 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#33 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#34 /chroot/home/transfor/numanna.transformagency.com/html/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#35 /chroot/home/transfor/numanna.transformagency.com/html/index.php(83): Mage::run('', 'store')
+#36 {main}
+2016-10-13T20:21:09+00:00 ERR (3): 
+exception 'Varien_Exception' with message 'Invalid method Mage_Catalog_Model_Category::categoryAttribute(Array
+(
+    [0] => Mage_Catalog_Model_Category Object
+        (
+            [_eventPrefix:protected] => catalog_category
+            [_eventObject:protected] => category
+            [_cacheTag:protected] => catalog_category
+            [_useFlatResource:protected] => 
+            [_designAttributes:Mage_Catalog_Model_Category:private] => Array
+                (
+                    [0] => custom_design
+                    [1] => custom_design_from
+                    [2] => custom_design_to
+                    [3] => page_layout
+                    [4] => custom_layout_update
+                    [5] => custom_apply_to_products
+                )
+
+            [_treeModel:protected] => 
+            [_urlModel:protected] => 
+            [_defaultValues:protected] => Array
+                (
+                )
+
+            [_storeValuesFlags:protected] => Array
+                (
+                )
+
+            [_lockedAttributes:protected] => Array
+                (
+                )
+
+            [_isDeleteable:protected] => 1
+            [_isReadonly:protected] => 
+            [_resourceName:protected] => catalog/category
+            [_resource:protected] => 
+            [_resourceCollectionName:protected] => catalog/category_collection
+            [_dataSaveAllowed:protected] => 1
+            [_isObjectNew:protected] => 
+            [_data:protected] => Array
+                (
+                    [entity_id] => 14
+                    [entity_type_id] => 3
+                    [attribute_set_id] => 3
+                    [parent_id] => 13
+                    [created_at] => 2016-10-12 20:56:59
+                    [updated_at] => 2016-10-12 22:30:28
+                    [path] => 1/2/13/14
+                    [position] => 1
+                    [level] => 3
+                    [children_count] => 0
+                    [request_path] => products/organic.html
+                    [is_active] => 1
+                    [name] => Organic
+                    [url_key] => organic
+                    [is_anchor] => 0
+                )
+
+            [_hasDataChanges:protected] => 1
+            [_origData:protected] => Array
+                (
+                    [entity_id] => 14
+                    [entity_type_id] => 3
+                    [attribute_set_id] => 3
+                    [parent_id] => 13
+                    [created_at] => 2016-10-12 20:56:59
+                    [updated_at] => 2016-10-12 22:30:28
+                    [path] => 1/2/13/14
+                    [position] => 1
+                    [level] => 3
+                    [children_count] => 0
+                    [request_path] => products/organic.html
+                    [is_active] => 1
+                    [name] => Organic
+                    [url_key] => organic
+                    [is_anchor] => 0
+                )
+
+            [_idFieldName:protected] => entity_id
+            [_isDeleted:protected] => 
+            [_oldFieldsMap:protected] => Array
+                (
+                )
+
+            [_syncFieldsMap:protected] => Array
+                (
+                )
+
+        )
+
+    [1] => 
+    [2] => description
+)
+)' in /chroot/home/transfor/numanna.transformagency.com/html/lib/Varien/Object.php:653
+Stack trace:
+#0 /chroot/home/transfor/numanna.transformagency.com/html/app/design/frontend/numanna/default/template/categories/custom_cat.phtml(41): Varien_Object->__call('categoryAttribu...', Array)
+#1 /chroot/home/transfor/numanna.transformagency.com/html/app/design/frontend/numanna/default/template/categories/custom_cat.phtml(41): Mage_Catalog_Model_Category->categoryAttribute(Object(Mage_Catalog_Model_Category), NULL, 'description')
+#2 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(241): include('/chroot/home/tr...')
+#3 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(272): Mage_Core_Block_Template->fetchView('frontend/numann...')
+#4 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(286): Mage_Core_Block_Template->renderView()
+#5 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Core_Block_Template->_toHtml()
+#6 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/Email/Template/Filter.php(196): Mage_Core_Block_Abstract->toHtml()
+#7 [internal function]: Mage_Core_Model_Email_Template_Filter->blockDirective(Array)
+#8 /chroot/home/transfor/numanna.transformagency.com/html/lib/Varien/Filter/Template.php(163): call_user_func(Array, Array)
+#9 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/Email/Template/Filter.php(548): Varien_Filter_Template->filter('<p>{{block type...')
+#10 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Cms/Block/Block.php(69): Mage_Core_Model_Email_Template_Filter->filter('<p>{{block type...')
+#11 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Cms_Block_Block->_toHtml()
+#12 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Catalog/Block/Category/View.php(111): Mage_Core_Block_Abstract->toHtml()
+#13 /chroot/home/transfor/numanna.transformagency.com/html/app/design/frontend/numanna/default/template/catalog/category/view.phtml(22): Mage_Catalog_Block_Category_View->getCmsBlockHtml()
+#14 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(241): include('/chroot/home/tr...')
+#15 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(272): Mage_Core_Block_Template->fetchView('frontend/numann...')
+#16 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(286): Mage_Core_Block_Template->renderView()
+#17 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Core_Block_Template->_toHtml()
+#18 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Text/List.php(43): Mage_Core_Block_Abstract->toHtml()
+#19 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Core_Block_Text_List->_toHtml()
+#20 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(637): Mage_Core_Block_Abstract->toHtml()
+#21 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(581): Mage_Core_Block_Abstract->_getChildHtml('content', true)
+#22 /chroot/home/transfor/numanna.transformagency.com/html/app/design/frontend/numanna/default/template/page/1column.phtml(73): Mage_Core_Block_Abstract->getChildHtml('content')
+#23 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(241): include('/chroot/home/tr...')
+#24 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(272): Mage_Core_Block_Template->fetchView('frontend/numann...')
+#25 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(286): Mage_Core_Block_Template->renderView()
+#26 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Core_Block_Template->_toHtml()
+#27 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/Layout.php(555): Mage_Core_Block_Abstract->toHtml()
+#28 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Controller/Varien/Action.php(390): Mage_Core_Model_Layout->getOutput()
+#29 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Catalog/controllers/CategoryController.php(161): Mage_Core_Controller_Varien_Action->renderLayout()
+#30 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Mage_Catalog_CategoryController->viewAction()
+#31 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('view')
+#32 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#33 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#34 /chroot/home/transfor/numanna.transformagency.com/html/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#35 /chroot/home/transfor/numanna.transformagency.com/html/index.php(83): Mage::run('', 'store')
+#36 {main}
+2016-10-13T20:21:51+00:00 ERR (3): 
+exception 'Varien_Exception' with message 'Invalid method Mage_Catalog_Model_Category::categoryAttribute(Array
+(
+    [0] => Mage_Catalog_Model_Category Object
+        (
+            [_eventPrefix:protected] => catalog_category
+            [_eventObject:protected] => category
+            [_cacheTag:protected] => catalog_category
+            [_useFlatResource:protected] => 
+            [_designAttributes:Mage_Catalog_Model_Category:private] => Array
+                (
+                    [0] => custom_design
+                    [1] => custom_design_from
+                    [2] => custom_design_to
+                    [3] => page_layout
+                    [4] => custom_layout_update
+                    [5] => custom_apply_to_products
+                )
+
+            [_treeModel:protected] => 
+            [_urlModel:protected] => 
+            [_defaultValues:protected] => Array
+                (
+                )
+
+            [_storeValuesFlags:protected] => Array
+                (
+                )
+
+            [_lockedAttributes:protected] => Array
+                (
+                )
+
+            [_isDeleteable:protected] => 1
+            [_isReadonly:protected] => 
+            [_resourceName:protected] => catalog/category
+            [_resource:protected] => 
+            [_resourceCollectionName:protected] => catalog/category_collection
+            [_dataSaveAllowed:protected] => 1
+            [_isObjectNew:protected] => 
+            [_data:protected] => Array
+                (
+                    [entity_id] => 14
+                    [entity_type_id] => 3
+                    [attribute_set_id] => 3
+                    [parent_id] => 13
+                    [created_at] => 2016-10-12 20:56:59
+                    [updated_at] => 2016-10-12 22:30:28
+                    [path] => 1/2/13/14
+                    [position] => 1
+                    [level] => 3
+                    [children_count] => 0
+                    [request_path] => products/organic.html
+                    [is_active] => 1
+                    [name] => Organic
+                    [url_key] => organic
+                    [is_anchor] => 0
+                )
+
+            [_hasDataChanges:protected] => 1
+            [_origData:protected] => Array
+                (
+                    [entity_id] => 14
+                    [entity_type_id] => 3
+                    [attribute_set_id] => 3
+                    [parent_id] => 13
+                    [created_at] => 2016-10-12 20:56:59
+                    [updated_at] => 2016-10-12 22:30:28
+                    [path] => 1/2/13/14
+                    [position] => 1
+                    [level] => 3
+                    [children_count] => 0
+                    [request_path] => products/organic.html
+                    [is_active] => 1
+                    [name] => Organic
+                    [url_key] => organic
+                    [is_anchor] => 0
+                )
+
+            [_idFieldName:protected] => entity_id
+            [_isDeleted:protected] => 
+            [_oldFieldsMap:protected] => Array
+                (
+                )
+
+            [_syncFieldsMap:protected] => Array
+                (
+                )
+
+        )
+
+    [1] => 
+    [2] => description
+)
+)' in /chroot/home/transfor/numanna.transformagency.com/html/lib/Varien/Object.php:653
+Stack trace:
+#0 /chroot/home/transfor/numanna.transformagency.com/html/app/design/frontend/numanna/default/template/categories/custom_cat.phtml(41): Varien_Object->__call('categoryAttribu...', Array)
+#1 /chroot/home/transfor/numanna.transformagency.com/html/app/design/frontend/numanna/default/template/categories/custom_cat.phtml(41): Mage_Catalog_Model_Category->categoryAttribute(Object(Mage_Catalog_Model_Category), NULL, 'description')
+#2 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(241): include('/chroot/home/tr...')
+#3 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(272): Mage_Core_Block_Template->fetchView('frontend/numann...')
+#4 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(286): Mage_Core_Block_Template->renderView()
+#5 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Core_Block_Template->_toHtml()
+#6 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/Email/Template/Filter.php(196): Mage_Core_Block_Abstract->toHtml()
+#7 [internal function]: Mage_Core_Model_Email_Template_Filter->blockDirective(Array)
+#8 /chroot/home/transfor/numanna.transformagency.com/html/lib/Varien/Filter/Template.php(163): call_user_func(Array, Array)
+#9 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/Email/Template/Filter.php(548): Varien_Filter_Template->filter('<p>{{block type...')
+#10 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Cms/Block/Block.php(69): Mage_Core_Model_Email_Template_Filter->filter('<p>{{block type...')
+#11 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Cms_Block_Block->_toHtml()
+#12 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Catalog/Block/Category/View.php(111): Mage_Core_Block_Abstract->toHtml()
+#13 /chroot/home/transfor/numanna.transformagency.com/html/app/design/frontend/numanna/default/template/catalog/category/view.phtml(22): Mage_Catalog_Block_Category_View->getCmsBlockHtml()
+#14 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(241): include('/chroot/home/tr...')
+#15 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(272): Mage_Core_Block_Template->fetchView('frontend/numann...')
+#16 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(286): Mage_Core_Block_Template->renderView()
+#17 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Core_Block_Template->_toHtml()
+#18 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Text/List.php(43): Mage_Core_Block_Abstract->toHtml()
+#19 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Core_Block_Text_List->_toHtml()
+#20 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(637): Mage_Core_Block_Abstract->toHtml()
+#21 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(581): Mage_Core_Block_Abstract->_getChildHtml('content', true)
+#22 /chroot/home/transfor/numanna.transformagency.com/html/app/design/frontend/numanna/default/template/page/1column.phtml(73): Mage_Core_Block_Abstract->getChildHtml('content')
+#23 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(241): include('/chroot/home/tr...')
+#24 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(272): Mage_Core_Block_Template->fetchView('frontend/numann...')
+#25 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Template.php(286): Mage_Core_Block_Template->renderView()
+#26 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Block/Abstract.php(919): Mage_Core_Block_Template->_toHtml()
+#27 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/Layout.php(555): Mage_Core_Block_Abstract->toHtml()
+#28 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Controller/Varien/Action.php(390): Mage_Core_Model_Layout->getOutput()
+#29 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Catalog/controllers/CategoryController.php(161): Mage_Core_Controller_Varien_Action->renderLayout()
+#30 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Mage_Catalog_CategoryController->viewAction()
+#31 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('view')
+#32 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#33 /chroot/home/transfor/numanna.transformagency.com/html/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#34 /chroot/home/transfor/numanna.transformagency.com/html/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#35 /chroot/home/transfor/numanna.transformagency.com/html/index.php(83): Mage::run('', 'store')
+#36 {main}
+2016-11-02T12:33:08+00:00 ERR (3): 
+exception 'Mage_Core_Exception' with message 'Invalid block type: Mage_Googlecheckout_Block_Link' in /home/numannadev/public_html/app/Mage.php:595
+Stack trace:
+#0 /home/numannadev/public_html/app/code/core/Mage/Core/Model/Layout.php(495): Mage::throwException('Invalid block t...')
+#1 /home/numannadev/public_html/app/code/core/Mage/Core/Model/Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('googlecheckout/...', Array)
+#2 /home/numannadev/public_html/app/code/core/Mage/Core/Model/Layout.php(472): Mage_Core_Model_Layout->createBlock('googlecheckout/...', 'checkout.cart.m...')
+#3 /home/numannadev/public_html/app/code/core/Mage/Core/Model/Layout.php(239): Mage_Core_Model_Layout->addBlock('googlecheckout/...', 'checkout.cart.m...')
+#4 /home/numannadev/public_html/app/code/core/Mage/Core/Model/Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#5 /home/numannadev/public_html/app/code/core/Mage/Core/Model/Layout.php(206): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#6 /home/numannadev/public_html/app/code/core/Mage/Core/Model/Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#7 /home/numannadev/public_html/app/code/core/Mage/Core/Controller/Varien/Action.php(344): Mage_Core_Model_Layout->generateBlocks()
+#8 /home/numannadev/public_html/app/code/core/Mage/Core/Controller/Varien/Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#9 /home/numannadev/public_html/app/code/local/Aitoc/Aitcheckout/controllers/CheckoutController.php(173): Mage_Core_Controller_Varien_Action->loadLayout()
+#10 /home/numannadev/public_html/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aitoc_Aitcheckout_CheckoutController->indexAction()
+#11 /home/numannadev/public_html/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#12 /home/numannadev/public_html/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#13 /home/numannadev/public_html/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#14 /home/numannadev/public_html/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#15 /home/numannadev/public_html/index.php(83): Mage::run('', 'store')
+#16 {main}
+2016-11-02T12:53:20+00:00 ERR (3): 
+exception 'Mage_Core_Exception' with message 'Invalid block type: Mage_Googlecheckout_Block_Link' in /home/numannadev/public_html/app/Mage.php:595
+Stack trace:
+#0 /home/numannadev/public_html/app/code/core/Mage/Core/Model/Layout.php(495): Mage::throwException('Invalid block t...')
+#1 /home/numannadev/public_html/app/code/core/Mage/Core/Model/Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('googlecheckout/...', Array)
+#2 /home/numannadev/public_html/app/code/core/Mage/Core/Model/Layout.php(472): Mage_Core_Model_Layout->createBlock('googlecheckout/...', 'checkout.cart.m...')
+#3 /home/numannadev/public_html/app/code/core/Mage/Core/Model/Layout.php(239): Mage_Core_Model_Layout->addBlock('googlecheckout/...', 'checkout.cart.m...')
+#4 /home/numannadev/public_html/app/code/core/Mage/Core/Model/Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#5 /home/numannadev/public_html/app/code/core/Mage/Core/Model/Layout.php(206): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#6 /home/numannadev/public_html/app/code/core/Mage/Core/Model/Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#7 /home/numannadev/public_html/app/code/core/Mage/Core/Controller/Varien/Action.php(344): Mage_Core_Model_Layout->generateBlocks()
+#8 /home/numannadev/public_html/app/code/core/Mage/Core/Controller/Varien/Action.php(269): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#9 /home/numannadev/public_html/app/code/local/Aitoc/Aitcheckout/controllers/CheckoutController.php(173): Mage_Core_Controller_Varien_Action->loadLayout()
+#10 /home/numannadev/public_html/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aitoc_Aitcheckout_CheckoutController->indexAction()
+#11 /home/numannadev/public_html/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#12 /home/numannadev/public_html/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#13 /home/numannadev/public_html/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#14 /home/numannadev/public_html/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#15 /home/numannadev/public_html/index.php(83): Mage::run('', 'store')
+#16 {main}
