@@ -1,0 +1,66 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Report_Address_Show_Tab_Chart
+ */
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Report Synchronized Subscribers') ?></h4>
+    </div>
+    <div class="fieldset">
+        <?php
+        $resource = Mage::getModel('core/resource');
+        $read = $resource->getConnection("core_read");
+        $sql_total = "SELECT count(`subscriber_id`) AS total FROM `" . $resource->getTableName('newsletter_subscriber') . "` WHERE `customer_id` = 0";
+        $sql_total_not_synchronized = "SELECT count(`subscriber_id`) AS total_not_synchronized FROM `" . $resource->getTableName('newsletter_subscriber') . "` WHERE `customer_id` = 0 AND (`zoho_id` IS NULL OR `zoho_id` = '')";
+
+        $row = $read->fetchRow($sql_total);
+        $total = $row['total'];
+        $row = $read->fetchRow($sql_total_not_synchronized);
+        $number_not_synchronized = $row['total_not_synchronized'];
+
+        $number_synchronized = $total - $number_not_synchronized;
+        $rate_synchronized = 0;
+        if ($total > 0) {
+            $rate_synchronized = (int) round(((float) $number_synchronized / $total * 1000)) / 10;
+        }
+        $rate_not_synchronized = 100 - $rate_synchronized;
+
+        $label_synchronized = str_replace(' ', '+', $this->__('Synchronized Subscribers') . ': ' . $rate_synchronized . '% (' . $number_synchronized . '/' . $total . ')');
+        $label_not_synchronized = str_replace(' ', '+', $this->__('Not Synchronized Subscribers') . ': ' . $rate_not_synchronized . '% (' . $number_not_synchronized . '/' . $total . ')');
+        $label_title = '';
+        ?>
+        <img src="http://chart.apis.google.com/chart?chf=a,s,000000|bg,s,FAFAFA&chs=500x280&cht=p&chco=3366CC|CC3300&chd=t:<?php echo $rate_synchronized ?>,<?php echo $rate_not_synchronized ?>&chdl=<?php echo $label_synchronized; ?>|<?php echo $label_not_synchronized; ?>&chdlp=r&chma=0,0,0,10|0,10&chtt=<?php echo $label_title; ?>&chts=000000,0" width="500" height="280" alt="<?php echo $label_title; ?>" />
+    </div>
+    
+    <div class="fieldset" style="margin-top: 20px;">
+        <button onclick="window.open('<?php echo $this->getUrl('zohosynchronization/adminhtml_report_subscriber'); ?>', '_blank');" class="scalable" type="button" >
+            <span><span><span><?php echo $this->__('Report Details')?></span></span></span>
+        </button>
+        
+        <?php if (Mage::getSingleton('admin/session')->isAllowed(CRM4Ecommerce_ZohoSynchronization_Helper_Data::ACL_RESET_ZOHO_ID_ALL_SUBSCRIBERS)) { ?>
+        <?php if ($number_synchronized > 0) { ?><script type="text/javascript">
+        resetAllSubscribers = function() {
+            if(confirm("<?php echo Mage::helper('zohosynchronization')->__('Do you really want to reset Zoho id for all subscribers?');?>")) {
+                new Ajax.Request('<?php echo $this->getUrl('zohosynchronization/adminhtml_report_subscriber/resetAll', array('isAjax' => true)); ?>', {
+                    method: 'get',
+                    onComplete: function(transport) {
+                        if (200 == transport.status && transport.responseText == '1') {
+                            setLocation('<?php echo $this->getUrl('zohosynchronization/adminhtml_dashboard/index'); ?>');
+                        }
+                    }
+                });                    
+            }
+        };
+        </script><?php } ?>
+        <button <?php if ($number_synchronized > 0) { ?>onclick="resetAllSubscribers();"<?php } ?> class="scalable<?php if ($number_synchronized == 0) { ?> disabled<?php } ?>" type="button" >
+            <span><span><span><?php echo $this->__('Reset All Zoho Ids')?></span></span></span>
+        </button>
+        <?php } ?>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Transform_Slideshow>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Transform_Slideshow>
+    </modules>
+</config>

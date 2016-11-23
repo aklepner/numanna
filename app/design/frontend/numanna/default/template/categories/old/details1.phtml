@@ -1,0 +1,171 @@
+<div class="row" id="details-top">
+    <div class="span12">
+                <div class="bread center">
+                    <div class="breadcrumbs">
+                    <ul>
+                        <li class="home">
+                            <a title="Go to Home Page" href="http://127.0.0.1/walla/">Home</a>
+                        <span>/ </span>
+                        </li>
+                        <li class="cms_page">
+                            <strong>Customize Your Wall Image</strong>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+                <h1 class="center page-title">Customize Your Wall Image</h1>
+    </div>
+</div>
+
+<div class="row steps">
+<!--    <div class="span2 step">
+         <h3>Five Quick And<br/> Easy Steps</h3>
+    </div>-->
+    <div class="span2 step">
+        <strong>1. Name Your Wall</strong>
+        <img src="<?php echo $this->getSkinUrl(); ?>images/misc/s1.png" class="icon" alt="">
+    </div>
+    <div class="span2 step">
+        <strong>2. Enter dimensions</strong>
+        <img src="<?php echo $this->getSkinUrl(); ?>images/misc/s2.png" class="icon" alt="">
+    </div>
+    <div class="span2 step">
+        <strong>3. Select Material</strong>
+        <img src="<?php echo $this->getSkinUrl(); ?>images/misc/s21.png" class="icon" alt="">
+    </div>
+    <div class="span2 step">
+        <strong>4. Center your image</strong>
+        <img src="<?php echo $this->getSkinUrl(); ?>images/misc/s31.png" class="icon" alt="">
+    </div>
+    <div class="span2 step">
+        <strong>5. Customize image</strong>
+        <img src="<?php echo $this->getSkinUrl(); ?>images/misc/s32.png" class="icon" alt="">
+    </div>
+    <div class="span2 step">
+        <strong>6. Generate proof</strong>
+        <img src="<?php echo $this->getSkinUrl(); ?>images/misc/s3.png" class="icon" alt="">
+    </div>
+    <div class="span12"><hr /></div>
+</div>
+<div class="row wall-details">
+    <div class="span6 wall-image" id="sidebar">
+        <div class="wall-pic">
+            <img src="<?php echo $this->getSkinUrl(); ?>images/media/wall.png" alt="Wall picture" class="wall-preview">
+        </div>
+        <div class="wall-description">
+            <p><strong>Computer Hacker Silhouette Of Hooded Man</strong></p>
+            <p>Donec viverra justo vel eros pharetra, a posuere metus efficitur. Cras elementum ligula in ligula fringilla, sit amet pulvinar risus vehicula. Aenean finibus eros vitae laoreet auctor. Fusce in dignissim urna. Maecenas rutrum ac mi sit amet blandit. Nam lorem dui, placerat id convallis at, pharetra et dui.</p>
+        </div>
+    </div>
+    <div class="span6 wall-config">
+        <form>
+
+        <h2 class="wall-step-title"><span class="nr">1</span> Name Your Wall</h2>
+
+        <div class="field wall-id">
+            <!--<label>My Walls :<span class="wall-question" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">?</span></label> -->
+            <input id="wall-name" name="wall-name" class="wall-name" onfocus="if(this.value == 'Enter Wall Name (i.e. Living Room)') { this.value = ''; }"  value="Enter Wall Name (i.e. Living Room)">
+        </div>
+
+        <h2 class="wall-step-title"><span class="nr">2</span> Enter dimensions</h2>
+        <div class="field wall-dimensions">
+            <div class="row">
+                <div class="span3 col">
+                     <label>Width (in inches) <!--<span class="wall-question" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">?</span>--></label>
+                </div>
+                <div class="span3 col">
+                     <label>Height (in inches)<!-- <span class="wall-question" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">?</span>--></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2 col">
+                     <input name="width" class="wall-width">
+                </div>
+                <div class="span1 col">
+                    <select class="wall-width-select"><option>-</option><option>1/4</option><option>1/2</option><option>3/4</option></select>
+                </div>
+                <div class="span2 col">
+                     <input name="height" class="wall-height">
+                </div>
+                <div class="span1 col">
+                    <select class="wall-width-select"><option>-</option><option>1/4</option><option>1/2</option><option>3/4</option></select>
+                </div>
+            </div>
+
+        </div>
+
+        <h2 class="wall-step-title"><span class="nr">3</span> Select Material</h2>
+        <div class="field wall-material">
+            <dl class="dl">
+              <dt><input name="material" type="radio" onClick="javascript:jshow('price1'); jhide('price2'); jhide('price3');"></dt>
+              <dd>Original Fabwall</dd>
+              <dt><input name="material" type="radio" onClick="javascript:jhide('price1'); jshow('price2'); jhide('price3');"></dt>
+              <dd>Adhesive Vinyl</dd>
+              <dt><input name="material" type="radio"  onClick="javascript:jhide('price1'); jhide('price2'); jshow('price3');"></dt>
+              <dd>Vinyl Wallpaper</dd>
+            </dl>
+       </div>
+       <div class="field wall-price" id="price1"  style="display:none;">
+            <ul>
+            <li class="wall-price wall-list-price">List Price:    <span>$239.99</span></li>
+            <li class="wall-price wall-sale-price">Sale Price :    <span>$191.00</span></li>
+            <li class="wall-price wall-savings">You Save: <span>$48.00 (20%)</span></li>
+            </ul>
+       </div>
+       <div class="field wall-price" id="price2" style="display:none;">
+            <ul>
+            <li class="wall-price wall-list-price">List Price:    <span>$339.99</span></li>
+            <li class="wall-price wall-sale-price">Sale Price :    <span>$291.00</span></li>
+            <li class="wall-price wall-savings">You Save: <span>$48.00 (20%)</span></li>
+            </ul>
+       </div>
+       <div class="field wall-price" id="price3" style="display:none;">
+            <ul>
+            <li class="wall-price wall-list-price">List Price:    <span>$439.99</span></li>
+            <li class="wall-price wall-sale-price">Sale Price :    <span>$391.00</span></li>
+            <li class="wall-price wall-savings">You Save: <span>$48.00 (20%)</span></li>
+            </ul>
+       </div>
+
+       <h2 class="wall-step-title"><span class="nr">4</span> Center your image</h2>
+       <div class="field wall-pan">
+            <label>Pan Your Crop Window :<span class="wall-pan"><!--<img src="<?php echo $this->getSkinUrl(); ?>images/icons/pan.png" alt="Pan">--></span></label>
+            <i>Place your cursor over your image and drag to center it.</i>
+            <div class="clear"></div>
+       </div>
+
+        <h2 class="wall-step-title"><span class="nr">5</span> <a href="javascript:void();" onclick="javascript:jshow('customize'); jhide('expand'); jshow('collapse');" class="expand" id="expand">Customize Your Image (optional) &nbsp;<img src="<?php echo $this->getSkinUrl(); ?>images/icons/expandarrow.png"  alt="expand"></a><a href="javascript:void();" onclick="javascript:jhide('customize'); jhide('collapse'); jshow('expand');" class="collapse" id="collapse">Customize Your Image (optional) &nbsp;<img src="<?php echo $this->getSkinUrl(); ?>images/icons/collapsearrow.png"  alt="collapse"></a></h2>
+        <div class="customize" id="customize" style="display:none;">
+              <h3>Add Company Logo or Text <span class="wall-question" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">?</span></h3>
+              <a href="#" class="btn btn-primary upload">Upload Logo / Art File</a>
+              <div class="form-row"><textarea></textarea></div>
+              <div class="form-row fonts">
+                <select class="fontname"><option>Arial</option></select>
+                <select class="fontstyle"><option>Normal</option></select>
+                <select class="fontalign"><option>Left</option></select>
+                <span class="fontcolor"><button class="jscolor {value:'66ccff'}"></button></span>
+              </div>
+              <div class="form-row rotate">
+                <label>Rotate Logo / Text</label>
+                <input name="rotate">
+                <a href="#" class="btn btn-primary add-text">Add Text</a>
+                <div class="clear"></div>
+              </div>
+        </div>
+        <h2 class="wall-step-title final"><span class="nr">6</span> <a href="<?php echo $this->getUrl('') ?>proof" class="btn btn-primary btn-proof">Generate Proof</a> </h2>
+        <!--<div class="wall-actions">
+              <a href="#" class="btn btn-primary btn-proof">Generate Proof</a>
+        </div>-->
+        </form>
+    </div>
+
+</div>
+
+<script>
+    !function ($) {
+     $(function(){
+        $('.wall-question').tooltip();
+        });
+
+    }(window.jQuery)
+</script>

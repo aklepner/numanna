@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<widgets>
+    <hp_testimonial type="numana/testimonialblock">
+		<name>Home Page Testimonials</name>
+		<description>Home Page Testimonials</description>
+    	<parameters>
+        	<title translate="label">
+            	<visible>1</visible>
+            	<label>Title</label>
+            	<type>text</type>
+        	</title>
+        	<text translate="label">
+            	<visible>1</visible>
+            	<label>Text</label>
+            	<description></description>
+            	<type>textarea</type>
+        	</text>
+        	<author translate="label">
+            	<visible>1</visible>
+            	<label>Author</label>
+            	<type>text</type>
+        	</author>
+        	<link_title translate="label">
+            	<visible>1</visible>
+            	<label>Link title</label>
+            	<type>text</type>
+        	</link_title>
+        	<link_href translate="label">
+            	<visible>1</visible>
+            	<label>Link target</label>
+            	<type>text</type>
+        	</link_href>
+    	</parameters>
+	</hp_testimonial>
+<!--   	<jse_banner type="jse/banner">
+    	<name>Banner</name>
+		<description>Banner with image and link.</description>
+        <parameters>
+			<link_href translate="label">
+            	<visible>1</visible>
+                <label>Link target</label>
+                <type>text</type>
+            </link_href>
+			<image>
+    			<label>Image</label>
+    			<visible>1</visible>
+    			<type>widgetimagechooser/chooser</type>
+			</image>
+	    </parameters>
+	</jse_banner>
+	-->
+	<qla_hpblock type="qla/hpblock">
+		<name>Home page block</name>
+		<description>Block with title, text and image</description>
+    	<parameters>
+        	<title translate="label">
+            	<visible>1</visible>
+            	<label>Name</label>
+            	<type>text</type>
+        	</title>
+        	<text translate="label">
+            	<visible>1</visible>
+            	<label>Title</label>
+            	<description></description>
+            	<type>textarea</type>
+        	</text>
+			<image>
+    			<label>Image</label>
+    			<visible>1</visible>
+    			<type>widgetimagechooser/chooser</type>
+			</image>
+        	<content translate="label">
+            	<visible>1</visible>
+            	<label>Text</label>
+            	<description></description>
+            	<type>textarea</type>
+        	</content>
+        	<link_title translate="label">
+            	<visible>1</visible>
+            	<label>Link Title</label>
+            	<type>text</type>
+        	</link_title>
+        	<link_href translate="label">
+            	<visible>1</visible>
+            	<label>Link target</label>
+            	<type>text</type>
+        	</link_href>
+    	</parameters>
+	</qla_hpblock>
+</widgets>

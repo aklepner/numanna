@@ -1,0 +1,135 @@
+<div class="row" id="details-top">
+    <div class="span12">
+                <div class="bread center">
+                    <div class="breadcrumbs">
+                    <ul>
+                        <li class="home">
+                            <a title="Go to Home Page" href="http://127.0.0.1/walla/">Home</a>
+                        <span>/ </span>
+                        </li>
+                        <li class="cms_page">
+                            <strong>Customize Your Wall Image</strong>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+                <h1 class="center page-title">Customize Your Wall Image</h1>
+    </div>
+</div>
+
+<div class="row wall-details">
+    <div class="span6 wall-image" id="sidebar">
+        <div class="wall-pic">
+            <img src="<?php echo $this->getSkinUrl(); ?>images/media/wall.png" alt="Wall picture" class="wall-preview">
+        </div>
+        <div class="wall-description">
+            <p><strong>Computer Hacker Silhouette Of Hooded Man</strong></p>
+            <p>Donec viverra justo vel eros pharetra, a posuere metus efficitur. Cras elementum ligula in ligula fringilla, sit amet pulvinar risus vehicula. Aenean finibus eros vitae laoreet auctor. Fusce in dignissim urna. Maecenas rutrum ac mi sit amet blandit. Nam lorem dui, placerat id convallis at, pharetra et dui.</p>
+        </div>
+    </div>
+    <div class="span6 wall-config">
+        <form>
+
+        <h2 class="wall-step-title"><span class="nr">1</span> Enter Your Wall Size <span class="wall-question" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">?</span></h2>
+        <div class="field wall-dimensions">
+            <div class="row">
+                <div class="span1 col">
+                     <label>Width <span class="wall-question" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">?</span></label>
+                </div>
+                <div class="span2 col">
+                     <input name="width" class="wall-width" onkeypress='return event.charCode >= 48 && event.charCode <= 57'> Ft
+                </div>
+                <div class="span2 col">
+                    <select class="wall-width-select"><option>-</option><option>1/4</option><option>1/2</option><option>3/4</option></select> In
+                </div>
+            </div>
+            <div class="row">
+                <div class="span1 col">
+                     <label>Height <span class="wall-question" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">?</span></label>
+                </div>
+                <div class="span2 col">
+                     <input name="height" class="wall-height" onkeypress='return event.charCode >= 48 && event.charCode <= 57'> Ft
+                </div>
+                <div class="span2 col">
+                    <select class="wall-width-select"><option>-</option><option>1/4</option><option>1/2</option><option>3/4</option></select> In
+                </div>
+            </div>
+
+        </div>
+       <div class="field wall-pan">
+            <label>Pan Your Crop Window :<span class="wall-pan"><!--<img src="<?php echo $this->getSkinUrl(); ?>images/icons/pan.png" alt="Pan">--></span></label>
+            <i>Place your cursor over your image and drag to move it.</i>
+            <div class="clear"></div>
+       </div>
+
+
+        <h2 class="wall-step-title"><span class="nr">2</span> Select Material</h2>
+        <div class="field wall-material">
+            <dl class="dl">
+              <dt><input name="material" type="radio" onClick="javascript:jshow('price1'); jhide('price2'); jhide('price3');"></dt>
+              <dd>Original Fabwall</dd>
+              <dt><input name="material" type="radio" onClick="javascript:jhide('price1'); jshow('price2'); jhide('price3');"></dt>
+              <dd>Adhesive Vinyl</dd>
+              <dt><input name="material" type="radio"  onClick="javascript:jhide('price1'); jhide('price2'); jshow('price3');"></dt>
+              <dd>Vinyl Wallpaper</dd>
+            </dl>
+       </div>
+       <div class="field wall-price" id="price1"  style="display:none;">
+            <ul>
+            <li class="wall-price wall-list-price">List Price:    <span>$239.99</span></li>
+            <li class="wall-price wall-sale-price">Sale Price :    <span>$191.00</span></li>
+            <li class="wall-price wall-savings">You Save: <span>$48.00 (20%)</span></li>
+            </ul>
+       </div>
+       <div class="field wall-price" id="price2" style="display:none;">
+            <ul>
+            <li class="wall-price wall-list-price">List Price:    <span>$339.99</span></li>
+            <li class="wall-price wall-sale-price">Sale Price :    <span>$291.00</span></li>
+            <li class="wall-price wall-savings">You Save: <span>$48.00 (20%)</span></li>
+            </ul>
+       </div>
+       <div class="field wall-price" id="price3" style="display:none;">
+            <ul>
+            <li class="wall-price wall-list-price">List Price:    <span>$439.99</span></li>
+            <li class="wall-price wall-sale-price">Sale Price :    <span>$391.00</span></li>
+            <li class="wall-price wall-savings">You Save: <span>$48.00 (20%)</span></li>
+            </ul>
+       </div>
+
+
+
+        <h2 class="wall-step-title"><span class="nr">3</span> <a href="javascript:void();" onclick="javascript:jshow('customize'); jhide('expand'); jshow('collapse');" class="expand" id="expand">Add Company Logo & Text (optional)  &nbsp;<img src="<?php echo $this->getSkinUrl(); ?>images/icons/expandarrow.png"  alt="expand">&nbsp;&nbsp;<span class="wall-question" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">?</span></a> <a href="javascript:void();" onclick="javascript:jhide('customize'); jhide('collapse'); jshow('expand');" class="collapse" id="collapse">Add Company Logo & Text (optional) &nbsp;<img src="<?php echo $this->getSkinUrl(); ?>images/icons/collapsearrow.png"  alt="collapse">&nbsp;&nbsp;<span class="wall-question" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">?</span></a></h2>
+        <div class="customize" id="customize" style="display:none;">
+
+              <a href="#" class="btn btn-primary upload">Upload Company Logo (.AI, .EPS, .PDF vector file)</a>
+              <div class="form-row"><textarea></textarea></div>
+              <div class="form-row fonts">
+                <select class="fontname"><option>Arial</option></select>
+                <select class="fontstyle"><option>Normal</option></select>
+                <select class="fontalign"><option>Left</option></select>
+                <span class="fontcolor"><button class="jscolor {value:'66ccff'}"></button></span>
+              </div>
+              <div class="form-row rotate">
+                <label>Rotate Logo / Text</label>
+                <select><option>No rotation</option><option>90 &deg;</option><option>180 &deg;</option><option>270 &deg;</option></select>
+                <a href="#" class="btn btn-primary add-text">Add Text</a>
+                <div class="clear"></div>
+              </div>
+        </div>
+        <h2 class="wall-step-title final"><a href="<?php echo $this->getUrl('') ?>proof" class="btn btn-primary btn-proof">Proof & Add To Cart</a> </h2>
+        <!--<div class="wall-actions">
+              <a href="#" class="btn btn-primary btn-proof">Generate Proof</a>
+        </div>-->
+        </form>
+    </div>
+
+</div>
+
+<script>
+    !function ($) {
+     $(function(){
+        $('.wall-question').tooltip();
+        });
+
+    }(window.jQuery)
+</script>

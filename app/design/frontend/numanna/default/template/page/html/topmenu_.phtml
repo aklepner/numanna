@@ -1,0 +1,126 @@
+<?php
+/**
+ * Top menu for store
+ *
+ * @see Mage_Page_Block_Html_Topmenu
+ */
+?>
+<ul id="main-menu">
+        <li class="first"><a href="<?php echo $this->getUrl('') ?>/categories">Shop By Category</a>
+            <div class="sub-menu">
+<?php
+$cats1 = Mage::getModel('catalog/category')->getCollection()
+				->addAttributeToSelect('name')
+				->addAttributeToFilter('parent_id',array('eq' => Mage::app()->getStore()->getRootCategoryId()))
+				->addAttributeToFilter('is_active','1')
+				->addAttributeToFilter('include_in_menu','1')
+				->addUrlRewriteToResult();
+$i=1;
+foreach($cats1 as $cat1):
+?>
+                            <div class="menulist<?php if($i!=1) echo " menulist-single"?>">
+                                <strong><?php echo $cat1->getName() ?></strong>
+                                <ul>
+                                    <li>
+<?php
+	$cats2 = Mage::getModel('catalog/category')->getCollection()
+				->addAttributeToSelect('name')
+				->addAttributeToFilter('parent_id',array('eq' => $cat1->getId()))
+				->addAttributeToFilter('is_active','1')
+				->addAttributeToFilter('include_in_menu','1')
+				->addUrlRewriteToResult();
+	foreach($cats2 as $cat2):
+?>
+                                        <a href="<?php echo $cat2->getUrl()?>"><?php echo $cat2->getName()?></a>
+<?php 
+	endforeach;
+?>
+                                    </li>
+                                </ul>
+                            </div>
+<?php
+	$i++;
+endforeach;
+?>
+<!--
+                            <div class="menulist">
+                                <strong>Shop by Category</strong>
+                                <ul>
+                                    <li>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Abstract</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Animals</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Architecture</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Backgrounds</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Business</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Communication</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Computers</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Conceptual</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Editorial</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Education</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Erotic</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Health</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Internet</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Landscape</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Maps</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Miscellaneous</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Musical</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Nature</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Objects</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">People</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Places</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Sprots</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Transportation</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category" class="last">Your Own Image</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="menulist menulist-single">
+                                <strong>More Ways to Shop</strong>
+                                <ul>
+                                    <li>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Walla Residential</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Walla Office</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Walla Retail</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Walla  Tradeshow</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Walla Institutional</a>
+                                        <a href="<?php echo $this->getUrl('') ?>/category">Marketing Image</a>
+                                    </li>
+                                </ul>
+                            </div>
+-->
+                            <div class="featured"><img src="<?php echo $this->getSkinUrl(); ?>images/misc/menu.jpg" alt="" /></div>
+                            <div class="clear"></div>
+                        </div>
+        </li>
+        <?php $_menu = $this->getHtml('level-top') ?>
+        <?php if($_menu): ?>
+              <?php // echo $_menu ?>
+        <?php endif ?>
+        <li class="level-top nav-custom<?php echo(( strpos( $this->helper('core/url')->getCurrentUrl(), $this->getUrl('categories') ) !== false ) ? ' active' : '' ); ?>"><a href="<?php echo $this->getUrl('categories'); ?>"><span><?php echo $this->__('Create My Mural') ?></span></a></li>
+        <li class="level-top nav-custom<?php echo(( strpos( $this->helper('core/url')->getCurrentUrl(), $this->getUrl('how-it-works') ) !== false ) ? ' active' : '' ); ?>"><a href="<?php echo $this->getUrl('how-it-works'); ?>"><span><?php echo $this->__('How It Works') ?></span></a></li>
+        <li class="level-top nav-custom<?php echo(( strpos( $this->helper('core/url')->getCurrentUrl(), $this->getUrl('faq') ) !== false ) ? ' active' : '' ); ?>"><a href="<?php echo $this->getUrl('faq'); ?>"><span><?php echo $this->__('FAQ') ?></span></a></li>
+        <li class="level-top nav-custom<?php echo(( strpos( $this->helper('core/url')->getCurrentUrl(), $this->getUrl('easy-install-videos') ) !== false ) ? ' active' : '' ); ?>"><a href="<?php echo $this->getUrl('easy-install-videos'); ?>"><span><?php echo $this->__('Easy Install Videos ') ?></span></a></li>
+        <li class="level-top nav-custom<?php echo(( strpos( $this->helper('core/url')->getCurrentUrl(), $this->getUrl('customer-service') ) !== false ) ? ' active' : '' ); ?> pre-last"><a href="<?php echo $this->getUrl('customer-service'); ?>"><span><?php echo $this->__('Customer Service') ?></span></a></li>
+        <li class="last request-sample level-top nav-custom<?php echo(( strpos( $this->helper('core/url')->getCurrentUrl(), $this->getUrl('request-sample') ) !== false ) ? ' active' : '' ); ?>"><a href="#requestSample" role="button" data-toggle="modal"><span><?php echo $this->__('Request a Sample') ?></span></a></li>
+</ul>
+<script>selectnav('main-menu'); </script>
+
+<!--<ul id="nav">
+<?php $_menu = $this->getHtml('level-top') ?>
+<?php if($_menu): ?>
+
+        <?php // echo $_menu ?>
+<?php endif ?>
+        <li class="level-top nav-custom<?php echo(( strpos( $this->helper('core/url')->getCurrentUrl(), $this->getUrl('categories') ) !== false ) ? ' active' : '' ); ?>"><a href="<?php echo $this->getUrl('categories'); ?>"><span><?php echo $this->__('Create My Mural') ?></span></a></li>
+        <li class="level-top nav-custom<?php echo(( strpos( $this->helper('core/url')->getCurrentUrl(), $this->getUrl('how-it-works') ) !== false ) ? ' active' : '' ); ?>"><a href="<?php echo $this->getUrl('how-it-works'); ?>"><span><?php echo $this->__('How It Works') ?></span></a></li>
+        <li class="level-top nav-custom<?php echo(( strpos( $this->helper('core/url')->getCurrentUrl(), $this->getUrl('faq') ) !== false ) ? ' active' : '' ); ?>"><a href="<?php echo $this->getUrl('faq'); ?>"><span><?php echo $this->__('FAQ') ?></span></a></li>
+        <li class="level-top nav-custom<?php echo(( strpos( $this->helper('core/url')->getCurrentUrl(), $this->getUrl('easy-install-videos') ) !== false ) ? ' active' : '' ); ?>"><a href="<?php echo $this->getUrl('easy-install-videos'); ?>"><span><?php echo $this->__('Easy Install Videos ') ?></span></a></li>
+        <li class="level-top nav-custom<?php echo(( strpos( $this->helper('core/url')->getCurrentUrl(), $this->getUrl('customer-service') ) !== false ) ? ' active' : '' ); ?>"><a href="<?php echo $this->getUrl('customer-service'); ?>"><span><?php echo $this->__('Customer Service') ?></span></a></li>
+        <li class="last request-sample level-top nav-custom<?php echo(( strpos( $this->helper('core/url')->getCurrentUrl(), $this->getUrl('request-sample') ) !== false ) ? ' active' : '' ); ?>"><a href="#requestSample" role="button" data-toggle="modal"><span><?php echo $this->__('Request a Sample') ?></span></a></li>
+</ul>
+<script>selectnav('nav'); </script>-->
+

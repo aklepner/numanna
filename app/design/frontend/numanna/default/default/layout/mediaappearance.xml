@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		
+		<reference name="head">	
+			<action method="addCss"><stylesheet>css/mediaappearance/media.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/mediaappearance/shadowbox.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/mediaappearance/component.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/mediaappearance/demo.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/mediaappearance/jquery.fancybox.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/mediaappearance/jquery.fancybox-buttons.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/mediaappearance/jquery.fancybox-thumbs.css</stylesheet></action>
+
+			<action method="addCss"><stylesheet>css/mediaappearance/owl.carousel.css</stylesheet></action>
+			<action method="addJs"><script>mediaappearance/libs/modernizr.2.6.2.js</script></action>
+			<action method="addJs"><script>mediaappearance/jquery-1.11.0.min.js</script></action>
+			<action method="addJs"><script>mediaappearance/fancybox/jquery.fancybox.js</script></action>
+			<action method="addJs"><script>mediaappearance/fancybox/helpers/jquery.fancybox-buttons.js</script></action>
+			<action method="addJs"><script>mediaappearance/fancybox/helpers/jquery.fancybox-media.js</script></action>
+			<action method="addJs"><script>mediaappearance/fancybox/helpers/jquery.fancybox-thumbs.js</script></action>
+			<action method="addJs"><script>mediaappearance/tabs/cbpFWTabs.js</script></action>
+		
+			<action method="addJs"><script>mediaappearance/jquery.ias.min.js</script></action> 
+			
+			<action method="addJs"><script>mediaappearance/owl-carousel/owl.carousel.js</script> </action> 
+			<action method="addJs"><script>mediaappearance/jquery-function.js</script></action>
+			
+		</reference>
+				<reference name="top.links">
+                 <action method="addLink" translate="label title" module="mediaappearance" ifconfig="mediaappearance/general/enablemedia"><label>Media Appearance</label><url helper="mediaappearance/geturlIdentifier"/><title>Media Appearance</title><prepare/><urlParams/><position>10</position></action>
+                </reference>
+                <reference name="footer_links">
+                    <action method="addLink" translate="label title" module="mediaappearance" ifconfig="mediaappearance/general/enablemedia"><label>Media Appearance</label><url helper="mediaappearance/geturlIdentifier" /><title>Media Appearance</title><prepare/><urlParams/></action>
+                </reference>
+		
+		
+	</default>
+
+	<mediaappearance_index_index>
+        <reference name="content">
+        	 <block type="mediaappearance/block" name="js_functions"  template="mediaappearance/js_functions.phtml" />
+        	<block type="mediaappearance/block" name="right.featuredvideos.block">
+				<action method="setTemplate" >
+					<template>mediaappearance/featuredvideoshorizontal.phtml</template> 
+				</action>
+			</block> 
+            <block type="mediaappearance/items" name="mediaappearance" template="mediaappearance/mediaappearance.phtml">
+	            <block type="mediaappearance/pagination" name="mediaappearance.pagination" as="pagination" template="mediaappearance/pagination.phtml"/>
+	           
+            </block>
+        </reference>
+    </mediaappearance_index_index>
+	
+	<catalog_product_view>
+		
+		<reference name="content">
+
+			<reference name="product.info">
+						<block type="catalog/product_view_media" name="product.info.media" as="media">
+							<action method="setTemplate" unlessconfig="mediaappearance/general/enablemedia" >
+							<template>catalog/product/view/media.phtml</template> 
+							</action>
+							<action method="setTemplate" ifconfig="mediaappearance/general/enablemedia">
+							<template>mediaappearance/catalog/product/view/media.phtml</template> 
+							</action>
+							
+						</block>
+			</reference>
+		</reference>
+		
+
+	</catalog_product_view>
+	
+	<catalog_category_default>
+        <reference name="content">
+        	<block type="mediaappearance/block" name="js_functions"  template="mediaappearance/js_functions.phtml" />
+			<block type="mediaappearance/Categoryvideos" name="category.videos" as="videos" before="-" template="mediaappearance/categoryvideos.phtml"></block>
+		</reference>
+
+	</catalog_category_default>
+	
+	<catalog_category_layered>
+        <reference name="content">
+        	<block type="mediaappearance/block" name="js_functions"  template="mediaappearance/js_functions.phtml" />
+			<block type="mediaappearance/Categoryvideos" name="category.videos" as="videos" before="-" template="mediaappearance/categoryvideos.phtml"></block>
+		</reference>
+	</catalog_category_layered>
+	
+</layout> 

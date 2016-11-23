@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+	<default>
+        <reference name="head">
+            <action method="addJs"><script>mediaappearance/shadowbox.js</script></action>   
+            <action method="addJs"><script>mediaappearance/jwplayer.js</script></action>
+            <action method="addItem"><type>js_css</type><name>mediaappearance/shadowbox.css</name></action>
+        </reference> 
+    </default>
+	
+    <adminhtml_fme_mediaappearance_index>
+        <reference name="content">
+            <block type="mediaappearance/adminhtml_mediaappearance" name="mediaappearance" />
+        </reference>
+    </adminhtml_fme_mediaappearance_index>
+	
+	<adminhtml_fme_videoblocks_index>
+		<update handle="editor" />
+        <reference name="content">
+            <block type="mediaappearance/adminhtml_videoblocks" name="videoblocks" />
+        </reference>
+    </adminhtml_fme_videoblocks_index>
+	
+	<adminhtml_fme_videoblocks_edit>
+			<update handle="editor"/>
+	</adminhtml_fme_videoblocks_edit>
+	
+	<adminhtml_fme_videoblocks_new>
+   	    <update handle="editor" />
+	</adminhtml_fme_videoblocks_new>
+
+
+    <adminhtml_fme_mediaappearance_products>
+        <block type="core/text_list" name="root">
+            <block type="mediaappearance/adminhtml_mediaappearance_edit_tab_product" name="mediaappearance.edit.tab.products"/>
+            <block type="adminhtml/widget_grid_serializer" name="related_grid_serializer">
+                <reference name="related_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>mediaappearance.edit.tab.products</grid_block_name>
+                        <data_callback>_getSelectedProducts</data_callback>
+                        <hidden_input_name>links[related]</hidden_input_name>
+                        <reload_param_name>products_related</reload_param_name>
+                    </action>
+                </reference>
+            </block>
+        </block> 
+    </adminhtml_fme_mediaappearance_products> 
+
+    <adminhtml_fme_mediaappearance_productsgrid>
+        <block type="core/text_list" name="root">
+           <block type="mediaappearance/adminhtml_mediaappearance_edit_tab_product" name="mediaappearance.edit.tab.products"/>
+        </block>
+    </adminhtml_fme_mediaappearance_productsgrid>
+
+	
+	 <adminhtml_fme_videoblocks_relatedmedia>
+        <block type="core/text_list" name="root">
+            <block type="mediaappearance/adminhtml_videoblocks_edit_tab_relatedmedia" name="videoblocks.edit.tab.relatedmedia"/>
+            <block type="adminhtml/widget_grid_serializer" name="relatedmedia_grid_serializer">
+                <reference name="relatedmedia_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>videoblocks.edit.tab.relatedmedia</grid_block_name>
+                        <data_callback>getSelectedRelatedMedia</data_callback>
+                        <hidden_input_name>links[relatedmedia]</hidden_input_name>
+                        <reload_param_name>related_media</reload_param_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_fme_videoblocks_relatedmedia>
+ 
+    <adminhtml_fme_videoblocks_relatedmediagrid>
+        <block type="core/text_list" name="root">
+            <block type="mediaappearance/adminhtml_videoblocks_edit_tab_relatedmedia" name="videoblocks.edit.tab.relatedmedia"/>
+        </block>
+    </adminhtml_fme_videoblocks_relatedmediagrid>
+	
+</layout>

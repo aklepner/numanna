@@ -1,0 +1,302 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Mapping_Form_New
+ */
+?>
+<div class="entry-edit collapseable">
+    <form method="post" action="<?php echo $this->getSaveUrl();?>">
+        <input name="c_action" type="hidden" value="<?php echo Mage::registry('c_action');?>" />
+        <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey();?>" />
+    <div class="entry-edit-head collapseable">
+        <a id="crm4ecommerce_zohosynchronization_lead_params-head" class="open" onclick="Fieldset.toggleCollapse('crm4ecommerce_zohosynchronization_lead_params'); return false;" href="#">
+            <?php echo $this->__('Zoho Lead Settings'); ?>
+        </a>
+    </div>
+    <fieldset id="crm4ecommerce_zohosynchronization_lead_params" style="" class="config collapseable">
+        <legend><?php echo $this->__('Zoho Lead Settings'); ?></legend>
+        <table cellspacing="0" class="form-list" style="width: 100%;">
+            <tbody>
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[lead_enabled]"><?php echo $this->__('Use Zoho Lead') ?></label></td>
+                    <td class="value">
+                        <select class="input-text" id="config[lead_enabled]" name="config[lead_enabled]" style="width: 97%">
+                            <option value="1" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_enabled') == '1' ? 'selected="selected"' : ''; ?>><?php echo $this->__('Yes');?></option>
+                            <option value="0" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_enabled') == '0' ? 'selected="selected"' : ''; ?>><?php echo $this->__('No');?></option>
+                        ?>
+                        </select>
+                        <p class="note" style="width: 97%;">
+                            <span><?php echo $this->__('Allow synchronizing customers to zoho leads before convert to zoho accounts or not. If this value is No, zoho lead will be not synchronized from zoho system (there will no customer created when a zoho lead is created).');?></span>
+                        </p>
+                    </td>
+                </tr>
+                <?php if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_enabled') == '1') { ?>
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[lead_company_format]"><?php echo $this->__('Lead Company') ?></label></td>
+                    <td class="value">
+                        <input type="text" class="input-text" id="config[lead_company_format]" name="config[lead_company_format]" style="width: 97%" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_company_format');?>" />
+                        <p class="note" style="width: 97%;">
+                            <span><?php echo $this->__("This is format of zoho leads company field. <b>{{company}}</b> is value of default billing company or primary company. If these values is empty, <b>{{company}}</b> will be customer firstname combine with customer lastname. <b>{{customer_id}}</b> will be id of customer.<br/><b>Attention:</b> Zoho system disallow two accounts have the same account name, so, when zoho lead is converted to zoho account, lead company will be converted to account name and this lead record will be consolidated with the existed account if the account name is existed. To avoid this case, zoho lead company should be combined between {{company}} with {{customer_id}}.<br/>Default format is <b>{{company}} (#{{customer_id}})</b>.");?></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[lead_duplicate_insert]"><?php echo $this->__('Duplicate Insert') ?></label></td>
+                    <td class="value">
+                        <select class="input-text" id="config[lead_duplicate_insert]" name="config[lead_duplicate_insert]" style="width: 97%"><?php
+                            $zohoDuplicateChecks = Mage::getModel('zohosynchronization/array_zohoDuplicateCheck')->toOptionArray();
+                            foreach ($zohoDuplicateChecks as $key => $value) { ?>
+                                <option value="<?php echo $key;?>" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_duplicate_insert') == $key ? 'selected="selected"' : ''; ?>><?php echo $value;?></option>
+                            <?php
+                            }
+                        ?>
+                        </select>
+                        <p class="note" style="width: 97%;">
+                            <span><?php echo $this->__('Zoho Lead has key field is <b>Email</b>.');?></span>
+                        </p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[lead_auto_fill_status]"><?php echo $this->__('Auto fill status') ?></label></td>
+                    <td class="value">
+                        <select class="input-text" id="config[lead_auto_fill_status]" name="config[lead_auto_fill_status]" style="width: 97%">
+                            <option value="0" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_auto_fill_status') == '0' ? 'selected="selected"' : ''; ?>><?php echo $this->__('No');?></option>
+                            <option value="1" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_auto_fill_status') == '1' ? 'selected="selected"' : ''; ?>><?php echo $this->__('Yes');?></option>
+                        </select>
+                        <p class="note" style="width: 97%;">
+                            <span><?php echo $this->__('Allow auto fill lead status to ZohoCRM or not. To use this feature, let map attibute Status with a zoho lead field (normally is Lead Status).');?></span>
+                        </p>
+                    </td>
+                </tr>
+                <?php if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_auto_fill_status') == '1') { ?>
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[lead_stage_has_no_contact]"><?php echo $this->__('Stage Has no Contact') ?></label></td>
+                    <td class="value">
+                        <input type="text" class="input-text" id="config[lead_stage_has_no_contact]" name="config[lead_stage_has_no_contact]" style="width: 97%" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_stage_has_no_contact');?>" />
+                        <p class="note" style="width: 97%;">
+                            <span><?php echo $this->__("Stage of Lead when Customer has no customer's address.");?></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[lead_stage_has_contact]"><?php echo $this->__('Stage Has Contact') ?></label></td>
+                    <td class="value">
+                        <input type="text" class="input-text" id="config[lead_stage_has_contact]" name="config[lead_stage_has_contact]" style="width: 97%" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_stage_has_contact');?>" />
+                        <p class="note" style="width: 97%;">
+                            <span><?php echo $this->__("Stage of Lead when Customer has at least a customer's address.");?></span>
+                        </p>
+                    </td>
+                </tr>
+                <?php } ?>
+                    
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[lead_import_all]"><?php echo $this->__('Import all Leads?') ?></label></td>
+                    <td class="value">
+                        <select class="input-text" id="config[lead_import_all]" name="config[lead_import_all]" style="width: 97%">
+                            <option value="1" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_import_all') == '1' ? 'selected="selected"' : ''; ?>><?php echo $this->__('Yes');?></option>
+                            <option value="0" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_import_all') == '0' ? 'selected="selected"' : ''; ?>><?php echo $this->__('No');?></option>
+                        ?>
+                        </select>
+                        <p class="note" style="width: 97%;">
+                            <span><?php echo $this->__('Allow importing all Zoho leads that are created from Zoho into Magento Customers or not. If this value is Yes, each time we create new or update data of any lead (created in Zoho) on Zoho system, a corresponding Magento customer will be created new or updated. With the customers that are created in Magento, the bidirectional synchronization is still executed regardless this value is Yes or No.');?></span>
+                        </p>
+                    </td>
+                </tr>
+                <?php if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_import_all') == '0') { ?>
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[lead_only_import_has_field]"><?php echo $this->__('Only import Leads have') ?></label></td>
+                    <td class="value">
+                        <table cellpadding="0" cellspacing="0" border="0" width="97%"><tr>
+                                <td style="width: 356px;">
+                        <?php 
+                            $options = Mage::getStoreConfig('crm4ecommerce_zohosynchronization/mapping_fields/logs/Leads');
+                            $group_options = explode('@@', $options);
+                        ?>
+                        <select class="input-text" id="config[lead_only_import_has_field]" name="config[lead_only_import_has_field]" style="width: 200px">
+                            <?php
+                                foreach ($group_options as $group_option) {
+                                    $group_option = explode('@', $group_option);
+                                    if (count($group_option) > 1) {
+                                ?>
+                                <optgroup label="<?php echo $group_option[0];?>">
+                                <?php
+                                    $options = explode(';', $group_option[1]);
+                                    foreach ($options as $option) {
+                                        $option = explode(',', $option);
+                                        if (count($option) == 3) {
+                                    ?>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_only_import_has_field') == $option[0]) ? 'selected="true"' : ''; ?> value="<?php echo $option[0];?>"><?php echo $option[1];?></option>
+                                    <?php
+                                        }
+                                    } ?>
+                                </optgroup>
+                                <?php }
+                                }
+                            ?>
+                        </select>
+                        <select class="input-text" name="config[lead_only_import_has_field_condition]" style="width: 150px">
+                            <option value="is" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_only_import_has_field_condition') == 'is' ? 'selected="selected"' : ''; ?>><?php echo $this->__('is one of values');?></option>
+                            <option value="isnot" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_only_import_has_field_condition') == 'isnot' ? 'selected="selected"' : ''; ?>><?php echo $this->__('is not one of values');?></option>
+                        ?>
+                        </select>
+                                </td>
+                        <td>
+                            <input type="text" class="input-text" name="config[lead_only_import_has_field_condition_values]" style="width: 100%;" value="<?php echo trim(Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_only_import_has_field_condition_values'), ',');?>" />
+                        </td></tr></table>
+                        <p class="note" style="width: 97%;" style="clear: both;">
+                            <span><?php echo $this->__('The values are separated by commas (,). <b>{{empty}}</b> is empty value.');?></span>
+                        </p>
+                    </td>
+                </tr>
+                <?php } ?>
+                
+                <tr>
+                    <td class="label" colspan="2"><b><?php echo $this->__("When import Customers from Zoho Leads") ?>:</b></td>
+                </tr>
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[lead_default_email]"><?php echo $this->__('Default Email') ?></label></td>
+                    <td class="value">
+                        <input type="text" class="input-text" id="config[lead_default_email]" name="config[lead_default_email]" style="width: 97%" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_default_email');?>" />
+                        <p class="note" style="width: 97%;">
+                            <span><?php echo $this->__("Default email of created new customer when zoho admin create new a lead but didn't input lead email. Attention: Parameter {{zoho_id}} will be Zoho Lead Id.");?></span>
+                        </p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[lead_auto_send_password_reminder_email]"><?php echo $this->__('Auto-send password reminder email') ?></label></td>
+                    <td class="value">
+                        <select class="input-text" id="config[lead_auto_send_password_reminder_email]" name="config[lead_auto_send_password_reminder_email]" style="width: 97%">
+                            <option value="0" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_auto_send_password_reminder_email') == '0' ? 'selected="selected"' : ''; ?>><?php echo $this->__('No');?></option>
+                            <option value="1" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_auto_send_password_reminder_email') == '1' ? 'selected="selected"' : ''; ?>><?php echo $this->__('Yes');?></option>
+                        </select>
+                        <p class="note" style="width: 97%;">
+                            <span><?php echo $this->__('Allow auto send password reminder email when customer is created from Zoho CRM or not. Default is Yes.');?></span>
+                        </p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[lead_reset_password_and_send_email_when_field]"><?php echo $this->__('Reset password and send email when') ?></label></td>
+                    <td class="value">
+                        <table cellpadding="0" cellspacing="0" border="0" width="97%"><tr>
+                                <td style="width: 356px;">
+                        <?php 
+                            $options = Mage::getStoreConfig('crm4ecommerce_zohosynchronization/mapping_fields/logs/Leads');
+                            $group_options = explode('@@', $options);
+                        ?>
+                        <select class="input-text" id="config[lead_resend_password_reminder_email_when_field]" name="config[lead_reset_password_and_send_email_when_field]" style="width: 200px">
+                            <option value=""><?php echo $this->__('None'); ?></option>
+                            <?php
+                                foreach ($group_options as $group_option) {
+                                    $group_option = explode('@', $group_option);
+                                    if (count($group_option) > 1) {
+                                ?>
+                                <optgroup label="<?php echo $group_option[0];?>">
+                                <?php
+                                    $options = explode(';', $group_option[1]);
+                                    foreach ($options as $option) {
+                                        $option = explode(',', $option);
+                                        if (count($option) == 3) {
+                                    ?>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_reset_password_and_send_email_when_field') == $option[0]) ? 'selected="true"' : ''; ?> value="<?php echo $option[0];?>"><?php echo $option[1];?></option>
+                                    <?php
+                                        }
+                                    } ?>
+                                </optgroup>
+                                <?php }
+                                }
+                            ?>
+                        </select>
+                        <select class="input-text" name="config[lead_reset_password_and_send_email_when_field_condition]" style="width: 150px">
+                            <option value="is" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_reset_password_and_send_email_when_field_condition') == 'is' ? 'selected="selected"' : ''; ?>><?php echo $this->__('is one of values');?></option>
+                            <option value="isnot" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_reset_password_and_send_email_when_field_condition') == 'isnot' ? 'selected="selected"' : ''; ?>><?php echo $this->__('is not one of values');?></option>
+                        ?>
+                        </select>
+                                </td>
+                        <td>
+                            <input type="text" class="input-text" name="config[lead_reset_password_and_send_email_when_field_value]" style="width: 100%;" value="<?php echo trim(Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_reset_password_and_send_email_when_field_value'), ',');?>" />
+                        </td></tr></table>
+                        <p class="note" style="width: 97%;" style="clear: both;">
+                            <span><?php echo $this->__('The values are separated by commas (,). <b>{{empty}}</b> is empty value.');?> <?php echo $this->__('Use for edit data from Zoho CRM.');?></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label" colspan="2"><b><?php echo $this->__("When customers are deleted") ?>:</b></td>
+                </tr>
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[lead_allow_delete]"><?php echo $this->__('Allow Delete Lead in ZohoCRM') ?></label></td>
+                    <td class="value">
+                        <select class="input-text" id="config[lead_allow_delete]" name="config[lead_allow_delete]" style="width: 97%">
+                            <option value="1" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_allow_delete') == '1' ? 'selected="selected"' : ''; ?>><?php echo $this->__('Yes');?></option>
+                            <option value="0" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_allow_delete') == '0' ? 'selected="selected"' : ''; ?>><?php echo $this->__('No');?></option>
+                        ?>
+                        </select>
+                        <p class="note" style="width: 97%;">
+                            <span><?php echo $this->__('Allow delete corresponding lead in ZohoCRM when customer is deleted or not.');?></span>
+                        </p>
+                    </td>
+                </tr>
+                <?php if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_allow_delete') == '0') { ?>
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[lead_update_field]"><?php echo $this->__('Update field') ?></label></td>
+                    <td class="value">
+                        <table cellpadding="0" cellspacing="0" border="0" width="97%"><tr>
+                                <td style="width: 203px;">
+                        <?php 
+                            $options = Mage::getStoreConfig('crm4ecommerce_zohosynchronization/mapping_fields/logs/Leads');
+                            $group_options = explode('@@', $options);
+                        ?>
+                        <select class="input-text" id="config[lead_update_field]" name="config[lead_update_field]" style="width: 200px">
+                            <option value=""><?php echo $this->__('None'); ?></option>
+                            <?php
+                                foreach ($group_options as $group_option) {
+                                    $group_option = explode('@', $group_option);
+                                    if (count($group_option) > 1) {
+                                ?>
+                                <optgroup label="<?php echo $group_option[0];?>">
+                                <?php
+                                    $options = explode(';', $group_option[1]);
+                                    foreach ($options as $option) {
+                                        $option = explode(',', $option);
+                                        if (count($option) == 3) {
+                                    ?>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_update_field') == $option[0]) ? 'selected="true"' : ''; ?> value="<?php echo $option[0];?>"><?php echo $option[1];?></option>
+                                    <?php
+                                        }
+                                    } ?>
+                                </optgroup>
+                                <?php }
+                                }
+                            ?>
+                        </select>
+                                </td>
+                                <td style="width: 18px; text-align: center;"><?php echo $this->__('is');?></td>
+                        <td>
+                            <input type="text" class="input-text" name="config[lead_update_field_value]" style="width: 100%;" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/lead_update_field_value');?>" />
+                        </td></tr></table>
+                    </td>
+                </tr>
+                <?php } ?>
+                <?php } ?>
+            </tbody>
+        </table>
+        <div style="text-align: right; margin-top: 5px; padding-top: 10px; border-top: 2px solid #CCCCCC;">        
+            <table style="width: 100%;"><tr><td>                    
+                <button name="submit" value="save" class="scalable save" style="" type="submit">
+                    <span><span><span><?php echo $this->__('Save');?></span></span></span>
+                </button></td></tr>
+            </table>
+        </div>
+    </fieldset>
+    <script type="text/javascript">
+        Fieldset.applyCollapse('crm4ecommerce_zohosynchronization_lead_params');
+    </script>
+    </form>
+</div>

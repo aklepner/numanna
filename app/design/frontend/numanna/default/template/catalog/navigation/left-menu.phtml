@@ -1,0 +1,16 @@
+<div class="block block-categories">
+    <div class="block-title">
+      <strong><?php echo $this->__('Shop by Category') ?></strong>
+    </div>
+    <div class="block-content">
+      <div class="narrow-by">
+         <ul>
+        <?php foreach ($this->getStoreCategories() as $_category): ?>
+            <li><a href="<?php echo $this->getCategoryUrl($_category) ?>"<?php if ($this->isCategoryActive($_category)): ?> class="active"<?php endif ?>><?php echo $this->htmlEscape($_category->getName()) ?></a></li>
+        <?php endforeach ?>
+        
+        </ul>
+      <script type="text/javascript">decorateDataList('narrow-by-list')</script>
+    </div>
+   </div>
+</div>

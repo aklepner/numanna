@@ -1,0 +1,493 @@
+<?php
+/**
+ * Media Gallery & Product Videos extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * PHP version 5
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category  FME
+ * @package   Mediaappearance
+ * @author    Altaf Ahmed <support@fmeextension.com>
+ * @copyright 2016 XFME Extensions (https://www.fmeextensions.com)
+ * @license   http://opensource.org/licenses/osl-3.0.php  
+ * Open Software License (OSL 3.0)
+ * @link      https://www.fmeextensions.com
+ */ 
+
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>mediaappearance/jwplayer.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>mediaappearance/jwplayer.html5.js"></script>
+ <?php
+    $popupWidth  = Mage::getStoreConfig('mediaappearance/popupsettings/width');
+    $popupHeight = Mage::getStoreConfig('mediaappearance/popupsettings/height');
+    $autoPlay    = Mage::getStoreConfig('mediaappearance/popupsettings/autoplay');
+    $playAgain   = Mage::getStoreConfig('mediaappearance/popupsettings/playagain');
+?>
+
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php $pid = $this->getProduct()->getId(); ?>
+<?php
+
+
+    $media2product = Mage::helper('mediaappearance')->getProductVideos($pid);
+
+?>
+
+<script type="text/javascript">
+    
+jQuery(document).ready(function(){
+    jQuery(".tabbable").find(".tab").hide();
+    jQuery(".tabbable").find(".tab").first().show();
+    jQuery(".tabbable").find(".tabs li").first().find("a").addClass("active");
+    jQuery(".tabbable").find(".tabs").find("a").click(function(){
+        tab = jQuery(this).attr("href");
+        jQuery(".tabbable").find(".tab").hide();
+        jQuery(".tabbable").find(".tabs").find("a").removeClass("active");
+        jQuery(tab).show();
+        jQuery(this).addClass("active");
+        return false;
+    });
+
+   
+
+    jQuery('.fancybox').fancybox({
+        openEffect  : 'none',
+        closeEffect : 'none',
+        width  : '<?php echo $popupWidth ?>', // set the width
+        height : '<?php echo $popupHeight ?>',// set the height
+        helpers : {
+            media : {}
+        }
+    });
+});
+jQuery.noConflict();
+jQuery(document).ready(function() {
+    jQuery('.fancybox').fancybox({
+        openEffect  : 'none',
+        closeEffect : 'none',
+        width  : '<?php echo $popupWidth ?>', // set the width
+        height : '<?php echo $popupHeight ?>',// set the height
+        helpers : {
+            media : {}
+        }
+    });
+
+    jQuery("a.jwVideo").click(function() {
+        var myVideo = this.href; // Dont forget about 'this'
+
+        jQuery.fancybox({
+            padding : 0,
+            content: '<div id="video_container">Loading the player ... </div>',
+            afterShow: function(){
+                jwplayer("video_container").setup({ 
+                    file: myVideo,
+                    autostart: true,
+                    width  : '<?php echo $popupWidth ?>', // set the width
+                    height : '<?php echo $popupHeight ?>',// set the height
+                    aspectratio: "12:5",
+                });
+            }
+        });
+        return false;
+    });
+
+    
+     
+});
+$j = jQuery.noConflict();
+
+
+function addIframe(url) {
+    document.getElementById('p_img').style.display = 'none';
+var target = document.getElementById("product_img");
+var newFrame = document.createElement("iframe");
+newFrame.setAttribute("src", url);
+target.innerHTML='<iframe id="product-video" src="'+url+'" style="border: 0pt none ;'+ 
+                    ''+ 
+                    'width: 100%;'+ 
+                    'height: 750px" scrolling="no" ></iframe>';;
+}
+
+</script>
+
+
+<?php if(Mage::getVersion()>=1.9):?>
+   
+<script type="text/javascript">
+
+jQuery(document).ready(function(){
+  
+    //Function Show The Product Iamge Again When The Video Is Play in Image Box
+    jQuery( ".thumb-link" ).click(function() {
+        if(jQuery("#product-video"))
+        {
+            jQuery("#product-video").hide();
+            jQuery("#p_img").show();
+
+        }
+        });
+
+    
+});
+
+jQuery.noConflict();
+
+$j = jQuery.noConflict();
+
+
+ 
+</script>
+
+
+<div id="product_img"></div>
+<div class="tabbable">
+<!-- 
+========================================================================
+Place product main image code here,  with id="p_img" of if id needs
+to be something else, remember to change "p_img"  to that id in this file everywhere else
+ -->
+<div class="product-image product-image-zoom" id="p_img">
+    
+    <div class="product-image-gallery" >
+        <img id="image-main"
+             class="gallery-image visible"
+             src="<?php echo $this->helper('catalog/image')->init($_product, 'image') ?>"
+             alt="<?php echo $this->escapeHtml($this->getImageLabel()) ?>"
+             title="<?php echo $this->escapeHtml($this->getImageLabel()); ?>" />
+
+        <?php
+            $i=0;
+            foreach ($this->getGalleryImages() as $_image):
+                $_imageUrl = $this->helper('catalog/image')
+                                  ->init($_product, 'image', $_image->getFile())
+                                  ->keepFrame(false)
+                                  ->constrainOnly(true)
+                                  ->resize(1200);
+        ?>
+            <img id="image-<?php echo $i; ?>"
+                 class="gallery-image"
+                 src="<?php echo $_imageUrl; ?>"
+                 data-zoom-image="<?php echo  $_imageUrl; ?>" />
+        <?php
+            $i++;
+            endforeach;
+        ?>
+    </div>
+</div>
+<!-- Product main image -->
+
+<!-- Image and video tabs -->
+<ul class="tabs">
+        <?php if (count($this->getGalleryImages()) > 0): ?>
+        <li><a href="#images"><?php echo $this->__('Images'); ?></a></li>
+        <?php endif;?>
+        <?php if (count($media2product)): ?>
+        <li><a href="#videos"><?php echo $this->__('Videos'); ?></a></li>
+        <?php endif; ?>
+</ul>
+
+<!-- image/videos tabs -->
+<div class="tabcontent">
+<!-- image tab -->
+<!-- In case of custom theme, add thumb image gallery here -->
+<?php if (count($this->getGalleryImages()) > 0): ?>
+ <div id="images" class="tab">
+    <h2><?php echo $this->__('More Views') ?></h2>
+    <ul class="product-image-thumbs">
+    <?php $i=0; foreach ($this->getGalleryImages() as $_image): ?>
+        <?php
+        if (($filterClass = $this->getGalleryFilterHelper()) && ($filterMethod = $this->getGalleryFilterMethod()) && !Mage::helper($filterClass)->$filterMethod($_product, $_image)):
+            continue;
+        endif;
+        ?>
+        <li>
+            <a id="image-link" class="thumb-link" href="#" title="<?php echo $this->escapeHtml($_image->getLabel()) ?>" data-image-index="<?php echo $i; ?>">
+                <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(75); ?>"
+                     width="75" height="75" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>"  />
+            </a>
+        </li>
+    <?php $i++; endforeach; ?>
+    </ul>
+</div>
+<?php endif; ?>
+<!-- end of thumb image gallery -->
+   
+
+<!-- video gallery tab -->
+<div id="videos" class="tab">
+<div>
+<!-- Videos tabs -->
+<div class="more-views">
+    
+<?php if (count($media2product)): ?>
+    <h2><?php echo $this->__('Product Videos') ?></h2>
+    <ul class="product-image-thumbs">
+                  <?php foreach ($media2product as $_item): ?>
+                  <?php
+                    if($_item["mediatype"] == "1") {
+                        $data_type = 'data-type="swf"';
+                        $class= Mage::helper('mediaappearance')->is_image(Mage::getBaseUrl('media').$_item["filename"]);
+                        $videoURL = Mage::getBaseUrl('media').$_item["filename"];
+                        
+                         if($_item["filethumb"] != "") {
+                            $imgURL = Mage::helper('mediaappearance')->resizeImage($_item["filethumb"]);
+                        } else {
+                            $imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon.jpg";
+                        } 
+                        
+                    } elseif ($_item["mediatype"] == "2") {
+                        $data_type = 'data-type="iframe"';
+                        //For Thumb
+                        $videoURL = $_item["videourl"];
+                        $videoData = Mage::helper('mediaappearance')->video_info($_item["videourl"]);
+                        if ($videoData!==false) {
+                            if($_item["filethumb"] != "") {
+                                    $imgURL = Mage::helper('mediaappearance')->resizeImage($_item["filethumb"]);
+                                } else {
+                                    $imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+                                }
+                            
+                        } else {
+                            if($_item["filethumb"] != "") {
+                                $imgURL = Mage::getBaseUrl('media').$_item["filethumb"];
+                            } else {
+                                $imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+                            }
+                        }
+                        
+                        //For Video URL
+                        if ($videoData!==false) {
+                            
+                            $video_type  = $videoData['video_type'];
+                            $video_id    = $videoData['video_id'];
+                            if($video_type == "vimeo") {
+                                $class="fancybox";
+                                
+                                $videoURL = 'http://player.vimeo.com/video/'.$video_id.'?autoplay=1';
+                            } elseif($video_type == "youtube") {
+                                $class="fancybox";
+                                
+                                $videoURL = "http://www.youtube.com/embed/".$video_id;
+                            } 
+                            
+                        } else {
+                            
+                            $videoURL = $_item["videourl"];
+                           
+                            
+                        }
+                    } else {
+                        
+                        $videoURL = "#";
+                        $imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+                    }   
+                $videoplay_option = Mage::helper('mediaappearance')->getVideoPlayOptions();  
+                ?>
+                    <li>
+                    <?php if($videoplay_option==1 ) : ?>
+                        <a href="javascript:void(0)" title="<?php echo $_item['title']; ?>" onClick="addIframe('<?php echo $videoURL ?>')"  >
+                    <?php else:?>
+                         <a class="<?php echo $class?>" href="<?php echo $videoURL; ?>" title="<?php echo $_item['title']; ?>"  >
+                    <?php endif;?>
+                        <img src="<?php echo $imgURL; ?>" width="75" height="75" alt="<?php echo $_item['title']; ?>" /></a>
+                    </li>
+                  <?php endforeach; ?> 
+      </ul>
+
+<?php endif; ?>
+</div>
+<!-- end of videos tab -->
+</div>
+
+</div>
+</div>
+</div>
+
+
+<script type="text/javascript">
+
+ 
+</script>
+<?php else: ?>
+<div id="p_img"></div>
+<div class="tabbable">
+<!-- 
+=========================================================================
+Place product main image code here,  with id="product_img" of if id needs
+to be something else, remember to change "product_img"  to that id in this file everywhere else
+ -->
+ <?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+
+<p class="product-image product-image-zoom" id="product_img">
+    <?php
+        $_img = '<img id="image" src="'.$this->helper('catalog/image')->init($_product, 'image').'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+</p>
+<p class="zoom-notice" id="track_hint"><?php echo $this->__('Double click on above image to view full picture') ?></p>
+<div class="zoom">
+    <img id="zoom_out" src="<?php echo $this->getSkinUrl('images/slider_btn_zoom_out.gif') ?>" alt="<?php echo $this->__('Zoom Out') ?>" title="<?php echo $this->__('Zoom Out') ?>" class="btn-zoom-out" />
+    <div id="track">
+        <div id="handle"></div>
+    </div>
+    <img id="zoom_in" src="<?php echo $this->getSkinUrl('images/slider_btn_zoom_in.gif') ?>" alt="<?php echo $this->__('Zoom In') ?>" title="<?php echo $this->__('Zoom In') ?>" class="btn-zoom-in" />
+</div>
+
+<?php else: ?>
+<p class="product-image">
+    <?php
+        $_img = '<img id="image" src="'.$this->helper('catalog/image')->init($_product, 'image').'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'"  ondblclick="myLightbox.start($("imageLink"));"/>';
+        echo $_helper->productAttribute($_product, $_img, 'image')
+    ?>
+    <a href="<?php echo $this->helper('catalog/image')->init($_product, 'image'); ?>" id="imageLink" ></a>
+</p>
+<?php endif; ?>
+<ul class="tabs">
+        <?php if (count($this->getGalleryImages()) > 0): ?>
+        <li><a href="#images"><?php echo $this->__('Images'); ?></a></li>
+        <?php endif;?>
+        <?php if (count($media2product)): ?>
+        <li><a href="#videos"><?php echo $this->__('Videos'); ?></a></li>
+        <?php endif; ?>
+</ul>
+<div class="tabcontent">
+
+<!-- Thumb images gallery -->
+
+
+<?php if (count($this->getGalleryImages()) > 0): ?>
+ <div id="images" class="tab">
+<div class="more-views">
+    <h2><?php echo $this->__('More Views') ?></h2>
+    <ul>
+        <?php foreach ($this->getGalleryImages() as $_image): ?>
+       <li>
+          <a href="#" onclick="popWin('<?php echo $this->getGalleryUrl($_image) ?>', 'gallery', 'width=300,height=300,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes'); return false;" title="<?php echo $this->escapeHtml($_image->getLabel()) ?>"><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(56); ?>" width="56" height="56" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" /></a>
+      </li>
+    <?php endforeach; ?>
+    </ul>
+</div>
+</div>
+<?php endif; ?>
+<!-- end of Thumb images gallery -->
+
+    <script type="text/javascript">
+        Event.observe(window, 'load', function() {
+            product_zoom = new Product.Zoom('image', 'track', 'handle', 'zoom_in', 'zoom_out', 'track_hint');
+        Event.stopObserving($('image'), 'dblclick', null);
+        });
+    </script>
+
+
+<!-- Videos tab -->
+<div id="videos" class="tab">
+<div>
+<div class="product-img-box">
+<div class="more-views">
+    
+<?php if (count($media2product)): ?>
+    <script type="text/javascript">
+    
+    </script>
+    <h2><?php echo $this->__('Product Videos') ?></h2>
+    <ul>
+                  <?php foreach ($media2product as $_item): ?>
+                  <?php
+                    if($_item["mediatype"] == "1") {
+                        $data_type = 'data-type="swf"';
+                        $class= Mage::helper('mediaappearance')->is_image(Mage::getBaseUrl('media').$_item["filename"]);
+                        $videoURL = Mage::getBaseUrl('media').$_item["filename"];
+                       
+                         if($_item["filethumb"] != "") {
+                            $imgURL = Mage::helper('mediaappearance')->resizeImage($_item["filethumb"]);
+                        } else {
+                            $imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon.jpg";
+                        } 
+                        
+                    } elseif ($_item["mediatype"] == "2") {
+                        $data_type = 'data-type="iframe"';
+                        //For Thumb
+                        $videoURL = $_item["videourl"];
+                        $videoData = Mage::helper('mediaappearance')->video_info($_item["videourl"]);
+                        if ($videoData!==false) {
+                            if($_item["filethumb"] != "") {
+                                    $imgURL = Mage::helper('mediaappearance')->resizeImage($_item["filethumb"]);
+                                } else {
+                                    $imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+                                }
+                            
+                        } else {
+                            if($_item["filethumb"] != "") {
+                                $imgURL = Mage::getBaseUrl('media').$_item["filethumb"];
+                            } else {
+                                $imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+                            }
+                        }
+                        
+                        //For Video URL
+                        if ($videoData!==false) {
+                            
+                            $video_type  = $videoData['video_type'];
+                            $video_id    = $videoData['video_id'];
+                            if($video_type == "vimeo") {
+                                $class="fancybox";
+                               
+                                $videoURL = 'http://player.vimeo.com/video/'.$video_id.'?autoplay=1';
+                            } elseif($video_type == "youtube") {
+                                $class="fancybox";
+                               
+                                $videoURL = "http://www.youtube.com/embed/".$video_id;
+                            } 
+                            
+                        } else {
+                            
+                            $videoURL = $_item["videourl"];
+                           ;
+                            
+                        }
+                    } else {
+                       
+                        $videoURL = "#";
+                        $imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+                    }   
+                $videoplay_option = Mage::helper('mediaappearance')->getVideoPlayOptions();  
+                ?>
+                    <li>
+                    <?php if($videoplay_option==1 ) : ?>
+                        <a href="javascript:void(0)" title="<?php echo $_item['title']; ?>" onClick="addIframe('<?php echo $videoURL ?>')"  >
+                    <?php else:?>
+                        <a class="<?php echo $class?>" href="<?php echo $videoURL; ?>" title="<?php echo $_item['title']; ?>"  >
+                    <?php endif;?>
+                        <img src="<?php echo $imgURL; ?>" width="100%" height="100%" alt="<?php echo $_item['title']; ?>" /></a>
+                    </li>
+                  <?php endforeach; ?> 
+      </ul>
+
+<?php endif; ?>
+</div>
+</div>
+</div>
+</div>
+
+<!-- end of Videos tab  -->
+</div>
+</div>
+
+<?php endif; ?>

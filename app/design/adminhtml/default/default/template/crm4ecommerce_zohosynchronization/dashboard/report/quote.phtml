@@ -1,0 +1,111 @@
+<?php
+
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Report_Quote_Show_Tab_Chart
+ */
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Report Synchronized Quotes') ?></h4>
+    </div>
+    <div class="fieldset">
+        <?php
+            $zoho_id_field = 'zoho_id';
+            if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/quote_enabled') == CRM4Ecommerce_ZohoSynchronization_Model_Array_YesNo::NO && Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_enabled') == CRM4Ecommerce_ZohoSynchronization_Model_Array_YesNo::YES) {
+                $zoho_id_field = 'potential_zoho_id';
+            }
+        
+            $dont_report_empty_quotes = Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/quote_dont_report_empty') == '1' ? ' and items_qty > 0' : '';
+            $resource = Mage::getModel('core/resource');
+            $read = $resource->getConnection("core_read");            
+            $sql_total = "SELECT count(`entity_id`) AS total FROM `" . $resource->getTableName('sales_flat_quote') . "` WHERE (`customer_id` <> '0' OR `reserved_order_id` IS NOT NULL)$dont_report_empty_quotes";
+            $sql_total_not_synchronized = "SELECT count(`entity_id`) AS total_not_synchronized FROM `" . $resource->getTableName('sales_flat_quote') . "` WHERE (`customer_id` <> '0' OR `reserved_order_id` IS NOT NULL) AND (`$zoho_id_field` IS NULL OR `$zoho_id_field` = '')$dont_report_empty_quotes";
+
+            $row = $read->fetchRow($sql_total);
+            $total = $row['total'];
+            $row = $read->fetchRow($sql_total_not_synchronized);
+            $number_not_synchronized = $row['total_not_synchronized'];
+            
+            $number_synchronized = $total - $number_not_synchronized;
+            $rate_synchronized = 0;
+            if ($total > 0) {
+                $rate_synchronized = (int) round(((float) $number_synchronized / $total * 1000)) / 10;
+            }
+            $rate_not_synchronized = 100 - $rate_synchronized;
+
+            $label_synchronized = str_replace(' ', '+', $this->__('Synchronized Quotes') . ': ' . $rate_synchronized . '% (' . $number_synchronized . '/' . $total . ')');
+            $label_not_synchronized = str_replace(' ', '+', $this->__('Not Synchronized Quotes') . ': ' . $rate_not_synchronized . '% (' . $number_not_synchronized . '/' . $total . ')');
+            $label_title = '';
+        ?>
+        <img src="http://chart.apis.google.com/chart?chf=a,s,000000|bg,s,FAFAFA&chs=500x280&cht=p&chco=3366CC|CC3300&chd=t:<?php echo $rate_synchronized ?>,<?php echo $rate_not_synchronized ?>&chdl=<?php echo $label_synchronized; ?>|<?php echo $label_not_synchronized; ?>&chdlp=r&chma=0,0,0,10|0,10&chtt=<?php echo $label_title; ?>&chts=000000,0" width="500" height="280" alt="<?php echo $label_title; ?>" />
+    </div>
+    
+    <div class="fieldset" style="margin-top: 20px;">
+        <button onclick="window.open('<?php echo $this->getUrl('zohosynchronization/adminhtml_report_quote'); ?>', '_blank');" class="scalable" type="button" >
+            <span><span><span><?php echo $this->__('Report Details')?></span></span></span>
+        </button>
+        
+        <?php if (Mage::getSingleton('admin/session')->isAllowed(CRM4Ecommerce_ZohoSynchronization_Helper_Data::ACL_RESET_ZOHO_ID_ALL_QUOTES)) { ?>
+        <?php if ($number_synchronized > 0) { ?><script type="text/javascript">
+        resetAllQuotes = function() {
+            if(confirm("<?php echo Mage::helper('zohosynchronization')->__('Do you really want to reset Zoho id for all quotes?');?>")) {
+                new Ajax.Request('<?php echo $this->getUrl('zohosynchronization/adminhtml_report_quote/resetAll', array('isAjax' => true)); ?>', {
+                    method: 'get',
+                    onComplete: function(transport) {
+                        if (200 == transport.status && transport.responseText == '1') {
+                            setLocation('<?php echo $this->getUrl('zohosynchronization/adminhtml_dashboard/index'); ?>');
+                        }
+                    }
+                }); 
+            }
+        };
+        </script><?php } ?>
+        <button <?php if ($number_synchronized > 0) { ?>onclick="resetAllQuotes();"<?php } ?> class="scalable<?php if ($number_synchronized == 0) { ?> disabled<?php } ?>" type="button" >
+            <span><span><span><?php echo $this->__('Reset All Zoho Ids')?></span></span></span>
+        </button>
+        <?php } ?>
+        
+        <?php if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/quote_dont_report_empty') != '1') { ?>
+        <script type="text/javascript">
+        dontReportEmptyQuotes = function() {
+            if(confirm("<?php echo Mage::helper('zohosynchronization')->__('Do you really want to un-report empty quotes?');?>")) {
+                new Ajax.Request('<?php echo $this->getUrl('zohosynchronization/adminhtml_report_quote/dontReportEmptyQuotes', array('isAjax' => true)); ?>', {
+                    method: 'get',
+                    onComplete: function(transport) {
+                        if (200 == transport.status && transport.responseText == '1') {
+                            setLocation('<?php echo $this->getUrl('zohosynchronization/adminhtml_dashboard/index'); ?>');
+                        }
+                    }
+                }); 
+            }
+        };
+        </script>
+        <button onclick="dontReportEmptyQuotes();" class="delete" type="button" >
+            <span><span><span><?php echo $this->__("Don't Report Empty Quotes")?></span></span></span>
+        </button>
+        <?php } else { ?>
+        <script type="text/javascript">
+        allowReportEmptyQuotes = function() {
+            if(confirm("<?php echo Mage::helper('zohosynchronization')->__('Do you really want to report empty quotes?');?>")) {
+                new Ajax.Request('<?php echo $this->getUrl('zohosynchronization/adminhtml_report_quote/allowReportEmptyQuotes', array('isAjax' => true)); ?>', {
+                    method: 'get',
+                    onComplete: function(transport) {
+                        if (200 == transport.status && transport.responseText == '1') {
+                            setLocation('<?php echo $this->getUrl('zohosynchronization/adminhtml_dashboard/index'); ?>');
+                        }
+                    }
+                }); 
+            }
+        };
+        </script>
+        <button onclick="allowReportEmptyQuotes();" class="save" type="button" >
+            <span><span><span><?php echo $this->__("Allow Reporting Empty Quotes")?></span></span></span>
+        </button>
+        <?php } ?>
+    </div>
+</div>

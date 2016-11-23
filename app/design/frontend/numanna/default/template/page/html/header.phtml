@@ -1,0 +1,60 @@
+<?php
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+
+
+<div class="header-container">
+    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('promo')->toHtml(); ?>
+
+    <div class="header">
+        <div class="top">
+            <div class="topper">
+                <div class="container">
+                    <div class="row">
+                        <div class="span2">
+                             <div class="phone">Call Us 1-888-597-0775 </div>
+                        </div>
+                        <div class="span5 centrum">
+                            <strong>60 Day NO Risk Money Back Guarantee</strong>
+                        </div>
+                        <div class="span5 right">
+                              <ul class="social">
+                                <li><a href="https://www.facebook.com/NumannaFoodstorage" rel="external"><span class="icon">F</span></a></li>
+                                <!--<li><a href="https://plus.google.com/103314213254315824946" rel="external"><span class="icon iconplus">H</span></a></li> -->
+                                <li><a href="https://twitter.com/MyNuManna" rel="external"><span class="icon">L</span></a></li>
+                                <li><a href="#" rel="external"><span class="icon">X</span></a></li>
+                                <li class="plus"><a href="#" rel="external"><span class="icon iconplus">P</span></a></li>
+                                <li class="plus"><a href="#" rel="external"><span class="icon iconplus">I</span></a></li>
+                              </ul>
+                              <?php echo $this->getChildHtml('topLinks') ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="span3">
+                        <h1 class="logo"><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><img src="<?php echo $this->getSkinUrl(); ?>images/logo.png" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+                    </div>
+                    <div class="span9">
+                        <div class="navigation clearfix">
+                          <?php echo $this->getChildHtml('cart.header') ?>
+                          <?php  echo $this->getChildHtml('topSearch') ?>
+                          <?php echo $this->getChildHtml('topMenu') ?>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<?php echo $this->getChildHtml('topContainer'); ?>
+
+
+
+

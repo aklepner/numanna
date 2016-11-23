@@ -1,0 +1,77 @@
+
+<div class="row wall-details proof">
+    <div class="span6 wall-image" id="sidebar">
+        <div class="wall-pic">
+            <div class="pic">
+                <img src="<?php echo $this->getSkinUrl(); ?>images/media/wall.png" alt="Wall picture" class="wall-preview">
+                <div class="height">28"</div>
+                <div class="width">44"</div>
+                <div class="context"><img src="<?php echo $this->getSkinUrl(); ?>images/misc/girls-chair-new.png"  alt=""></div>
+            </div>
+        </div>
+        <div class="wall-description">
+            <p><strong>Computer Hacker Silhouette Of Hooded Man - <u>28.00 x 44.00</u> in <u>Original Fabwall</u></strong></p>
+            <p>Aenean finibus eros vitae laoreet auctor. Fusce in dignissim urna. Maecenas rutrum ac mi sit amet blandit. Nam lorem dui, placerat id convallis at, pharetra et dui.</p>
+        </div>
+    </div>
+    <div class="span6 wall-config">
+        <!--        <h2 class="wall-step-title">Aproove Proof</h2> -->
+
+        <div class="field wall-proof">
+            <p>I have double checked the size of my wall and verified the measurements shown in this proof are correct.</p>
+
+            <hr/>
+            <input id="accept" name="accept" type="checkbox" style="display:inline-block; float:left; margin-right:10px;"> <label>I APPROVE PROOF FOR PRODUCTION</label>
+            <div class="clear"></div>
+            <a href="#loveit" role="button" class="btn btn-secondary btn-proof" style="color:#CF2424; border:1px solid #CF2424; background:0; " data-toggle="modal"> Walla &hearts; It Guarantee</a>
+
+        </div>
+       <div class="field wall-price">
+            <ul>
+            <li class="wall-price wall-list-price">List Price:    <span><strike>$239.99</strike></span></li>
+            <li class="wall-price wall-sale-price">Sale Price :    <span>$191.00</span></li>
+            <li class="wall-price wall-savings">You Save: <span>$48.00 (20%)</span></li>
+            </ul>
+       </div>
+       <div class="field wall-price">
+            <ul>
+                <li>Shipping: FREE</li>
+            </ul>
+       </div>
+       <div class="field wall-price total">
+            <ul>
+                <li>Total: $191.00</li>
+            </ul>
+       </div>
+        <div class="wall-actions">
+             <a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>" class="btn btn-primary btn-proof">Approve & Add to Cart </a>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div id="loveit" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loveitLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="loveitLabel">WALLA LOVE IT 100% MONEY BACK GUARANTEE</h3>
+  </div>
+  <div class="modal-body" style="text-align:center;">
+    <h1 style="font-size:100px; line-height:110px;">&hearts;</h1>
+    <h2 style="line-height:33px;">WALLA EXPECTS ITS CUSTOMERS TO LOVE EVERY PURCHASE. NOT LIKE. LOVE.</h2>
+    <p>If you are not 100% satisfied with your Walla for any reason you can pack it up and return it for a full refund.</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Ok, Got It</button>
+  </div>
+</div>
+
+
+<script>
+    !function ($) {
+     $(function(){
+        $('.wall-question').tooltip();
+        });
+    }(window.jQuery)
+</script>

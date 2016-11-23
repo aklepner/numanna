@@ -1,0 +1,285 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Mapping_Smart_Abstract
+ */
+?>
+<div class="content-header">
+    <table cellspacing="0">
+        <tr>
+            <td><h3 class="icon-head head-adminhtml-mapping"><?php echo $this->getHeaderTitle() ?></h3></td>
+            <td class="form-buttons">
+                <script type="text/javascript">
+                    var crm4ecommerce = {
+                        loadZohoFields: function() {
+                            new Ajax.Request('<?php echo $this->getLoadZohoFieldsUrl(Mage::registry('zoho_model')); ?>', {
+                                method: 'get',
+                                onSuccess: function(transport) {
+                                    text = transport.responseText;
+                                    if (text == '1') {
+                                        setLocation(location.href);
+                                    } else {
+                                        alert("<?php echo $this->__('ERROR: Load fields is failured. Maybe module is disabled!'); ?>");
+                                    }
+                                },
+                                onFailure: function(transport) {
+                                    alert('<?php echo $this->__('ERROR: Connection is failure.');?>');
+                                }
+                            });
+                        },
+                        rowClick: function (checkboxId) {
+                            if ($(checkboxId).checked) {
+                                $(checkboxId).checked = false;
+                            } else {
+                                $(checkboxId).checked = true;
+                            }
+                            crm4ecommerce.checkboxOnChange($(checkboxId));
+                        },
+                        checkboxOnChange: function (element) {
+                            attribute_code = element.value;
+                            if (element.checked) {
+                                $$('.' + attribute_code + '-label').each(function(element){
+                                    element.hide();
+                                });
+                                $$('.' + attribute_code + '-mapping').each(function(element){
+                                    element.show();
+                                });
+                            } else {
+                                $$('.' + attribute_code + '-label').each(function(element){
+                                    element.show();
+                                });
+                                $$('.' + attribute_code + '-mapping').each(function(element){
+                                    element.hide();
+                                });
+                            }
+                        },
+                        editAll: function (group) {
+                            $$('.' + group).each(function(element){
+                                element.checked = true;
+                                crm4ecommerce.checkboxOnChange(element);
+                            });
+                            return false;
+                        },
+                        closeAll: function (group) {
+                            $$('.' + group).each(function(element){
+                                element.checked = false;
+                                crm4ecommerce.checkboxOnChange(element);
+                            });
+                            return false;
+                        },
+                        createNewZohoField: function (attribute_code) {
+                            
+                        },
+                        copyFieldName: function(attribute_code, attribute_name) {
+                            element.value = attribute_name;
+                        },
+                        saveMapping: function () {
+                            if(confirm("<?php echo Mage::helper('zohosynchronization')->__('Do you really want to save these mapping?'); ?>")) {
+                                new Ajax.Request('<?php echo $this->getSaveUrl(); ?>', {
+                                    method: 'post',
+                                    parameters: $('smart-mapping-form').serialize(true),
+                                    onComplete: function(transport) {
+                                        if (200 == transport.status && transport.responseText == '1') {
+                                            setLocation(location.href);
+                                        } else {
+                                            alert('<?php echo Mage::helper('zohosynchronization')->__('ERROR: Connection is failure.'); ?>');
+                                        }
+                                    },
+                                    onFailure: function(transport) {
+                                        alert('<?php echo Mage::helper('zohosynchronization')->__('ERROR: Connection is failure.'); ?>');
+                                    }
+                                });                    
+                            };
+                        }
+                    };
+                </script>
+                <button onclick="setLocation('<?php echo $this->getUrl('*/*/index'); ?>');" class="scalable back" type="button" >
+                    <span><span><span><?php echo $this->__('Back') ?></span></span></span>
+                </button>
+                <button onclick="crm4ecommerce.loadZohoFields();" class="scalable" type="button" >
+                    <span><span><span><?php echo $this->__('Refresh list ZohoCRM fields') ?></span></span></span>
+                </button>
+                <button onclick="crm4ecommerce.saveMapping();" class="scalable save" type="button" >
+                    <span><span><span><?php echo $this->__('Save Mapping') ?></span></span></span>
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="grid">
+    <div class="hor-scroll">
+        <form id="smart-mapping-form">
+        <table id="smart_mapping_table" class="data" cellspacing="0">
+            <colgroup>
+                <col class="a-center" width="20">
+                <col>
+                <col width="180">
+                <col width="180">
+                <col width="180">
+                <col width="80">
+                <col width="80">
+            </colgroup>
+            <thead>
+                <tr class="headings">
+                    <th colspan="2">
+                        <span class="nobr"><?php echo $this->__('Attributes / Fields') ?></span>
+                    </th>
+                    <th>
+                        <span class="nobr"><?php echo $this->__('Zoho Fields') ?></span>
+                    </th>
+                    <th>
+                        <span class="nobr"><?php echo $this->__('Default Value') ?></span>
+                    </th>
+                    <th>
+                        <span class="nobr"><?php echo $this->__('Using Default') ?></span>
+                    </th>
+                    <th>
+                        <span class="nobr"><?php echo $this->__('Sort Order') ?></span>
+                    </th>
+                    <th>
+                        <span class="nobr"><?php echo $this->__('Status') ?></span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $options = $this->getAttributes();
+                $group_options = explode('@@', $options);
+
+                $zoho_field_options = Mage::getModel('core/config_data')->getCollection()->addFieldToFilter('path', 'crm4ecommerce_zohosynchronization/mapping_fields/logs/' . Mage::registry('zoho_model'))->getFirstItem()->value;
+                $zoho_block_options = explode('@@', $zoho_field_options);
+                $index = 0;
+                foreach ($group_options as $group_option) {
+                    $group_option = explode('@', $group_option);
+                    ?>
+                    <tr class="filter">
+                        <td colspan="7" style="text-align: left; font-size: 0.9em;">
+                            <b><i><?php echo $group_option[0]; ?></i></b>
+                            <a onclick="return crm4ecommerce.editAll('<?php echo str_replace(array(' ','(',')'), array('-','',''), strtolower($group_option[0])); ?>-checkbox')" href="#"><?php echo $this->__('Edit All'); ?></a>
+                            | <a onclick="return crm4ecommerce.closeAll('<?php echo str_replace(array(' ','(',')'), array('-','',''), strtolower($group_option[0])); ?>-checkbox')" href="#"><?php echo $this->__('Close All'); ?></a>
+                        </td>
+                    </tr>
+                    <?php
+                    $i = 0;
+                    $options = explode(';', $group_option[1]);
+                    foreach ($options as $option) {
+                        $option = explode(',', $option);
+                        if (count($option) == 2) {
+                            $option_parts = explode('/', $option[0]);
+                            $object_type = $option_parts[0];
+                            $attribute_code = $option_parts[1];
+                            $post_value = $option[0];
+                            $option[0] = str_replace('/', '-', $option[0]);
+                            $field = Mage::getModel('zohosynchronization/mapping_field')->loadByAttributeCode(Mage::registry('mapping_type'), $object_type, $attribute_code, true);
+                            ?>
+                            <tr ondblclick="crm4ecommerce.rowClick('<?php echo $option[0]; ?>-checkbox')" onmouseover="this.className+=' on-mouse';" onmouseout="this.className=this.className.replace(' on-mouse', '');" class="<?php echo ($i++) % 2 == 0 ? 'even ' : ''; ?>pointer">
+                                <td class="a-center">
+                                    <input onchange="crm4ecommerce.checkboxOnChange(this)" class="<?php echo str_replace(array(' ','(',')'), array('-','',''), strtolower($group_option[0])); ?>-checkbox" type="checkbox" id="<?php echo $option[0]; ?>-checkbox" value="<?php echo $option[0]; ?>" name="keys[]">
+                                </td>
+                                <td class="a-left"><?php echo $option[1]; ?>
+                                    <input type="hidden" id="<?php echo $option[0];?>" name="magento_attributes[<?php echo $option[0];?>]" value="<?php echo $post_value . ',' . $option[1]; ?>" />
+                                </td>
+                                <td class="a-left">
+                                    <label class="<?php echo $option[0];?>-label"><?php
+                                    if ((int) $field->getId() > 0) {
+                                        echo $field->getZohoDv();
+                                    }
+                                    ?></label>
+                                    <select class="<?php echo $option[0];?>-mapping input-text" name="zoho_fields[<?php echo $option[0];?>]" style="position: relative; width: 100%; display: none;">
+                                        <?php
+                                        foreach ($zoho_block_options as $block_option) {
+                                            $block_option = explode('@', $block_option);
+                                        ?>
+                                            <optgroup label="<?php echo $block_option[0]; ?>">
+                                                <?php
+                                                $_options = explode(';', $block_option[1]);
+                                                foreach ($_options as $_option) {
+                                                    $_option = explode(',', $_option);
+                                                    if (count($_option) == 3) {
+                                                        if (!strcmp(Mage::registry('zoho_model'), 'Leads') && !strcmp(Mage::registry('magento_model'), 'Leads') && !strcmp($option[0], 'Company')) {
+                                                            continue;
+                                                        } else if (!strcmp(Mage::registry('zoho_model'), 'Accounts') && !strcmp($option[0], 'Account Name')) {
+                                                            continue;
+                                                        }
+                                                        ?>
+                                                        <option <?php echo ((int) $field->getId() > 0 && strtolower($field->getZohoField() . ',' . $field->getZohoDv()) == strtolower($_option[0] . ',' . $_option[1])) ? 'selected="true"' : ''; ?> value="<?php echo $_option[0]; ?>"><?php echo $_option[1]; ?></option>
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </optgroup>
+                                        <?php
+                                    }
+                                    ?>
+                                    </select>
+                                </td>
+                                <td class="a-left">
+                                    <label class="<?php echo $option[0];?>-label"><?php
+            if ((int) $field->getId() > 0) {
+                echo $field->getZohoDefaultValue();
+            }
+            ?></label>
+                                    <input class="<?php echo $option[0];?>-mapping input-text" type="text" value="<?php echo ((int) $field->getId() > 0) ? $field->getZohoDefaultValue() : ''; ?>" style="width: 165px; display: none;" name="default_values[<?php echo $option[0];?>]"></td>
+                                <td class="a-left">
+                                    <label class="<?php echo $option[0];?>-label"><?php
+                            if ((int) $field->getId() > 0) {
+                                switch ($field->getZohoUsingDefault()) {
+                                    case 1:
+                                        echo $this->__('Only create new');
+                                        break;
+                                    case 2:
+                                        echo $this->__('Each time update');
+                                        break;
+                                    case 3:
+                                        echo $this->__('Every time');
+                                        break;
+                                }
+                            }
+                            ?></label>
+                                    <select class="<?php echo $option[0];?>-mapping input-text" style="width: 100%; display: none;" name="using_defaults[<?php echo $option[0];?>]">
+                                        <option value="1"<?php echo ((int) $field->getId() > 0 && $field->getZohoUsingDefault() == 1) ? ' selected="true"' : ''; ?>><?php echo $this->__('Only create new') ?></option>
+                                        <option value="2"<?php echo ((int) $field->getId() > 0 && $field->getZohoUsingDefault() == 2) ? ' selected="true"' : ''; ?>><?php echo $this->__('Each time update') ?></option>
+                                        <option value="3"<?php echo ((int) $field->getId() > 0 && $field->getZohoUsingDefault() == 3) ? ' selected="true"' : ''; ?>><?php echo $this->__('Every time') ?></option>
+                                    </select>
+                                </td>
+                                <td class="a-center">
+                                    <label class="<?php echo $option[0];?>-label"><?php
+                            if ((int) $field->getId() > 0) {
+                                echo $field->getMappingOrder();
+                            }
+            ?></label>
+                                    <input class="<?php echo $option[0];?>-mapping input-text" type="text" value="<?php echo ((int) $field->getId() > 0) ? $field->getMappingOrder() : ''; ?>" style="width: 65px; text-align: center; display: none;" name="mapping_orders[<?php echo $option[0];?>]"></td>
+                                <td class="a-center">
+                                    <label class="<?php echo $option[0];?>-label"><?php
+                            if ((int) $field->getId() > 0) {
+                                switch ($field->getStatus()) {
+                                    case 1:
+                                        echo '<div style="border: 2px solid #006699; font-size: 10px; font-weight: bold; background-color: #3366CC; padding: 1px 5px 1px 5px; color: #FFFFFF; text-transform: uppercase;">' . $this->__('Active') . '</div>';
+                                        break;
+                                    case 0:
+                                        echo '<div style="border: 2px solid #990000; font-size: 10px; font-weight: bold; background-color: #CC3300; padding: 1px 5px 1px 5px; color: #FFFFFF; text-transform: uppercase;">' . $this->__('Inactive') . '</div>';
+                                        break;
+                                }
+                            }
+            ?></label>
+                                    <select class="<?php echo $option[0];?>-mapping input-text" style="width: 100%; display: none;" name="mapping_statuses[<?php echo $option[0];?>]">
+                                        <option value="1"<?php echo ((int) $field->getId() > 0 && $field->getStatus() == 1) ? ' selected="true"' : ''; ?>><?php echo $this->__('Active') ?></option>
+                                        <option value="0"<?php echo ((int) $field->getId() > 0 && $field->getStatus() == 0) ? ' selected="true"' : ''; ?>><?php echo $this->__('Inactive') ?></option>
+                                    </select>
+                                </td>
+                            </tr>
+            <?php
+        }
+    }
+    $index++;
+}
+?>
+            </tbody>
+        </table>
+        </form>
+    </div>
+</div>

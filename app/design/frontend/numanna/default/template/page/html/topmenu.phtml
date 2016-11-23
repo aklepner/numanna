@@ -1,0 +1,26 @@
+<?php
+/**
+ * Top menu for store
+ *
+ * @see Mage_Page_Block_Html_Topmenu
+ */
+?>
+
+
+<ul id="nav">
+<?php $_menu = $this->getHtml('level-top') ?>
+        <li class="level-top nav-custom<?php echo(( strpos( $this->helper('core/url')->getCurrentUrl(), $this->getUrl('about-us') ) !== false ) ? ' active' : '' ); ?>"><a href="<?php echo $this->getUrl('about-us'); ?>"><span><?php echo $this->__('About Numanna') ?></span></a></li>
+        <li class="level0 nav-1 first last level-top parent"> <a href="/products.html"><span><?php echo $this->__('Products') ?></span></a>
+            <ul class="level0">
+                <?php if($_menu): ?>
+                    <?php echo $_menu ?>
+                <?php endif ?>
+            </ul>
+        </li>
+        <li class="level-top nav-custom<?php echo(( strpos( $this->helper('core/url')->getCurrentUrl(), $this->getUrl('organic') ) !== false ) ? ' active' : '' ); ?>"><a href="<?php echo $this->getUrl('organic'); ?>"><span><?php echo $this->__('Organic') ?></span></a></li>
+        <li class="level-top nav-custom<?php echo(( strpos( $this->helper('core/url')->getCurrentUrl(), $this->getUrl('faq') ) !== false ) ? ' active' : '' ); ?>"><a href="<?php echo $this->getUrl('faq'); ?>"><span><?php echo $this->__('FAQ') ?></span></a></li>
+        <li class="level-top nav-custom<?php echo(( strpos( $this->helper('core/url')->getCurrentUrl(), $this->getUrl('blog') ) !== false ) ? ' active' : '' ); ?>"><a href="<?php echo $this->getUrl('blog'); ?>"><span><?php echo $this->__('Blog') ?></span></a></li>
+        <li class="last level-top nav-custom<?php echo(( strpos( $this->helper('core/url')->getCurrentUrl(), $this->getUrl('contacts') ) !== false ) ? ' active' : '' ); ?>"><a href="<?php echo $this->getUrl('contacts'); ?>"><span><?php echo $this->__('Contact Us') ?></span></a></li>
+</ul>
+<script>selectnav('nav'); </script>
+

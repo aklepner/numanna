@@ -1,0 +1,51 @@
+<div class="container">
+
+    <h2>The Importance of Organic Food</h2>
+    <p class="big">NuManna is proud to introduce the first ever line of organic long-term food-preparedness products. NuManna offers a complete line of ready-to-use, USDA certified organic meals that store for up to 30 years. These are real, nutritious, wholesome meals -- not sugar and oatmeal, toxic additives, or unhealthy fillers. </p>
+    <br/>
+
+    <div class="row">
+        <div class="span4">
+            <img src="<?php echo $this->getSkinUrl(); ?>images/misc/p2.png" class="mb" alt="">
+            <h2>Stay Well During a Crisis</h2>
+            <p>During times of stress or crisis, your body requires extra nutrition to maintain a strong immune system to protect your physical and mental wellness. NuManna's organic meals are wholesome, healthy and packed with bio-available nutrition for critical moment when your family's systems may be taxed by unexpected or intense stress. </p>
+        </div>
+        <div class="span4">
+            <img src="<?php echo $this->getSkinUrl(); ?>images/misc/p1.png" class="mb"  alt="">
+            <h2>Organic That's Super Easy to Prepare </h2>
+            <p>These healthy and wholesome organic meals are ready to serve in an instant, they taste great, and they can also be reused due to their convenient re-sealable bags. Create a terrific, delicious, organic meal for you and your family by simply boiling water and following the easy-to-use directions on the bag.  It's that easy.  </p>
+        </div>
+        <div class="span4">
+            <img src="<?php echo $this->getSkinUrl(); ?>images/misc/p3.png" class="mb"  alt="">
+            <h2>Organic Freeze Dried Meats</h2>
+            <p>Being prepared isn't a luxury; it's a necessity. 100% USDA freeze-dried meats maintain their shelf life for up to 25 years. All NuManna survival foods are stored in highly durable and re-sealable Mylar pouches that make transporting, storing, and preparing your emergency food supplies convenient and simple. Every serving of freeze-dried meat provides you with the iron, calories, vitamins and protein you need for long-term survival. </p>
+        </div>
+    </div>
+    <div class="row"><div class="span12"><hr/></div></div>
+    <div class="row">
+        <div class="span4">
+            <img src="<?php echo $this->getSkinUrl(); ?>images/misc/p3.png" class="mb" alt="">
+            <h2>Premium Organic Milk Powder</h2>
+            <p>NuManna is the first food-preparedness company to offer hormone free, organic milk powder. Our milk receives our proprietary bio-enhancement treatment and is hermetically sealed to ensure successful long-term storage of 10-15 years. Each bag is over 2 lbs, with a resealable top to prevent spoilage. Easy to prepare: just mix with fresh water and stir. Tastes just like fresh milk.  </p>
+        </div>
+        <div class="span4">
+            <img src="<?php echo $this->getSkinUrl(); ?>images/misc/p2.png" class="mb" alt="">
+            <h2>The NuManna Advantage</h2>
+            <p>Gain the peace of mind knowing that you and your family are prepared for whatever surprises life may throw at you.</p>
+            <ul>
+                <li>100% USDA certified organic</li>
+                <li>No toxins, harmful additives, or sugary fillers</li>
+                <li>Re-sealable bags means no waste</li>
+                <li>Lasts up to 1 month after opening (or up to 3 months refrigerated)</li>
+                <li>15 minute prep time: just add water to rehydrate, heat, and serve.</li>
+                <li>Up to 25-year shelf life. Simply the highest-quality product of its kind. </li>
+            </ul>
+        </div>
+        <div class="span4">
+            <img src="<?php echo $this->getSkinUrl(); ?>images/misc/p1.png" class="mb" alt="">
+            <h2>More Calories Equals Better Value </h2>
+            <p>When a crisis strikes, it's not the time to go on the latest Hollywood diet: calories will become your best friend. Calories are what will keep you alive when supermarket shelves are empty. Our survival foods offer more calories per pound than top competing food-storage companies. We live in uncertain times. NuManna's long-term food storage solutions can help ensure your family's long-term well being, under any circumstances to come. </p>
+        </div>
+    </div>
+
+</div>

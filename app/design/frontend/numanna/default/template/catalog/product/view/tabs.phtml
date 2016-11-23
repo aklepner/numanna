@@ -1,0 +1,21 @@
+<?php
+/**
+ * Product view Tabs template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ */
+?>
+
+<div class="responsive-tabs">
+        <?php foreach ($this->getTabs() as $_index => $_tab): ?>
+            <?php if(trim($this->getChildHtml($_tab['alias']))): ?>
+  			<h2><?php echo $_tab['title']?></h2>
+  			<div>
+                  <?php echo $this->getChildHtml($_tab['alias']) ?>
+  			</div>
+          <?php endif; ?>
+        <?php endforeach; ?>
+</div>
+
+
+

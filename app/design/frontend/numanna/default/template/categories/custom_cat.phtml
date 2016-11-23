@@ -1,0 +1,102 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+?>
+<style>
+  .page-title,
+  .page-title h1 { text-align:center;   }
+  .products-grid {    margin-left:0;   }
+</style>
+
+
+<?php
+
+
+$_category = Mage::getModel('catalog/category')->load(Mage::registry('current_category')->getId());
+$_categories=$_category->getChildrenCategories();
+
+
+if($_categories->count()):
+    $categorycount = 0;
+    foreach ($_categories as $_category):
+        if($_category->getIsActive()):
+            $cur_category=Mage::getModel('catalog/category')->load($_category->getId());
+            $layer = Mage::getSingleton('catalog/layer');
+            $layer->setCurrentCategory($cur_category);
+            $catName = $_category->getName();
+            $catDescr = $cur_category->getDescription();
+            $_imgUrl = $_category->getImageUrl();
+            ?>
+
+<div class="container">
+<div class="row">
+<div class="span12">
+
+<h2 class="center"><?php echo $catName ?></h2>
+<p class="center"><?php echo $catDescr ?></p>
+
+
+</div>
+</div>
+</div>
+<ul class="products-grid first odd">
+<?php
+  $products = $_category
+          ->getProductCollection()
+          ->addFieldToFilter('visibility', Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH)
+          ->addCategoryFilter($_category)
+          ->addAttributeToSelect('*');
+  $i=0;
+  foreach ($products as $_product) :  
+  
+   
+      ?>
+    <?php if($i++%4==0): ?>
+    </ul>
+    <ul class="products-grid">
+    <?php endif;?>
+   
+  
+    <li class="item first">
+    <div class="inner">
+      <a class="product-image" href="<?php echo $_product->getProductUrl() ?>" title="AquaPail">
+        <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(300); ?>" alt="AquaPail">
+      </a>
+      <div class="data">
+          <h2 class="product-name">
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_product->getName() ?>"><?php echo $_product->getName() ?></a>
+          </h2>
+          <div class="price-box">
+              <span id="product-price-7" class="regular-price">
+              <?php 
+                $productBlock = $this->getLayout()->createBlock('catalog/product_price');
+                  echo $productBlock->getPriceHtml($_product); ?>
+              </span>
+          </div>
+      </div>
+      <div class="actions">
+            <button class="btn btn-secondary" type="button" title="View Details" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')">View Details</button>
+            <button class="btn btn-primary" type="button" title="Add to Cart" onclick="setLocation('<?php echo $this->helper('checkout/cart')->getAddUrl($_product) ?>')">Add to Cart</button>
+            <a class="link-wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>">Add to Wishlist</a>
+      </div>
+    </div>
+</li>
+<?php endforeach; ?>
+
+</ul>
+<?php
+    endif;
+    endforeach;
+endif;
+?>    
+    
+    
+    
+
+
+

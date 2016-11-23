@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="<?php echo $this->getLang() ?>">
+<head>
+        <?php echo $this->getChildHtml('head') ?>
+</head>
+<body <?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+
+    <div class="page">
+
+        <?php echo $this->getChildHtml('header') ?>
+
+        <?php $ref = new Mage_Page_Block_Html_Header(); if ($ref->getIsHomePage()):?>
+               <?php echo $this->getLayout()->createBlock('Mage_Adminhtml_Block_Template', 'home.slider')->setTemplate('homepage/slider.phtml')->toHtml() ?>
+        <?php else:?> <?php endif?>
+
+        <div class="<?php $ref = new Mage_Page_Block_Html_Header(); if ($ref->getIsHomePage()):?>is-homepage<?php else:?>makebox is-inner<?php endif?>">
+
+        <div class="<?php $ref = new Mage_Page_Block_Html_Header(); if ($ref->getIsHomePage()):?>homepage-container<?php else:?>container<?php endif?> main-content">
+
+            <?php if (Mage::registry('current_category')) { ?>
+              <?php if(Mage::getSingleton('catalog/layer')->getCurrentCategory()) : ?>
+
+                  <?php $currentCategory = Mage::registry("current_category"); ?>
+
+
+                  <?php $Cat=Mage::registry('current_category');  ?>
+                  <?php $_imgUrl= $Cat->getImageUrl(); ?>
+                  <?php if($_imgUrl): ?>
+                     <div class="category-with-image">
+                           <div class="container">
+                               <div class="bread"><?php  echo $this->getLayout()->getBlock("breadcrumbs")->toHtml()?></div>
+                               <div class="category-title"><h1><?php echo $currentCategory->getName(); ?></h1></div>
+                               <?php if(Mage::getSingleton('catalog/layer')->getCurrentCategory()->getDescription()): ?>
+                               <div class="category-description std clearfix">
+                                   <?php echo Mage::getSingleton('catalog/layer')->getCurrentCategory()->getDescription(); ?>
+                               </div>
+                               <?php endif; ?>
+                               <div class="pic"><img src="<?php echo $_imgUrl; ?>" alt="<?php echo $currentCategory->getName(); ?>"></div>
+                           </div>
+                     </div>
+                  <?php else:?>
+                    <div class="category-without-image">
+                        <div class="container">
+                           <div class="bread"><?php  echo $this->getLayout()->getBlock("breadcrumbs")->toHtml()?></div>
+                           <div class="category-title"><h1><?php echo $currentCategory->getName(); ?></h1></div>
+                               <?php if(Mage::getSingleton('catalog/layer')->getCurrentCategory()->getDescription()): ?>
+                               <div class="category-description std clearfix">
+                                   <?php echo Mage::getSingleton('catalog/layer')->getCurrentCategory()->getDescription(); ?>
+                               </div>
+                               <?php endif; ?>
+                        </div>
+                    </div>
+                  <?php endif; ?>
+
+              <?php endif; ?>
+            <?php } else { ?>
+            <?php } ?>
+
+            <div class="row">
+                <div class="span9 fl">
+                        <?php echo $this->getChildHtml('global_messages') ?>
+                               <?php if(Mage::registry('current_product')) { ?>
+                                <div class="bread attop"><?php  echo $this->getLayout()->getBlock("breadcrumbs")->toHtml()?></div>
+                               <?php } else { ?><?php } ?>
+                        <?php echo $this->getChildHtml('content') ?>
+                </div>
+                <div class="span3 fl">
+                        <?php echo $this->getChildHtml('right') ?>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<?php echo $this->getChildHtml('footer') ?>
+<?php echo $this->getChildHtml('global_notices') ?>
+
+<?php echo $this->getChildHtml('before_body_end') ?>
+
+</body>
+</html>

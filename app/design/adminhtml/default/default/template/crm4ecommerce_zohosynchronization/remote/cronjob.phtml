@@ -1,0 +1,691 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Mapping_Form_New
+ */
+?>
+<style type="text/css">    
+    .has-image-load {
+        position: relative; top: -4px;
+    }
+</style>
+<script type="text/javascript">
+    var crm4ecommerce = {
+        loadZohoFields: function(model) {
+            $('img-load-' + model).src = "<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/ajax-loader.gif'); ?>";
+            new Ajax.Request('<?php echo $this->getLoadZohoFieldsUrl(); ?>'.replace('{{model}}', model), {
+                method: 'get',
+                onSuccess: function(transport) {
+                    text = transport.responseText;
+                    if (text == '1') {
+                        setLocation(location.href);
+                    } else {
+                        alert("<?php echo $this->__('ERROR: Load fields is failured. Maybe module is disabled!'); ?>");
+                        $('img-load-' + model).src = "<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/load.png'); ?>";
+                    }
+                },
+                onFailure: function(transport) {
+                    alert('<?php echo $this->__('ERROR: Connection is failure.'); ?>');
+                    $('img-load-' + model).src = "<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/load.png'); ?>";
+                }
+            });
+        },
+        runLoadLeads: function() {
+            new Ajax.Request('<?php echo $this->getRunLoadLeadsUrl(); ?>', {
+                method: 'get',
+                onSuccess: function(transport) {
+                    text = transport.responseText;
+                    if (text == '1') {
+                        setLocation(location.href);
+                    } else {
+                        alert(text);
+                    }
+                },
+                onFailure: function(transport) {
+                    alert('<?php echo $this->__('ERROR: Connection is failure.');?>');
+                }
+            });
+        },
+        runLoadAccounts: function() {
+            new Ajax.Request('<?php echo $this->getRunLoadAccountsUrl(); ?>', {
+                method: 'get',
+                onSuccess: function(transport) {
+                    text = transport.responseText;
+                    if (text == '1') {
+                        setLocation(location.href);
+                    } else {
+                        alert(text);
+                    }
+                },
+                onFailure: function(transport) {
+                    alert('<?php echo $this->__('ERROR: Connection is failure.');?>');
+                }
+            });
+        },
+        runLoadContacts: function() {
+            new Ajax.Request('<?php echo $this->getRunLoadContactsUrl(); ?>', {
+                method: 'get',
+                onSuccess: function(transport) {
+                    text = transport.responseText;
+                    if (text == '1') {
+                        setLocation(location.href);
+                    } else {
+                        alert(text);
+                    }
+                },
+                onFailure: function(transport) {
+                    alert('<?php echo $this->__('ERROR: Connection is failure.');?>');
+                }
+            });
+        },
+        runLoadTasks: function() {
+            new Ajax.Request('<?php echo $this->getRunLoadTasksUrl(); ?>', {
+                method: 'get',
+                onSuccess: function(transport) {
+                    text = transport.responseText;
+                    if (text == '1') {
+                        setLocation(location.href);
+                    } else {
+                        alert(text);
+                    }
+                },
+                onFailure: function(transport) {
+                    alert('<?php echo $this->__('ERROR: Connection is failure.');?>');
+                }
+            });
+        },
+        runLoadCampaigns: function() {
+            new Ajax.Request('<?php echo $this->getRunLoadCampaignsUrl(); ?>', {
+                method: 'get',
+                onSuccess: function(transport) {
+                    text = transport.responseText;
+                    if (text == '1') {
+                        setLocation(location.href);
+                    } else {
+                        alert(text);
+                    }
+                },
+                onFailure: function(transport) {
+                    alert('<?php echo $this->__('ERROR: Connection is failure.');?>');
+                }
+            });
+        },
+        runLoadProducts: function() {
+            new Ajax.Request('<?php echo $this->getRunLoadProductsUrl(); ?>', {
+                method: 'get',
+                onSuccess: function(transport) {
+                    text = transport.responseText;
+                    if (text == '1') {
+                        setLocation(location.href);
+                    } else {
+                        alert(text);
+                    }
+                },
+                onFailure: function(transport) {
+                    alert('<?php echo $this->__('ERROR: Connection is failure.');?>');
+                }
+            });
+        },
+        runLoadQuotes: function() {
+            new Ajax.Request('<?php echo $this->getRunLoadQuotesUrl(); ?>', {
+                method: 'get',
+                onSuccess: function(transport) {
+                    text = transport.responseText;
+                    if (text == '1') {
+                        setLocation(location.href);
+                    } else {
+                        alert(text);
+                    }
+                },
+                onFailure: function(transport) {
+                    alert('<?php echo $this->__('ERROR: Connection is failure.');?>');
+                }
+            });
+        },
+        runLoadSalesOrders: function() {
+            new Ajax.Request('<?php echo $this->getRunLoadSalesOrdersUrl(); ?>', {
+                method: 'get',
+                onSuccess: function(transport) {
+                    text = transport.responseText;
+                    if (text == '1') {
+                        setLocation(location.href);
+                    } else {
+                        alert(text);
+                    }
+                },
+                onFailure: function(transport) {
+                    alert('<?php echo $this->__('ERROR: Connection is failure.');?>');
+                }
+            });
+        },
+        runLoadInvoices: function() {
+            new Ajax.Request('<?php echo $this->getRunLoadInvoicesUrl(); ?>', {
+                method: 'get',
+                onSuccess: function(transport) {
+                    text = transport.responseText;
+                    if (text == '1') {
+                        setLocation(location.href);
+                    } else {
+                        alert(text);
+                    }
+                },
+                onFailure: function(transport) {
+                    alert('<?php echo $this->__('ERROR: Connection is failure.');?>');
+                }
+            });
+        }
+    };
+</script>
+<div class="content-header" style="margin-bottom: 0px;">
+    <table cellspacing="0">
+        <tr>
+            <td><h3 class="icon-head head-adminhtml-mapping"><?php echo $this->getHeaderTitle() ?></h3></td>
+        </tr>
+    </table>
+</div>
+
+<div style="margin: 5px;">
+    <table style="border: black dashed 1px; width: 100%; padding: 0px 3px;">
+        <tr>
+            <td><?php echo $this->getNoticeHtml(); ?></td>
+        </tr>
+    </table>
+</div>
+<!-- Cron Setting Form -->
+<div style="margin: 5px;" class="entry-edit collapseable">
+    <form method="post" action="<?php echo $this->getSaveSettingsUrl(); ?>">
+        <input name="c_action" type="hidden" value="<?php echo Mage::registry('c_action'); ?>" />
+        <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+        <div class="entry-edit-head collapseable">
+            <a id="crm4ecommerce_zohosynchronization_load_data_params-head" class="open" onclick="Fieldset.toggleCollapse('crm4ecommerce_zohosynchronization_load_data_params'); return false;" href="#">
+                <?php echo $this->__('Setup Loading Data in Cronjob'); ?>
+            </a>
+        </div>
+        <fieldset id="crm4ecommerce_zohosynchronization_load_data_params" style="" class="config collapseable">
+            <legend><?php echo $this->__('Setup Loading Data in Cronjob'); ?></legend>
+            <table cellspacing="0" class="form-list" style="width: 100%;">
+                <tbody>
+                    <tr>
+                        <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[allow_load_data_in_cronjob]"><?php echo $this->__('Load Data in Cronjob') ?></label></td>
+                        <td class="value">
+                            <select class="input-text" id="config[allow_load_data_in_cronjob]" name="config[allow_load_data_in_cronjob]" style="width: 97%">
+                                <option value="0" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_data_in_cronjob') == '0' ? 'selected="selected"' : ''; ?>><?php echo $this->__('No'); ?></option>
+                                <option value="1" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_data_in_cronjob') == '1' ? 'selected="selected"' : ''; ?>><?php echo $this->__('Yes'); ?></option>
+                            </select>
+                            <p class="note" style="width: 97%;">
+                                <span><?php echo $this->__('Allow loading data from ZohoCRM in Cronjob or not.'); ?></span>
+                            </p>
+                        </td>
+                    </tr>
+                    <?php if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_data_in_cronjob') == '1') { ?>
+                        <tr>
+                            <td class="label" colspan="2"><b><?php echo $this->__('Conditions to Load Data Automatically in Cronjob') ?>:</b></td>
+                        </tr>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[allow_load_leads_in_cronjob]"><?php echo $this->__('Allow Load Leads') ?></label></td>
+                            <td class="value">
+                                <select class="input-text" id="config[allow_load_leads_in_cronjob]" name="config[allow_load_leads_in_cronjob]" style="width: 97%">
+                                    <option value="0" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_leads_in_cronjob') == '0' ? 'selected="selected"' : ''; ?>><?php echo $this->__('No'); ?></option>
+                                    <option value="1" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_leads_in_cronjob') == '1' ? 'selected="selected"' : ''; ?>><?php echo $this->__('Yes'); ?></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <?php if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_leads_in_cronjob') == '1') { ?>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[condition_load_leads]"><?php echo $this->__('Load Leads when') ?></label></td>
+                            <td class="value">
+                                <?php
+                                $options = Mage::getStoreConfig('crm4ecommerce_zohosynchronization/mapping_fields/logs/Leads');
+                                $group_options = explode('@@', $options);
+                                ?>
+                                <select class="input-text has-image-load" id="config[condition_load_leads]" name="config[condition_load_leads]" style="width: 200px;">
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_leads') == 'LEADID') ? 'selected="true"' : ''; ?> value="LEADID">LEADID</option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_leads') == 'Created Time') ? 'selected="true"' : ''; ?> value="Created Time"><?php echo $this->__('Created Time') ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_leads') == 'Modified Time') ? 'selected="true"' : ''; ?> value="Modified Time"><?php echo $this->__('Modified Time') ?></option>
+                                    <?php
+                                    foreach ($group_options as $group_option) {
+                                        $group_option = explode('@', $group_option);
+                                        if (count($group_option) > 1) {
+                                            ?>
+                                            <optgroup label="<?php echo $group_option[0]; ?>">
+                                                <?php
+                                                $options = explode(';', $group_option[1]);
+                                                foreach ($options as $option) {
+                                                    $option = explode(',', $option);
+                                                    if (count($option) == 3) {
+                                                        ?>
+                                                        <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_leads') == $option[0]) ? 'selected="true"' : ''; ?> value="<?php echo $option[0]; ?>"><?php echo $option[1]; ?></option>
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </optgroup>
+                                        <?php
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                                <img title="<?php echo $this->__('Refresh list ZohoCRM fields'); ?>" style="cursor: pointer;" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/load.png'); ?>" onclick="crm4ecommerce.loadZohoFields('Leads')" id="img-load-Leads">
+                                <label for="config[condition_load_leads_compare]"><?php echo $this->__('has value'); ?></label>
+                                <select class="has-image-load" id="config[condition_load_leads_compare]" name="config[condition_load_leads_compare]" style="width: 150px;">
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_leads_compare') == "is") ? 'selected="selected" ' : '' ?>value="is"><?php echo $this->__('equals'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_leads_compare') == "isn't") ? 'selected="selected" ' : '' ?>value="isn't"><?php echo $this->__('not equals'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_leads_compare') == ">") ? 'selected="selected" ' : '' ?>value=">"><?php echo $this->__('greater than'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_leads_compare') == "<") ? 'selected="selected" ' : '' ?>value="<"><?php echo $this->__('less than'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_leads_compare') == ">=") ? 'selected="selected" ' : '' ?>value=">="><?php echo $this->__('greater or equals than'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_leads_compare') == "<=") ? 'selected="selected" ' : '' ?>value="<="><?php echo $this->__('less or equals than'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_leads_compare') == "contains") ? 'selected="selected" ' : '' ?>value="contains"><?php echo $this->__('contains'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_leads_compare') == "starts with") ? 'selected="selected" ' : '' ?>value="starts with"><?php echo $this->__('starts with'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_leads_compare') == "ends with") ? 'selected="selected" ' : '' ?>value="ends with"><?php echo $this->__('ends with'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_leads_compare') == "doesn't contain") ? 'selected="selected" ' : '' ?>value="doesn't contain"><?php echo $this->__("doesn't"); ?></option>
+                                </select>
+                                <input type="text" class="input-text has-image-load" name="config[condition_load_leads_value]" style="width: 100px;" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_leads_value'); ?>" />.
+                                <label for="config[condition_load_leads_period]"><?php echo $this->__('In period'); ?>:</label>
+                                <input type="text" class="input-text has-image-load" id="config[condition_load_leads_period]" name="config[condition_load_leads_period]" style="width: 50px;" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_leads_period'); ?>" />
+    <?php echo $this->__('minute(s)'); ?> / <?php echo $this->__('time'); ?>.
+                            </td>
+                        </tr>
+                        <?php } ?>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[allow_load_accounts_in_cronjob]"><?php echo $this->__('Allow Load Accounts') ?></label></td>
+                            <td class="value">
+                                <select class="input-text" id="config[allow_load_accounts_in_cronjob]" name="config[allow_load_accounts_in_cronjob]" style="width: 97%">
+                                    <option value="0" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_accounts_in_cronjob') == '0' ? 'selected="selected"' : ''; ?>><?php echo $this->__('No'); ?></option>
+                                    <option value="1" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_accounts_in_cronjob') == '1' ? 'selected="selected"' : ''; ?>><?php echo $this->__('Yes'); ?></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <?php if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_accounts_in_cronjob') == '1') { ?>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[condition_load_accounts]"><?php echo $this->__('Load Accounts when') ?></label></td>
+                            <td class="value">
+                                <?php
+                                $options = Mage::getStoreConfig('crm4ecommerce_zohosynchronization/mapping_fields/logs/Accounts');
+                                $group_options = explode('@@', $options);
+                                ?>
+                                <select class="input-text has-image-load" id="config[condition_load_accounts]" name="config[condition_load_accounts]" style="width: 200px">
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_accounts') == 'ACCOUNTID') ? 'selected="true"' : ''; ?> value="ACCOUNTID">ACCOUNTID</option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_accounts') == 'Created Time') ? 'selected="true"' : ''; ?> value="Created Time"><?php echo $this->__('Created Time') ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_accounts') == 'Modified Time') ? 'selected="true"' : ''; ?> value="Modified Time"><?php echo $this->__('Modified Time') ?></option>
+                                    <?php
+                                    foreach ($group_options as $group_option) {
+                                        $group_option = explode('@', $group_option);
+                                        if (count($group_option) > 1) {
+                                            ?>
+                                            <optgroup label="<?php echo $group_option[0]; ?>">
+                                                <?php
+                                                $options = explode(';', $group_option[1]);
+                                                foreach ($options as $option) {
+                                                    $option = explode(',', $option);
+                                                    if (count($option) == 3) {
+                                                        ?>
+                                                        <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_accounts') == $option[0]) ? 'selected="true"' : ''; ?> value="<?php echo $option[0]; ?>"><?php echo $option[1]; ?></option>
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </optgroup>
+        <?php
+        }
+    }
+    ?>
+                                </select>
+                                <img title="<?php echo $this->__('Refresh list ZohoCRM fields'); ?>" style="cursor: pointer;" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/load.png'); ?>" onclick="crm4ecommerce.loadZohoFields('Accounts')" id="img-load-Accounts">
+                                <label for="config[condition_load_accounts_compare]"><?php echo $this->__('has value'); ?></label>
+                                <select id="config[condition_load_accounts_compare]" name="config[condition_load_accounts_compare]" class="has-image-load" style="width: 150px;">
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_accounts_compare') == "is") ? 'selected="selected" ' : '' ?>value="is"><?php echo $this->__('equals'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_accounts_compare') == "isn't") ? 'selected="selected" ' : '' ?>value="isn't"><?php echo $this->__('not equals'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_accounts_compare') == ">") ? 'selected="selected" ' : '' ?>value=">"><?php echo $this->__('greater than'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_accounts_compare') == "<") ? 'selected="selected" ' : '' ?>value="<"><?php echo $this->__('less than'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_accounts_compare') == ">=") ? 'selected="selected" ' : '' ?>value=">="><?php echo $this->__('greater or equals than'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_accounts_compare') == "<=") ? 'selected="selected" ' : '' ?>value="<="><?php echo $this->__('less or equals than'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_accounts_compare') == "contains") ? 'selected="selected" ' : '' ?>value="contains"><?php echo $this->__('contains'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_accounts_compare') == "starts with") ? 'selected="selected" ' : '' ?>value="starts with"><?php echo $this->__('starts with'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_accounts_compare') == "ends with") ? 'selected="selected" ' : '' ?>value="ends with"><?php echo $this->__('ends with'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_accounts_compare') == "doesn't contain") ? 'selected="selected" ' : '' ?>value="doesn't contain"><?php echo $this->__("doesn't"); ?></option>
+                                </select>
+                                <input type="text" class="input-text has-image-load" name="config[condition_load_accounts_value]" style="width: 100px;" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_accounts_value'); ?>" />.
+                                <label for="config[condition_load_accounts_period]"><?php echo $this->__('In period'); ?>:</label>
+                                <input type="text" class="input-text has-image-load" id="config[condition_load_accounts_period]" name="config[condition_load_accounts_period]" style="width: 50px;" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_accounts_period'); ?>" />
+    <?php echo $this->__('minute(s)'); ?> / <?php echo $this->__('time'); ?>.
+                            </td>
+                        </tr>
+                        <?php } ?>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[allow_load_contacts_in_cronjob]"><?php echo $this->__('Allow Load Contacts') ?></label></td>
+                            <td class="value">
+                                <select class="input-text" id="config[allow_load_contacts_in_cronjob]" name="config[allow_load_contacts_in_cronjob]" style="width: 97%">
+                                    <option value="0" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_contacts_in_cronjob') == '0' ? 'selected="selected"' : ''; ?>><?php echo $this->__('No'); ?></option>
+                                    <option value="1" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_contacts_in_cronjob') == '1' ? 'selected="selected"' : ''; ?>><?php echo $this->__('Yes'); ?></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <?php if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_contacts_in_cronjob') == '1') { ?>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[condition_load_contacts]"><?php echo $this->__('Load Contacts when') ?></label></td>
+                            <td class="value">                        
+    <?php
+    $options = Mage::getStoreConfig('crm4ecommerce_zohosynchronization/mapping_fields/logs/Contacts');
+    $group_options = explode('@@', $options);
+    ?>
+                                <select class="input-text has-image-load" id="config[condition_load_contacts]" name="config[condition_load_contacts]" style="width: 200px">
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_contacts') == 'CONTACTID') ? 'selected="true"' : ''; ?> value="CONTACTID">CONTACTID</option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_contacts') == 'Created Time') ? 'selected="true"' : ''; ?> value="Created Time"><?php echo $this->__('Created Time') ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_contacts') == 'Modified Time') ? 'selected="true"' : ''; ?> value="Modified Time"><?php echo $this->__('Modified Time') ?></option>
+                                    <?php
+                                    foreach ($group_options as $group_option) {
+                                        $group_option = explode('@', $group_option);
+                                        if (count($group_option) > 1) {
+                                            ?>
+                                            <optgroup label="<?php echo $group_option[0]; ?>">
+                                                <?php
+                                                $options = explode(';', $group_option[1]);
+                                                foreach ($options as $option) {
+                                                    $option = explode(',', $option);
+                                                    if (count($option) == 3) {
+                                                        ?>
+                                                        <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_contacts') == $option[0]) ? 'selected="true"' : ''; ?> value="<?php echo $option[0]; ?>"><?php echo $option[1]; ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                            </optgroup>
+                                    <?php
+                                    }
+                                }
+                                ?>
+                                </select>
+                                <img title="<?php echo $this->__('Refresh list ZohoCRM fields'); ?>" style="cursor: pointer;" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/load.png'); ?>" onclick="crm4ecommerce.loadZohoFields('Contacts')" id="img-load-Contacts">
+                                <label for="config[condition_load_contacts_compare]"><?php echo $this->__('has value'); ?></label>
+                                <select class="has-image-load" id="config[condition_load_contacts_compare]" name="config[condition_load_contacts_compare]" style="width: 150px;">
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_contacts_compare') == "is") ? 'selected="selected" ' : '' ?>value="is"><?php echo $this->__('equals'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_contacts_compare') == "isn't") ? 'selected="selected" ' : '' ?>value="isn't"><?php echo $this->__('not equals'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_contacts_compare') == ">") ? 'selected="selected" ' : '' ?>value=">"><?php echo $this->__('greater than'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_contacts_compare') == "<") ? 'selected="selected" ' : '' ?>value="<"><?php echo $this->__('less than'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_contacts_compare') == ">=") ? 'selected="selected" ' : '' ?>value=">="><?php echo $this->__('greater or equals than'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_contacts_compare') == "<=") ? 'selected="selected" ' : '' ?>value="<="><?php echo $this->__('less or equals than'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_contacts_compare') == "contains") ? 'selected="selected" ' : '' ?>value="contains"><?php echo $this->__('contains'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_contacts_compare') == "starts with") ? 'selected="selected" ' : '' ?>value="starts with"><?php echo $this->__('starts with'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_contacts_compare') == "ends with") ? 'selected="selected" ' : '' ?>value="ends with"><?php echo $this->__('ends with'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_contacts_compare') == "doesn't contain") ? 'selected="selected" ' : '' ?>value="doesn't contain"><?php echo $this->__("doesn't"); ?></option>
+                                </select>
+                                <input type="text" class="input-text has-image-load" name="config[condition_load_contacts_value]" style="width: 100px;" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_contacts_value'); ?>" />.
+                                <label for="config[condition_load_contacts_period]"><?php echo $this->__('In period'); ?>:</label>
+                                <input type="text" class="input-text has-image-load" id="config[condition_load_contacts_period]" name="config[condition_load_contacts_period]" style="width: 50px;" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_contacts_period'); ?>" />
+    <?php echo $this->__('minute(s)'); ?> / <?php echo $this->__('time'); ?>.
+                            </td>
+                        </tr>
+                        <?php } ?>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[allow_load_tasks_in_cronjob]"><?php echo $this->__('Allow Load Tasks') ?></label></td>
+                            <td class="value">
+                                <select class="input-text" id="config[allow_load_tasks_in_cronjob]" name="config[allow_load_tasks_in_cronjob]" style="width: 97%">
+                                    <option value="0" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_tasks_in_cronjob') == '0' ? 'selected="selected"' : ''; ?>><?php echo $this->__('No'); ?></option>
+                                    <option value="1" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_tasks_in_cronjob') == '1' ? 'selected="selected"' : ''; ?>><?php echo $this->__('Yes'); ?></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <?php if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_tasks_in_cronjob') == '1') { ?>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[condition_load_tasks]"><?php echo $this->__('Load Tasks when') ?></label></td>
+                            <td class="value">                        
+    <?php
+    $options = Mage::getStoreConfig('crm4ecommerce_zohosynchronization/mapping_fields/logs/Tasks');
+    $group_options = explode('@@', $options);
+    ?>
+                                <select class="input-text has-image-load" id="config[condition_load_tasks]" name="config[condition_load_tasks]" style="width: 200px">
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_tasks') == 'ACTIVITYID') ? 'selected="true"' : ''; ?> value="ACTIVITYID">ACTIVITYID</option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_tasks') == 'Created Time') ? 'selected="true"' : ''; ?> value="Created Time"><?php echo $this->__('Created Time') ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_tasks') == 'Modified Time') ? 'selected="true"' : ''; ?> value="Modified Time"><?php echo $this->__('Modified Time') ?></option>
+                                    <?php
+                                    foreach ($group_options as $group_option) {
+                                        $group_option = explode('@', $group_option);
+                                        if (count($group_option) > 1) {
+                                            ?>
+                                            <optgroup label="<?php echo $group_option[0]; ?>">
+                                                <?php
+                                                $options = explode(';', $group_option[1]);
+                                                foreach ($options as $option) {
+                                                    $option = explode(',', $option);
+                                                    if (count($option) == 3) {
+                                                        ?>
+                                                        <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_tasks') == $option[0]) ? 'selected="true"' : ''; ?> value="<?php echo $option[0]; ?>"><?php echo $option[1]; ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                            </optgroup>
+                                    <?php
+                                    }
+                                }
+                                ?>
+                                </select>
+                                <img title="<?php echo $this->__('Refresh list ZohoCRM fields'); ?>" style="cursor: pointer;" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/load.png'); ?>" onclick="crm4ecommerce.loadZohoFields('Tasks')" id="img-load-Tasks">
+                                <label for="config[condition_load_tasks_compare]"><?php echo $this->__('has value'); ?></label>
+                                <select class="has-image-load" id="config[condition_load_tasks_compare]" name="config[condition_load_tasks_compare]" style="width: 150px;">
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_tasks_compare') == "is") ? 'selected="selected" ' : '' ?>value="is"><?php echo $this->__('equals'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_tasks_compare') == "isn't") ? 'selected="selected" ' : '' ?>value="isn't"><?php echo $this->__('not equals'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_tasks_compare') == ">") ? 'selected="selected" ' : '' ?>value=">"><?php echo $this->__('greater than'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_tasks_compare') == "<") ? 'selected="selected" ' : '' ?>value="<"><?php echo $this->__('less than'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_tasks_compare') == ">=") ? 'selected="selected" ' : '' ?>value=">="><?php echo $this->__('greater or equals than'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_tasks_compare') == "<=") ? 'selected="selected" ' : '' ?>value="<="><?php echo $this->__('less or equals than'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_tasks_compare') == "contains") ? 'selected="selected" ' : '' ?>value="contains"><?php echo $this->__('contains'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_tasks_compare') == "starts with") ? 'selected="selected" ' : '' ?>value="starts with"><?php echo $this->__('starts with'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_tasks_compare') == "ends with") ? 'selected="selected" ' : '' ?>value="ends with"><?php echo $this->__('ends with'); ?></option>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_tasks_compare') == "doesn't contain") ? 'selected="selected" ' : '' ?>value="doesn't contain"><?php echo $this->__("doesn't"); ?></option>
+                                </select>
+                                <input type="text" class="input-text has-image-load" name="config[condition_load_tasks_value]" style="width: 100px;" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_tasks_value'); ?>" />.
+                                <label for="config[condition_load_tasks_period]"><?php echo $this->__('In period'); ?>:</label>
+                                <input type="text" class="input-text has-image-load" id="config[condition_load_tasks_period]" name="config[condition_load_tasks_period]" style="width: 50px;" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_tasks_period'); ?>" />
+    <?php echo $this->__('minute(s)'); ?> / <?php echo $this->__('time'); ?>.
+                            </td>
+                        </tr>
+                        <?php } ?>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <p class="note" style="width: 97%;">
+                                    <span><?php echo $this->__("<b>Attention:</b> If condition fields are time fields, we can use value fields with format is <b>\"{{number}} minute(s) ago\"</b> compare with current datetime when system run loading data from ZohoCRM.<br/>Otherwise, the used datetime format is <b>\"{{Year}}-{{month}}-{{day}} {{Hour}}:{{minute}}:{{second}}\"</b>."); ?></span>
+                                </p>
+                            </td>
+                        </tr>
+<?php } ?>
+                </tbody>
+            </table>
+            <div style="float: left; text-align: left; width: 70%; margin-top: 5px; padding-top: 10px; border-top: 2px solid #CCCCCC;">        
+                <?php echo $this->__('Current time is: <b>%s</b>', Mage::app()->getLocale()->date('', Varien_Date::DATETIME_INTERNAL_FORMAT)->toString()); ?>
+            </div>
+            <div style="float: left; text-align: right; width: 30%; margin-top: 5px; padding-top: 10px; border-top: 2px solid #CCCCCC;">        
+                <table style="width: 100%;"><tr><td>                    
+                            <button name="submit" value="save" class="scalable save" style="" type="submit">
+                                <span><span><span><?php echo $this->__('Save'); ?></span></span></span>
+                            </button></td></tr>
+                </table>
+            </div>
+        </fieldset>
+        <script type="text/javascript">
+            Fieldset.applyCollapse('crm4ecommerce_zohosynchronization_load_data_params');
+        </script>
+    </form>
+</div>
+<!-- End Cron Setting Form -->
+<div class="grid">
+    <div class="hor-scroll">
+        <form id="load-data-incron-form">
+            <table id="load_data_incron_table" class="data" cellspacing="0">
+                <colgroup>
+                    <col width="20">
+                    <col width="120">
+                    <col width="180">
+                    <col>
+                    <col width="80">
+                    <col width="180">
+                </colgroup>
+                <thead>
+                    <tr class="headings">
+                        <th>
+                            <span class="nobr"><?php echo $this->__('#') ?></span>
+                        </th>
+                        <th>
+                            <span class="nobr"><?php echo $this->__('Data Type') ?></span>
+                        </th>
+                        <th>
+                            <span class="nobr"><?php echo $this->__('Last Load Data') ?></span>
+                        </th>
+                        <th>
+                            <span class="nobr"><?php echo $this->__('Loaded Information from Zoho CRM') ?></span>
+                        </th>
+                        <th>
+                            <span class="nobr"><?php echo $this->__('Current Index') ?></span>
+                        </th>
+                        <th>
+                            <span class="nobr"><?php echo $this->__('Next Load Data') ?></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="even pointer">
+                        <td>1</td>
+                        <td><?php echo $this->__('Load Leads') ?></td>
+                        <td><?php
+$last_time_load_leads = Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/params/last_time_load_leads');
+echo Mage::app()->getLocale()->date($last_time_load_leads, Varien_Date::DATETIME_INTERNAL_FORMAT)->toString();
+?></td>
+                        <td><div style="background-color: #ffffff; padding: 5px 10px; border: 2px solid #425e66; height: 150px; overflow: auto;">
+            <pre style="white-space: pre-wrap; /* css-3 */
+                 white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+                 white-space: -pre-wrap; /* Opera 4-6 */
+                 white-space: -o-pre-wrap; /* Opera 7 */
+                 word-wrap: break-word; /* Internet Explorer 5.5+ */"><?php $loaded_leads = Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/params/loaded_leads');
+                            echo str_replace(array("<", ">"), array("&lt;", "&gt;"), $loaded_leads); ?></pre></div>
+                            <button class="scalable<?php if ($loaded_leads == '') {?> disabled<?php } ?>" style="margin: 5px 0px; float: right;" type="button"<?php if ($loaded_leads != '') {?> onclick="window.open('<?php echo $this->getLoadedLeadsUrl();?>', '_blank')"<?php } ?>>
+                                <span><span><span><?php echo $this->__('Show XML Format'); ?></span></span></span>
+                            </button>
+                            
+                            <button class="scalable<?php if ($loaded_leads == '') {?> disabled<?php } ?>" style="margin: 5px 5px 5px 0px; float: right;" type="button"<?php if ($loaded_leads != '') {?> onclick="crm4ecommerce.runLoadLeads();"<?php } ?>>
+                                <span><span><span><?php echo $this->__('Run Loading'); ?></span></span></span>
+                            </button>                            
+                        </td>
+                        <td class="a-center"><?php echo Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/params/import_leads_index') ?></td>
+                        <td><?php
+                        if ($last_time_load_leads == '' || Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_leads_in_cronjob') == '0') {
+                            echo $this->__('None');
+                        } else {
+$last_time_load_leads = strtotime($last_time_load_leads);
+$step = (int) Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_leads_period');
+$step *= 60;
+echo Mage::app()->getLocale()->date(date('Y-m-d H:i:s', (int) $last_time_load_leads + $step), Varien_Date::DATETIME_INTERNAL_FORMAT)->toString();
+                        }
+?></td>
+                    </tr>
+                    <tr class="pointer">
+                        <td>2</td>
+                        <td><?php echo $this->__('Load Accounts') ?></td>
+                        <td><?php
+$last_time_load_accounts = Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/params/last_time_load_accounts');
+echo Mage::app()->getLocale()->date($last_time_load_accounts, Varien_Date::DATETIME_INTERNAL_FORMAT)->toString();
+?></td>
+                        <td><div style="background-color: #ffffff; padding: 5px 10px; border: 2px solid #425e66; height: 150px; overflow: auto;">
+            <pre style="white-space: pre-wrap; /* css-3 */
+                 white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+                 white-space: -pre-wrap; /* Opera 4-6 */
+                 white-space: -o-pre-wrap; /* Opera 7 */
+                 word-wrap: break-word; /* Internet Explorer 5.5+ */"><?php $loaded_accounts = Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/params/loaded_accounts');
+                            echo str_replace(array("<", ">"), array("&lt;", "&gt;"), $loaded_accounts); ?></pre></div>
+                            <button class="scalable<?php if ($loaded_accounts == '') {?> disabled<?php } ?>" style="margin: 5px 0px; float: right;" type="button"<?php if ($loaded_accounts != '') {?> onclick="window.open('<?php echo $this->getLoadedAccountsUrl();?>', '_blank')"<?php } ?>>
+                                <span><span><span><?php echo $this->__('Show XML Format'); ?></span></span></span>
+                            </button>
+                            
+                            <button class="scalable<?php if ($loaded_accounts == '') {?> disabled<?php } ?>" style="margin: 5px 5px 5px 0px; float: right;" type="button"<?php if ($loaded_accounts != '') {?> onclick="crm4ecommerce.runLoadAccounts();"<?php } ?>>
+                                <span><span><span><?php echo $this->__('Run Loading'); ?></span></span></span>
+                            </button>
+                        </td>
+                        <td class="a-center"><?php echo Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/params/import_accounts_index') ?></td>
+                        <td><?php
+                        if ($last_time_load_accounts == '' || Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_accounts_in_cronjob') == '0') {
+                            echo $this->__('None');
+                        } else {
+$last_time_load_accounts = strtotime($last_time_load_accounts);
+$step = (int) Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_accounts_period');
+$step *= 60;
+echo Mage::app()->getLocale()->date(date('Y-m-d H:i:s', (int) $last_time_load_accounts + $step), Varien_Date::DATETIME_INTERNAL_FORMAT)->toString();
+                        }
+?></td>
+                    </tr>
+                    <tr class="even pointer">
+                        <td>3</td>
+                        <td><?php echo $this->__('Load Contacts') ?></td>
+                        <td><?php
+$last_time_load_contacts = Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/params/last_time_load_contacts');
+echo Mage::app()->getLocale()->date($last_time_load_contacts, Varien_Date::DATETIME_INTERNAL_FORMAT)->toString();
+?></td>
+                        <td><div style="background-color: #ffffff; padding: 5px 10px; border: 2px solid #425e66; height: 150px; overflow: auto;">
+            <pre  class='brush: xml;'style="white-space: pre-wrap; /* css-3 */
+                 white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+                 white-space: -pre-wrap; /* Opera 4-6 */
+                 white-space: -o-pre-wrap; /* Opera 7 */
+                 word-wrap: break-word; /* Internet Explorer 5.5+ */"><?php $loaded_contacts = Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/params/loaded_contacts');
+                            echo str_replace(array("<", ">"), array("&lt;", "&gt;"), $loaded_contacts); ?></pre></div>
+                            <button class="scalable<?php if ($loaded_contacts == '') {?> disabled<?php } ?>" style="margin: 5px 0px; float: right;" type="button"<?php if ($loaded_contacts != '') {?> onclick="window.open('<?php echo $this->getLoadedContactsUrl();?>', '_blank')"<?php } ?>>
+                                <span><span><span><?php echo $this->__('Show XML Format'); ?></span></span></span>
+                            </button>
+                            
+                            <button class="scalable<?php if ($loaded_contacts == '') {?> disabled<?php } ?>" style="margin: 5px 5px 5px 0px; float: right;" type="button"<?php if ($loaded_contacts != '') {?> onclick="crm4ecommerce.runLoadContacts();"<?php } ?>>
+                                <span><span><span><?php echo $this->__('Run Loading'); ?></span></span></span>
+                            </button>                            
+                        </td>
+                        <td class="a-center"><?php echo Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/params/import_contacts_index') ?></td>
+                        <td><?php
+                        if ($last_time_load_contacts == '' || Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_contacts_in_cronjob') == '0') {
+                            echo $this->__('None');
+                        } else {
+$last_time_load_contacts = strtotime($last_time_load_contacts);
+$step = (int) Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_contacts_period');
+$step *= 60;
+echo Mage::app()->getLocale()->date(date('Y-m-d H:i:s', (int) $last_time_load_contacts + $step), Varien_Date::DATETIME_INTERNAL_FORMAT)->toString();
+                        }
+?></td>
+                    </tr>
+                    <tr class="even pointer">
+                        <td>9</td>
+                        <td><?php echo $this->__('Load Tasks') ?></td>
+                        <td><?php
+$last_time_load_tasks = Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/params/last_time_load_tasks');
+echo Mage::app()->getLocale()->date($last_time_load_tasks, Varien_Date::DATETIME_INTERNAL_FORMAT)->toString();
+?></td>
+                        <td><div style="background-color: #ffffff; padding: 5px 10px; border: 2px solid #425e66; height: 150px; overflow: auto;">
+            <pre  class='brush: xml;'style="white-space: pre-wrap; /* css-3 */
+                 white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+                 white-space: -pre-wrap; /* Opera 4-6 */
+                 white-space: -o-pre-wrap; /* Opera 7 */
+                 word-wrap: break-word; /* Internet Explorer 5.5+ */"><?php $loaded_tasks = Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/params/loaded_tasks');
+                            echo str_replace(array("<", ">"), array("&lt;", "&gt;"), $loaded_tasks); ?></pre></div>
+                            <button class="scalable<?php if ($loaded_tasks == '') {?> disabled<?php } ?>" style="margin: 5px 0px; float: right;" type="button"<?php if ($loaded_tasks != '') {?> onclick="window.open('<?php echo $this->getLoadedTasksUrl();?>', '_blank')"<?php } ?>>
+                                <span><span><span><?php echo $this->__('Show XML Format'); ?></span></span></span>
+                            </button>
+                            
+                            <button class="scalable<?php if ($loaded_tasks == '') {?> disabled<?php } ?>" style="margin: 5px 5px 5px 0px; float: right;" type="button"<?php if ($loaded_tasks != '') {?> onclick="crm4ecommerce.runLoadTasks();"<?php } ?>>
+                                <span><span><span><?php echo $this->__('Run Loading'); ?></span></span></span>
+                            </button>                            
+                        </td>
+                        <td class="a-center"><?php echo Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/params/import_tasks_index') ?></td>
+                        <td><?php
+                        if ($last_time_load_tasks == '' || Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/allow_load_tasks_in_cronjob') == '0') {
+                            echo $this->__('None');
+                        } else {
+$last_time_load_tasks = strtotime($last_time_load_tasks);
+$step = (int) Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/condition_load_tasks_period');
+$step *= 60;
+echo Mage::app()->getLocale()->date(date('Y-m-d H:i:s', (int) $last_time_load_tasks + $step), Varien_Date::DATETIME_INTERNAL_FORMAT)->toString();
+                        }
+?></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>

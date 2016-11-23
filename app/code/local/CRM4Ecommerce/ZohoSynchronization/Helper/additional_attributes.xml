@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    More additional custom attributes for mapping magento objects
+    
+    @category   CRM4Ecommerce
+    @package    CRM4Ecommerce_ZohoSynchronization
+    @author     Philip Nguyen <philip@crm4ecommerce.com>
+    @link       http://crm4ecommerce.com
+-->
+<crm4ecommerce>
+    
+</crm4ecommerce>

@@ -1,0 +1,34 @@
+
+<?php 
+$category_id = "3"; // category_id for "Featured Products"
+$_productCollection = Mage::getResourceModel('catalog/product_collection')
+  ->addAttributeToSelect(array('name', 'price', 'small_image'), 'inner')
+  ->addCategoryFilter(Mage::getModel('catalog/category')->load($category_id));
+?>
+
+<?php if($_productCollection->count()): ?>
+ 
+  <?php
+  $products = array();
+  foreach ($_productCollection as $_product) { array_push($products, $_product); }
+  $_product = $products[rand(0,count($products)-1)];
+  ?>
+<div class="block block-featured-product">
+  <div class="block-title">
+    <strong>Featured Product</strong>
+  </div>
+  <div class="block-content">
+    <ul id="featured-product-list">
+      <li class="featured-product">
+          <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>">
+            <img class="product-image" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(250, 250); ?>" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" />
+          </a>
+          <h4><?php echo $this->htmlEscape($_product->getName())?></h4>
+          <p class="price"><?php echo Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); ?><?php echo $this->htmlEscape(sprintf("%0.2f",$_product->getFinalPrice())) ?></p>
+          <a href="<?php echo $_product->getProductUrl() ?>" class="btn btn-empty-dark"> View Details</a>
+          <div class="clear"></div>
+      </li>
+    </ul>
+  </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoTransmission
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Queue_View_Tab_Tracking
+ */
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Queue Item Tracking') ?></h4>
+    </div>
+    <div class="fieldset">
+        <div style="background-color: #ffffff; padding: 5px 10px; border: 2px solid #425e66;">
+            <pre style="white-space: pre-wrap; /* css-3 */
+                 white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+                 white-space: -pre-wrap; /* Opera 4-6 */
+                 white-space: -o-pre-wrap; /* Opera 7 */
+                 word-wrap: break-word; /* Internet Explorer 5.5+ */"><?php echo Mage::registry('queue_data')->getLog() ?></pre>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Report_Quote_Show_Tab_Chart
+ */
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Report Chart') ?></h4>
+    </div>
+    <div class="fieldset">
+        <?php
+            $zoho_id_field = 'zoho_id';
+            if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/quote_enabled') == CRM4Ecommerce_ZohoSynchronization_Model_Array_YesNo::NO && Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_enabled') == CRM4Ecommerce_ZohoSynchronization_Model_Array_YesNo::YES) {
+                $zoho_id_field = 'potential_zoho_id';
+            }
+        
+            $dont_report_empty_quotes = Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/quote_dont_report_empty') == '1' ? ' and items_qty > 0' : '';
+            $resource = Mage::getModel('core/resource');
+            $read = $resource->getConnection("core_read");            
+            $sql_total = "SELECT count(`entity_id`) AS total FROM `" . $resource->getTableName('sales_flat_quote') . "` WHERE (`customer_id` <> '0' OR `reserved_order_id` IS NOT NULL)$dont_report_empty_quotes";
+            $sql_total_not_synchronized = "SELECT count(`entity_id`) AS total_not_synchronized FROM `" . $resource->getTableName('sales_flat_quote') . "` WHERE (`customer_id` <> '0' OR `reserved_order_id` IS NOT NULL) AND (`$zoho_id_field` IS NULL OR `$zoho_id_field` = '')$dont_report_empty_quotes";
+
+            $row = $read->fetchRow($sql_total);
+            $total = $row['total'];
+            $row = $read->fetchRow($sql_total_not_synchronized);
+            $number_not_synchronized = $row['total_not_synchronized'];
+            
+            $number_synchronized = $total - $number_not_synchronized;
+            $rate_synchronized = 0;
+            if ($total > 0) {
+                $rate_synchronized = (int) round(((float) $number_synchronized / $total * 1000)) / 10;
+            }
+            $rate_not_synchronized = 100 - $rate_synchronized;
+
+            $label_synchronized = str_replace(' ', '+', $this->__('Synchronized Quotes') . ': ' . $rate_synchronized . '% (' . $number_synchronized . '/' . $total . ')');
+            $label_not_synchronized = str_replace(' ', '+', $this->__('Not Synchronized Quotes') . ': ' . $rate_not_synchronized . '% (' . $number_not_synchronized . '/' . $total . ')');
+            $label_title = $this->__('Report Synchronized Quotes');
+        ?>
+        <img src="http://chart.apis.google.com/chart?chf=a,s,000000|bg,s,FAFAFA&chs=500x320&cht=p&chco=3366CC|CC3300&chd=t:<?php echo $rate_synchronized ?>,<?php echo $rate_not_synchronized ?>&chdl=<?php echo $label_synchronized; ?>|<?php echo $label_not_synchronized; ?>&chdlp=r&chma=0,0,0,50|0,10&chtt=<?php echo $label_title; ?>&chts=000000,12" width="500" height="320" alt="<?php echo $label_title; ?>" />
+    </div>
+</div>

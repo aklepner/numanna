@@ -1,0 +1,339 @@
+<?xml version="1.0"?>
+<!--
+    @category   CRM4Ecommerce
+    @package    CRM4Ecommerce_ZohoSynchronization
+    @author     Philip Nguyen <philip@crm4ecommerce.com>
+    @link       http://crm4ecommerce.com
+-->
+<config>
+    <tabs>
+        <crm4ecommerce translate="label">
+            <label>CRM4Ecommerce Extensions</label>
+            <sort_order>10</sort_order>
+        </crm4ecommerce>
+    </tabs>
+    <sections>
+        <crm4ecommerce_zohosynchronization translate="label">
+            <class>separator-top</class>
+            <label>ZohoCRM Free</label>
+            <tab>crm4ecommerce</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>0</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label comment">
+                    <comment><![CDATA[<div class='box'><p>See documentation and support for <a target='_blank' href='http://www.crm4ecommerce.com/magento-zohocrm-bidirectional-synchronization-free-edition.html/'><b>Magento ZohoCRM Bidirectional Synchronization Free Edition</b></a></p><p>This extenstion is one of products is powered by <a target='_blank' href='http://www.crm4ecommerce.com'><b>CRM4Ecommerce.COM</b></a></p></div>]]></comment>
+                    <label>Serial Key Information</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <status translate="label">
+                            <label>Module Status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>zohosynchronization/array_moduleStatus</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </status>
+                        <serial translate="label comment">
+                            <label>Serial Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Please input your purchased serial key to run module <b><a style='text-decoration: none;'>Magento ZohoCRM Bidirectional Synchronization Free Edition</a></b>. If you have no serial key, let <a target='_blank' href='http://www.crm4ecommerce.com/magento-zohocrm-bidirectional-synchronization-free-edition.html/'>contact with us</a> to buy.]]></comment>
+                        </serial>
+                        <serial_infor translate="label">
+                            <label>Serial Information</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </serial_infor>
+                        <start_date translate="label comment">
+                            <label>Start Date</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Register Date</comment>
+                        </start_date>
+                        <expire_date translate="label">
+                            <label>Expire Date</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </expire_date>
+                    </fields>
+                </general>
+
+                <zoho translate="label comment">
+                    <comment><![CDATA[<div class='box'><p>The following are informations to access Zoho CRM</p></div>]]></comment>
+                    <label>Zoho Account</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <username translate="label comment">
+                            <label>User Account</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Zoho User Account</comment>
+                        </username>
+                        <password translate="label">
+                            <label>Password</label>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[Zoho User Password]]></comment>
+                        </password>
+                        <api_limited translate="label">
+                            <label>ZohoCRM API Limited Event</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>zohosynchronization/array_zohoAPILimitedEvent</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[This event will be incurred when our module calls zoho crm api exceed maximum number of calls per day.<br/><b>Example:</b> Zoho Free Account maximum number of calls is 250 times per day.<br/>To view called number time of your zoho account let open your <b>Zoho CRM page > Setup > Developer Space > CRM API > Usage Information</b>.]]></comment>                            
+                        </api_limited>
+                    </fields>
+                </zoho>
+
+                <synchronize_data_by_cronjob translate="label comment">
+                    <label>Synchronize Data By Cronjob</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <synchronize_in_cronjob translate="label comment">
+                            <label>Synchronize Queue Data in Cronjob</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>zohosynchronization/array_enableDisable</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Allow synchronizing all data in Queue into ZohoCRM site by Cronjob.</comment>
+                        </synchronize_in_cronjob>
+                        <is_synchronizing translate="label comment">
+                            <label>Cronjob Synchronization Status</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[Sometimes cronjob synchronization could be failure because you setted up synchronizing too much data in each synchronization session (system stopped synchronization but status still is <b>Is Synchronizing...</b>). To fix this error, let set <b>Synchronize Queue Data in Cronjob</b> is <b><u>disabled</u></b>, and then <b>reset <u>enabled</u></b>.]]></comment>
+                        </is_synchronizing>
+                        <run_cron>
+                            <frontend_model>zohosynchronization/adminhtml_config_runCronButton</frontend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </run_cron>
+                    </fields>
+                </synchronize_data_by_cronjob>
+                
+                <synchronize_data_by_events translate="label comment">
+                    <label>Synchronize Data by Events</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <frontend_customer_after_save translate="label comment">
+                            <label>After Customer Saved Data in Frontend</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>zohosynchronization/array_typeOfSynchronize</source_model>
+                            <sort_order>3</sort_order>                            
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Not recommended if all customers weren't been synchronized</comment>
+                        </frontend_customer_after_save>
+                        <backend_customer_after_save translate="label comment">
+                            <label>After Customer Saved Data in Backend</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>zohosynchronization/array_typeOfSynchronize</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Not recommended if all customers weren't been synchronized</comment>
+                        </backend_customer_after_save>                        
+                        <frontend_subscriber_after_save translate="label comment">
+                            <label>After Subscriber Subscribed/Unsubscribed in Frontend</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>zohosynchronization/array_typeOfSynchronize</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Not recommended if all subscribers weren't been synchronized</comment>
+                        </frontend_subscriber_after_save>
+                        <backend_subscriber_after_save translate="label comment">
+                            <label>After Subscriber Changed Status in Backend</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>zohosynchronization/array_typeOfSynchronize</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Not recommended if all subscribers weren't been synchronized</comment>
+                        </backend_subscriber_after_save>
+                        <frontend_quote_after_save translate="label comment">
+                            <label>After Cart Saved Data in Frontend</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>zohosynchronization/array_typeOfSynchronize</source_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Not recommended if all carts weren't been synchronized</comment>
+                        </frontend_quote_after_save>
+                        <backend_quote_after_save translate="label comment">
+                            <label>After Cart Saved Data in Backend</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>zohosynchronization/array_typeOfSynchronize</source_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Not recommended if all carts weren't been synchronized</comment>
+                        </backend_quote_after_save>
+                        <frontend_order_after_save translate="label comment">
+                            <label>After Order Saved Data in Frontend</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>zohosynchronization/array_typeOfSynchronize</source_model>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Not recommended if all orders weren't been synchronized</comment>
+                        </frontend_order_after_save>
+                        <backend_order_after_save translate="label comment">
+                            <label>After Order Saved Data in Backend</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>zohosynchronization/array_typeOfSynchronize</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Not recommended if all orders weren't been synchronized</comment>
+                        </backend_order_after_save>
+                    </fields>
+                </synchronize_data_by_events>
+
+                <log_settings translate="label">
+                    <label>Log Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>4</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <log_mode translate="label comment">
+                            <label>Save Log Mode</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>zohosynchronization/array_logMode</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </log_mode>
+                        <log_data_type translate="label comment">
+                            <label>Log Data Type</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>zohosynchronization/array_logDataType</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Select data types will be logged when they were synchronized to ZohoCRM Site</comment>
+                        </log_data_type>
+                    </fields>
+                </log_settings>
+
+                <send_mail_notification translate="label">
+                    <label>Send Mail Notification To Users After Synchronization</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <send_mail translate="label">
+                            <label>Send Mail After Synchronize in Cron</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </send_mail>
+                        <sender_name translate="label">
+                            <label>Sender Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Default Sender is General Contact Name.</comment>
+                        </sender_name>
+                        <sender_email translate="label">
+                            <label>Sender Email</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Default Email is General Contact Email.</comment>
+                        </sender_email>
+                        <email_template translate="label">
+                            <label>Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>zohosynchronization/array_emailTemplates</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </email_template>
+                        <send_mail_to_users translate="label">
+                            <label>Send Mail To Users</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>zohosynchronization/array_getListUsers</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </send_mail_to_users>
+                    </fields>
+                </send_mail_notification>
+
+                <send_mail_notification_when_user_limit translate="label">
+                    <label>Send Mail Notification To Users When Zoho User's License is Limited</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>6</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <send_mail translate="label">
+                            <label>Send Mail When Zoho User's License is Limited</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </send_mail>
+                        <sender_name translate="label">
+                            <label>Sender Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Default Sender is General Contact Name.</comment>
+                        </sender_name>
+                        <sender_email translate="label">
+                            <label>Sender Email</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Default Email is General Contact Email.</comment>
+                        </sender_email>
+                        <email_template translate="label">
+                            <label>Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>zohosynchronization/array_emailTemplates</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </email_template>
+                        <send_mail_to_users translate="label">
+                            <label>Send Mail To Users</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>zohosynchronization/array_getListUsers</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </send_mail_to_users>
+                    </fields>
+                </send_mail_notification_when_user_limit>
+            </groups>
+        </crm4ecommerce_zohosynchronization>
+    </sections>
+</config>

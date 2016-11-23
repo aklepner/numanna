@@ -1,0 +1,62 @@
+<script type="text/javascript">
+function saveAs(uri) {
+if(newsletterSubscriberFormDetail.validator.validate()){
+    var link = document.createElement('a');
+    if (typeof link.download === 'string') {
+        link.href = uri;
+        link.setAttribute('download', 'download.pdf');
+
+        //Firefox requires the link to be in the body
+        document.body.appendChild(link);
+
+        //simulate click
+        link.click();
+
+        //remove the link when done
+        document.body.removeChild(link);
+    } else {
+        window.open(uri);
+    }
+}
+}
+
+
+
+</script>
+<div class="slide slide2" style="background:url('<?php echo $this->getSkinUrl(); ?>images/slideshow/slide2bg.jpg') no-repeat top center; ">
+                          <div class="container-full center">
+                              <div class="container">
+                                <div class="row">
+                                    <div class="span12">
+                                        <div class="info translucence">
+                                            <h3 style="text-transform:uppercase; color:#262323;">Download Your Free Copy Of The:</h3>
+                                            <h1 style="color:#e25926;">Numanna Emergency Preparedness Manual</h1>
+                                            <p style="font-size:18px;">What To Do When Disaster Strikes?</p>
+                                            <form action="<?php echo $this->getUrl('newsletter/subscriber/new', array('_secure' => true)) ?>" method="post" id="newsletter-validate-detail" onsubmit="saveAs('http://numanna.transformagency.com/media/download.pdf')">
+                                                <div class="container-fluid">
+                                                    <div class="row-fluid">
+                                                      <div class="span3"><input id="fname" name="fname" onfocus="if(this.value == 'First Name') { this.value = ''; }" value="First Name" class="input-text"></div>
+                                                      <div class="span3"><input id="lname" name="lname" onfocus="if(this.value == 'Last Name') { this.value = ''; }" value="Last Name"></div>
+                                                      <div class="span3"><input id="email" name="email" id="newsletter" class="input-text required-entry validate-email" onfocus="if(this.value == 'Email') { this.value = ''; }" value="Email"></div>
+                                                      <div class="span3"><button type="submit" "title="<?php echo $this->__('Download Now') ?>" class="btn btn-primary"><?php echo $this->__('Download Now') ?></button></div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                          </div>
+                       </div>            
+
+
+
+
+                   <!-- <input type="text" name="email" id="newsletter" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="input-text required-entry validate-email"  value="Your email here..." onfocus="if(this.value == 'Your email here...') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Your email here...'; }" /> -->
+                   
+
+        <script type="text/javascript">
+        //<![CDATA[
+            var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+        //]]>
+        </script>

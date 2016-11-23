@@ -1,0 +1,55 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Report_Customer_Show_Tab_Chart
+ */
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Report Chart') ?></h4>
+    </div>
+    <div class="fieldset">
+        <?php
+        $resource = Mage::getModel('core/resource');
+        $read = $resource->getConnection("core_read");
+        $sql_total = "SELECT count(`entity_id`) AS total FROM `" . $resource->getTableName('customer_entity') . "`";
+        $sql_total_not_synchronized = "SELECT count(`entity_id`) AS total_not_synchronized FROM `" . $resource->getTableName('customer_entity') . "` WHERE `zoho_id` IS NULL OR `zoho_id` = ''";
+
+        $row = $read->fetchRow($sql_total);
+        $total = $row['total'];
+        $row = $read->fetchRow($sql_total_not_synchronized);
+        $number_not_synchronized = $row['total_not_synchronized'];
+
+        $number_synchronized = $total - $number_not_synchronized;
+        $rate_synchronized = 0;
+        if ($total > 0) {
+            $rate_synchronized = (int) round(((float) $number_synchronized / $total * 1000)) / 10;
+        }
+        $rate_not_synchronized = 100 - $rate_synchronized;
+        
+        $sql_total_accounts = "SELECT count(`entity_id`) AS total_accounts FROM `" . $resource->getTableName('customer_entity') . "` WHERE `zoho_id` <> '' AND `zoho_type` = '" . CRM4Ecommerce_ZohoSynchronization_Model_Array_CustomerZohoType::ACCOUNTS . "'";
+        
+        $row = $read->fetchRow($sql_total_accounts);
+        $number_accounts = $row['total_accounts'];
+        $number_leads = $number_synchronized - $number_accounts;
+        $rate_accounts = 0;
+        if ($total > 0) {
+            $rate_accounts = (int) round(((float) $number_accounts / $total * 1000)) / 10;
+        }
+        $rate_leads = $rate_synchronized - $rate_accounts;
+
+        $label_synchronized = str_replace(' ', '+', $this->__('Synchronized Customers') . ': ' . $rate_synchronized . '% (' . $number_synchronized . '/' . $total . ')');
+        $label_not_synchronized = str_replace(' ', '+', $this->__('Not Synchronized Customers') . ': ' . $rate_not_synchronized . '% (' . $number_not_synchronized . '/' . $total . ')');
+        $label_accounts = str_replace(' ', '+', $this->__('Customers are Zoho Accounts') . ': ' . $rate_accounts . '% (' . $number_accounts . '/' . $total . ')');
+        $label_leads = str_replace(' ', '+', $this->__('Customers are Zoho Leads') . ': ' . $rate_leads . '% (' . $number_leads . '/' . $total . ')');
+        $label_not_connected = str_replace(' ', '+', $this->__('Customers not Connected') . ': ' . $rate_not_synchronized . '% (' . $number_not_synchronized . '/' . $total . ')');
+        
+        $label_title = '';
+        ?>
+        <img src="http://chart.apis.google.com/chart?chf=a,s,000000|bg,s,FAFAFA&chs=500x280&cht=pc&chco=3366CC|CC3300,5C07D1|D80483|FF0000&chd=t:<?php echo $rate_synchronized ?>,<?php echo $rate_not_synchronized ?>|<?php echo $rate_accounts ?>,<?php echo $rate_leads ?>,<?php echo $rate_not_synchronized ?>&chdl=<?php echo $label_synchronized; ?>|<?php echo $label_not_synchronized; ?>|<?php echo $label_accounts; ?>|<?php echo $label_leads; ?>|<?php echo $label_not_connected; ?>&chdlp=r&chma=0,0,0,10|0,10&chtt=<?php echo $label_title; ?>&chts=000000,0" width="500" height="280" alt="<?php echo $label_title; ?>" />
+    </div>
+</div>

@@ -1,0 +1,304 @@
+<?php
+/**
+ * Media Gallery & Product Videos extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   FME
+ * @package    Mediaappearance
+ * @copyright  Copyright 2010 © free-magentoextensions.com All right reserved
+ **/
+?>
+<?php
+	$popupWidth  = Mage::getStoreConfig('mediaappearance/popupsettings/width');
+	$popupHeight = Mage::getStoreConfig('mediaappearance/popupsettings/height');
+	$autoPlay 	 = Mage::getStoreConfig('mediaappearance/popupsettings/autoplay');
+	$playAgain 	 = Mage::getStoreConfig('mediaappearance/popupsettings/playagain');
+?>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>mediaappearance/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>mediaappearance/jwplayer.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>mediaappearance/jwplayer.html5.js"></script>
+
+<script type="text/javascript">
+	jQuery.noConflict();
+jQuery(document).ready(function() {
+    jQuery('.fancybox').fancybox({
+        openEffect  : 'none',
+        closeEffect : 'none',
+        width  : '<?php echo $popupWidth ?>', // set the width
+        height : '<?php echo $popupHeight ?>',// set the height
+        helpers : {
+            media : {}
+        }
+    });
+
+    jQuery("a.jwVideo").click(function() {
+        var myVideo = this.href; // Dont forget about 'this'
+
+        jQuery.fancybox({
+            padding : 0,
+            content: '<div id="video_container">Loading the player ... </div>',
+            afterShow: function(){
+                jwplayer("video_container").setup({ 
+                    file: myVideo,
+                    autostart: true,
+                    width  : '<?php echo $popupWidth ?>', // set the width
+                    height : '<?php echo $popupHeight ?>',// set the height
+                    aspectratio: "12:5",
+                });
+            }
+        });
+        return false;
+    });
+
+    
+     
+});
+
+</script>
+<?php 
+$blockidentifier = $this->getBlockId(); 
+$model = Mage::helper('mediaappearance')->getMediaBlock($blockidentifier);
+$collection = Mage::helper('mediaappearance')->getMediaBlockCollection($model["media_block_id"]); 
+?>
+<?php
+	if($model["block_area"] == 'main') {
+?>
+
+<?php
+$x = '300px';
+$y = '140px';
+$color = '239,239,239';
+	$popupWidth  = Mage::getStoreConfig('mediaappearance/popupsettings/width');
+	$popupHeight = Mage::getStoreConfig('mediaappearance/popupsettings/height');
+	$autoPlay 	 = Mage::getStoreConfig('mediaappearance/popupsettings/autoplay');
+	$playAgain 	 = Mage::getStoreConfig('mediaappearance/popupsettings/playagain');
+?>
+
+<script type="text/javascript">
+    
+    /*jQuery.noConflict();
+ jQuery(document).ready(function()
+ {
+    jQuery(document).ajaxStop(function() {
+        jQuery(".html5lightbox").html5lightbox();
+});
+});*/
+
+jQuery.noConflict();
+jQuery(document).ready(function(){
+    jQuery(".fancybox").on("click", function(){
+        jQuery.fancybox({
+        	width  : '<?php echo $popupWidth ?>',           // set the width
+        	height : '<?php echo $popupHeight ?>',           // set the height
+        	href: this.href,
+        	type: jQuery(this).data("type")
+        }); // fancybox
+        return false   
+    }); // on
+}); // ready
+
+</script>
+<?php //$collection = $this->getFeaturedBlockVideos(); ?>
+
+<?php if ( count($collection) == 0 ) : ?>
+	<p><?php echo $this->__('No Videos yet...'); ?></p>
+<?php else : ?>    
+<!--horizontal_carousel-->
+ 
+<div class="media_gallery_slider">
+    <h3><span><?php echo $model["block_title"] ?></span></h3>
+    <div class="container-carousel">
+      <div id="owl-demo" class="owl-carousel owl-theme">
+        
+    
+    	<?php $i=1; foreach ( $collection as $_item ) : ?>
+        <?php
+				if($_item["mediatype"] == "1") {
+						$data_type = 'data-type="swf"';
+						$class= Mage::helper('mediaappearance')->is_image(Mage::getBaseUrl('media').$_item["filename"]);
+						$videoURL = Mage::getBaseUrl('media').$_item["filename"];
+						$videoRel = 'shadowbox;  height='.$popupHeight.';width='.$popupWidth.';options={flashVars:{skin: '.Mage::getBaseUrl('js').'mediaappearance/skin01.zip,autostart: '.autoPlay.'}}';
+						 if($_item["filethumb"] != "") {
+							$imgURL = Mage::helper('mediaappearance')->resizeImage($_item["filethumb"]);
+						} else {
+							$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon.jpg";
+						} 
+						if($_item["filename"]=='')
+						{
+							$videoURL = '';
+						}
+						
+					} elseif ($_item["mediatype"] == "2") {
+						$data_type = 'data-type="iframe"';
+						//For Thumb
+						$videoURL = $_item["videourl"];
+						$videoData = Mage::helper('mediaappearance')->video_info($_item["videourl"]);
+						if ($videoData!==false) {
+							if($_item["filethumb"] != "") {
+									$imgURL = Mage::helper('mediaappearance')->resizeImage($_item["filethumb"]);
+								} else {
+									$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+								}
+							
+						} else {
+							if($_item["filethumb"] != "") {
+								$imgURL = Mage::getBaseUrl('media').$_item["filethumb"];
+							} else {
+								$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+							}
+						}
+						
+						//For Video URL
+						if ($videoData!==false) {
+							
+							$video_type  = $videoData['video_type'];
+							$video_id    = $videoData['video_id'];
+							if($video_type == "vimeo") {
+								$class="fancybox";
+								$videoRel = "shadowbox; height=".$popupHeight.";width=".$popupWidth.";options={flashVars:{autostart: ".$autoPlay."}}";
+								$videoURL = 'http://player.vimeo.com/video/'.$video_id.'?autoplay=1';
+							} elseif($video_type == "youtube") {
+								$class="fancybox";
+								$videoRel = 'shadowbox;  height='.$popupHeight.';width='.$popupWidth.'; options={flashVars:{autostart: '.$autoPlay.'}}';
+								$videoURL = "http://www.youtube.com/embed/".$video_id;
+							} 
+							if($_item["videourl"]=='')
+							{
+								$videoURL = '';
+							}
+							
+						} else {
+							
+							$videoURL = $_item["videourl"];
+							$videoRel = 'shadowbox; height='.$popupHeight.';width='.$popupWidth.';options={flashVars:{skin: '.Mage::getBaseUrl('js').'mediaappearance/skin01.zip,autostart: '.$autoPlay.'}}';
+							
+						}
+					} else {
+						$videoRel = "";
+						$videoURL = "#";
+						$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+					}	
+				?>
+		<?php if($videoURL!=''): ?>
+		<div class="item">
+       <div class="video">
+        	<a class="<?php echo $class?>" href="<?php echo $videoURL; ?>" title="<?php echo $_item['title']; ?>"  <?php echo $data_type?>  >
+            <img src="<?php echo $imgURL; ?>" width="100%"  alt="<?php echo $_item['title']; ?>" border="0" /></a><br /><br>
+            <strong><?php echo $_item["title"]; ?></strong>
+        </div>
+        </div>
+    	<?php endif;?>
+        <?php endforeach; ?> 
+    
+  
+  <div class="customNavigation clearfix"> <a class="prev"><i class="icon-left-open"></i></a> <a class="next"><i class="icon-right-open"></i></a> </div>
+    </div>
+ </div>
+ </div>
+
+
+<?php endif; ?>
+<?php
+	} elseif($model["block_area"] == 'side') {
+?>
+<div class="widget widget-static-block">
+       <span class="media-block-text"><?php echo $model["block_title"] ?></span>
+</div>
+<div class="video_container">
+	<?php if ( count($collection) == 0 ) : ?>
+		<p class="text_1"><?php echo $this->__('No Media yet...'); ?></p>
+	<?php else : ?>
+    	 <div class="row_main">
+        <?php $_collectionSize = count($collection); ?>
+        <?php $_columnCount = 3; ?>
+		<?php $i=1; foreach ( $collection as $_item ) : ?> 	
+        	<?php
+					if($_item["mediatype"] == "1") {
+						$data_type = 'data-type="swf"';
+						$class= Mage::helper('mediaappearance')->is_image(Mage::getBaseUrl('media').$_item["filename"]);
+						$videoURL = Mage::getBaseUrl('media').$_item["filename"];
+						$videoRel = 'shadowbox;  height='.$popupHeight.';width='.$popupWidth.';options={flashVars:{skin: '.Mage::getBaseUrl('js').'mediaappearance/skin01.zip,autostart: '.autoPlay.'}}';
+						 if($_item["filethumb"] != "") {
+							$imgURL = Mage::helper('mediaappearance')->resizeImage($_item["filethumb"]);
+						} else {
+							$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon.jpg";
+						} 
+						
+					} elseif ($_item["mediatype"] == "2") {
+						$data_type = 'data-type="iframe"';
+						//For Thumb
+						$videoURL = $_item["videourl"];
+						$videoData = Mage::helper('mediaappearance')->video_info($_item["videourl"]);
+						if ($videoData!==false) {
+							if($_item["filethumb"] != "") {
+									$imgURL = Mage::helper('mediaappearance')->resizeImage($_item["filethumb"]);
+								} else {
+									$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+								}
+							
+						} else {
+							if($_item["filethumb"] != "") {
+								$imgURL = Mage::getBaseUrl('media').$_item["filethumb"];
+							} else {
+								$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+							}
+						}
+						
+						//For Video URL
+						if ($videoData!==false) {
+							
+							$video_type  = $videoData['video_type'];
+							$video_id    = $videoData['video_id'];
+							if($video_type == "vimeo") {
+								$class="fancybox";
+								$videoRel = "shadowbox; height=".$popupHeight.";width=".$popupWidth.";options={flashVars:{autostart: ".$autoPlay."}}";
+								$videoURL = 'http://player.vimeo.com/video/'.$video_id.'?autoplay=1';
+							} elseif($video_type == "youtube") {
+								$class="fancybox";
+								$videoRel = 'shadowbox;  height='.$popupHeight.';width='.$popupWidth.'; options={flashVars:{autostart: '.$autoPlay.'}}';
+								$videoURL = "http://www.youtube.com/embed/".$video_id;
+							} 
+							
+						} else {
+							
+							$videoURL = $_item["videourl"];
+							$videoRel = 'shadowbox; height='.$popupHeight.';width='.$popupWidth.';options={flashVars:{skin: '.Mage::getBaseUrl('js').'mediaappearance/skin01.zip,autostart: '.$autoPlay.'}}';
+							
+						}
+					} else {
+						$videoRel = "";
+						$videoURL = "#";
+						$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+					}	
+				?>
+            <div class="casestudies">
+                <div class="casestudy">
+                          <div class="mediaimage">
+                          <a class="<?php echo $class ?>" href="<?php echo $videoURL; ?>" title="<?php echo $_item['title']; ?>" rel="<?php echo $videoRel; ?>" data-width="<?php echo $popupWidth ?>" data-height="<?php echo $popupHeight ?>">
+                            <img src="<?php echo $imgURL; ?>"  width="148" height="143" alt="<?php echo $_item["title"]; ?>" border="0" />
+                            </div> 
+                          <div class="window_content video" id="rbird_video" style="display: none;"></div>
+                          <div class="who">
+                            <h3><?php echo $_item['title']; ?></h3>
+                          </div>
+                          </a>
+                </div>
+            </div>
+              
+             
+             	</div>
+                <br  style="clear:both;" /><br />
+                <div class="row_main">
+            <?php endforeach; ?>
+</div>  
+<?php endif; ?>
+</div>
+<?php
+	}
+?>

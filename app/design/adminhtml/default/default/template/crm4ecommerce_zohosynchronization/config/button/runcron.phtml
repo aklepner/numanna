@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Config_Html_Button_RunCron
+ */
+?>
+<?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/queue') && Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/queue/runcron')) { ?>
+<button style="margin-bottom: 5px;" onclick="showPopup('<?php echo $this->getCronUrl() ?>');" class="scalable save" type="button" >
+    <span><span><span><?php echo $this->__('Run Synchronize Data in Queue')?></span></span></span>
+</button>
+<script type="text/javascript">
+showPopup = function(url) {
+    window.open(url, 'crm4ecommerce_zohosynchronization_runcron', 'width=550,height=400,scrollbars=yes')
+};
+</script>
+<?php } ?>

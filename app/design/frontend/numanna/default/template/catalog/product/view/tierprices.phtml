@@ -1,0 +1,45 @@
+<?php
+$_product = $this->getProduct();
+$_tierPrices = $this->getTierPrices();
+if (count($_tierPrices) > 0):
+    $_data = array();
+    $_prevQty = 0;
+    $_counter = 0;
+    $_tierPrices = array_reverse($_tierPrices);
+    foreach ($_tierPrices as $_index => $_price){
+        $_counter++;
+        if($_price['price_qty']>$_prevQty){
+            if($_counter == 1){
+                $label = $_price['price_qty'] . '+';
+            } else {
+                $label = $this->__('%d or less',$_price['price_qty']);
+            }
+            $_data[] = array('prev'=>$_prevQty,'next'=>$_price['price_qty'],'label'=>$label,'price'=>$_price['formated_price']);
+            $_prevQty = $_price['price_qty'];
+        } else {
+            $label = $_price['price_qty'] . '-' . $_prevQty;
+            $_data[] = array('prev'=>$_prevQty,'next'=>$_price['price_qty'],'label'=>$label,'price'=>$_price['formated_price']);
+            $_prevQty = $_price['price_qty'];
+        }
+    }
+    $_data = array_reverse($_data);
+?>
+    <table class="tiered-pricing">
+        <tbody>
+            <tr>
+                <th>Quantity</th>
+                <?php foreach ($_data as $_row): ?>
+                 <td><?php echo $_row['label']; ?></td>
+                <?php endforeach; ?>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <?php foreach ($_data as $_row): ?>
+                <td><?php echo $_row['price']; ?></td>
+                 <?php endforeach; ?>
+            </tr>
+        </tbody>
+    </table>
+<?php
+endif;
+?>

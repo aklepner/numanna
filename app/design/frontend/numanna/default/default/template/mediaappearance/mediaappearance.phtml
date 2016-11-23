@@ -1,0 +1,416 @@
+<?php
+	$popupWidth  = Mage::getStoreConfig('mediaappearance/popupsettings/width');
+	$popupHeight = Mage::getStoreConfig('mediaappearance/popupsettings/height');
+	$autoPlay 	 = Mage::getStoreConfig('mediaappearance/popupsettings/autoplay');
+	$playAgain 	 = Mage::getStoreConfig('mediaappearance/popupsettings/playagain');
+?>
+
+
+<div class="container">
+			<div id="tabs" class="tabs">
+				<nav>
+					<ul>
+						<li><a href="#section-1" class="icon-shop"><span><?php echo $this->__('All Media')?></span></a></li>
+						<li><a href="#section-2" class="icon-cup"><span><?php echo $this->__('Product Videos')?></span></a></li>
+						<li><a href="#section-3" class="icon-food"><span><?php echo $this->__('Category Videos')?></span></a></li>
+					</ul>
+				</nav>
+				<div class="content">
+				<section id="section-1">
+				<?php $collection = $this->getItems(); ?>
+    			<?php if ( count($collection) == 0 ) : ?>
+        		<p class="text_1"><?php echo $this->__('No Media yet...'); ?></p>
+        		<?php else : ?>
+        			
+					
+            		<?php $i=1; foreach ( $collection as $_item ) : ?> 	
+            		<?php
+					if($_item["mediatype"] == "1") {
+						$data_type = 'data-type="swf"';
+						$class= Mage::helper('mediaappearance')->is_image(Mage::getBaseUrl('media').$_item["filename"]);
+						$videoURL = Mage::getBaseUrl('media').$_item["filename"];
+						$videoRel = 'shadowbox;  height='.$popupHeight.';width='.$popupWidth.';options={flashVars:{skin: '.Mage::getBaseUrl('js').'mediaappearance/skin01.zip,autostart: '.autoPlay.'}}';
+						 if($_item["filethumb"] != "") {
+							$imgURL = Mage::helper('mediaappearance')->resizeImage($_item["filethumb"]);
+						} else {
+							$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon.jpg";
+						} 
+						if($_item["filename"]=='')
+						{
+							$videoURL = '';
+						}
+						
+					} elseif ($_item["mediatype"] == "2") {
+						$data_type = 'data-type="iframe"';
+						//For Thumb
+						$videoURL = $_item["videourl"];
+						$videoData = Mage::helper('mediaappearance')->video_info($_item["videourl"]);
+						if ($videoData!==false) {
+							if($_item["filethumb"] != "") {
+									$imgURL = Mage::helper('mediaappearance')->resizeImage($_item["filethumb"]);
+								} else {
+									$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+								}
+							
+						} else {
+							if($_item["filethumb"] != "") {
+								$imgURL = Mage::getBaseUrl('media').$_item["filethumb"];
+							} else {
+								$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+							}
+						}
+						
+						//For Video URL
+						if ($videoData!==false) {
+							
+							$video_type  = $videoData['video_type'];
+							$video_id    = $videoData['video_id'];
+							if($video_type == "vimeo") {
+								$class="fancybox";
+								$videoRel = "shadowbox; height=".$popupHeight.";width=".$popupWidth.";options={flashVars:{autostart: ".$autoPlay."}}";
+								$videoURL = 'http://player.vimeo.com/video/'.$video_id.'?autoplay=1';
+							} elseif($video_type == "youtube") {
+								$class="fancybox";
+								$videoRel = 'shadowbox;  height='.$popupHeight.';width='.$popupWidth.'; options={flashVars:{autostart: '.$autoPlay.'}}';
+								$videoURL = "http://www.youtube.com/embed/".$video_id;
+							} 
+							
+						} else {
+							
+							$videoURL = $_item["videourl"];
+							$videoRel = 'shadowbox; height='.$popupHeight.';width='.$popupWidth.';options={flashVars:{skin: '.Mage::getBaseUrl('js').'mediaappearance/skin01.zip,autostart: '.$autoPlay.'}}';
+							
+						}
+						if($_item["videourl"]=='')
+						{
+							$videoURL = '';
+						}
+					} else {
+						$videoRel = "";
+						$videoURL = "#";
+						$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+					}	
+				?>
+				<?php if($videoURL!=''):?>
+					<div class="mediabox">
+	                	<a class="<?php echo $class?>" href="<?php echo $videoURL; ?>" title="<?php echo $_item['title']; ?>" <?php echo $data_type?> rel="<?php echo $videoRel; ?>"  >
+	                		<img src="<?php echo $imgURL; ?>"  alt="<?php echo $_media["title"]; ?>" border="0" /></a><br />
+	                    <h3 >
+		                	<a href="<?php echo $videoURL; ?>" title="<?php echo $_item['title']; ?>" class="<?php echo $class?>" <?php echo $data_type?> rel="<?php echo $videoRel; ?>" >
+		                	<?php echo $_item['title']; ?>
+		                	</a>
+		                    <a class="<?php echo $class?>" href="<?php echo $videoURL; ?>" title="<?php echo $_item['title']; ?>"  <?php echo $data_type?> rel="<?php echo $videoRel; ?>" >
+
+		                    <img src="<?php echo Mage::getBaseUrl('media').'mediaappearance/video_icon.png'?>">
+	                    	</a>
+	                    </h3>
+	                    
+	                    <p>
+	                    	<?php echo $_item['desp'];?>
+	                    </p>
+	                </div>
+               <?php endif;?>
+            
+                <?php endforeach; ?>
+                <div>
+	                <?php if ( $collection instanceof Zend_Paginator ) : ?>
+	                <?php echo $this->getChildHtml('pagination'); ?>
+	                <?php endif; ?>
+	                <?php echo $this->getChildHtml('toolbar'); ?>
+            	</div>
+               
+        <?php endif;?>
+
+		</section>
+		<section id="section-2">
+		<?php
+				$_productCollection = $this->getProdItems();
+
+				foreach ($_productCollection as $_cat ) :
+					$prodMediaIds[] = $_cat['mediaappearance_id'];
+				endforeach;
+
+            ?>
+            <?php 
+            	foreach ( $prodMediaIds as $_productCol ) : 
+					$_product = Mage::getModel('catalog/product')->load($_productCol['entity_id']);
+			?> 	
+            
+			<?php
+            	$mediaTable = Mage::getSingleton('core/resource')->getTableName('mediaappearance');
+				$sqry = "SELECT m.* FROM ".$mediaTable." m WHERE m.mediaappearance_id = ".$_productCol." AND m.status = 1";	 
+				$connection = Mage::getSingleton('core/resource')->getConnection('core_read');
+				$select = $connection->query($sqry);
+				$productsmedia = $select->fetchAll();
+			?>
+			<?php if ( count($productsmedia) == 0 ) : ?>
+                <p class="text_1"><?php echo $this->__('No Products Media yet...'); ?></p>
+            <?php else : ?>
+            <?php $_collectionSize = count($productsmedia); ?>
+                <?php $i=1; foreach ($productsmedia as $_item ) : ?> 	
+                <?php
+
+                	$productIds = array_filter(explode(',', $_item['product_ids']));
+                	$products  	= Mage::getResourceModel('catalog/product_collection')
+                										->addAttributeToSelect('name');
+                    $products->addIdFilter($productIds);
+        
+					if($_item["mediatype"] == "1") {
+						$data_type = 'data-type="swf"';
+						$class= Mage::helper('mediaappearance')->is_image(Mage::getBaseUrl('media').$_item["filename"]);
+						$videoURL = Mage::getBaseUrl('media').$_item["filename"];
+						$videoRel = 'shadowbox;  height='.$popupHeight.';width='.$popupWidth.';options={flashVars:{skin: '.Mage::getBaseUrl('js').'mediaappearance/skin01.zip,autostart: '.autoPlay.'}}';
+						 if($_item["filethumb"] != "") {
+							$imgURL = Mage::helper('mediaappearance')->resizeImage($_item["filethumb"]);
+						} else {
+							$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon.jpg";
+						} 
+						
+					} elseif ($_item["mediatype"] == "2") {
+						$data_type = 'data-type="iframe"';
+						//For Thumb
+						$videoURL = $_item["videourl"];
+						$videoData = Mage::helper('mediaappearance')->video_info($_item["videourl"]);
+						if ($videoData!==false) {
+							if($_item["filethumb"] != "") {
+									$imgURL = Mage::helper('mediaappearance')->resizeImage($_item["filethumb"]);
+								} else {
+									$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+								}
+							
+						} else {
+							if($_item["filethumb"] != "") {
+								$imgURL = Mage::getBaseUrl('media').$_item["filethumb"];
+							} else {
+								$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+							}
+						}
+						
+						//For Video URL
+						if ($videoData!==false) {
+							
+							$video_type  = $videoData['video_type'];
+							$video_id    = $videoData['video_id'];
+							if($video_type == "vimeo") {
+								$class="fancybox";
+								$videoRel = "shadowbox; height=".$popupHeight.";width=".$popupWidth.";options={flashVars:{autostart: ".$autoPlay."}}";
+								$videoURL = 'http://player.vimeo.com/video/'.$video_id.'?autoplay=1';
+							} elseif($video_type == "youtube") {
+								$class="fancybox";
+								$videoRel = 'shadowbox;  height='.$popupHeight.';width='.$popupWidth.'; options={flashVars:{autostart: '.$autoPlay.'}}';
+								$videoURL = "http://www.youtube.com/embed/".$video_id;
+							} 
+							
+						} else {
+							
+							$videoURL = $_item["videourl"];
+							$videoRel = 'shadowbox; height='.$popupHeight.';width='.$popupWidth.';options={flashVars:{skin: '.Mage::getBaseUrl('js').'mediaappearance/skin01.zip,autostart: '.$autoPlay.'}}';
+							
+						}
+					} else {
+						$videoRel = "";
+						$videoURL = "#";
+						$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+					}
+				?>
+				
+				<div class="mediabox">
+                	<a class="<?php echo $class?>" href="<?php echo $videoURL; ?>" title="<?php echo $_item['title']; ?>" <?php echo $data_type?> rel="<?php echo $videoRel; ?>"  >
+                		<img src="<?php echo $imgURL; ?>"  alt="<?php echo $_media["title"]; ?>" border="0" /></a><br />
+                    <h3 >
+	                	<a href="<?php echo $videoURL; ?>" title="<?php echo $_item['title']; ?>" class="<?php echo $class?>" <?php echo $data_type?> rel="<?php echo $videoRel; ?>" >
+	                	<?php echo $_item['title']; ?>
+	                	</a>
+	                    <a class="<?php echo $class?>" href="<?php echo $videoURL; ?>" title="<?php echo $_item['title']; ?>"  <?php echo $data_type?> rel="<?php echo $videoRel; ?>" >
+
+	                    <img src="<?php echo Mage::getBaseUrl('media').'mediaappearance/video_icon.png'?>">
+                    	</a>
+                    </h3>
+                    
+                    <p>
+                    	<?php echo $_item['desp'];?>
+                    </p>
+                    <?php foreach ($products as $key => $_product) { ?>
+                    	<h3><a href="<?php echo $_product->getProductUrl(); ?>"><?php echo $_product->getName(); ?></a></h3>
+                    <?php } ?>
+                    
+                </div>
+               
+            
+                <?php endforeach; ?>
+            <?php endif;?>
+            <?php endforeach; ?>
+            <div>
+	        <?php if ( $_productCollection instanceof Zend_Paginator ) : ?>
+	        <?php echo $this->getChildHtml('pagination'); ?>
+	        
+	        <?php endif; ?>
+	        <?php echo $this->getChildHtml('toolbar'); ?>
+            </div>
+			</section>
+			<section id="section-3">
+			<?php
+				$helper = Mage::helper('catalog/category');
+				// sorted by name, fetched as collection
+				$categoriesCollection = $this->getCatItems();
+				$_collectionSize = count($categoriesCollection);
+
+				$mediaIds = array();
+				
+				foreach ($categoriesCollection as $_cat ) :
+					$mediaIds[] = $_cat['mediaappearance_id'];
+				endforeach;
+
+			?>
+            <?php foreach ($mediaIds as $_cat ) : ?>
+            <?php
+            	$mediaTable = Mage::getSingleton('core/resource')->getTableName('mediaappearance');		
+
+				$sqry = "SELECT m.* FROM ".$mediaTable." m where m.status = 1 AND m.mediaappearance_id = ".$_cat;	 
+
+				$connection = Mage::getSingleton('core/resource')->getConnection('core_read');
+				$select = $connection->query($sqry);
+				$categoriesmedia = $select->fetchAll();
+
+					
+			?>
+                <?php if ( count($categoriesmedia) > 0 ) : ?>
+                <p>
+                <?php
+                	//Get Category Name
+					
+				?>
+                <?php $_collectionSize = count($categoriesmedia); ?>
+                <?php $i=1; foreach ( $categoriesmedia as $_item ) : ?> 
+				<?php
+
+					$category = Mage::getModel('catalog/category')->getCollection()
+							->addAttributeToFilter('entity_id',explode(',',$_item['category_ids'])
+								)
+							->addAttributeToSelect('*');			
+
+					if($_item["mediatype"] == "1") {
+						$data_type = 'data-type="swf"';
+						$class= Mage::helper('mediaappearance')->is_image(Mage::getBaseUrl('media').$_item["filename"]);
+						$videoURL = Mage::getBaseUrl('media').$_item["filename"];
+						$videoRel = 'shadowbox;  height='.$popupHeight.';width='.$popupWidth.';options={flashVars:{skin: '.Mage::getBaseUrl('js').'mediaappearance/skin01.zip,autostart: '.autoPlay.'}}';
+						 if($_item["filethumb"] != "") {
+							$imgURL = Mage::helper('mediaappearance')->resizeImage($_item["filethumb"]);
+						} else {
+							$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon.jpg";
+						} 
+						
+					} elseif ($_item["mediatype"] == "2") {
+						$data_type = 'data-type="iframe"';
+						//For Thumb
+						$videoURL = $_item["videourl"];
+						$videoData = Mage::helper('mediaappearance')->video_info($_item["videourl"]);
+						if ($videoData!==false) {
+							if($_item["filethumb"] != "") {
+									$imgURL = Mage::helper('mediaappearance')->resizeImage($_item["filethumb"]);
+								} else {
+									$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+								}
+							
+						} else {
+							if($_item["filethumb"] != "") {
+								$imgURL = Mage::getBaseUrl('media').$_item["filethumb"];
+							} else {
+								$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+							}
+						}
+						
+						//For Video URL
+						if ($videoData!==false) {
+							
+							$video_type  = $videoData['video_type'];
+							$video_id    = $videoData['video_id'];
+							if($video_type == "vimeo") {
+								$class="fancybox";
+								$videoRel = "shadowbox; height=".$popupHeight.";width=".$popupWidth.";options={flashVars:{autostart: ".$autoPlay."}}";
+								$videoURL = 'http://player.vimeo.com/video/'.$video_id.'?autoplay=1';
+							} elseif($video_type == "youtube") {
+								$class="fancybox";
+								$videoRel = 'shadowbox;  height='.$popupHeight.';width='.$popupWidth.'; options={flashVars:{autostart: '.$autoPlay.'}}';
+								$videoURL = "http://www.youtube.com/embed/".$video_id;
+							} 
+							
+						} else {
+							
+							$videoURL = $_item["videourl"];
+							$videoRel = 'shadowbox; height='.$popupHeight.';width='.$popupWidth.';options={flashVars:{skin: '.Mage::getBaseUrl('js').'mediaappearance/skin01.zip,autostart: '.$autoPlay.'}}';
+							
+						}
+					} else {
+						$videoRel = "";
+						$videoURL = "#";
+						$imgURL = Mage::getBaseUrl('media')."mediaappearance/video_icon_full.jpg";
+					}	
+				?>
+				
+					<div class="mediabox">
+	                	<a class="<?php echo $class?>" href="<?php echo $videoURL; ?>" title="<?php echo $_item['title']; ?>" <?php echo $data_type?> rel="<?php echo $videoRel; ?>"  >
+	                		<img src="<?php echo $imgURL; ?>"  alt="<?php echo $_media["title"]; ?>" border="0" /></a><br />
+	                    <h3 >
+		                	<a href="<?php echo $videoURL; ?>" title="<?php echo $_item['title']; ?>" <?php echo $class?> <?php echo $data_type?> rel="<?php echo $videoRel; ?>" >
+		                	<?php echo $_item['title']; ?>
+		                	</a>
+		                    <a <?php echo $class?> href="<?php echo $videoURL; ?>" title="<?php echo $_item['title']; ?>"  <?php echo $data_type?> rel="<?php echo $videoRel; ?>" >
+
+		                    <img src="<?php echo Mage::getBaseUrl('media').'mediaappearance/video_icon.png'?>">
+	                    	</a>
+	                    </h3>
+	                    
+	                    <p>
+	                    	<?php echo $_item['desp'];?>
+	                    </p>
+	                    <?php foreach ($category as $c):?>
+	                    	
+	                   
+	                    <h3><a href="<?php echo $c->getUrl(); ?>"><?php echo $c->getName(); ?></a></h3>
+	                     <?php endforeach;?>
+	                </div>
+               
+            
+                <?php endforeach; ?>
+                
+               
+        <?php endif;?>	
+        <?php endforeach; ?>
+	        <div>
+	        <?php if ( $categoriesCollection instanceof Zend_Paginator ) : ?>
+	        <?php echo $this->getChildHtml('pagination'); ?>
+	        <?php endif; ?>
+	        <?php echo $this->getChildHtml('toolbar'); ?>
+	       	</div>       	
+		</section>
+					
+				</div><!-- /content -->
+			</div><!-- /tabs -->
+			
+		</div>
+		<script>
+			new CBPFWTabs( document.getElementById( 'tabs' ) );
+		</script>
+
+<?php $loader = Mage::getBaseUrl('media').'mediaappearance/' . Mage::getStoreConfig('mediaappearance/ajaxloader/fme_media_img');?>
+
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>mediaappearance/jquery.ias.min.js"></script>
+
+
+
+<script type="text/javascript">
+jQuery.ias({
+    container : '.content',
+    item: '.mediabox',
+    pagination: '.paginationControl',
+    next: '.next a',
+    loader: '<img src="<?php echo $loader;  ?>" id="popup" /><h4 id="popupsp"></h4>'
+});
+</script>
+
+<input type="hidden" id="tab0" value="<?php echo Mage::helper('mediaappearance')->getUrl() ;?>?tab=1">
+<input type="hidden" id="tab1" value="<?php echo Mage::helper('mediaappearance')->getUrl() ;?>?tab=2">
+<input type="hidden" id="tab2" value="<?php echo Mage::helper('mediaappearance')->getUrl() ;?>?tab=3">
+<script>
+</script>

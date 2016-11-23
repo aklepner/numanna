@@ -1,0 +1,810 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Mapping_Form_New
+ */
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS).'tinybox2/style.css';?>" />
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS).'tinybox2/tinybox.js';?>"></script>
+<style type="text/css">
+    .box-message .demo-info .bg {
+        background-color: #FFFFFF; border: 1px solid #CCCCCC; padding-bottom: 15px;
+        border-radius: 10px 10px 10px 10px; float: left; width: 390px;
+    }
+    
+    .box-message .demo-info .bg .title {
+        padding: 10px 15px 2px 7px;
+        border-bottom: 2px solid #999999;
+    }
+    
+    .box-message .demo-info .bg .content {
+        padding: 10px 15px 0 25px; text-align: justify;
+    }
+    
+    .has-image-load {
+         position: relative; top: -4px;
+    }
+</style>
+
+<div class="content-header" style="margin-bottom: 0px;">
+    <table cellspacing="0">
+        <tr>
+            <td><h3 class="icon-head head-adminhtml-mapping"><?php echo $this->getHeaderTitle() ?></h3></td>
+        </tr>
+    </table>
+</div>
+
+<div style="margin: 5px;">
+    <table style="border: black dashed 1px; width: 100%; padding: 0px 3px;">
+        <tr>
+            <td><?php echo $this->getNoticeHtml();?></td>
+        </tr>
+    </table>
+</div>
+
+<div style="margin: 3px 5px 3px 3px;">
+    <table border="0px" style="width: 100%;">
+        <tr>
+            <td style="width: 300px;">
+                <div class="entry-edit" style="width: 300px; float: left; margin-right: 5px;">
+                    <div class="entry-edit-head">
+                        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->getFormTitle(); ?></h4>
+                    </div>
+                    <div class="fieldset">
+                        <table cellspacing="0" class="form-list" style="width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <td class="label" style="width: 80px;"><label style="width: 80px; padding-right: 0px" for="remote_type"><?php echo $this->__('Load Type') ?></label></td>
+                                    <td class="value">
+                                        <select id="remote_type" class="input-text" style="width: 159px;">
+                                            <option value="Leads"><?php echo $this->__('Customers / Subscribers from Leads');?></option>
+                                            <option value="Accounts"><?php echo $this->__('Customers from Acccounts');?></option>
+                                            <option value="Contacts"><?php echo $this->__("Customer's Addresses from Contacts");?></option>
+                                            <option value="Tasks"><?php echo $this->__("Sales' Comments from Tasks");?></option>
+                                            <?php
+                                            foreach ($otherModels as $model) { ?>
+                                                
+                                                <option value="<?php echo $model['model'];?>"><?php echo $model['remoteLabel'];?></option>
+                                            <?php }
+                                            ?>
+                                        </select>
+                                        <img id="remote_type_help" style="cursor: pointer; top: 4px; position: relative;" alt="<?php echo $this->__('Help') ?>" title="<?php echo $this->__('Help') ?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/help.png'); ?>">
+                                    </td>
+                                </tr>
+                                <tr class="remote_a_list" style="display: none;">
+                                    <td colspan="2"><a href="javascript:remoteAnObject();" style="text-decoration: none;"> <?php echo $this->__('+ Load only an Object') ?></a></td>
+                                </tr>
+                                <tr class="remote_an_object">
+                                    <td colspan="2"><a href="javascript:remoteAList();" style="text-decoration: none;"> <?php echo $this->__('+ Load a List Objects') ?></a></td>
+                                </tr>
+                                <tr class="remote_an_object">
+                                    <td class="label" style="width: 80px;"><label style="width: 80px; padding-right: 0px" for="remote_id"><?php echo $this->__('Load Id') ?></label></td>
+                                    <td class="value">
+                                        <input type="text" class="input-text" id="remote_id" style="width: 100%" />
+                                    </td>
+                                </tr>
+                                <tr class="remote_a_list" style="display: none;">
+                                    <td class="label" style="width: 80px;"><label style="width: 80px; padding-right: 0px" for="remote_from"><?php echo $this->__('Load From') ?></label></td>
+                                    <td class="value">
+                                        <input type="text" class="input-text" id="remote_from" style="width: 100%" />
+                                    </td>
+                                </tr>
+                                <tr class="remote_a_list" style="display: none;">
+                                    <td class="label" style="width: 80px;"><label style="width: 80px; padding-right: 0px" for="remote_to"><?php echo $this->__('Load To') ?></label></td>
+                                    <td class="value">
+                                        <input type="text" class="input-text" id="remote_to" style="width: 100%" />
+                                    </td>
+                                </tr>
+                                <tr class="remote_a_list remote_a_list_sort" style="display: none;">
+                                    <td colspan="2"><a href="javascript:remoteAListCondition();" style="text-decoration: none;"> <?php echo $this->__('+ Search Condition') ?></a></td>
+                                </tr>                               
+                                <tr class="remote_a_list remote_a_list_condition" style="display: none;">
+                                    <td class="label" style="width: 80px;"><label style="width: 80px; padding-right: 0px"><?php echo $this->__('Search By') ?></label></td>
+                                    <td class="value">
+                                        <?php 
+                                            $options = Mage::getModel('core/config_data')->getCollection()->addFieldToFilter('path', 'crm4ecommerce_zohosynchronization/mapping_fields/logs/Leads')->getFirstItem()->value;
+                                            $group_options = explode('@@', $options);
+                                        ?>
+                                        <select id="remote_search_by_leads" class="input-text has-image-load" style="width: 159px;">
+                                            <option value="LEADID">LEADID</option>
+                                            <option value="Created Time"><?php echo $this->__('Created Time') ?></option>
+                                            <option value="Modified Time"><?php echo $this->__('Modified Time') ?></option>
+                                            <?php
+                                                foreach ($group_options as $group_option) {
+                                                    $group_option = explode('@', $group_option); ?>
+                                                <optgroup label="<?php echo $group_option[0];?>">
+                                                <?php
+                                                    $options = explode(';', $group_option[1]);
+                                                    foreach ($options as $option) {
+                                                        $option = explode(',', $option);
+                                                        if (count($option) == 3) {
+                                                    ?>
+                                                    <option value="<?php echo $option[0]; ?>"><?php echo $option[1]; ?></option>
+                                                    <?php
+                                                        }
+                                                    } ?>
+                                                </optgroup>
+                                                <?php
+                                                }
+                                            ?>
+                                        </select>
+                                        <?php 
+                                            $options = Mage::getModel('core/config_data')->getCollection()->addFieldToFilter('path', 'crm4ecommerce_zohosynchronization/mapping_fields/logs/Accounts')->getFirstItem()->value;
+                                            $group_options = explode('@@', $options);
+                                        ?>
+                                        <select id="remote_search_by_accounts" class="input-text has-image-load" style="width: 159px; display: none;">
+                                            <option value="ACCOUNTID">ACCOUNTID</option>
+                                            <option value="Created Time"><?php echo $this->__('Created Time') ?></option>
+                                            <option value="Modified Time"><?php echo $this->__('Modified Time') ?></option>
+                                            <?php
+                                                foreach ($group_options as $group_option) {
+                                                    $group_option = explode('@', $group_option); ?>
+                                                <optgroup label="<?php echo $group_option[0];?>">
+                                                <?php
+                                                    $options = explode(';', $group_option[1]);
+                                                    foreach ($options as $option) {
+                                                        $option = explode(',', $option);
+                                                        if (count($option) == 3) {
+                                                    ?>
+                                                    <option value="<?php echo $option[0]; ?>"><?php echo $option[1]; ?></option>
+                                                    <?php
+                                                        }
+                                                    } ?>
+                                                </optgroup>
+                                                <?php
+                                                }
+                                            ?>
+                                        </select>
+                                        <?php 
+                                            $options = Mage::getModel('core/config_data')->getCollection()->addFieldToFilter('path', 'crm4ecommerce_zohosynchronization/mapping_fields/logs/Contacts')->getFirstItem()->value;
+                                            $group_options = explode('@@', $options);
+                                        ?>
+                                        <select id="remote_search_by_contacts" class="input-text has-image-load" style="width: 159px; display: none;">
+                                            <option value="CONTACTID">CONTACTID</option>
+                                            <option value="Created Time"><?php echo $this->__('Created Time') ?></option>
+                                            <option value="Modified Time"><?php echo $this->__('Modified Time') ?></option>
+                                            <?php
+                                                foreach ($group_options as $group_option) {
+                                                    $group_option = explode('@', $group_option); ?>
+                                                <optgroup label="<?php echo $group_option[0];?>">
+                                                <?php
+                                                    $options = explode(';', $group_option[1]);
+                                                    foreach ($options as $option) {
+                                                        $option = explode(',', $option);
+                                                        if (count($option) == 3) {
+                                                    ?>
+                                                    <option value="<?php echo $option[0]; ?>"><?php echo $option[1]; ?></option>
+                                                    <?php
+                                                        }
+                                                    } ?>
+                                                </optgroup>
+                                                <?php
+                                                }
+                                            ?>
+                                        </select>
+                                        <?php 
+                                            $options = Mage::getModel('core/config_data')->getCollection()->addFieldToFilter('path', 'crm4ecommerce_zohosynchronization/mapping_fields/logs/Tasks')->getFirstItem()->value;
+                                            $group_options = explode('@@', $options);
+                                        ?>
+                                        <select id="remote_search_by_tasks" class="input-text has-image-load" style="width: 159px; display: none;">
+                                            <option value="ACTIVITYID">ACTIVITYID</option>
+                                            <option value="Created Time"><?php echo $this->__('Created Time') ?></option>
+                                            <option value="Modified Time"><?php echo $this->__('Modified Time') ?></option>
+                                            <?php
+                                                foreach ($group_options as $group_option) {
+                                                    $group_option = explode('@', $group_option); ?>
+                                                <optgroup label="<?php echo $group_option[0];?>">
+                                                <?php
+                                                    $options = explode(';', $group_option[1]);
+                                                    foreach ($options as $option) {
+                                                        $option = explode(',', $option);
+                                                        if (count($option) == 3) {
+                                                    ?>
+                                                    <option value="<?php echo $option[0]; ?>"><?php echo $option[1]; ?></option>
+                                                    <?php
+                                                        }
+                                                    } ?>
+                                                </optgroup>
+                                                <?php
+                                                }
+                                            ?>
+                                        </select>
+                                        
+                                        <img title="<?php echo $this->__('Refresh list ZohoCRM fields'); ?>" style="cursor: pointer;" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/load.png'); ?>" onclick="crm4ecommerce.loadZohoFields(this)">
+                                    </td>
+                                </tr>
+                                
+                                <tr class="remote_a_list remote_a_list_condition" style="display: none;">
+                                    <td class="label" style="width: 80px;"><label style="width: 80px; padding-right: 0px" for="remote_search_type_compare"><?php echo $this->__('Search Type') ?></label></td>
+                                    <td class="value">
+                                        <select id="remote_search_type_compare" style="width: 100%;">
+                                            <option value="is"><?php echo $this->__('equals');?></option>
+                                            <option value="isn't"><?php echo $this->__('not equals');?></option>
+                                            <option value=">"><?php echo $this->__('greater than');?></option>
+                                            <option value="<"><?php echo $this->__('less than');?></option>
+                                            <option value=">="><?php echo $this->__('greater or equals than');?></option>
+                                            <option value="<="><?php echo $this->__('less or equals than');?></option>
+                                            <option value="contains"><?php echo $this->__('contains');?></option>
+                                            <option value="starts with"><?php echo $this->__('starts with');?></option>
+                                            <option value="ends with"><?php echo $this->__('ends with');?></option>
+                                            <option value="doesn't contain"><?php echo $this->__("doesn't contain");?></option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                
+                                <tr class="remote_a_list remote_a_list_condition" style="display: none;">
+                                    <td class="label" style="width: 80px;"><label style="width: 80px; padding-right: 0px" for="remote_search_value"><?php echo $this->__('Search Value') ?></label></td>
+                                    <td class="value">
+                                        <input type="text" class="input-text" id="remote_search_value" style="width: 100%" />
+                                    </td>
+                                </tr>
+                                
+                                <tr class="remote_a_list" style="display: none;">
+                                    <td class="label" style="width: 80px;"><label style="width: 80px; padding-right: 0px"><?php echo $this->__('Sort By') ?></label></td>
+                                    <td class="value">
+                                        <?php 
+                                            $options = Mage::getModel('core/config_data')->getCollection()->addFieldToFilter('path', 'crm4ecommerce_zohosynchronization/mapping_fields/logs/Leads')->getFirstItem()->value;
+                                            $group_options = explode('@@', $options);
+                                        ?>
+                                        <select id="remote_sort_by_leads" class="input-text has-image-load" style="width: 159px;">
+                                            <option value="LEADID">LEADID</option>
+                                            <option value="Created Time"><?php echo $this->__('Created Time') ?></option>
+                                            <option value="Modified Time"><?php echo $this->__('Modified Time') ?></option>
+                                            <?php
+                                                foreach ($group_options as $group_option) {
+                                                    $group_option = explode('@', $group_option); ?>
+                                                <optgroup label="<?php echo $group_option[0];?>">
+                                                <?php
+                                                    $options = explode(';', $group_option[1]);
+                                                    foreach ($options as $option) {
+                                                        $option = explode(',', $option);
+                                                        if (count($option) == 3) {
+                                                    ?>
+                                                    <option value="<?php echo $option[0]; ?>"><?php echo $option[1]; ?></option>
+                                                    <?php
+                                                        }
+                                                    } ?>
+                                                </optgroup>
+                                                <?php
+                                                }
+                                            ?>
+                                        </select>
+                                        <?php 
+                                            $options = Mage::getModel('core/config_data')->getCollection()->addFieldToFilter('path', 'crm4ecommerce_zohosynchronization/mapping_fields/logs/Accounts')->getFirstItem()->value;
+                                            $group_options = explode('@@', $options);
+                                        ?>
+                                        <select id="remote_sort_by_accounts" class="input-text has-image-load" style="width: 159px; display: none;">
+                                            <option value="ACCOUNTID">ACCOUNTID</option>
+                                            <option value="Created Time"><?php echo $this->__('Created Time') ?></option>
+                                            <option value="Modified Time"><?php echo $this->__('Modified Time') ?></option>
+                                            <?php
+                                                foreach ($group_options as $group_option) {
+                                                    $group_option = explode('@', $group_option); ?>
+                                                <optgroup label="<?php echo $group_option[0];?>">
+                                                <?php
+                                                    $options = explode(';', $group_option[1]);
+                                                    foreach ($options as $option) {
+                                                        $option = explode(',', $option);
+                                                        if (count($option) == 3) {
+                                                    ?>
+                                                    <option value="<?php echo $option[0]; ?>"><?php echo $option[1]; ?></option>
+                                                    <?php
+                                                        }
+                                                    } ?>
+                                                </optgroup>
+                                                <?php
+                                                }
+                                            ?>
+                                        </select>
+                                        <?php 
+                                            $options = Mage::getModel('core/config_data')->getCollection()->addFieldToFilter('path', 'crm4ecommerce_zohosynchronization/mapping_fields/logs/Contacts')->getFirstItem()->value;
+                                            $group_options = explode('@@', $options);
+                                        ?>
+                                        <select id="remote_sort_by_contacts" class="input-text has-image-load" style="width: 159px; display: none;">
+                                            <option value="CONTACTID">CONTACTID</option>
+                                            <option value="Created Time"><?php echo $this->__('Created Time') ?></option>
+                                            <option value="Modified Time"><?php echo $this->__('Modified Time') ?></option>
+                                            <?php
+                                                foreach ($group_options as $group_option) {
+                                                    $group_option = explode('@', $group_option); ?>
+                                                <optgroup label="<?php echo $group_option[0];?>">
+                                                <?php
+                                                    $options = explode(';', $group_option[1]);
+                                                    foreach ($options as $option) {
+                                                        $option = explode(',', $option);
+                                                        if (count($option) == 3) {
+                                                    ?>
+                                                    <option value="<?php echo $option[0]; ?>"><?php echo $option[1]; ?></option>
+                                                    <?php
+                                                        }
+                                                    } ?>
+                                                </optgroup>
+                                                <?php
+                                                }
+                                            ?>
+                                        </select>
+                                        <?php 
+                                            $options = Mage::getModel('core/config_data')->getCollection()->addFieldToFilter('path', 'crm4ecommerce_zohosynchronization/mapping_fields/logs/Tasks')->getFirstItem()->value;
+                                            $group_options = explode('@@', $options);
+                                        ?>
+                                        <select id="remote_sort_by_tasks" class="input-text has-image-load" style="width: 159px; display: none;">
+                                            <option value="ACTIVITYID">ACTIVITYID</option>
+                                            <option value="Created Time"><?php echo $this->__('Created Time') ?></option>
+                                            <option value="Modified Time"><?php echo $this->__('Modified Time') ?></option>
+                                            <?php
+                                                foreach ($group_options as $group_option) {
+                                                    $group_option = explode('@', $group_option); ?>
+                                                <optgroup label="<?php echo $group_option[0];?>">
+                                                <?php
+                                                    $options = explode(';', $group_option[1]);
+                                                    foreach ($options as $option) {
+                                                        $option = explode(',', $option);
+                                                        if (count($option) == 3) {
+                                                    ?>
+                                                    <option value="<?php echo $option[0]; ?>"><?php echo $option[1]; ?></option>
+                                                    <?php
+                                                        }
+                                                    } ?>
+                                                </optgroup>
+                                                <?php
+                                                }
+                                            ?>
+                                        </select>
+                                        
+                                        <img title="<?php echo $this->__('Refresh list ZohoCRM fields'); ?>" style="cursor: pointer;" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/load.png'); ?>" onclick="crm4ecommerce.loadZohoFields(this)">
+                                    </td>
+                                </tr>
+                                <tr class="remote_a_list" style="display: none;">
+                                    <td class="label" style="width: 80px;"><label style="width: 80px; padding-right: 0px" for="remote_sort_type"><?php echo $this->__('Sort Type') ?></label></td>
+                                    <td class="value">
+                                        <select id="remote_sort_type" class="input-text" style="width: 100%">
+                                            <option selected="selected" value="asc"><?php echo $this->__('Ascending') ?></option>
+                                            <option value="desc"><?php echo $this->__('Descending') ?></option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="label" style="width: 80px;"><label style="width: 80px; padding-right: 0px" for="remote_store_id"><?php echo $this->__('Add New in') ?></label></td>
+                                    <td class="value">
+                                        <?php 
+                                            $webCollection = Mage::getModel('core/website')->getCollection();
+                                        ?>
+                                        <select id="remote_store_id" class="input-text" style="width: 100%">
+                                            <?php foreach ($webCollection as $web) { ?>
+                                            <optgroup label="<?php echo $web->getName();?>">
+                                                <?php
+                                                    $groupCollection = $web->getGroupCollection();
+                                                ?>
+                                            </optgroup>
+                                                <?php foreach ($groupCollection as $group) { ?>
+                                            <optgroup label="&nbsp;&nbsp;<?php echo $group->getName();?>">
+                                                    <?php
+                                                        $storeCollection = $group->getStoreCollection();
+                                                    ?>
+                                                    <?php foreach ($storeCollection as $store) { ?>
+                                                    <option value="<?php echo $web->getId();?>,<?php echo $group->getId();?>,<?php echo $store->getId();?>"><?php echo $store->getName();?></option>
+                                                    <?php } ?>
+                                                </optgroup>
+                                                <?php } ?>
+                                            <?php } ?>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="text-align: right;">        
+                        <table style="width: 100%;"><tr><td>                        
+                            <div style="float: right;">
+                                <button id="btnremote" type="button" value="remote" class="scalable save" onclick="run();">
+                                    <span><span><span><?php echo $this->__('Load');?></span></span></span>
+                                </button>
+
+                                <button class="scalable cancel" style="" type="button" onclick="stop();">
+                                    <span><span><span><?php echo $this->__('Stop');?></span></span></span>
+                                </button>
+                                
+                                <button class="scalable" style="" type="button" onclick="resetConsole();">
+                                    <span><span><span><?php echo $this->__('Clear Console');?></span></span></span>
+                                </button>
+                            </div>                     
+                            <div style="float: right;">
+                                <img id="img-running" style="cursor: pointer; top: 3px; position: relative; right: 5px; display: none;" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/running.gif'); ?>">
+                            </div>                
+                            </td></tr>
+                        </table>
+                    </div>
+                </div>           
+            </td>
+            <td>
+                <div style="margin-top: 2px;">
+                    <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Console Contents');?></h4>
+                </div>
+                
+                <div id="console" style="height: 350px; width: 99%; border: 2px solid #cccccc; background: none repeat scroll 0 0 black;
+            color: #FFFFFF; font: 11px/15px Lucida Console,Courier New,serif; margin: 0; padding: 5px 5px 10px 5px; overflow: auto;">
+                    
+                </div>
+                <div id="console-footer" style="margin-top: 5px; width: 99%; padding: 4px 7px 3px; background: none repeat scroll 0 0 #EFF5EA;
+    color: #3D6611;border: 0 none; font-size: 0.95em; font-weight: bold; list-style: none outside none;">
+                   
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="remote_type_help_content_leads" style="display: none;">
+    <div class="box-message">
+        <div class="demo-info">
+            <div class="bg">
+                <div class="title">
+                    <img style="cursor: pointer;" alt="<?php echo $this->__('Help') ?>" title="<?php echo $this->__('Help') ?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/help.png'); ?>">
+                    <span style="position: relative; top: -3px;"><b><?php echo $this->__('Load Leads Help');?>:</b></span>
+                </div>
+                <div class="content"><?php echo $this->__("<ul style=\"list-style: outside disc;\"><li>Zoho leads data from Zoho CRM system will be loaded into your Magento store and converted to customer's information or newsletter subscribers. In case lead is customer, lead's address will be Customer's default billing address.</li><li>If there is no customer has zoho id that coincides with id of loaded lead, then a new customer will be created in Magento store in selected store view. Of course, if customer has no billing address, the new billing address of customer will be also created.</li><li>Load id field will be id of Zoho lead that you want to load data into your Magento store.</li></ul>");?></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="remote_type_help_content_accounts" style="display: none;">
+    <div class="box-message">
+        <div class="demo-info">
+            <div class="bg">
+                <div class="title">
+                    <img style="cursor: pointer;" alt="<?php echo $this->__('Help') ?>" title="<?php echo $this->__('Help') ?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/help.png'); ?>">
+                    <span style="position: relative; top: -3px;"><b><?php echo $this->__('Load Accounts Help');?>:</b></span>
+                </div>
+                <div class="content"><?php echo $this->__("<ul style=\"list-style: outside disc;\"><li>Zoho accounts data from Zoho CRM system will be loaded into your Magento store and converted to customer's information, account's addresses and contacts of account will be Customer's addresses.</li><li>If there is no customer has zoho id that coincides with id of loaded account, then a new customer will be created in Magento store in selected store view. Of course, if customer has no addresses that corresponding with account's addresses or account's contacts, the new addresses of customer will be also created.</li><li>Load id field will be id of Zoho account that you want to load data into your Magento store.</li></ul>");?></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="remote_type_help_content_contacts" style="display: none;">
+    <div class="box-message">
+        <div class="demo-info">
+            <div class="bg">
+                <div class="title">
+                    <img style="cursor: pointer;" alt="<?php echo $this->__('Help') ?>" title="<?php echo $this->__('Help') ?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/help.png'); ?>">
+                    <span style="position: relative; top: -3px;"><b><?php echo $this->__('Load Contacts Help');?>:</b></span>
+                </div>
+                <div class="content"><?php echo $this->__("<ul style=\"list-style: outside disc;\"><li>Zoho contacts data from Zoho CRM system will be loaded into your Magento store and converted to customer's addresses.</li><li>If there is no customer's address has zoho id that coincides with id of loaded contact, then a new customer's address will be created.</li><li>Load id field will be id of Zoho contact that you want to load data into your Magento store.</li></ul>");?></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="remote_type_help_content_tasks" style="display: none;">
+    <div class="box-message">
+        <div class="demo-info">
+            <div class="bg">
+                <div class="title">
+                    <img style="cursor: pointer;" alt="<?php echo $this->__('Help') ?>" title="<?php echo $this->__('Help') ?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/help.png'); ?>">
+                    <span style="position: relative; top: -3px;"><b><?php echo $this->__("Load Sales' Comments Help");?>:</b></span>
+                </div>
+                <div class="content"><?php echo $this->__("<ul style=\"list-style: outside disc;\"><li>Zoho tasks data from Zoho CRM system will be loaded into your Magento store and converted to sales order's comment, invoice's comment, shipment's comment or credit memo's comment depends on <b>task subject format</b>.</li><li>If there is no comment has activity zoho id that coincides with id of loaded task, then a new comment will be created.</li><li>Load id field will be id of Zoho task that you want to load data into your Magento store.</li></ul>");?></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    hasSearch = false;
+    remoteIdEnabled = true;
+    remoteAnObject = function() {
+        remoteIdEnabled = true;
+        $$('.remote_an_object').each(function(item,index){
+            $(item).show();
+        });
+        $$('.remote_a_list').each(function(item,index){
+            $(item).hide();
+        });
+    };
+    remoteAList = function() {
+        remoteIdEnabled = false;
+        $$('.remote_a_list').each(function(item,index){
+            $(item).show();
+        });
+        $$('.remote_a_list_condition').each(function(item,index){
+            $(item).hide();
+        });
+        $$('.remote_an_object').each(function(item,index){
+            $(item).hide();
+        });
+    };
+    remoteAListCondition = function() {
+        $$('.remote_a_list_condition').each(function(item,index){
+            if ($(item).visible()) {
+                $(item).hide();
+                hasSearch = false;
+            } else {
+                $(item).show();
+                hasSearch = true;
+            }
+        });
+    };
+    
+    var isRunning = false;                    
+    var errorTime = 0;
+    var form_key = "<?php echo Mage::getSingleton('core/session')->getFormKey();?>";
+    var dataType = {
+                "Leads":"<?php echo $this->__('Customers / Subscribers from Leads');?>",
+                "Accounts":"<?php echo $this->__('Customers from Acccounts');?>",
+                "Contacts":"<?php echo $this->__("Customer's Addresses from Contacts");?>",
+                "Tasks":"<?php echo $this->__("Sales' Comments from Tasks");?>"
+            };
+    var line = 1;
+    
+    resetConsole = function() {
+        $('console').update('');
+    }
+    
+    updateConsole = function(content) {
+        var _content = $('console').innerHTML;
+        $('console').update(_content + content);
+        $('console').scrollTop = $('console').scrollHeight;
+    };
+
+    stop = function() {
+        if (isRunning) {
+            line = 1;
+            errorTime = 0;
+            $("img-running").setStyle({display: 'none'});
+            isRunning = false;
+            updateConsole("<?php echo $this->__('Finished remoting data!');?><br/>");
+        }
+    };
+ 
+    _post = function(type, id, from, to, storeId) {
+        var params = 'form_key=' + form_key + '&type=' + type + '&storeId=' + storeId;
+        var flag = false;
+        if (id != '') {
+            params += '&id=' + id;
+            updateConsole("<?php echo $this->__('Load');?> " + dataType[type] + " <?php echo $this->__('with');?> <?php echo $this->__('Id');?> \"" + id + "\"");
+            flag = true;
+        } else if (parseInt(to) >= parseInt(from)) {
+            sort_by = '';
+            switch ($('remote_type').getValue()) {
+                case 'Leads':
+                    sort_by = $('remote_sort_by_leads').getValue();
+                    break;
+                case 'Accounts':
+                    sort_by = $('remote_sort_by_accounts').getValue();
+                    break;
+                case 'Contacts':
+                    sort_by = $('remote_sort_by_contacts').getValue();
+                    break;
+                case 'Tasks':
+                    sort_by = $('remote_sort_by_tasks').getValue();
+                    break;
+            }
+            
+            params += '&from=' + from + '&to=' + to + '&sort_by=' + sort_by + '&sort_type=' + $("remote_sort_type").getValue();
+            search_by = '';
+            search_type_compare = '';
+            search_value = '';
+            if (hasSearch) {
+                switch ($('remote_type').getValue()) {
+                    case 'Leads':
+                        search_by = $('remote_search_by_leads').getValue();
+                        break;
+                    case 'Accounts':
+                        search_by = $('remote_search_by_accounts').getValue();
+                        break;
+                    case 'Contacts':
+                        search_by = $('remote_search_by_contacts').getValue();
+                        break;
+                    case 'Tasks':
+                        search_by = $('remote_search_by_tasks').getValue();
+                        break;
+                }
+                search_type_compare = $("remote_search_type_compare").getValue();
+                search_value = $("remote_search_value").getValue();
+            }
+            params += '&search_by=' + search_by + '&search_type_compare=' + search_type_compare
+                    + '&search_value=' + search_value;
+            if (line == 1) {
+                updateConsole((line++) + ". ");
+            }
+            updateConsole("<?php echo $this->__('Load');?> " + dataType[type] + " <?php echo $this->__('from index');?> \"" + from + "\" <?php echo $this->__('to index');?> \"" + to + "\"");
+        } else {
+            stop();
+            return;
+        }
+
+        var url = '<?php echo $this->getLoadUrl(); ?>';
+        new Ajax.Request(url, {
+            method: 'post',
+            postBody: params,
+            onComplete: function(transport) {
+                if (200 == transport.status) {
+                    text = transport.responseText
+                    if (text.replace('::end', '') != text) {
+                        text = text.replace('::end', '');
+                        flag = true;
+                    }
+                    updateConsole(text);
+                    errorTime = 0;
+                    if (!flag) {
+                        updateConsole((line++) + ". ");
+                        _post(type, '', parseInt(from) + <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/load_data_number_items_each_time');?>, to, storeId);
+                    } else {
+                        stop();
+                    }
+                } else {
+                    if (!flag) {
+                        updateConsole(" - <?php echo $this->__('Ended of records.');?><br/>");
+                        stop();
+                    } else {
+                        errorTime++;
+                        updateConsole("<br/>- <?php echo $this->__('Unable connecting, maybe there was some errors.');?><br/>");                        
+                        if (errorTime < 3) {
+                            updateConsole((line++) + ". <?php echo $this->__('Reconnect');?>: ");
+                            _post(type, id, from, to);
+                        } else {
+                            stop();
+                        }
+                    }
+                }
+            }
+        });
+    };
+
+    run = function() {
+        try {
+            if (!isRunning) {
+                isRunning = true;
+                $("img-running").setStyle({display: ''});
+                resetConsole();
+                updateConsole("<?php echo $this->__('Start remoting data...');?><br/>");
+                
+                if (remoteIdEnabled) {
+                    updateConsole((line++) + ". ");
+                    remote_id = $("remote_id").getValue();
+                    if (remote_id == '') {
+                        updateConsole(" - <?php echo $this->__('ERROR: Input remote data, please.');?><br/>");
+                        stop();
+                    } else {
+                        _post($("remote_type").getValue(), remote_id, '', '', $("remote_store_id").getValue());
+                    }
+                } else {
+                    remote_from = $("remote_from").getValue();
+                    remote_to = $("remote_to").getValue();
+                    if (parseInt(remote_from) <= parseInt(remote_to)) {
+                        _post($("remote_type").getValue(), '', remote_from, remote_to, $("remote_store_id").getValue());
+                    } else if (remote_from != '' && isNaN(remote_from)) {
+                        updateConsole(" - <?php echo $this->__('ERROR: Load From must be positive integer number, please.');?><br/>");
+                        stop();
+                    } else if (remote_from != '' && remote_to == '') {
+                        updateConsole(" - <?php echo $this->__('ERROR: Input Load To, please.');?><br/>");
+                        stop();
+                    } else if (remote_to != '' && isNaN(remote_to)) {
+                        updateConsole(" - <?php echo $this->__('ERROR: Load To must be positive integer number, please.');?><br/>");
+                        stop();
+                    } else if (remote_to != '' && remote_from == '') {
+                        updateConsole(" - <?php echo $this->__('ERROR: Input Load From, please.');?><br/>");
+                        stop();
+                    } else if (parseInt(remote_from) > parseInt(remote_to)) {
+                        updateConsole(" - <?php echo $this->__('ERROR: Load From must less than Load To.');?><br/>");
+                        stop();
+                    } else {
+                        updateConsole(" - <?php echo $this->__('ERROR: Input load data, please.');?><br/>");
+                        stop();
+                    }
+                }
+            }                                
+        } catch (e) {
+            updateConsole(" - <?php echo $this->__('ERROR');?>: " + e.message + "<br/>");
+            stop();
+        }
+    };
+    
+    var crm4ecommerce = {
+        loadZohoFields: function(object) {
+            object.src = "<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/ajax-loader.gif'); ?>";
+            new Ajax.Request('<?php echo $this->getLoadZohoFieldsUrl(); ?>'.replace('{{model}}', $('remote_type').value), {
+                method: 'get',
+                onSuccess: function(transport) {
+                    text = transport.responseText;
+                    if (text == '1') {
+                        setLocation(location.href);
+                    } else {
+                        alert("<?php echo $this->__('ERROR: Load fields is failured. Maybe module is disabled!'); ?>");
+                        object.src = "<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/load.png'); ?>";
+                    }
+                },
+                onFailure: function(transport) {
+                    alert('<?php echo $this->__('ERROR: Connection is failure.');?>');
+                    object.src = "<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/load.png'); ?>";
+                }
+            });
+        }
+    };
+    
+    Event.observe($('remote_type'),'change', function() {
+        switch (this.value) {
+            case 'Leads':
+                $('remote_search_by_leads').show();
+                $('remote_search_by_accounts').hide();
+                $('remote_search_by_contacts').hide();
+                $('remote_search_by_tasks').hide();
+                $('remote_sort_by_leads').show();
+                $('remote_sort_by_accounts').hide();
+                $('remote_sort_by_contacts').hide();
+                $('remote_sort_by_tasks').hide();
+                break;
+            case 'Accounts':
+                $('remote_search_by_accounts').show();
+                $('remote_search_by_leads').hide();
+                $('remote_search_by_contacts').hide();
+                $('remote_search_by_tasks').hide();
+                $('remote_sort_by_accounts').show();
+                $('remote_sort_by_leads').hide();
+                $('remote_sort_by_contacts').hide();
+                $('remote_sort_by_tasks').hide();
+                break;
+            case 'Contacts':
+                $('remote_search_by_contacts').show();
+                $('remote_search_by_leads').hide();
+                $('remote_search_by_accounts').hide();
+                $('remote_search_by_tasks').hide();
+                $('remote_sort_by_contacts').show();
+                $('remote_sort_by_leads').hide();
+                $('remote_sort_by_accounts').hide();
+                $('remote_sort_by_tasks').hide();
+                break;
+            case 'Tasks':
+                $('remote_search_by_tasks').show();
+                $('remote_search_by_leads').hide();
+                $('remote_search_by_accounts').hide();
+                $('remote_search_by_contacts').hide();
+                $('remote_sort_by_tasks').show();
+                $('remote_sort_by_leads').hide();
+                $('remote_sort_by_accounts').hide();
+                $('remote_sort_by_contacts').hide();
+                break;
+        }
+        if (this.value == 'Accounts' || this.value == 'Leads') {
+            $('remote_store_id').enable();
+        } else {
+            $('remote_store_id').disable();
+        }
+    });
+    
+    document.observe("dom:loaded", function() {
+        showPopupMenu = function(name) {
+            var dlgH = $(name).getHeight();
+            var docH = document.viewport.getHeight();
+            dtop = 0;
+            if (dlgH > docH) {
+                dtop = 20; 
+            } else {
+               dtop = (docH - dlgH) / 2;
+            }
+            TINY.box.show({html:$(name).innerHTML, animate:true, close:false,top:dtop});
+        };
+
+        $('remote_type_help').observe('click', function() {
+            switch ($('remote_type').value) {
+                case 'Leads':
+                    showPopupMenu('remote_type_help_content_leads');
+                    break;
+                case 'Accounts':
+                    showPopupMenu('remote_type_help_content_accounts');
+                    break;
+                case 'Contacts':
+                    showPopupMenu('remote_type_help_content_contacts');
+                    break;
+                case 'Tasks':
+                    showPopupMenu('remote_type_help_content_tasks');
+                    break;
+            }
+        });
+    });
+</script>

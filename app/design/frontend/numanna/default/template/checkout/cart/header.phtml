@@ -1,0 +1,72 @@
+<div class="mini-cart-container">
+<div class="mini-cart">
+    <div class="block block-cart-off cart-off" id="cart-off" onclick="javascript:cartshow('#cart-on');">
+        <div class="block-title">
+            <span class="icon"><!--  --></span>
+            <span class="rest"><a href="#" onclick="javascript:cartshow('#cart-on');">
+            <?php
+                    $count = $this->helper('checkout/cart')->getSummaryCount();  //get total items in cart
+                    $total = $this->helper('checkout/cart')->getQuote()->getGrandTotal(); //get total price
+                    if($count==0)
+                    {
+                      echo $this->__('<span class="nr0">&nbsp;&nbsp;&nbsp;</span>',$count);
+                    }
+                    if($count==1)
+                    {
+                      echo $this->__('<span class="nr">1</span>',$count);
+                    }
+                    if($count>1)
+                    {
+                      echo $this->__('<span class="nr">%s</span>',$count);
+                    }
+                    echo $this->__('', $this->helper('core')->formatPrice($total, false));
+                  ?></a></span>
+        </div>
+
+    </div>
+    <div class="block block-cart-on cart-on" id="cart-on" onmouseover="javascript:jshow('cart-on');" onmouseout="javascript:jhide('cart-on');" style="display:none;">
+        <?php $_cartQty = $this->getSummaryCount() ?>
+        <div class="block-title"></div>
+        <div class="block-content">
+        <div class="white">
+        <?php if ($_cartQty>0): ?>
+            <div class="summary">
+                <?php if ($_cartQty==1): ?>
+                    <p class="amount"><?php echo $this->__('There is <a href="%s">1 item</a> in your cart.', $this->getUrl('checkout/cart')) ?></p>
+                <?php else: ?>
+                    <p class="amount"><?php echo $this->__('There are <a href="%s">%s items</a> in your cart.', $this->getUrl('checkout/cart'), $_cartQty) ?></p>
+                <?php endif ?>
+                <p class="subtotal">
+                    <span class="label"><?php echo $this->__('Cart Subtotal:') ?></span> <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
+                    <?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?>
+                        <br />(<?php echo Mage::helper('checkout')->formatPrice($_subtotalInclTax) ?> <?php echo Mage::helper('tax')->getIncExcText(true) ?>)
+                    <?php endif; ?>
+                </p>
+            </div>
+        <?php endif ?>
+
+        <?php $_items = $this->getRecentItems() ?>
+        <?php if(count($_items)): ?>
+            <ol id="cart-sidebar" class="mini-products-list">
+            <?php foreach($_items as $_item): ?>
+                <?php echo $this->getItemHtml($_item) ?>
+            <?php endforeach; ?>
+            </ol>
+            <script type="text/javascript">decorateList('cart-sidebar', 'none-recursive')</script>
+        <?php else: ?>
+            <p class="empty"><?php echo $this->__('You have no items in your shopping cart.') ?></p>
+        <?php endif ?>
+
+        <?php if($_cartQty && $this->isPossibleOnepageCheckout()): ?>
+        <div class="actions">
+            <button type="button" title="<?php echo $this->__('View Cart') ?>" class="left btn" onclick="setLocation('<?php echo $this->getUrl('') ?>checkout/cart')"><span><span><?php echo $this->__('View Cart') ?></span></span></button>
+            <button type="button" title="<?php echo $this->__('Checkout') ?>" class="right btn btn-primary" onclick="setLocation('<?php echo $this->getCheckoutUrl() ?>')"><span><span><?php echo $this->__('Checkout') ?></span></span></button>
+            <div class="clearer"></div>
+        </div>
+        <?php endif ?>
+
+        </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,229 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Mapping_Form_New
+ */
+?>
+<div class="entry-edit collapseable">
+    <form method="post" action="<?php echo $this->getSaveUrl();?>">
+        <input name="c_action" type="hidden" value="<?php echo Mage::registry('c_action');?>" />
+        <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey();?>" />
+    <div class="entry-edit-head collapseable">
+        <a id="crm4ecommerce_zohosynchronization_account_params-head" class="open" onclick="Fieldset.toggleCollapse('crm4ecommerce_zohosynchronization_account_params'); return false;" href="#">
+            <?php echo $this->__('Zoho Account Settings'); ?>
+        </a>
+    </div>
+    <fieldset id="crm4ecommerce_zohosynchronization_account_params" style="" class="config collapseable">
+        <legend><?php echo $this->__('Zoho Account Settings'); ?></legend>
+        <table cellspacing="0" class="form-list" style="width: 100%;">
+            <tbody>
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[account_name_format]"><?php echo $this->__('Account Name') ?></label></td>
+                    <td class="value">
+                        <input type="text" class="input-text" id="config[account_name_format]" name="config[account_name_format]" style="width: 97%" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/account_name_format');?>" />
+                        <p class="note" style="width: 97%;">
+                            <span><?php echo $this->__("This is format of zoho account name field. <b>{{company}}</b> is value of default billing company or primary company. If these values is empty, <b>{{company}}</b> will be customer <b>{{fullname}}</b> (firstname + \" \" + lastname). <b>{{customer_id}}</b> will be id of customer.<br/><b>Attention:</b> Zoho system disallow two accounts have the same account name, so, when there are two customers have the same account name, both of those customers will be linked with the same zoho account. To avoid this case, zoho account name should be combined between {{company}} with {{customer_id}}.<br/>In case we don't use zoho lead, we can use parameter <b>{{fullname}}</b> instead of <b>{{company}}</b>. Default format is <b>{{company}} (#{{customer_id}})</b>.");?></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[account_duplicate_insert]"><?php echo $this->__('Duplicate Insert') ?></label></td>
+                    <td class="value">
+                        <select class="input-text" id="config[account_duplicate_insert]" name="config[account_duplicate_insert]" style="width: 97%"><?php
+                            $zohoDuplicateChecks = Mage::getModel('zohosynchronization/array_zohoDuplicateCheck')->toOptionArray();
+                            foreach ($zohoDuplicateChecks as $key => $value) { ?>
+                                <option value="<?php echo $key;?>" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/account_duplicate_insert') == $key ? 'selected="selected"' : ''; ?>><?php echo $value;?></option>
+                            <?php
+                            }
+                        ?>
+                        </select>
+                        <p class="note" style="width: 97%;">
+                            <span><?php echo $this->__('Zoho Account has key field is <b>Account Name</b>.');?></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[account_duplicate_email_insert]"><?php echo $this->__('Duplicate Email') ?></label></td>
+                    <td class="value">
+                        <select class="input-text" id="config[account_duplicate_email_insert]" name="config[account_duplicate_email_insert]" style="width: 97%"><?php
+                            $zohoDuplicateEmailChecks = Mage::getModel('zohosynchronization/array_zohoDuplicateCheck')->toOptionArray(true);
+                            foreach ($zohoDuplicateEmailChecks as $key => $value) { ?>
+                                <option value="<?php echo $key;?>" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/account_duplicate_email_insert') == $key ? 'selected="selected"' : ''; ?>><?php echo $value;?></option>
+                            <?php
+                            }
+                        ?>
+                        </select>
+                        <p class="note" style="width: 97%;">
+                            <span><?php echo $this->__('When there is a customer is created new, module will map this customer with existed zoho account that has the same email or account has contact that has the same email.<br/><b>Notice that:</b> This feature allows merging customers of other magento websites into only one zoho crm account, however, all data of customer sales attributes will be not able to merge and calculate correctly between all customers.');?></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[account_import_guest]"><?php echo $this->__('Import Guest?') ?></label></td>
+                    <td class="value">
+                        <select class="input-text" id="config[account_import_guest]" name="config[account_import_guest]" style="width: 97%">
+                            <option value="0" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/account_import_guest') == '0' ? 'selected="selected"' : ''; ?>><?php echo $this->__('No');?></option>
+                            <option value="1" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/account_import_guest') == '1' ? 'selected="selected"' : ''; ?>><?php echo $this->__('Yes');?></option>
+                        </select>
+                        <p class="note" style="width: 97%;">
+                            <span><?php echo $this->__('Guest account will be created in ZohoCRM when magento guest creates order. This setting parameter will markup to import guest account into Magento customer or not.');?></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[account_guestname]"><?php echo $this->__('Guest Account Name') ?></label></td>
+                    <td class="value">
+                        <input type="text" class="input-text" id="config[account_guestname]" name="config[account_guestname]" style="width: 97%" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/account_guestname');?>" />
+                        <p class="note" style="width: 97%;">
+                            <span><?php echo $this->__("This is format of zoho account name field for magento customers that who placed orders as guests. <b>{{fullname}}</b> is guest firstname + \" \" + lastname. <b>{{order_increment_id}}</b> will be increment id of placed order. <b>{{company}}</b> is guest company, however, let be careful, commonly company is not required field.<br/><b>Attention:</b> Zoho CRM system disallow two accounts have the same account name, so, when there are two customers have the same account name, both of those customers will be linked with the same zoho account. To avoid this case, zoho account name should be combined between {{fullname}} with {{order_increment_id}}. Besides this, to distinguish with accounts of registered customers, account name should be had a special word that is <b>Guest</b>, default format is <b>{{fullname}} (Guest #{{order_increment_id}})</b> or create a Zoho field is <b>\"Is Guest\"</b> and setup default value of this field is <b>True</b>, after that map <b>Account Attribute \"Is Guest\"</b> with this Zoho field. \"Is Guest\" of registered customers is always <b>\"False\"</b>.");?></span>
+                        </p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="label" colspan="2"><b><?php echo $this->__("When import Customers from Zoho Accounts") ?>:</b></td>
+                </tr>
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[account_default_email]"><?php echo $this->__('Default Email') ?></label></td>
+                    <td class="value">
+                        <input type="text" class="input-text" id="config[account_default_email]" name="config[account_default_email]" style="width: 97%" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/account_default_email');?>" />
+                        <p class="note" style="width: 97%;">
+                            <span><?php echo $this->__("Default email of created new customer when zoho admin create new a account but don't input account email. Attention: Parameter {{zoho_id}} will be Zoho Lead Id.");?></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[account_auto_send_password_reminder_email]"><?php echo $this->__('Auto-send password reminder email') ?></label></td>
+                    <td class="value">
+                        <select class="input-text" id="config[account_auto_send_password_reminder_email]" name="config[account_auto_send_password_reminder_email]" style="width: 97%">
+                            <option value="0" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/account_auto_send_password_reminder_email') == '0' ? 'selected="selected"' : ''; ?>><?php echo $this->__('No');?></option>
+                            <option value="1" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/account_auto_send_password_reminder_email') == '1' ? 'selected="selected"' : ''; ?>><?php echo $this->__('Yes');?></option>
+                        </select>
+                        <p class="note" style="width: 97%;">
+                            <span><?php echo $this->__('Allow auto send password reminder email when customer is created from Zoho CRM or not. Default is Yes.');?></span>
+                        </p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[account_reset_password_and_send_email_when_field]"><?php echo $this->__('Reset password and send email when') ?></label></td>
+                    <td class="value">
+                        <table cellpadding="0" cellspacing="0" border="0" width="97%"><tr>
+                                <td style="width: 356px;">
+                        <?php 
+                            $options = Mage::getStoreConfig('crm4ecommerce_zohosynchronization/mapping_fields/logs/Accounts');
+                            $group_options = explode('@@', $options);
+                        ?>
+                        <select class="input-text" id="config[account_resend_password_reminder_email_when_field]" name="config[account_reset_password_and_send_email_when_field]" style="width: 200px">
+                            <option value=""><?php echo $this->__('None'); ?></option>
+                            <?php
+                                foreach ($group_options as $group_option) {
+                                    $group_option = explode('@', $group_option);
+                                    if (count($group_option) > 1) {
+                                ?>
+                                <optgroup label="<?php echo $group_option[0];?>">
+                                <?php
+                                    $options = explode(';', $group_option[1]);
+                                    foreach ($options as $option) {
+                                        $option = explode(',', $option);
+                                        if (count($option) == 3) {
+                                    ?>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/account_reset_password_and_send_email_when_field') == $option[0]) ? 'selected="true"' : ''; ?> value="<?php echo $option[0];?>"><?php echo $option[1];?></option>
+                                    <?php
+                                        }
+                                    } ?>
+                                </optgroup>
+                                <?php }
+                                }
+                            ?>
+                        </select>
+                        <select class="input-text" name="config[account_reset_password_and_send_email_when_field_condition]" style="width: 150px">
+                            <option value="is" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/account_reset_password_and_send_email_when_field_condition') == 'is' ? 'selected="selected"' : ''; ?>><?php echo $this->__('is one of values');?></option>
+                            <option value="isnot" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/account_reset_password_and_send_email_when_field_condition') == 'isnot' ? 'selected="selected"' : ''; ?>><?php echo $this->__('is not one of values');?></option>
+                        ?>
+                        </select>
+                                </td>
+                        <td>
+                            <input type="text" class="input-text" name="config[account_reset_password_and_send_email_when_field_value]" style="width: 100%;" value="<?php echo trim(Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/account_reset_password_and_send_email_when_field_value'), ',');?>" />
+                        </td></tr></table>
+                        <p class="note" style="width: 97%;" style="clear: both;">
+                            <span><?php echo $this->__('The values are separated by commas (,). <b>{{empty}}</b> is empty value.');?> <?php echo $this->__('Use for edit data from Zoho CRM.');?></span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label" colspan="2"><b><?php echo $this->__("When customers are deleted") ?>:</b></td>
+                </tr>
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[account_allow_delete]"><?php echo $this->__('Allow Delete Account in ZohoCRM') ?></label></td>
+                    <td class="value">
+                        <select class="input-text" id="config[account_allow_delete]" name="config[account_allow_delete]" style="width: 97%">
+                            <option value="1" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/account_allow_delete') == '1' ? 'selected="selected"' : ''; ?>><?php echo $this->__('Yes');?></option>
+                            <option value="0" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/account_allow_delete') == '0' ? 'selected="selected"' : ''; ?>><?php echo $this->__('No');?></option>
+                        ?>
+                        </select>
+                        <p class="note" style="width: 97%;">
+                            <span><?php echo $this->__('Allow delete corresponding account in ZohoCRM when customer is deleted or not.');?></span>
+                        </p>
+                    </td>
+                </tr>
+                <?php if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/account_allow_delete') == '0') { ?>
+                <tr>
+                    <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[account_update_field]"><?php echo $this->__('Update field') ?></label></td>
+                    <td class="value">
+                        <table cellpadding="0" cellspacing="0" border="0" width="97%"><tr>
+                                <td style="width: 203px;">
+                        <?php 
+                            $options = Mage::getStoreConfig('crm4ecommerce_zohosynchronization/mapping_fields/logs/Accounts');
+                            $group_options = explode('@@', $options);
+                        ?>
+                        <select class="input-text" id="config[account_update_field]" name="config[account_update_field]" style="width: 200px">
+                            <option value=""><?php echo $this->__('None'); ?></option>
+                            <?php
+                                foreach ($group_options as $group_option) {
+                                    $group_option = explode('@', $group_option);
+                                    if (count($group_option) > 1) {
+                                ?>
+                                <optgroup label="<?php echo $group_option[0];?>">
+                                <?php
+                                    $options = explode(';', $group_option[1]);
+                                    foreach ($options as $option) {
+                                        $option = explode(',', $option);
+                                        if (count($option) == 3) {
+                                    ?>
+                                    <option <?php echo (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/account_update_field') == $option[0]) ? 'selected="true"' : ''; ?> value="<?php echo $option[0];?>"><?php echo $option[1];?></option>
+                                    <?php
+                                        }
+                                    } ?>
+                                </optgroup>
+                                <?php }
+                                }
+                            ?>
+                        </select>
+                                </td>
+                                <td style="width: 18px; text-align: center;"><?php echo $this->__('is');?></td>
+                        <td>
+                            <input type="text" class="input-text" name="config[account_update_field_value]" style="width: 100%;" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/account_update_field_value');?>" />
+                        </td></tr></table>
+                    </td>
+                </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+        <div style="text-align: right; margin-top: 5px; padding-top: 10px; border-top: 2px solid #CCCCCC;">        
+            <table style="width: 100%;"><tr><td>                    
+                <button name="submit" value="save" class="scalable save" style="" type="submit">
+                    <span><span><span><?php echo $this->__('Save');?></span></span></span>
+                </button></td></tr>
+            </table>
+        </div>
+    </fieldset>
+    <script type="text/javascript">
+        Fieldset.applyCollapse('crm4ecommerce_zohosynchronization_account_params');
+    </script>
+    </form>
+</div>

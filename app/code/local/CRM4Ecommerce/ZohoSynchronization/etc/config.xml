@@ -1,0 +1,1307 @@
+<?xml version="1.0"?>
+<!--
+    @category   CRM4Ecommerce
+    @package    CRM4Ecommerce_ZohoSynchronization
+    @author     Philip Nguyen <philip@crm4ecommerce.com>
+    @link       http://crm4ecommerce.com
+-->
+<config>
+    <modules>
+        <CRM4Ecommerce_ZohoSynchronization>
+            <version>1.2</version>
+            <published_date>2014-04-30</published_date>
+        </CRM4Ecommerce_ZohoSynchronization>
+    </modules>
+    <frontend>
+        <events>
+            <customer_login>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_customer</class>
+                        <method>frontendCustomerLogin</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </customer_login>
+            <customer_logout>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_customer</class>
+                        <method>frontendCustomerLogout</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </customer_logout>
+            <customer_save_before>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_customer</class>
+                        <method>frontendCustomerSaveBefore</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </customer_save_before>
+            <customer_save_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_customer</class>
+                        <method>frontendCustomerSaveAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </customer_save_after>
+            <customer_address_save_before>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_customer</class>
+                        <method>frontendCustomerAddressSaveBefore</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </customer_address_save_before>
+            <customer_address_save_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_customer</class>
+                        <method>frontendCustomerAddressSaveAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </customer_address_save_after>
+            <newsletter_subscriber_save_before>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_subscriber</class>
+                        <method>frontendNewsletterSubscriberSaveBefore</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </newsletter_subscriber_save_before>
+            <newsletter_subscriber_save_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_subscriber</class>
+                        <method>frontendNewsletterSubscriberSaveAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </newsletter_subscriber_save_after>
+            
+            <controller_action_postdispatch>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_quote</class>
+                        <method>controllerActionPostdispatch</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </controller_action_postdispatch>
+            
+            <sales_quote_save_before>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_quote</class>
+                        <method>salesQuoteSaveBefore</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </sales_quote_save_before>
+            <sales_quote_save_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_quote</class>
+                        <method>frontendSalesQuoteSaveAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </sales_quote_save_after>
+
+            <sales_order_save_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_order</class>
+                        <method>frontendSalesOrderSaveAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </sales_order_save_after>
+            
+            <sales_order_status_history_save_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_order</class>
+                        <method>frontendSalesOrderStatusHistorySaveAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </sales_order_status_history_save_after>
+        </events>
+        <routers>
+            <zohosynchronization>
+                <use>standard</use>
+                <args>
+                    <module>CRM4Ecommerce_ZohoSynchronization</module>
+                    <frontName>zohosynchronization</frontName>
+                </args>
+            </zohosynchronization>
+        </routers>
+    </frontend>
+    <admin>
+        <routers>
+            <zohosynchronization>
+                <use>admin</use>
+                <args>
+                    <module>CRM4Ecommerce_ZohoSynchronization</module>
+                    <frontName>zohosynchronization</frontName>
+                </args>
+            </zohosynchronization>
+        </routers>
+    </admin>
+    <adminhtml>
+        <translate>
+            <modules>
+                <CRM4Ecommerce_ZohoSynchronization>
+                    <files>
+                        <default>CRM4Ecommerce_ZohoSynchronization.csv</default>
+                    </files>
+                </CRM4Ecommerce_ZohoSynchronization>
+            </modules>
+        </translate>
+        <menu>
+            <zohosynchronization module="zohosynchronization" translate="title">
+                <title>ZohoCRM Free</title>
+                <sort_order>10</sort_order>
+                <children>
+                    <dashboard module="zohosynchronization" translate="title">
+                        <title>Dashboard</title>
+                        <sort_order>0</sort_order>
+                        <action>zohosynchronization/adminhtml_dashboard</action>
+                    </dashboard>
+                    <settings module="zohosynchronization" translate="title">
+                        <title>Synchronization Settings</title>
+                        <sort_order>1</sort_order>
+                        <action>adminhtml/system_config/edit/section/crm4ecommerce_zohosynchronization/</action>
+                    </settings>
+                    <accounts module="zohosynchronization" translate="title">
+                        <title>ZohoCRM User Accounts</title>
+                        <sort_order>2</sort_order>
+                        <action>zohosynchronization/adminhtml_zoho_account/</action>
+                    </accounts>
+                    <mapping module="zohosynchronization" translate="title">
+                        <title>Mapping Attributes</title>
+                        <sort_order>3</sort_order>
+                        <children>
+                            <customers module="zohosynchronization" translate="title">
+                                <title>Customers</title>
+                                <sort_order>1</sort_order>
+                                <children>
+                                    <zoho_leads module="zohosynchronization" translate="title">
+                                        <title><![CDATA[Mapping Zoho Leads]]></title>
+                                        <sort_order>0</sort_order>
+                                        <action>zohosynchronization/adminhtml_mapping_customer_lead</action>
+                                    </zoho_leads>
+                                    <zoho_accounts module="zohosynchronization" translate="title">
+                                        <title><![CDATA[Mapping Zoho Accounts]]></title>
+                                        <sort_order>1</sort_order>
+                                        <action>zohosynchronization/adminhtml_mapping_customer_account</action>
+                                    </zoho_accounts>
+                                    <zoho_contacts module="zohosynchronization" translate="title">
+                                        <title><![CDATA[Addresses & Zoho Contacts]]></title>
+                                        <sort_order>2</sort_order>
+                                        <action>zohosynchronization/adminhtml_mapping_customer_contact</action>
+                                    </zoho_contacts>
+                                </children>                                    
+                            </customers>
+                            <subscribers module="zohosynchronization" translate="title">
+                                <title><![CDATA[Subscribers & Zoho Leads]]></title>
+                                <sort_order>2</sort_order>
+                                <action>zohosynchronization/adminhtml_mapping_subscriber</action>
+                            </subscribers>
+                            <potential module="zohosynchronization" translate="title">
+                                <title>Potentials</title>
+                                <sort_order>5</sort_order>
+                                <action>zohosynchronization/adminhtml_mapping_potential</action>
+                            </potential>
+                            <orders module="zohosynchronization" translate="title">
+                                <title>Sales Orders</title>
+                                <sort_order>7</sort_order>
+                                <children>
+                                    <statuses_history module="zohosynchronization" translate="title">
+                                        <title><![CDATA[Statuses History & Zoho Events]]></title>
+                                        <sort_order>2</sort_order>
+                                        <action>zohosynchronization/adminhtml_mapping_order_statuseshistory</action>
+                                    </statuses_history>
+                                    <comments module="zohosynchronization" translate="title">
+                                        <title><![CDATA[Comments & Zoho Tasks]]></title>
+                                        <sort_order>3</sort_order>
+                                        <action>zohosynchronization/adminhtml_mapping_order_comment</action>
+                                    </comments>
+                                </children>
+                            </orders>
+                            <invoices module="zohosynchronization" translate="title">
+                                <title>Invoices</title>
+                                <sort_order>8</sort_order>
+                                <children>
+                                    <statuses_history module="zohosynchronization" translate="title">
+                                        <title><![CDATA[Statuses History & Zoho Events]]></title>
+                                        <sort_order>1</sort_order>
+                                        <action>zohosynchronization/adminhtml_mapping_invoice_statuseshistory</action>
+                                    </statuses_history>
+                                    <comments module="zohosynchronization" translate="title">
+                                        <title><![CDATA[Comments & Zoho Tasks]]></title>
+                                        <sort_order>2</sort_order>
+                                        <action>zohosynchronization/adminhtml_mapping_invoice_comment</action>
+                                    </comments>
+                                </children>
+                            </invoices>                        
+                            <shipments module="zohosynchronization" translate="title">
+                                <title>Shipments</title>
+                                <sort_order>9</sort_order>
+                                <children>
+                                    <statuses_history module="zohosynchronization" translate="title">
+                                        <title><![CDATA[Statuses History & Zoho Events]]></title>
+                                        <sort_order>0</sort_order>
+                                        <action>zohosynchronization/adminhtml_mapping_shipment_statuseshistory</action>
+                                    </statuses_history>
+                                    <comments module="zohosynchronization" translate="title">
+                                        <title><![CDATA[Comments & Zoho Tasks]]></title>
+                                        <sort_order>1</sort_order>
+                                        <action>zohosynchronization/adminhtml_mapping_shipment_comment</action>
+                                    </comments>
+                                </children>
+                            </shipments>
+                            <creditmemos module="zohosynchronization" translate="title">
+                                <title>Credit Memos</title>
+                                <sort_order>10</sort_order>
+                                <children>
+                                    <statuses_history module="zohosynchronization" translate="title">
+                                        <title><![CDATA[Statuses History & Zoho Events]]></title>
+                                        <sort_order>0</sort_order>
+                                        <action>zohosynchronization/adminhtml_mapping_creditmemo_statuseshistory</action>
+                                    </statuses_history>
+                                    <comments module="zohosynchronization" translate="title">
+                                        <title><![CDATA[Comments & Zoho Tasks]]></title>
+                                        <sort_order>1</sort_order>
+                                        <action>zohosynchronization/adminhtml_mapping_creditmemo_comment</action>
+                                    </comments>
+                                </children>
+                            </creditmemos>
+                        </children>
+                    </mapping>
+                    <load_data_from_zohocrm>
+                        <title>Load Data from ZohoCRM</title>
+                        <sort_order>4</sort_order>
+                        <children>
+                            <remote module="zohosynchronization" translate="title">
+                                <title>Load Data Instantly</title>
+                                <sort_order>0</sort_order>
+                                <action>zohosynchronization/adminhtml_remote</action>
+                            </remote>
+                            <in_cron module="zohosynchronization" translate="title">
+                                <title>Load Data in Cronjob</title>
+                                <sort_order>1</sort_order>
+                                <action>zohosynchronization/adminhtml_remote_cronjob</action>
+                            </in_cron>
+                        </children>
+                    </load_data_from_zohocrm>
+                    <report module="zohosynchronization" translate="title">
+                        <title>Synchronization Reports</title>
+                        <sort_order>5</sort_order>
+                        <children>
+                            <customer module="zohosynchronization" translate="title">
+                                <title>Report Customers</title>
+                                <sort_order>0</sort_order>
+                                <action>zohosynchronization/adminhtml_report_customer</action>
+                            </customer>
+                            <address module="zohosynchronization" translate="title">
+                                <title>Report Addresses</title>
+                                <sort_order>1</sort_order>
+                                <action>zohosynchronization/adminhtml_report_address</action>
+                            </address>
+                            <subscriber module="zohosynchronization" translate="title">
+                                <title>Report Subscribers</title>
+                                <sort_order>2</sort_order>
+                                <action>zohosynchronization/adminhtml_report_subscriber</action>
+                            </subscriber>
+                            <quote module="zohosynchronization" translate="title">
+                                <title>Report Quotes</title>
+                                <sort_order>5</sort_order>
+                                <action>zohosynchronization/adminhtml_report_quote</action>
+                            </quote>
+                            <order module="zohosynchronization" translate="title">
+                                <title>Report Orders</title>
+                                <sort_order>6</sort_order>
+                                <action>zohosynchronization/adminhtml_report_order</action>
+                            </order>
+                        </children>
+                    </report>
+                    <queue module="zohosynchronization" translate="title">
+                        <title>Synchronization Queue</title>
+                        <sort_order>6</sort_order>
+                        <children>
+                            <manager module="zohosynchronization" translate="title">
+                                <title>Queue Manager</title>
+                                <sort_order>0</sort_order>
+                                <action>zohosynchronization/adminhtml_queue</action>
+                            </manager>                        
+                            <add_new module="zohosynchronization" translate="title">
+                                <title>Add New Queue Item</title>
+                                <sort_order>1</sort_order>
+                                <action>zohosynchronization/adminhtml_queue/new</action>
+                            </add_new>
+                        </children>
+                    </queue>
+                    <log module="zohosynchronization" translate="title">
+                        <title>Synchronization Logs</title>
+                        <sort_order>7</sort_order>
+                        <action>zohosynchronization/adminhtml_log</action>
+                    </log>
+                </children>
+            </zohosynchronization>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <zohosynchronization module="zohosynchronization" translate="title">
+                            <title>ZohoCRM Free</title>
+                            <sort_order>10</sort_order>
+                            <children>
+                                <dashboard module="zohosynchronization" translate="title">
+                                    <title>Dashboard</title>
+                                    <sort_order>0</sort_order>
+                                </dashboard>
+                                <settings module="zohosynchronization" translate="title">
+                                    <title>Synchronization Settings</title>
+                                    <sort_order>1</sort_order>
+                                </settings>
+                                <accounts module="zohosynchronization" translate="title">
+                                    <title>ZohoCRM User Accounts</title>
+                                    <sort_order>2</sort_order>
+                                </accounts>
+                                <mapping module="zohosynchronization" translate="title">
+                                    <title>Mapping Attributes</title>
+                                    <sort_order>3</sort_order>
+                                    <children>
+                                        <customers module="zohosynchronization" translate="title">
+                                            <title>Customers</title>
+                                            <sort_order>1</sort_order>
+                                            <children>
+                                                <zoho_leads module="zohosynchronization" translate="title">
+                                                    <title><![CDATA[Mapping Zoho Leads]]></title>
+                                                    <sort_order>0</sort_order>
+                                                </zoho_leads>
+                                                <zoho_accounts module="zohosynchronization" translate="title">
+                                                    <title><![CDATA[Mapping Zoho Accounts]]></title>
+                                                    <sort_order>1</sort_order>
+                                                </zoho_accounts>
+                                                <zoho_contacts module="zohosynchronization" translate="title">
+                                                    <title><![CDATA[Addresses & Zoho Contacts]]></title>
+                                                    <sort_order>2</sort_order>
+                                                </zoho_contacts>
+                                            </children>
+                                        </customers>
+                                        <subscribers module="zohosynchronization" translate="title">
+                                            <title><![CDATA[Subscribers & Zoho Leads]]></title>
+                                            <sort_order>2</sort_order>
+                                        </subscribers>
+                                        <potential module="zohosynchronization" translate="title">
+                                            <title>Potentials</title>
+                                            <sort_order>5</sort_order>
+                                        </potential>
+                                        <orders module="zohosynchronization" translate="title">
+                                            <title>Sales Orders</title>
+                                            <sort_order>7</sort_order>
+                                            <children>
+                                                <statuses_history module="zohosynchronization" translate="title">
+                                                    <title><![CDATA[Statuses History & Zoho Events]]></title>
+                                                    <sort_order>2</sort_order>
+                                                </statuses_history>
+                                                <comments module="zohosynchronization" translate="title">
+                                                    <title><![CDATA[Comments & Zoho Tasks]]></title>
+                                                    <sort_order>3</sort_order>
+                                                </comments>
+                                            </children>
+                                        </orders>
+                                        <invoices module="zohosynchronization" translate="title">
+                                            <title>Invoices</title>
+                                            <sort_order>8</sort_order>
+                                            <children>
+                                                <statuses_history module="zohosynchronization" translate="title">
+                                                    <title><![CDATA[Statuses History & Zoho Events]]></title>
+                                                    <sort_order>1</sort_order>
+                                                </statuses_history>
+                                                <comments module="zohosynchronization" translate="title">
+                                                    <title><![CDATA[Comments & Zoho Tasks]]></title>
+                                                    <sort_order>2</sort_order>
+                                                </comments>
+                                            </children>
+                                        </invoices>                        
+                                        <shipments module="zohosynchronization" translate="title">
+                                            <title>Shipments</title>
+                                            <sort_order>9</sort_order>
+                                            <children>
+                                                <statuses_history module="zohosynchronization" translate="title">
+                                                    <title><![CDATA[Statuses History & Zoho Events]]></title>
+                                                    <sort_order>0</sort_order>
+                                                </statuses_history>
+                                                <comments module="zohosynchronization" translate="title">
+                                                    <title><![CDATA[Comments & Zoho Tasks]]></title>
+                                                    <sort_order>1</sort_order>
+                                                </comments>
+                                            </children>
+                                        </shipments>
+                                        <creditmemos module="zohosynchronization" translate="title">
+                                            <title>Credit Memos</title>
+                                            <sort_order>10</sort_order>
+                                            <children>
+                                                <statuses_history module="zohosynchronization" translate="title">
+                                                    <title><![CDATA[Statuses History & Zoho Events]]></title>
+                                                    <sort_order>0</sort_order>
+                                                </statuses_history>
+                                                <comments module="zohosynchronization" translate="title">
+                                                    <title><![CDATA[Comments & Zoho Tasks]]></title>
+                                                    <sort_order>1</sort_order>
+                                                </comments>
+                                            </children>
+                                        </creditmemos>
+                                    </children>
+                                </mapping>
+                                <load_data_from_zohocrm>
+                                    <title>Load Data from ZohoCRM</title>
+                                    <sort_order>4</sort_order>
+                                    <children>
+                                        <remote module="zohosynchronization" translate="title">
+                                            <title>Load Data Instantly</title>
+                                            <sort_order>0</sort_order>
+                                        </remote>
+                                        <in_cron module="zohosynchronization" translate="title">
+                                            <title>Load Data in Cronjob</title>
+                                            <sort_order>1</sort_order>
+                                        </in_cron>
+                                    </children>
+                                </load_data_from_zohocrm>
+                                <report module="zohosynchronization" translate="title">
+                                    <title>Synchronization Reports</title>
+                                    <sort_order>5</sort_order>
+                                    <children>
+                                        <customer module="zohosynchronization" translate="title">
+                                            <title>Report Customers</title>
+                                            <sort_order>0</sort_order>
+                                            <children>
+                                                <login module="zohosynchronization" translate="title">
+                                                    <title>Login via customer's account</title>
+                                                    <sort_order>0</sort_order>
+                                                </login>
+                                                <reset module="zohosynchronization" translate="title">
+                                                    <title>Reset Zoho id for individual customer</title>
+                                                    <sort_order>1</sort_order>
+                                                </reset>
+                                                <reset_all module="zohosynchronization" translate="title">
+                                                    <title>Reset Zoho id for all customers</title>
+                                                    <sort_order>2</sort_order>
+                                                </reset_all>
+                                                <sync module="zohosynchronization" translate="title">
+                                                    <title>Execute synchronizing customer in report</title>
+                                                    <sort_order>3</sort_order>
+                                                </sync>
+                                                <add_to_queue module="zohosynchronization" translate="title">
+                                                    <title>Add customer to synchronization queue in report</title>
+                                                    <sort_order>4</sort_order>
+                                                </add_to_queue>
+                                            </children>
+                                        </customer>
+                                        <address module="zohosynchronization" translate="title">
+                                            <title>Report Addresses</title>
+                                            <sort_order>1</sort_order>
+                                            <children>
+                                                <reset module="zohosynchronization" translate="title">
+                                                    <title>Reset Zoho id for individual customer's address</title>
+                                                    <sort_order>0</sort_order>
+                                                </reset>
+                                                <reset_all module="zohosynchronization" translate="title">
+                                                    <title>Reset Zoho id for all customer's addresses</title>
+                                                    <sort_order>1</sort_order>
+                                                </reset_all>
+                                                <sync module="zohosynchronization" translate="title">
+                                                    <title>Execute synchronizing customer's address in report</title>
+                                                    <sort_order>2</sort_order>
+                                                </sync>
+                                                <add_to_queue module="zohosynchronization" translate="title">
+                                                    <title>Add customer's address to synchronization queue in report</title>
+                                                    <sort_order>3</sort_order>
+                                                </add_to_queue>
+                                            </children>
+                                        </address>
+                                        <subscriber module="zohosynchronization" translate="title">
+                                            <title>Report Subscribers</title>
+                                            <sort_order>2</sort_order>
+                                            <children>
+                                                <reset module="zohosynchronization" translate="title">
+                                                    <title>Reset Zoho id for individual subscriber</title>
+                                                    <sort_order>0</sort_order>
+                                                </reset>
+                                                <reset_all module="zohosynchronization" translate="title">
+                                                    <title>Reset Zoho id for all subscribers</title>
+                                                    <sort_order>1</sort_order>
+                                                </reset_all>
+                                                <sync module="zohosynchronization" translate="title">
+                                                    <title>Execute synchronizing subscriber in report</title>
+                                                    <sort_order>2</sort_order>
+                                                </sync>
+                                                <add_to_queue module="zohosynchronization" translate="title">
+                                                    <title>Add subscriber to synchronization queue in report</title>
+                                                    <sort_order>3</sort_order>
+                                                </add_to_queue>
+                                            </children>
+                                        </subscriber>
+                                        <quote module="zohosynchronization" translate="title">
+                                            <title>Report Quotes</title>
+                                            <sort_order>5</sort_order>
+                                            <children>
+                                                <reset module="zohosynchronization" translate="title">
+                                                    <title>Reset Potential Zoho id for individual quote</title>
+                                                    <sort_order>0</sort_order>
+                                                </reset>
+                                                <reset_all module="zohosynchronization" translate="title">
+                                                    <title>Reset Potential Zoho id for all quotes</title>
+                                                    <sort_order>1</sort_order>
+                                                </reset_all>
+                                                <sync module="zohosynchronization" translate="title">
+                                                    <title>Execute synchronizing quote in report</title>
+                                                    <sort_order>2</sort_order>
+                                                </sync>
+                                                <add_to_queue module="zohosynchronization" translate="title">
+                                                    <title>Add quote to synchronization queue in report</title>
+                                                    <sort_order>3</sort_order>
+                                                </add_to_queue>
+                                                <disable_quote module="zohosynchronization" translate="title">
+                                                    <title>Disable quote</title>
+                                                    <sort_order>5</sort_order>
+                                                </disable_quote>
+                                            </children>
+                                        </quote>
+                                        <order module="zohosynchronization" translate="title">
+                                            <title>Report Orders</title>
+                                            <sort_order>6</sort_order>
+                                            <children>
+                                                <reset module="zohosynchronization" translate="title">
+                                                    <title>Reset Potential Zoho id for individual order</title>
+                                                    <sort_order>0</sort_order>
+                                                </reset>
+                                                <reset_all module="zohosynchronization" translate="title">
+                                                    <title>Reset Potential Zoho id for all orders</title>
+                                                    <sort_order>1</sort_order>
+                                                </reset_all>
+                                                <sync module="zohosynchronization" translate="title">
+                                                    <title>Execute synchronizing order in report</title>
+                                                    <sort_order>2</sort_order>
+                                                </sync>
+                                                <add_to_queue module="zohosynchronization" translate="title">
+                                                    <title>Add order to synchronization queue in report</title>
+                                                    <sort_order>3</sort_order>
+                                                </add_to_queue>                                            
+                                                <reset_event module="zohosynchronization" translate="title">
+                                                    <title><![CDATA[Reset Events' & Tasks' Zoho id of individual order]]></title>
+                                                    <sort_order>4</sort_order>
+                                                </reset_event>
+                                                <reset_event_all module="zohosynchronization" translate="title">
+                                                    <title><![CDATA[Reset Events' & Tasks' Zoho id of all orders]]></title>
+                                                    <sort_order>5</sort_order>
+                                                </reset_event_all>
+                                            </children>
+                                        </order>
+                                    </children>
+                                </report>                            
+                                <queue module="zohosynchronization" translate="title">
+                                    <title>Synchronization Queue</title>
+                                    <sort_order>6</sort_order>
+                                    <children>
+                                        <manager module="zohosynchronization" translate="title">
+                                            <title>Queue Manager</title>
+                                            <sort_order>0</sort_order>
+                                        </manager>
+                                        <add_new module="zohosynchronization" translate="title">
+                                            <title>Add New Queue Item</title>
+                                            <sort_order>1</sort_order>
+                                        </add_new>
+                                        <clear module="zohosynchronization" translate="title">
+                                            <title>Clear Queue</title>
+                                            <sort_order>2</sort_order>
+                                        </clear>
+                                        <delete module="zohosynchronization" translate="title">
+                                            <title>Delete Queue Item</title>
+                                            <sort_order>3</sort_order>
+                                        </delete>
+                                        <runcron module="zohosynchronization" translate="title">
+                                            <title>Run Synchronize Data in Queue</title>
+                                            <sort_order>4</sort_order>
+                                        </runcron>
+                                    </children>
+                                </queue>
+                                <log module="zohosynchronization" translate="title">
+                                    <title>Synchronization Logs</title>
+                                    <sort_order>7</sort_order>
+                                    <children>
+                                        <truncate module="zohosynchronization" translate="title">
+                                            <title>Truncate Data</title>
+                                            <sort_order>0</sort_order>
+                                        </truncate>
+                                        <delete module="zohosynchronization" translate="title">
+                                            <title>Delete Log</title>
+                                            <sort_order>1</sort_order>
+                                        </delete>
+                                    </children>
+                                </log>
+                            </children>
+                        </zohosynchronization>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <crm4ecommerce_zohosynchronization translate="title">
+                                            <title>CRM4Ecommerce ZohoCRM Free Settings</title>
+                                            <sort_order>0</sort_order>
+                                        </crm4ecommerce_zohosynchronization>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <zohosynchronization>
+                    <file>crm4ecommerce_zohosynchronization.xml</file>
+                </zohosynchronization>
+            </updates>
+        </layout>
+        <events>
+            <admin_session_user_login_success>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_system</class>
+                        <method>adminLogin</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </admin_session_user_login_success>
+            <admin_system_config_changed_section_crm4ecommerce_zohosynchronization>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_system</class>
+                        <method>configChanged</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </admin_system_config_changed_section_crm4ecommerce_zohosynchronization>            
+            <zoho_account_save_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_system</class>
+                        <method>zohoAccountSaveAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </zoho_account_save_after>
+            
+            <customer_save_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_customer</class>
+                        <method>backendCustomerSaveAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </customer_save_after>
+            <customer_delete_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_customer</class>
+                        <method>customerDeleteAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </customer_delete_after>
+            
+            <newsletter_subscriber_save_before>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_subscriber</class>
+                        <method>backendNewsletterSubscriberSaveBefore</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </newsletter_subscriber_save_before>
+            <newsletter_subscriber_save_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_subscriber</class>
+                        <method>backendNewsletterSubscriberSaveAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </newsletter_subscriber_save_after>
+            <newsletter_subscriber_delete_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_subscriber</class>
+                        <method>newsletterSubscriberDeleteAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </newsletter_subscriber_delete_after>
+            
+            <sales_quote_save_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_quote</class>
+                        <method>backendSalesQuoteSaveAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </sales_quote_save_after>
+
+            <sales_order_save_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_order</class>
+                        <method>backendSalesOrderSaveAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </sales_order_save_after>
+            <sales_order_address_save_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_order</class>
+                        <method>backendSalesOrderAddressSaveAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </sales_order_address_save_after>
+            
+            <rewrite_order_invoice_comment_save_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_order</class>
+                        <method>backendRewriteOrderInvoiceCommentSaveAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </rewrite_order_invoice_comment_save_after>
+            <rewrite_order_shipment_comment_save_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_order</class>
+                        <method>backendRewriteOrderShipmentCommentSaveAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </rewrite_order_shipment_comment_save_after>
+            <rewrite_order_creditmemo_comment_save_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_order</class>
+                        <method>backendRewriteOrderCreditmemoCommentSaveAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </rewrite_order_creditmemo_comment_save_after>
+            <sales_order_shipment_save_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_order</class>
+                        <method>backendSalesOrderShipmentSaveAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </sales_order_shipment_save_after>
+            <sales_order_shipment_track_save_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_order</class>
+                        <method>backendSalesOrderShipmentTrackSaveAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </sales_order_shipment_track_save_after>
+        </events>
+    </adminhtml>
+    <global>
+        <events>
+            <sales_quote_item_set_product>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_quote</class>
+                        <method>salesQuoteItemSetProduct</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </sales_quote_item_set_product>
+            <sales_quote_collect_totals_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_quote</class>
+                        <method>salesQuoteSetDiscountAmount</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </sales_quote_collect_totals_after>
+            <customer_save_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_customer</class>
+                        <method>synchronizeCustomersAfterCronLoad</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </customer_save_after>
+            <customer_address_delete_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer_customer</class>
+                        <method>customerAddressDeleteAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </customer_address_delete_after>
+            
+            <sales_quote_delete_after>
+                <observers>
+                    <crm4ecommerce_zohosynchronization_observer>
+                        <type>singleton</type>
+                        <class>zohosynchronization/observer</class>
+                        <method>salesQuoteDeleteAfter</method>
+                    </crm4ecommerce_zohosynchronization_observer>
+                </observers>
+            </sales_quote_delete_after>
+        </events>
+        <template>
+            <email>
+                <crm4ecommerce_zohosynchronization_admin_email_after_send_queue translate="label" module="zohosynchronization">
+                    <label>ZohoCRM Free: Admin Notification After Cron Done</label>
+                    <file>crm4ecommerce/zohosynchronization/admin_email_after_send_queue.phtml</file>
+                    <type>html</type>
+                </crm4ecommerce_zohosynchronization_admin_email_after_send_queue>
+                <crm4ecommerce_zohosynchronization_admin_email_when_zoho_user_license_limited translate="label" module="zohosynchronization">
+                    <label>ZohoCRM Free: Admin Notification When Zoho User License Limited</label>
+                    <file>crm4ecommerce/zohosynchronization/admin_email_when_zoho_user_license_limited.phtml</file>
+                    <type>html</type>
+                </crm4ecommerce_zohosynchronization_admin_email_when_zoho_user_license_limited>
+            </email>
+        </template>
+        <models>
+            <sales>
+                <rewrite>
+                    <order_invoice_comment>CRM4Ecommerce_ZohoSynchronization_Model_Rewrite_Order_Invoice_Comment</order_invoice_comment>
+                </rewrite>
+            </sales>
+            <sales>
+                <rewrite>
+                    <order_shipment_comment>CRM4Ecommerce_ZohoSynchronization_Model_Rewrite_Order_Shipment_Comment</order_shipment_comment>
+                </rewrite>
+            </sales>
+            <sales>
+                <rewrite>
+                    <order_creditmemo_comment>CRM4Ecommerce_ZohoSynchronization_Model_Rewrite_Order_Creditmemo_Comment</order_creditmemo_comment>
+                </rewrite>
+            </sales>
+            <zohosynchronization>
+                <class>CRM4Ecommerce_ZohoSynchronization_Model</class>
+                <resourceModel>zohosynchronization_mysql4</resourceModel>
+            </zohosynchronization>
+            <zohosynchronization_mysql4>
+                <class>CRM4Ecommerce_ZohoSynchronization_Model_Mysql4</class>
+                <entities>
+                    <log>
+                        <table>crm4ecommerce_zohosynchronization_log</table>
+                    </log>
+                    <mapping_field>
+                        <table>crm4ecommerce_zohosynchronization_mapping_fields</table>
+                    </mapping_field>
+                    <zoho_account>
+                        <table>crm4ecommerce_zohosynchronization_zoho_account</table>
+                    </zoho_account>
+                    <queue>
+                        <table>crm4ecommerce_zohosynchronization_queue</table>
+                    </queue>
+                </entities>
+            </zohosynchronization_mysql4>
+        </models>
+        <resources>
+            <crm4ecommerce_zohosynchronization_setup>
+                <setup>
+                    <module>CRM4Ecommerce_ZohoSynchronization</module>
+                    <class>CRM4Ecommerce_ZohoSynchronization_Model_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </crm4ecommerce_zohosynchronization_setup>
+            <zohosynchronization_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </zohosynchronization_write>
+            <zohosynchronization_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </zohosynchronization_read>
+        </resources>
+        <blocks>
+            <zohosynchronization>
+                <class>CRM4Ecommerce_ZohoSynchronization_Block</class>
+            </zohosynchronization>
+        </blocks>
+        <helpers>
+            <zohosynchronization>
+                <class>CRM4Ecommerce_ZohoSynchronization_Helper</class>
+            </zohosynchronization>
+        </helpers>
+    </global>
+    <default>
+        <crm4ecommerce_zohosynchronization>
+            <general>
+                <status>0</status>
+                <serial_infor>No inputted serial key</serial_infor>
+                <start_date>None</start_date>
+                <expire_date>None</expire_date>
+            </general>
+            <zoho>
+                <api_limited>2</api_limited>
+            </zoho>
+            <api_limited>
+                <add_objects_into_queue></add_objects_into_queue>
+            </api_limited>
+            <synchronize_data_by_cronjob>
+                <is_synchronizing>Is Not Synchronizing</is_synchronizing>
+            </synchronize_data_by_cronjob>
+            <synchronize_data_by_events>
+                <backend_product_attributes_after_update>2</backend_product_attributes_after_update>
+            </synchronize_data_by_events>
+            <params>
+                <lead_enabled>1</lead_enabled>
+                <lead_import_all>0</lead_import_all>
+                <lead_only_import_has_field>Lead Source</lead_only_import_has_field>
+                <lead_only_import_has_field_condition>is</lead_only_import_has_field_condition>
+                <lead_only_import_has_field_condition_values>OnlineStore</lead_only_import_has_field_condition_values>
+                <lead_duplicate_insert>2</lead_duplicate_insert>
+                <lead_company_format>{{company}}</lead_company_format>
+                <lead_default_email>undefined-{{zoho_id}}@email.com</lead_default_email>
+                <lead_auto_fill_status>0</lead_auto_fill_status>
+                <lead_stage_has_no_contact>Not Contacted</lead_stage_has_no_contact>
+                <lead_stage_has_contact>Contact in Future</lead_stage_has_contact>
+                <lead_allow_delete>1</lead_allow_delete>
+                <lead_subscriber_import_all>0</lead_subscriber_import_all>
+                <lead_subscriber_duplicate_insert>2</lead_subscriber_duplicate_insert>
+                <lead_subscriber_only_import_has_field>Lead Source</lead_subscriber_only_import_has_field>
+                <lead_subscriber_only_import_has_field_condition>is</lead_subscriber_only_import_has_field_condition>
+                <lead_subscriber_only_import_has_field_condition_values>Web Research</lead_subscriber_only_import_has_field_condition_values>
+                <lead_subscriber_default_status>2</lead_subscriber_default_status>
+                <lead_auto_send_password_reminder_email>1</lead_auto_send_password_reminder_email>
+                <lead_subscriber_allow_delete>1</lead_subscriber_allow_delete>
+                
+                <account_name_format>{{company}}</account_name_format>
+                <account_duplicate_insert>2</account_duplicate_insert>
+                <account_duplicate_email_insert>2</account_duplicate_email_insert>
+                <account_default_email>undefined-{{zoho_id}}@email.com</account_default_email>
+                <account_import_guest>0</account_import_guest>
+                <account_guestname>{{company}} (Guest #{{order_increment_id}})</account_guestname>
+                <account_auto_send_password_reminder_email>1</account_auto_send_password_reminder_email>
+                <account_allow_delete>1</account_allow_delete>
+				
+                <contact_duplicate_insert>0</contact_duplicate_insert>
+                <contact_only_sync_billing_address>0</contact_only_sync_billing_address>
+                <remote_contact_address_template><![CDATA[<br/><a style="text-decoration: none;">{{firstname}} {{lastname}}{{if street}}<br/>{{street}}{{/if street}}<br/>{{if city}}{{city}}, {{/if city}}{{if region}}{{region}}, {{/if region}}{{if postcode}}{{postcode}}{{/if postcode}}{{if country_id}}<br/>{{country_id}}{{/if country_id}}{{if telephone}}<br/>T: {{telephone}}{{/if telephone}}{{if fax}}<br/>F: {{fax}}{{/if fax}}</a><br/>]]></remote_contact_address_template>
+                <contact_allow_delete>1</contact_allow_delete>
+                
+                <potential_enabled>1</potential_enabled>
+                <potential_duplicate_insert>2</potential_duplicate_insert>
+                <potential_type_existing_business>Existing Business</potential_type_existing_business>
+                <potential_type_new_business>New Business</potential_type_new_business>
+                <potential_closing_date>7</potential_closing_date>
+                <potential_stage_review_cart>Qualification</potential_stage_review_cart>
+                <potential_stage_come_back>Needs Analysis</potential_stage_come_back>
+                <potential_stage_come_back_after_days>3</potential_stage_come_back_after_days>
+                <potential_stage_quote>Proposal/Price Quote</potential_stage_quote>
+                <potential_stage_order_created>Negotiation/Review</potential_stage_order_created>
+                <potential_stage_order_processing>Order Processing</potential_stage_order_processing>
+                <potential_stage_closed_won>Closed Won</potential_stage_closed_won>
+                <potential_stage_closed_lost>Closed Lost</potential_stage_closed_lost>
+                <potential_quote_order_details><![CDATA[{{items}}
+--------------------------------------------------------
+Subtotal: {{subtotal}}
+{{if coupon_code}}Discount ({{coupon_code}}): {{discount_amount}}
+{{/if coupon_code}}{{if shipping_method}}Shipping & Handling ({{shipping_method}}): {{shipping_amount}}
+{{/if shipping_method}}{{if tax_amount}}Tax: {{tax_amount}}
+{{/if tax_amount}}Grand Total: {{grand_total}}
+{{if potential_is_order}}Total Paid: {{total_paid}}
+Total Refunded: {{total_refunded}}
+Total Due: {{total_due}}{{/if potential_is_order}}]]></potential_quote_order_details>
+                <potential_item_format><![CDATA[{{item_order}}. {{item_name}} x {{item_qty}} x {{item_unit_price}} (R. Total: {{item_total}})
+{{if potential_is_order}} - Original Price: {{item_original_unit_price}}
+{{/if potential_is_order}}{{if item_options}} - Product Options:
+{{item_options}}
+{{/if item_options}} - Discount Amount: {{item_discount_amount}}
+ - Total After Discount: {{item_total_after_discount}}
+ - Tax Amount: {{item_tax_amount}}
+ - Net Total: {{item_net_total}}]]></potential_item_format>
+                <potential_activities>1</potential_activities>
+				
+                <promotion_catalogprice_campaign_enabled>1</promotion_catalogprice_campaign_enabled>
+                <promotion_catalogprice_campaign_name_format>{{rule_name}}</promotion_catalogprice_campaign_name_format>
+                <promotion_catalogprice_campaign_duplicate_insert>2</promotion_catalogprice_campaign_duplicate_insert>
+                <promotion_catalogprice_campaign_status_pending>Planning</promotion_catalogprice_campaign_status_pending>
+                <promotion_catalogprice_campaign_status_active>Active</promotion_catalogprice_campaign_status_active>
+                <promotion_catalogprice_campaign_status_inactive>Inactive</promotion_catalogprice_campaign_status_inactive>
+                <promotion_catalogprice_campaign_status_expired>Complete</promotion_catalogprice_campaign_status_expired>
+                <promotion_catalogprice_campaign_adding_shipping>1</promotion_catalogprice_campaign_adding_shipping>
+                <promotion_catalogprice_campaign_recognize_field>Type</promotion_catalogprice_campaign_recognize_field>
+                <promotion_catalogprice_campaign_recognize_condition>is</promotion_catalogprice_campaign_recognize_condition>
+                <promotion_catalogprice_campaign_recognize_value>Catalog Price Rule</promotion_catalogprice_campaign_recognize_value>
+                <promotion_catalogprice_allow_delete>1</promotion_catalogprice_allow_delete>
+                
+                <promotion_shoppingcartprice_campaign_enabled>1</promotion_shoppingcartprice_campaign_enabled>
+                <promotion_shoppingcartprice_campaign_name_format>{{rule_name}}</promotion_shoppingcartprice_campaign_name_format>
+                <promotion_shoppingcartprice_labels_format>- {{store_name}}: {{label}}</promotion_shoppingcartprice_labels_format>
+                <promotion_shoppingcartprice_coupons_format>{{order_number}}. {{coupon_code}}: {{if coupon_used}}Used in {{times_used}} time(s){{/if coupon_used}}{{if coupon_not_used}}Not used{{/if coupon_not_used}}</promotion_shoppingcartprice_coupons_format>
+                <promotion_shoppingcartprice_campaign_duplicate_insert>2</promotion_shoppingcartprice_campaign_duplicate_insert>
+                <promotion_shoppingcartprice_campaign_status_pending>Planning</promotion_shoppingcartprice_campaign_status_pending>
+                <promotion_shoppingcartprice_campaign_status_active>Active</promotion_shoppingcartprice_campaign_status_active>
+                <promotion_shoppingcartprice_campaign_status_inactive>Inactive</promotion_shoppingcartprice_campaign_status_inactive>
+                <promotion_shoppingcartprice_campaign_status_expired>Complete</promotion_shoppingcartprice_campaign_status_expired>
+                <promotion_shoppingcartprice_campaign_adding_shipping>1</promotion_shoppingcartprice_campaign_adding_shipping>
+                <promotion_shoppingcartprice_campaign_recognize_field>Type</promotion_shoppingcartprice_campaign_recognize_field>
+                <promotion_shoppingcartprice_campaign_recognize_condition>is</promotion_shoppingcartprice_campaign_recognize_condition>
+                <promotion_shoppingcartprice_campaign_recognize_value>Shopping Cart Price Rule</promotion_shoppingcartprice_campaign_recognize_value>
+                <promotion_shoppingcartprice_allow_delete>1</promotion_shoppingcartprice_allow_delete>
+                
+                <product_enabled>1</product_enabled>
+                <product_name>{{productname}} - {{product_sku}}</product_name>
+                <product_duplicate_insert>2</product_duplicate_insert>
+                <auto_set_sku>0</auto_set_sku>
+                <default_product_type>simple</default_product_type>
+                <product_set_zero_for_cost>0</product_set_zero_for_cost>
+                <product_set_zero_for_specialprice>0</product_set_zero_for_specialprice>
+                <product_allow_delete>1</product_allow_delete>
+                
+                <quote_enabled>0</quote_enabled>
+                <quote_subject_prefix>QUOTE-</quote_subject_prefix>
+                <quote_dont_report_empty>1</quote_dont_report_empty>
+                <quote_related_products>1</quote_related_products>
+                <quote_duplicate_insert>2</quote_duplicate_insert>
+                <quote_stage_review_cart>Draft</quote_stage_review_cart>
+                <quote_stage_available>On Hold</quote_stage_available>
+                <quote_stage_order_created>Confirmed</quote_stage_order_created>
+                <quote_stage_closed_won>Closed Won</quote_stage_closed_won>
+                <quote_stage_closed_lost>Closed Lost</quote_stage_closed_lost>
+				
+                <order_enabled>0</order_enabled>
+                <order_subject_prefix>ORDER-</order_subject_prefix>
+                <order_related_products>1</order_related_products>
+                <order_default_payment_method>checkmo</order_default_payment_method>
+                <order_default_shipping_method>flatrate_flatrate</order_default_shipping_method>
+                <order_duplicate_insert>2</order_duplicate_insert>
+                <order_information_status_canceled>Cancelled</order_information_status_canceled>
+                <order_information_status_closed>Closed</order_information_status_closed>
+                <order_information_status_complete>Complete</order_information_status_complete>
+                <order_information_status_fraud>Suspected Fraud</order_information_status_fraud>
+                <order_information_status_holded>On Hold</order_information_status_holded>
+                <order_information_status_payment_review>Payment Review</order_information_status_payment_review>
+                <order_information_status_paypal_canceled_reversal>PayPal Canceled Reversal</order_information_status_paypal_canceled_reversal>
+                <order_information_status_paypal_reversed>PayPal Reversed</order_information_status_paypal_reversed>
+                <order_information_status_pending>Created</order_information_status_pending>
+                <order_information_status_pending_payment>Pending Payment</order_information_status_pending_payment>
+                <order_information_status_pending_paypal>Pending PayPal</order_information_status_pending_paypal>
+                <order_information_status_processing>Processing</order_information_status_processing>
+                <order_information_status_processing_complete_payment>Approved</order_information_status_processing_complete_payment>
+                <order_information_status_processing_complete_shipment>Delivered</order_information_status_processing_complete_shipment>
+                
+                <invoice_enabled>1</invoice_enabled>
+                <invoice_subject_prefix>INVOICE-</invoice_subject_prefix>
+                <invoice_duplicate_insert>2</invoice_duplicate_insert>
+                <invoice_information_status_1>Created</invoice_information_status_1>
+                <invoice_information_status_2>Approved</invoice_information_status_2>
+                <invoice_information_status_3>Cancelled</invoice_information_status_3>
+                
+                <order_event_enabled>1</order_event_enabled>
+                <order_event_subject>Order #{{order_increment_id}}: {{order_status}}</order_event_subject>
+                <order_event_duplicate_insert>0</order_event_duplicate_insert>
+                <order_event_due_date>1</order_event_due_date>
+                <order_task_enabled>1</order_task_enabled>
+                <order_task_subject>Order #{{order_increment_id}}: comment added at {{order_status}}</order_task_subject>
+                <order_task_duplicate_insert>0</order_task_duplicate_insert>
+                <order_task_due_date>1</order_task_due_date>
+                <order_task_status_canceled>Deferred</order_task_status_canceled>
+                <order_task_status_closed>Deferred</order_task_status_closed>
+                <order_task_status_complete>Completed</order_task_status_complete>
+                <order_task_status_fraud>Deferred</order_task_status_fraud>
+                <order_task_status_holded>Deferred</order_task_status_holded>
+                <order_task_status_payment_review>Waiting on someone else</order_task_status_payment_review>
+                <order_task_status_paypal_canceled_reversal>Deferred</order_task_status_paypal_canceled_reversal>
+                <order_task_status_paypal_reversed>In Progress</order_task_status_paypal_reversed>
+                <order_task_status_pending>Not Started</order_task_status_pending>
+                <order_task_status_pending_payment>Waiting on someone else</order_task_status_pending_payment>
+                <order_task_status_pending_paypal>Waiting on someone else</order_task_status_pending_paypal>
+                <order_task_status_processing>In Progress</order_task_status_processing>
+                
+                <invoice_event_enabled>1</invoice_event_enabled>
+                <invoice_event_subject_created>Invoice #{{invoice_increment_id}} created</invoice_event_subject_created>
+                <invoice_event_duplicate_insert>0</invoice_event_duplicate_insert>
+                <invoice_event_due_date>1</invoice_event_due_date>
+                <invoice_task_enabled>1</invoice_task_enabled>
+                <invoice_task_subject_comment_added>Invoice #{{invoice_increment_id}} comment added</invoice_task_subject_comment_added>
+                <invoice_task_duplicate_insert>0</invoice_task_duplicate_insert>
+                <invoice_task_due_date>1</invoice_task_due_date>
+                <invoice_task_status_1>Not Started</invoice_task_status_1>
+                <invoice_task_status_2>Completed</invoice_task_status_2>
+                <invoice_task_status_3>Deferred</invoice_task_status_3>
+                
+                <shipment_event_enabled>1</shipment_event_enabled>
+                <shipment_event_subject_created>Shipment #{{shipment_increment_id}} created</shipment_event_subject_created>
+                <shipment_event_subject_tracking_number_assigned>Tracking number {{shipment_track_number}} for {{shipment_track_title}} assigned</shipment_event_subject_tracking_number_assigned>
+                <shipment_event_duplicate_insert>0</shipment_event_duplicate_insert>
+                <shipment_event_due_date>1</shipment_event_due_date>
+                <shipment_task_enabled>1</shipment_task_enabled>
+                <shipment_task_subject_comment_added>Shipment #{{shipment_increment_id}} comment added</shipment_task_subject_comment_added>
+                <shipment_task_duplicate_insert>0</shipment_task_duplicate_insert>
+                <shipment_task_due_date>1</shipment_task_due_date>
+                
+                <creditmemo_event_enabled>1</creditmemo_event_enabled>
+                <creditmemo_event_subject_created>Credit memo #{{creditmemo_increment_id}} created</creditmemo_event_subject_created>
+                <creditmemo_event_duplicate_insert>0</creditmemo_event_duplicate_insert>
+                <creditmemo_event_due_date>1</creditmemo_event_due_date>
+                <creditmemo_task_enabled>1</creditmemo_task_enabled>
+                <creditmemo_task_subject_comment_added>Credit memo #{{creditmemo_increment_id}} comment added</creditmemo_task_subject_comment_added>
+                <creditmemo_task_duplicate_insert>0</creditmemo_task_duplicate_insert>
+                <creditmemo_task_due_date>1</creditmemo_task_due_date>
+                <creditmemo_task_status_1>Not Started</creditmemo_task_status_1>
+                <creditmemo_task_status_2>Completed</creditmemo_task_status_2>
+                <creditmemo_task_status_3>Deferred</creditmemo_task_status_3>
+                
+                <number_queue_items_loaded_each_time_in_cron>10</number_queue_items_loaded_each_time_in_cron>                
+                <load_data_number_items_each_time>5</load_data_number_items_each_time>
+                <allow_load_data_in_cronjob>0</allow_load_data_in_cronjob>
+                
+                <allow_load_leads_in_cronjob>1</allow_load_leads_in_cronjob>
+                <condition_load_leads>Modified Time</condition_load_leads>
+                <condition_load_leads_from>1</condition_load_leads_from>
+                <condition_load_leads_to>20</condition_load_leads_to>
+                <condition_load_leads_compare><![CDATA[>=]]></condition_load_leads_compare>
+                <condition_load_leads_value>15 minutes ago</condition_load_leads_value>
+                <condition_load_leads_sort_by>Modified Time</condition_load_leads_sort_by>
+                <condition_load_leads_sort_type>desc</condition_load_leads_sort_type>
+                <condition_load_leads_period>15</condition_load_leads_period>
+                
+                <allow_load_accounts_in_cronjob>1</allow_load_accounts_in_cronjob>
+                <condition_load_accounts>Modified Time</condition_load_accounts>
+                <condition_load_accounts_from>1</condition_load_accounts_from>
+                <condition_load_accounts_to>20</condition_load_accounts_to>
+                <condition_load_accounts_compare><![CDATA[>=]]></condition_load_accounts_compare>
+                <condition_load_accounts_value>15 minutes ago</condition_load_accounts_value>
+                <condition_load_accounts_sort_by>Modified Time</condition_load_accounts_sort_by>
+                <condition_load_accounts_sort_type>desc</condition_load_accounts_sort_type>
+                <condition_load_accounts_period>15</condition_load_accounts_period>
+                
+                <allow_load_contacts_in_cronjob>1</allow_load_contacts_in_cronjob>
+                <condition_load_contacts>Modified Time</condition_load_contacts>
+                <condition_load_contacts_from>1</condition_load_contacts_from>
+                <condition_load_contacts_to>20</condition_load_contacts_to>
+                <condition_load_contacts_compare><![CDATA[>=]]></condition_load_contacts_compare>
+                <condition_load_contacts_value>15 minutes ago</condition_load_contacts_value>
+                <condition_load_contacts_sort_by>Modified Time</condition_load_contacts_sort_by>
+                <condition_load_contacts_sort_type>desc</condition_load_contacts_sort_type>
+                <condition_load_contacts_period>15</condition_load_contacts_period>
+                
+                <allow_load_campaigns_in_cronjob>1</allow_load_campaigns_in_cronjob>
+                <condition_load_campaigns>Modified Time</condition_load_campaigns>
+                <condition_load_campaigns_from>1</condition_load_campaigns_from>
+                <condition_load_campaigns_to>20</condition_load_campaigns_to>
+                <condition_load_campaigns_compare><![CDATA[>=]]></condition_load_campaigns_compare>
+                <condition_load_campaigns_value>15 minutes ago</condition_load_campaigns_value>
+                <condition_load_campaigns_sort_by>Modified Time</condition_load_campaigns_sort_by>
+                <condition_load_campaigns_sort_type>desc</condition_load_campaigns_sort_type>
+                <condition_load_campaigns_period>15</condition_load_campaigns_period>
+                
+                <allow_load_products_in_cronjob>1</allow_load_products_in_cronjob>
+                <condition_load_products>Need Remote</condition_load_products>
+                <condition_load_products_from>1</condition_load_products_from>
+                <condition_load_products_to>20</condition_load_products_to>
+                <condition_load_products_compare><![CDATA[is]]></condition_load_products_compare>
+                <condition_load_products_value>true</condition_load_products_value>
+                <condition_load_products_sort_by>Product Name</condition_load_products_sort_by>
+                <condition_load_products_sort_type>asc</condition_load_products_sort_type>
+                <condition_load_products_period>15</condition_load_products_period>
+                
+                <allow_load_quotes_in_cronjob>1</allow_load_quotes_in_cronjob>
+                <condition_load_quotes>Need Remote</condition_load_quotes>
+                <condition_load_quotes_from>1</condition_load_quotes_from>
+                <condition_load_quotes_to>20</condition_load_quotes_to>
+                <condition_load_quotes_compare><![CDATA[is]]></condition_load_quotes_compare>
+                <condition_load_quotes_value>true</condition_load_quotes_value>
+                <condition_load_quotes_sort_by>Subject</condition_load_quotes_sort_by>
+                <condition_load_quotes_sort_type>asc</condition_load_quotes_sort_type>
+                <condition_load_quotes_period>15</condition_load_quotes_period>
+                
+                <allow_load_salesorders_in_cronjob>1</allow_load_salesorders_in_cronjob>
+                <condition_load_salesorders>Need Remote</condition_load_salesorders>
+                <condition_load_salesorders_from>1</condition_load_salesorders_from>
+                <condition_load_salesorders_to>20</condition_load_salesorders_to>
+                <condition_load_salesorders_compare><![CDATA[is]]></condition_load_salesorders_compare>
+                <condition_load_salesorders_value>true</condition_load_salesorders_value>
+                <condition_load_salesorders_sort_by>Subject</condition_load_salesorders_sort_by>
+                <condition_load_salesorders_sort_type>asc</condition_load_salesorders_sort_type>
+                <condition_load_salesorders_period>15</condition_load_salesorders_period>
+                
+                <allow_load_invoices_in_cronjob>1</allow_load_invoices_in_cronjob>
+                <condition_load_invoices>Need Remote</condition_load_invoices>
+                <condition_load_invoices_from>1</condition_load_invoices_from>
+                <condition_load_invoices_to>20</condition_load_invoices_to>
+                <condition_load_invoices_compare><![CDATA[is]]></condition_load_invoices_compare>
+                <condition_load_invoices_value>true</condition_load_invoices_value>
+                <condition_load_invoices_sort_by>Subject</condition_load_invoices_sort_by>
+                <condition_load_invoices_sort_type>asc</condition_load_invoices_sort_type>
+                <condition_load_invoices_period>15</condition_load_invoices_period>
+                
+                <allow_load_tasks_in_cronjob>1</allow_load_tasks_in_cronjob>
+                <condition_load_tasks>Modified Time</condition_load_tasks>
+                <condition_load_tasks_from>1</condition_load_tasks_from>
+                <condition_load_tasks_to>20</condition_load_tasks_to>
+                <condition_load_tasks_compare><![CDATA[>=]]></condition_load_tasks_compare>
+                <condition_load_tasks_value>15 minutes ago</condition_load_tasks_value>
+                <condition_load_tasks_sort_by>Modified Time</condition_load_tasks_sort_by>
+                <condition_load_tasks_sort_type>desc</condition_load_tasks_sort_type>
+                <condition_load_tasks_period>15</condition_load_tasks_period>                
+            </params>
+            <log_settings>
+                <log_mode>1,2,3,4,5,6,7,8</log_mode>
+                <log_data_type>1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17</log_data_type>
+            </log_settings>
+            <send_mail_notification>
+                <email_template>crm4ecommerce_zohosynchronization_admin_email_after_send_queue</email_template>
+            </send_mail_notification>
+            <send_mail_notification_when_user_limit>
+                <email_template>crm4ecommerce_zohosynchronization_admin_email_when_zoho_user_license_limited</email_template>
+            </send_mail_notification_when_user_limit>
+        </crm4ecommerce_zohosynchronization>
+    </default>
+    <crontab>
+        <jobs>
+            <zohosynchronization>
+                <schedule>
+                    <cron_expr>* * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>zohosynchronization/observer_system::runCron</model>
+                </run>
+            </zohosynchronization>
+        </jobs>
+    </crontab>
+</config>

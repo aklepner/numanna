@@ -1,0 +1,467 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Mapping_Form_New
+ */
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS).'tinybox2/style.css';?>" />
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS).'tinybox2/tinybox.js';?>"></script>
+<div class="content-header">
+    <table cellspacing="0">
+        <tr>
+            <td><h3 class="icon-head head-adminhtml-mapping"><?php echo $this->getHeaderTitle() ?></h3></td>
+        </tr>
+    </table>
+</div>
+<style type="text/css">
+    div.crm4ecommerce-cpanel .icon {
+        float: left;
+        margin-top: 15px;
+        margin-left: 15px;
+        text-align: center;
+    }
+
+    div.crm4ecommerce-cpanel .icon a {
+        -moz-transition-duration: 0.8s;
+        -moz-transition-property: background-position, -moz-border-radius-bottomleft, -moz-box-shadow;
+        background-color: #FFFFFF;
+        background-position: -30px 50%;
+        border: 1px solid #CCCCCC;
+        border-radius: 5px 5px 5px 5px;
+        color: #565656;
+        display: block;
+        float: left;
+        height: 97px;
+        text-decoration: none;
+        vertical-align: middle;
+        width: 108px;
+    }
+
+    div.crm4ecommerce-cpanel .icon a:hover {
+        background-position: 0;
+        -webkit-border-bottom-left-radius: 50% 20px;
+        -moz-border-radius-bottomleft: 50% 20px;
+        border-bottom-left-radius: 50% 20px;
+        -webkit-box-shadow: -5px 10px 15px rgba(0, 0, 0, 0.25);
+        -moz-box-shadow: -5px 10px 15px rgba(0, 0, 0, 0.25);
+        box-shadow: -5px 10px 15px rgba(0, 0, 0, 0.25);
+        position: relative;
+        z-index: 10;
+    }
+
+    div.crm4ecommerce-cpanel .icon img {
+        margin: 0 auto;
+        padding: 15px 0 5px 0;
+    }
+
+    div.crm4ecommerce-cpanel .icon span {
+        display: block;
+        text-align: center;
+    }
+</style>
+<div class="dashboard-container" style="border: 0px; overflow: hidden; padding: 0px 15px;">
+    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+        <tr><td style="width: 285px;">
+                <div style="background-color: #F4F4F4; border: 1px solid #CCCCCC; padding-bottom: 15px;
+                     border-radius: 10px 10px 10px 10px; float: left; width: 265px;">
+                    <div class="crm4ecommerce-cpanel">
+                        <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/settings')) { ?>
+                        <div class="icon-wrapper">
+                            <div class="icon">
+                                <a href="<?php echo $this->getUrl('adminhtml/system_config/edit/section/crm4ecommerce_zohosynchronization/'); ?>">
+                                    <img alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/settings.png'); ?>">
+                                    <span><?php echo $this->__('Settings'); ?></span>
+                                </a>
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/accounts')) { ?>
+                        <div class="icon-wrapper">
+                            <div class="icon">
+                                <a href="<?php echo $this->getUrl('zohosynchronization/adminhtml_zoho_account'); ?>">
+                                    <img alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/zoho-accounts.png'); ?>">
+                                    <span><?php echo $this->__('Zoho Users'); ?></span>
+                                </a>
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <div class="icon-wrapper">
+                            <div class="icon">
+                                <a href="#" id="mapping-attributes-button">
+                                    <img alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/mapping.png'); ?>">
+                                    <span><?php echo $this->__('Mapping Attributes'); ?></span>
+                                </a>
+                            </div>
+                        </div>
+                        <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/load_data_from_zohocrm/remote')) { ?>
+                        <div class="icon-wrapper">
+                            <div class="icon">
+                                <a href="<?php echo $this->getUrl('zohosynchronization/adminhtml_remote'); ?>">
+                                    <img alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/remote.png'); ?>">
+                                    <span><?php echo $this->__('Load Data from ZohoCRM'); ?></span>
+                                </a>
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/queue')) { ?>
+                        <div class="icon-wrapper">
+                            <div class="icon">
+                                <a href="<?php echo $this->getUrl('zohosynchronization/adminhtml_queue'); ?>">
+                                    <img alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/queue.png'); ?>">
+                                    <span><?php echo $this->__('Manage Queue'); ?></span>
+                                </a>
+                            </div>
+                        </div>
+                        <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/queue/runcron')) { ?>
+                        <div class="icon-wrapper">
+                            <div class="icon">
+                                <a href="#" onclick="showPopup();">
+                                    <img alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/run-cron.png'); ?>">
+                                    <span><?php echo $this->__('Run Synchronize Data in Queue'); ?></span>
+                                </a>
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <?php } ?>
+                        <div class="icon-wrapper">
+                            <div class="icon">
+                                <a href="#" id="reporting-button">
+                                    <img alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/reporting.png'); ?>">
+                                    <span><?php echo $this->__('Reporting'); ?></span>
+                                </a>
+                            </div>
+                        </div>
+                        <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/log')) { ?>
+                        <div class="icon-wrapper">
+                            <div class="icon">
+                                <a href="<?php echo $this->getUrl('zohosynchronization/adminhtml_log'); ?>">
+                                    <img alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/log.png'); ?>">
+                                    <span><?php echo $this->__('Manage Logs'); ?></span>
+                                </a>
+                            </div>
+                        </div>
+                        <?php } ?>
+                    </div>
+                </div>
+                <div style="margin-top: 10px; font-size: 11px; float: left; text-align: right; width: 265px;">
+                    <?php echo $this->__('Copyright'); ?> &copy; <?php echo date('Y');?> <a href="http://www.crm4ecommerce.com" target="_blank">CRM4Ecommerce.COM</a>
+                </div>
+            </td>
+            <td><div style="float: right; width: 100%;">
+                    <div class="entry-edit" style="border:1px solid #ccc;">
+                        <ul id="diagram_tab" class="tabs-horiz">
+                            <li>
+                                <a id="diagram_tab_status" class="tab-item-link active" title="<?php echo $this->__('Status');?>" href="#">
+                                    <span>
+                                        <span class="changed" title="<?php echo $this->__('The information in this tab has been changed.');?>"></span>
+                                        <span class="error" title="<?php echo $this->__('This tab contains invalid data. Please solve the problem before saving.');?>"></span>
+                                        <?php echo $this->__('Status');?>
+                                    </span>
+                                </a>
+                            </li>
+                            <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/report/customer')) { ?>
+                            <li>
+                                <a id="diagram_tab_customers" class="tab-item-link" title="<?php echo $this->__('Customers');?>" href="#">
+                                    <span>
+                                        <span class="changed" title="<?php echo $this->__('The information in this tab has been changed.');?>"></span>
+                                        <span class="error" title="<?php echo $this->__('This tab contains invalid data. Please solve the problem before saving.');?>"></span>
+                                        <?php echo $this->__('Customers');?>
+                                    </span>
+                                </a>
+                            </li>
+                            <?php } ?>
+                            <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/report/address')) { ?>
+                            <li>
+                                <a id="diagram_tab_addresses" class="tab-item-link" title="<?php echo $this->__('Addresses');?>" href="#">
+                                    <span>
+                                        <span class="changed" title="<?php echo $this->__('The information in this tab has been changed.');?>"></span>
+                                        <span class="error" title="<?php echo $this->__('This tab contains invalid data. Please solve the problem before saving.');?>"></span>
+                                        <?php echo $this->__('Addresses');?>
+                                    </span>
+                                </a>
+                            </li>
+                            <?php } ?>
+                            <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/report/subscriber')) { ?>
+                            <li>
+                                <a id="diagram_tab_subscribers" class="tab-item-link" title="<?php echo $this->__('Subscribers');?>" href="#">
+                                    <span>
+                                        <span class="changed" title="<?php echo $this->__('The information in this tab has been changed.');?>"></span>
+                                        <span class="error" title="<?php echo $this->__('This tab contains invalid data. Please solve the problem before saving.');?>"></span>
+                                        <?php echo $this->__('Subscribers');?>
+                                    </span>
+                                </a>
+                            </li>
+                            <?php } ?>
+                            <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/report/quote')) { ?>
+                            <li>
+                                <a id="diagram_tab_quotes" class="tab-item-link" title="<?php echo $this->__('Quotes');?>" href="#">
+                                    <span>
+                                        <span class="changed" title="<?php echo $this->__('The information in this tab has been changed.');?>"></span>
+                                        <span class="error" title="<?php echo $this->__('This tab contains invalid data. Please solve the problem before saving.');?>"></span>
+                                        <?php echo $this->__('Quotes');?>
+                                    </span>
+                                </a>
+                            </li>
+                            <?php } ?>
+                            <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/report/order')) { ?>
+                            <li>
+                                <a id="diagram_tab_orders" class="tab-item-link" title="<?php echo $this->__('Orders');?>" href="#">
+                                    <span>
+                                        <span class="changed" title="<?php echo $this->__('The information in this tab has been changed.');?>"></span>
+                                        <span class="error" title="<?php echo $this->__('This tab contains invalid data. Please solve the problem before saving.');?>"></span>
+                                        <?php echo $this->__('Orders');?>
+                                    </span>
+                                </a>
+                            </li>
+                            <?php } ?>
+                            <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/queue')) { ?>
+                            <li>
+                                <a id="diagram_tab_queue" class="tab-item-link" title="<?php echo $this->__('Queue');?>" href="#">
+                                    <span>
+                                        <span class="changed" title="<?php echo $this->__('The information in this tab has been changed.');?>"></span>
+                                        <span class="error" title="<?php echo $this->__('This tab contains invalid data. Please solve the problem before saving.');?>"></span>
+                                        <?php echo $this->__('Queue');?>
+                                    </span>
+                                </a>
+                            </li>
+                            <?php } ?>
+                            <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/log')) { ?>
+                            <li>
+                                <a id="diagram_tab_logs" class="tab-item-link" title="<?php echo $this->__('Logs');?>" href="#">
+                                    <span>
+                                        <span class="changed" title="<?php echo $this->__('The information in this tab has been changed.');?>"></span>
+                                        <span class="error" title="<?php echo $this->__('This tab contains invalid data. Please solve the problem before saving.');?>"></span>
+                                        <?php echo $this->__('Logs');?>
+                                    </span>
+                                </a>
+                            </li>
+                            <?php } ?>
+                        </ul>
+                        <div id="diagram_tab_content">
+                            <div id="diagram_tab_status_content" style="display: none;">
+                                <div style="margin:20px;">
+                                    <?php echo $this->getLayout()->createBlock('zohosynchronization/adminhtml_dashboard_status')->toHtml();?>
+                                </div>
+                            </div>
+                            <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/report/customer')) { ?>
+                            <div id="diagram_tab_customers_content" style="">
+                                <div style="margin:20px;">
+                                    <?php echo $this->getLayout()->createBlock('zohosynchronization/adminhtml_dashboard_report_customer')->toHtml();?>
+                                </div>
+                            </div>
+                            <?php } ?>
+                            <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/report/address')) { ?>
+                            <div id="diagram_tab_addresses_content" style="">
+                                <div style="margin:20px;">
+                                    <?php echo $this->getLayout()->createBlock('zohosynchronization/adminhtml_dashboard_report_address')->toHtml();?>
+                                </div>
+                            </div>
+                            <?php } ?>
+                            <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/report/subscriber')) { ?>
+                            <div id="diagram_tab_subscribers_content" style="">
+                                <div style="margin:20px;">
+                                    <?php echo $this->getLayout()->createBlock('zohosynchronization/adminhtml_dashboard_report_subscriber')->toHtml();?>
+                                </div>
+                            </div>
+                            <?php } ?>
+                            <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/report/quote')) { ?>
+                            <div id="diagram_tab_quotes_content" style="">
+                                <div style="margin:20px;">
+                                    <?php echo $this->getLayout()->createBlock('zohosynchronization/adminhtml_dashboard_report_quote')->toHtml();?>
+                                </div>
+                            </div>
+                            <?php } ?>
+                            <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/report/order')) { ?>
+                            <div id="diagram_tab_orders_content" style="">
+                                <div style="margin:20px;">
+                                    <?php echo $this->getLayout()->createBlock('zohosynchronization/adminhtml_dashboard_report_order')->toHtml();?>
+                                </div>
+                            </div>
+                            <?php } ?>
+                            <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/queue')) { ?>
+                            <div id="diagram_tab_queue_content" style="">
+                                <div style="margin:20px;">
+                                    <?php echo $this->getLayout()->createBlock('zohosynchronization/adminhtml_dashboard_report_queue')->toHtml();?>
+                                </div>
+                            </div>
+                            <?php } ?>
+                            <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/log')) { ?>
+                            <div id="diagram_tab_logs_content" style="">
+                                <div style="margin:20px;">
+                                    <?php echo $this->getLayout()->createBlock('zohosynchronization/adminhtml_dashboard_report_log')->toHtml();?>
+                                </div>
+                            </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div></td>
+        </tr>
+    </table>
+</div>
+<div id="mapping-attributes-button-contents" style="display: none;">
+    <div class="box-message">
+        <div class="demo-info">
+            <div style="background-color: #F4F4F4; border: 1px solid #CCCCCC; padding-bottom: 15px;
+                     border-radius: 10px 10px 10px 10px; float: left; width: 390px;">
+                <div class="crm4ecommerce-cpanel">
+                    <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/mapping/customers/zoho_leads')) { ?>
+                    <div class="icon-wrapper">
+                        <div class="icon">
+                            <a href="<?php echo $this->getUrl('zohosynchronization/adminhtml_mapping_customer_lead/'); ?>">
+                                <img alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/mapping.png'); ?>">
+                                <span><?php echo $this->__('Customers & Zoho Leads'); ?></span>
+                            </a>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/mapping/customers/zoho_accounts')) { ?>
+                    <div class="icon-wrapper">
+                        <div class="icon">
+                            <a href="<?php echo $this->getUrl('zohosynchronization/adminhtml_mapping_customer_account/'); ?>">
+                                <img alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/mapping.png'); ?>">
+                                <span><?php echo $this->__('Customers & Zoho Accounts'); ?></span>
+                            </a>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/mapping/customers/zoho_contacts')) { ?>
+                    <div class="icon-wrapper">
+                        <div class="icon">
+                            <a href="<?php echo $this->getUrl('zohosynchronization/adminhtml_mapping_customer_contact/'); ?>">
+                                <img alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/mapping.png'); ?>">
+                                <span><?php echo $this->__("Addresses & Zoho Contacts"); ?></span>
+                            </a>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/mapping/subscribers')) { ?>
+                    <div class="icon-wrapper">
+                        <div class="icon">
+                            <a href="<?php echo $this->getUrl('zohosynchronization/adminhtml_mapping_subscriber/'); ?>">
+                                <img alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/mapping.png'); ?>">
+                                <span><?php echo $this->__("Subscribers & Zoho Leads"); ?></span>
+                            </a>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/mapping/potential')) { ?>
+                    <div class="icon-wrapper">
+                        <div class="icon">
+                            <a href="<?php echo $this->getUrl('zohosynchronization/adminhtml_mapping_potential/'); ?>">
+                                <img alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/mapping.png'); ?>">
+                                <span><?php echo $this->__('Mapping Potentials'); ?></span>
+                            </a>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="reporting-button-contents" style="display: none;">
+    <div class="box-message">
+        <div class="demo-info">
+            <div style="background-color: #F4F4F4; border: 1px solid #CCCCCC; padding-bottom: 15px;
+                     border-radius: 10px 10px 10px 10px; float: left; width: 390px;">
+                <div class="crm4ecommerce-cpanel">
+                    <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/report/customer')) { ?>
+                    <div class="icon-wrapper">
+                        <div class="icon">
+                            <a href="<?php echo $this->getUrl('zohosynchronization/adminhtml_report_customer/'); ?>">
+                                <img alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/reporting.png'); ?>">
+                                <span><?php echo $this->__('Report Customers'); ?></span>
+                            </a>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/report/address')) { ?>
+                    <div class="icon-wrapper">
+                        <div class="icon">
+                            <a href="<?php echo $this->getUrl('zohosynchronization/adminhtml_report_address/'); ?>">
+                                <img alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/reporting.png'); ?>">
+                                <span><?php echo $this->__('Report Addresses'); ?></span>
+                            </a>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/report/subscriber')) { ?>
+                    <div class="icon-wrapper">
+                        <div class="icon">
+                            <a href="<?php echo $this->getUrl('zohosynchronization/adminhtml_report_subscriber/'); ?>">
+                                <img alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/reporting.png'); ?>">
+                                <span><?php echo $this->__('Report Subscribers'); ?></span>
+                            </a>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/report/quote')) { ?>
+                    <div class="icon-wrapper">
+                        <div class="icon">
+                            <a href="<?php echo $this->getUrl('zohosynchronization/adminhtml_report_quote/'); ?>">
+                                <img alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/reporting.png'); ?>">
+                                <span><?php echo $this->__('Report Quotes'); ?></span>
+                            </a>
+                        </div>
+                    </div>
+                    <?php } ?>
+                    <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/report/order')) { ?>
+                    <div class="icon-wrapper">
+                        <div class="icon">
+                            <a href="<?php echo $this->getUrl('zohosynchronization/adminhtml_report_order/'); ?>">
+                                <img alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/reporting.png'); ?>">
+                                <span><?php echo $this->__('Report Orders'); ?></span>
+                            </a>
+                        </div>
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="image-model-overview" style="display: none;">
+    <div class="box-message">
+        <div class="demo-info">
+            <div style="background-color: #F4F4F4; border: 1px solid #CCCCCC; padding-bottom: 15px;
+                     border-radius: 10px 10px 10px 10px; float: left; width: 680px;">
+                <div class="crm4ecommerce-cpanel">
+                    <div class="icon-wrapper">
+                        <div class="icon">
+                            <img width="650px" style="padding: 5px 0px;" alt="" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/magentozoho-model.png'); ?>">
+                            <span><b><?php echo $this->__('Synchronization Model Overview'); ?></b></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    showPopup = function() {
+        window.open("<?php echo $this->getUrl('zohosynchronization/cron/index'); ?>", 'crm4ecommerce_zohosynchronization_runcron', 'width=550,height=400,scrollbars=yes')
+    };
+    diagram_tabJsTabs = new varienTabs('diagram_tab', 'diagram_tab_content', 'diagram_tab_status', []);
+
+    document.observe("dom:loaded", function() {
+        showPopupMenu = function(name) {
+            var dlgH = $(name).getHeight();
+            var docH = document.viewport.getHeight();
+            dtop = 0;
+            if (dlgH > docH) {
+                dtop = 20; 
+            } else {
+               dtop = (docH - dlgH) / 2;
+            }
+            TINY.box.show({html:$(name).innerHTML, animate:true, close:false,top:dtop});
+        };
+
+        $('mapping-attributes-button').observe('click', function() {showPopupMenu('mapping-attributes-button-contents')});
+        $('reporting-button').observe('click', function() {showPopupMenu('reporting-button-contents')});
+        $('model-overview').observe('click', function() {showPopupMenu('image-model-overview')});
+    });
+</script> 

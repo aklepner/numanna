@@ -1,0 +1,72 @@
+<?php
+/**
+ * Media Gallery & Product Videos extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   FME
+ * @package    Mediaappearance
+ * @copyright  Copyright 2010 © free-magentoextensions.com All right reserved
+ **/
+?>
+<?php $paginator = $this->getPaginator(); ?>
+<?php
+$tabID = $this->getRequest()->getParam('tab');
+$tabStr = "&tab=1";
+if(isset($tabID)){
+	
+	if($tabID == 1){
+		$tabStr = "&tab=1";
+	}elseif($tabID == 2){
+		$tabStr = "&tab=2";
+	}elseif($tabID == 3){
+		$tabStr = "&tab=3";
+	} 
+}
+?>
+<?php if ($paginator->pageCount && $paginator->pageCount > 1): ?>
+	<div class="paginationControl">
+	<?php echo $paginator->firstItemNumber; ?> - <?php echo $paginator->lastItemNumber; ?>
+	<?php echo $this->__('of'); ?> <?php echo $paginator->totalItemCount; ?>
+	
+		<!-- First page link -->
+		<?php if ( isset($paginator->previous) ): ?>
+			<a href="<?php echo Mage::helper('mediaappearance')->getUrl() . '?page=' . $paginator->first; ?><?php echo $tabStr;?>">
+				<?php echo $this->__('First'); ?>
+			</a> |
+		<?php else: ?>
+			<span class="disabled"><?php echo $this->__('First'); ?></span> |
+		<?php endif; ?>
+	
+		<!-- Previous page link -->
+		<?php if ( isset($paginator->previous) ): ?>
+			<a href="<?php echo Mage::helper('mediaappearance')->getUrl() . '?page=' . $paginator->previous; ?><?php echo $tabStr;?>">
+				&lt; <?php echo $this->__('Previous'); ?>
+			</a> |
+		<?php else: ?>
+			<span class="disabled">&lt; <?php echo $this->__('Previous'); ?></span> |
+		<?php endif; ?>
+		<li class="next">
+		<!-- Next page link -->
+		<?php if ( isset($paginator->next) ): ?>
+			<a href="<?php echo Mage::helper('mediaappearance')->getUrl() . '?page=' . $paginator->next; ?><?php echo $tabStr;?>">
+				<?php echo $this->__('Next'); ?> &gt;
+			</a> |
+		<?php else: ?>
+			<span class="disabled"><?php echo $this->__('Next'); ?> &gt;</span> |
+		<?php endif; ?>
+		</li>
+		<!-- Last page link -->
+		<?php if (isset($paginator->next)): ?>
+			<a href="<?php echo Mage::helper('mediaappearance')->getUrl() . '?page=' . $paginator->last; ?><?php echo $tabStr;?>"><?php echo $this->__('Last'); ?></a>
+		<?php else: ?>
+			<span class="disabled"><?php echo $this->__('Last'); ?></span>
+		<?php endif; ?>
+	
+</div>
+<?php endif; ?>

@@ -1,0 +1,2 @@
+2,Customers;3,Customer's Addresses;17,Subscribers;9,Potentials;13,Sales' Statuses History;14,Sales' Comments
+2,Customers;3,Customer's Addresses;17,Subscribers;14,Statuses History & Comments of Orders

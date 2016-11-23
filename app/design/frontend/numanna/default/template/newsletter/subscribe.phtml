@@ -1,0 +1,9 @@
+        <form action="<?php echo $this->getUrl('newsletter/subscriber/new', array('_secure' => true)) ?>" method="post" id="newsletter-validate-detail">
+                   <input type="text" name="email" id="newsletter" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="input-text required-entry validate-email"  value="Your email here..." onfocus="if(this.value == 'Your email here...') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Your email here...'; }" />
+                   <button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="btn btn-primary"><?php echo $this->__('Subscribe') ?></button>
+        </form>
+        <script type="text/javascript">
+        //<![CDATA[
+            var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+        //]]>
+        </script>

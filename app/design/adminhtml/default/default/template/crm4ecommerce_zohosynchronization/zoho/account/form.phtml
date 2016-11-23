@@ -1,0 +1,117 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Zoho_Account_Form
+ */
+?>
+<div class="entry-edit" style="width: 300px;">
+    <form id="edit_form" method="post" action="<?php echo $this->getSaveUrl();?>">
+    <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey();?>" />
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->getFormTitle(); ?></h4>
+    </div>
+    <div class="fieldset">
+        <table cellspacing="0" class="form-list" style="width: 100%;">
+            <tbody>
+                <tr>
+                    <td class="label" style="width: 80px;">
+                        <label style="width: 80px;" for="f_username_value"><?php echo $this->__('User Name') ?>
+                        <span class="required">*</span></label>
+                    </td>
+                    <td class="value">
+                        <input type="text" class="required-entry input-text required-entry" id="f_username_value" name="f_username_value" style="width: 97%" value="<?php echo Mage::registry('zoho_account_data') ? Mage::registry('zoho_account_data')->getUsername() : '';?>" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label" style="width: 80px;"><?php echo $this->__('Password') ?></td>
+                    <td class="value">
+                        <input type="password" class="input-text" name="f_password_value" style="width: 97%" value="" />
+                    </td>
+                </tr>
+                <?php if (Mage::registry('c_action') == 'edit') { ?>
+                <tr>
+                    <td class="label" style="width: 80px;"><?php echo $this->__('Authtoken') ?></td>
+                    <td class="value">
+                        <textarea type="text" class="input-text" name="f_authtoken_value" style="width: 97%; height: 35px;"><?php echo Mage::registry('zoho_account_data') ? Mage::registry('zoho_account_data')->getAuthtoken() : '';?></textarea>
+                        <input type="checkbox" name="create_authtoken" value="1" /> <?php echo Mage::registry('zoho_account_data') && Mage::registry('zoho_account_data')->getAuthtoken() != '' ? $this->__('Renew Token') : $this->__('Create Token'); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label" style="width: 80px;"><?php echo $this->__('Order Using') ?></td>
+                    <td class="value">
+                        <input type="text" class="input-text" name="f_order_value" style="width: 97%" value="<?php echo Mage::registry('zoho_account_data') ? Mage::registry('zoho_account_data')->getSortOrder() : '';?>" />
+                    </td>
+                </tr>
+                <?php } ?>
+                <tr>
+                    <td class="label" style="width: 80px;"><?php echo $this->__('Is Using') ?></td>
+                    <td class="value">
+                        <select name="f_is_current" class="input-text" style="width: 100%">
+                            <option <?php if (Mage::registry('zoho_account_data')) { echo Mage::registry('zoho_account_data')->getIsCurrent() == '0' ? 'selected="true"' : ''; } ?> value="0"><?php echo $this->__('No'); ?></option>
+                            <option <?php if (Mage::registry('zoho_account_data')) { echo Mage::registry('zoho_account_data')->getIsCurrent() == '1' ? 'selected="true"' : ''; } ?> value="1"><?php echo $this->__('Yes'); ?></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label" style="width: 80px;"><?php echo $this->__('Status') ?></td>
+                    <td class="value">
+                        <select name="f_status_value" class="input-text" style="width: 100%">
+                            <option <?php if (Mage::registry('zoho_account_data')) { echo Mage::registry('zoho_account_data')->getStatus() == '1' ? 'selected="true"' : ''; } ?> value="1"><?php echo $this->__('Active'); ?></option>
+                            <option <?php if (Mage::registry('zoho_account_data')) { echo Mage::registry('zoho_account_data')->getStatus() == '0' ? 'selected="true"' : ''; } ?> value="0"><?php echo $this->__('Inactive'); ?></option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="text-align: right;">        
+        <table style="width: 100%;"><tr><td>                    
+                    <button id="save-zoho-account" name="submit" value="save" class="scalable save" style="" type="submit">
+                <span><span><span><?php echo $this->__('Save');?></span></span></span>
+            </button>
+                    
+            <?php if (Mage::registry('c_action') == 'new') { ?>
+            <button title="<?php echo $this->__('Save & Continue New');?>" name="submit" value="save-continue" class="scalable save" style="" type="submit" onclick="deleteMapping();">
+                <span><span><span><?php echo $this->__('Save & Reset');?></span></span></span>
+            </button>
+            <?php } ?>
+            
+            <?php if (Mage::registry('c_action') == 'edit') { ?>
+            <script type="text/javascript">
+                deleteMapping = function() {
+                    if (confirm('<?php echo $this->__('Do you really want to delete this zoho user account?');?>')) {
+                        setLocation('<?php echo $this->getDeleteUrl();?>');
+                    }
+                };
+            </script>
+            <button class="scalable delete" style="" type="button" onclick="deleteMapping();">
+                <span><span><span><?php echo $this->__('Delete');?></span></span></span>
+            </button>
+            <?php } ?>
+            
+            <button class="scalable cancel" style="" type="button" onclick="setLocation('<?php echo $this->getCancelUrl();?>')">
+                <span><span><span><?php echo $this->__('Cancel');?></span></span></span>
+            </button></td></tr>
+        </table>
+    </div>
+    </form>
+    <script type="text/javascript">
+    $('save-zoho-account').observe('click', function(e)    {
+        var editForm = new varienForm('edit_form', '');
+        
+        if(!editForm.validator.validate()) {
+            Event.stop(e);
+        } else {
+            if (confirm('<?php echo $this->__('Do you really want to save this zoho user account?');?>')) {
+                $('edit_form').submit();
+            } else {
+                Event.stop(e);
+            }
+        }
+    });
+    </script>
+</div>

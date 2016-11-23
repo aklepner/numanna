@@ -1,0 +1,76 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Report_Customer_Show_Tab_Chart
+ */
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Report Logs Status') ?></h4>
+    </div>
+    <div class="fieldset">
+        <?php
+        $resource = Mage::getSingleton('core/resource');
+        $read = $resource->getConnection('core_read');
+        $table_log = $resource->getTableName('crm4ecommerce_zohosynchronization_log');
+        $sql = "SELECT COUNT(`log_id`) AS 'count' FROM `" . $table_log . "`";
+        
+        $rs = $read->fetchAll($sql);
+        $total = 0;
+        foreach ($rs as $row) {
+            $total = $row['count'];
+            break;
+        }
+        
+        $sql2 = "SELECT COUNT(`log_id`) AS 'count' FROM `" . $table_log . "` WHERE status = 0";
+        $rs2 = $read->fetchAll($sql2);
+        $number_not_synchronized = 0;
+        foreach ($rs2 as $row) {
+            $number_not_synchronized = $row['count'];
+            break;
+        }
+
+        $number_synchronized = $total - $number_not_synchronized;
+        $rate_synchronized = 0;
+        if ($total > 0) {
+            $rate_synchronized = (int) round(((float) $number_synchronized / $total * 1000)) / 10;
+        }
+        $rate_not_synchronized = 100 - $rate_synchronized;
+
+        $label_synchronized = str_replace(' ', '+', $this->__('Synchronized Successfully') . ': ' . $rate_synchronized . '% (' . $number_synchronized . '/' . $total . ')');
+        $label_not_synchronized = str_replace(' ', '+', $this->__('Synchronized Unsuccessfully') . ': ' . $rate_not_synchronized . '% (' . $number_not_synchronized . '/' . $total . ')');
+        $label_title = '';
+        ?>
+        <img src="http://chart.apis.google.com/chart?chf=a,s,000000|bg,s,FAFAFA&chs=500x280&cht=p&chco=3366CC|CC3300&chd=t:<?php echo $rate_synchronized ?>,<?php echo $rate_not_synchronized ?>&chdl=<?php echo $label_synchronized; ?>|<?php echo $label_not_synchronized; ?>&chdlp=r&chma=0,0,0,10|0,10&chtt=<?php echo $label_title; ?>&chts=000000,0" width="500" height="280" alt="<?php echo $label_title; ?>" />
+    </div>
+    
+    <div class="fieldset" style="margin-top: 20px;">
+        <button onclick="window.open('<?php echo $this->getUrl('zohosynchronization/adminhtml_log'); ?>', '_blank');" class="scalable" type="button" >
+            <span><span><span><?php echo $this->__('View Details')?></span></span></span>
+        </button>
+        
+        <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/log/truncate')) { ?>
+        <?php if ($total > 0) { ?><script type="text/javascript">
+        truncateLogs = function() {
+            if(confirm("<?php echo Mage::helper('zohosynchronization')->__('Do you really want to truncate data of log table?');?>")) {
+                new Ajax.Request('<?php echo $this->getUrl('zohosynchronization/adminhtml_log/truncate', array('isAjax' => true)); ?>', {
+                    method: 'get',
+                    onComplete: function(transport) {
+                        if (200 == transport.status && transport.responseText == '1') {
+                            setLocation('<?php echo $this->getUrl('zohosynchronization/adminhtml_dashboard/index'); ?>');
+                        }
+                    }
+                });                    
+            }
+        };
+        </script><?php } ?>
+        <button <?php if ($total > 0) { ?>onclick="truncateLogs();"<?php } ?> class="scalable delete<?php if ($total == 0) { ?> disabled<?php } ?>" type="button" >
+            <span><span><span><?php echo $this->__('Truncate Logs')?></span></span></span>
+        </button>
+        <?php } ?>
+    </div>
+</div>

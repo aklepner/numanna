@@ -1,0 +1,89 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Mapping_Form_New
+ */
+?>
+<div class="entry-edit collapseable">
+    <form method="post" action="<?php echo $this->getSaveUrl(); ?>">
+        <input name="c_action" type="hidden" value="<?php echo Mage::registry('c_action'); ?>" />
+        <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+        <div class="entry-edit-head collapseable">
+            <a id="crm4ecommerce_zohosynchronization_event_params-head" class="open" onclick="Fieldset.toggleCollapse('crm4ecommerce_zohosynchronization_event_params'); return false;" href="#">
+                <?php echo $this->__('Zoho Event Settings'); ?>
+            </a>
+        </div>
+        <fieldset id="crm4ecommerce_zohosynchronization_event_params" style="" class="config collapseable">
+            <legend><?php echo $this->__('Zoho Event Settings'); ?></legend>
+            <table cellspacing="0" class="form-list" style="width: 100%;">
+                <tbody>
+                    <tr>
+                        <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[creditmemo_event_enabled]"><?php echo $this->__('Use Zoho Event') ?></label></td>
+                        <td class="value">
+                            <select class="input-text" id="config[creditmemo_event_enabled]" name="config[creditmemo_event_enabled]" style="width: 97%">
+                                <option value="1" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/creditmemo_event_enabled') == '1' ? 'selected="selected"' : ''; ?>><?php echo $this->__('Yes'); ?></option>
+                                <option value="0" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/creditmemo_event_enabled') == '0' ? 'selected="selected"' : ''; ?>><?php echo $this->__('No'); ?></option>
+                                ?>
+                            </select>
+                            <p class="note" style="width: 97%;">
+                                <span><?php echo $this->__("Allow synchronizing Credit Memos's Statuses History to Zoho Events or not."); ?></span>
+                            </p>
+                        </td>
+                    </tr>
+                    <?php if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/creditmemo_event_enabled') == '1') { ?>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[creditmemo_event_subject_created]"><?php echo $this->__('Event Subject') ?></label></td>
+                            <td class="value">
+                                <input type="text" class="input-text" id="config[creditmemo_event_subject_created]" name="config[creditmemo_event_subject_created]" style="width: 97%" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/creditmemo_event_subject_created'); ?>" />
+                                <p class="note" style="width: 97%;">
+                                    <span><?php echo $this->__("This is format of subject field of Zoho Events that corresponding with statuses history when Credit Memos have been just created.<br/>Default is: <b>\"%s\"</b>.", Mage::helper('zohosynchronization')->getDefaultConfig('crm4ecommerce_zohosynchronization/params/creditmemo_event_subject_created')); ?></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[creditmemo_event_duplicate_insert]"><?php echo $this->__('Duplicate Insert') ?></label></td>
+                            <td class="value">
+                                <select class="input-text" id="config[creditmemo_event_duplicate_insert]" name="config[creditmemo_event_duplicate_insert]" style="width: 97%"><?php
+                    $zohoDuplicateChecks = Mage::getModel('zohosynchronization/array_zohoDuplicateCheck')->toOptionArray();
+                    foreach ($zohoDuplicateChecks as $key => $value) {
+                            ?>
+                                        <option value="<?php echo $key; ?>" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/creditmemo_event_duplicate_insert') == $key ? 'selected="selected"' : ''; ?>><?php echo $value; ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                                <p class="note" style="width: 97%;">
+                                    <span><?php echo $this->__('Zoho Event has key field is <b>Subject</b>.'); ?></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[creditmemo_event_due_date]"><?php echo $this->__('Due Date after') ?></label></td>
+                            <td class="value">
+                                <input type="text" class="input-text" id="config[creditmemo_event_due_date]" name="config[creditmemo_event_due_date]" style="width: 200px" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/creditmemo_event_due_date'); ?>" />
+                                <?php echo $this->__('day(s)'); ?>
+                                <p class="note" style="width: 97%">
+                                    <span><?php echo $this->__('Due date will be calculated from start date and is synchronized only once when event is created.'); ?></span>
+                                </p>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+            <div style="text-align: right; margin-top: 5px; padding-top: 10px; border-top: 2px solid #CCCCCC;">        
+                <table style="width: 100%;"><tr><td>                    
+                            <button name="submit" value="save" class="scalable save" style="" type="submit">
+                                <span><span><span><?php echo $this->__('Save'); ?></span></span></span>
+                            </button></td></tr>
+                </table>
+            </div>
+        </fieldset>
+        <script type="text/javascript">
+            Fieldset.applyCollapse('crm4ecommerce_zohosynchronization_event_params');
+        </script>
+    </form>
+</div>

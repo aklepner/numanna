@@ -1,0 +1,37 @@
+
+<div class="block-slideshow">
+    <div class="block-slideshow-content" style="position:relative;">
+
+
+                  <div id="slideshow" class="cycle-slideshow"
+                      data-cycle-fx="scrollHorz"
+                      data-cycle-swipe="true"
+                      data-cycle-timeout="<?php echo Mage::getStoreConfig('design/slideshow/delay', Mage::app()->getStore()) ?>"
+                      data-cycle-pause-on-hover="true"
+                      data-cycle-prev="#slideshowprev"
+                      data-cycle-next="#slideshownext"
+                      data-cycle-pager=".cycle-pager"
+                      data-cycle-slides="> div.slide"
+                      >
+<?php
+$slidescollection = Mage::getModel('slideshow/slide')->getCollection()
+//->addFieldToFilter('store_id', Mage::app()->getStore()->getStoreId())
+->addFieldToFilter('is_active', 1)
+->setOrder('position', 'ASC');
+$i = 1;
+foreach($slidescollection as $v):
+?>
+                       <div class="slide slide<?php echo $i ?>" style="background:url(<?php echo Mage::getBaseUrl('media').$v->getPhoto() ?>) no-repeat top center; ">
+                          <div class="container-full center">
+                              <a href="<?php echo $v->getLink() ?>"><img src="<?php echo Mage::getBaseUrl('media').$v->getPhoto() ?>" alt="" /></a>
+                          </div>
+                       </div>
+<?php
+	$i++;
+endforeach;
+?>
+                  </div>
+                  <div class="cycle-pager"></div>
+
+    </div>
+</div>

@@ -1,0 +1,61 @@
+
+<div class="row wall-details proof">
+    <div class="span6 wall-image" id="sidebar">
+        <div class="wall-pic">
+            <div class="pic">
+                <img src="<?php echo $this->getSkinUrl(); ?>images/media/wall.png" alt="Wall picture" class="wall-preview">
+                <div class="height">28"</div>
+                <div class="width">44"</div>
+                <div class="context"><img src="<?php echo $this->getSkinUrl(); ?>images/misc/girls-chair-new.png"  alt=""></div>
+            </div>
+        </div>
+        <div class="wall-description">
+            <p><strong>Computer Hacker Silhouette Of Hooded Man - <u>28.00 x 44.00</u> in <u>Original Fabwall</u></strong></p>
+            <p>Aenean finibus eros vitae laoreet auctor. Fusce in dignissim urna. Maecenas rutrum ac mi sit amet blandit. Nam lorem dui, placerat id convallis at, pharetra et dui.</p>
+        </div>
+    </div>
+    <div class="span6 wall-config">
+        <!--        <h2 class="wall-step-title">Aproove Proof</h2> -->
+
+        <div class="field wall-proof">
+            <p>I have double checked the size of my wall and verified the measurements shown in this proof are correct.</p>
+            <p><a href="#"><u>Click here for measuring guide video.</u></a></p>
+            <p>I approve the image and measurements as shown for production. I understand Walla is custom made for my wall and cannot be returned or exchanged.</p>
+            <p>Walla depends on accurate measurements from customers. Walla is not responsible and will not issue a refund for inaccurate measurements so please double (or triple!) check your measurements before proceeding.</p>
+            <hr/>
+            <input id="accept" name="accept" type="checkbox" style="display:inline-block; float:left; margin-right:10px;"> <label>I ACCEPT THESE TERMS AND CONDITIONS AND APPROVE PROOF FOR PRODUCTION</label>
+            <div class="clear"></div>
+            <hr/>
+        </div>
+       <div class="field wall-price">
+            <ul>
+            <li class="wall-price wall-list-price">List Price:    <span><strike>$239.99</strike></span></li>
+            <li class="wall-price wall-sale-price">Sale Price :    <span>$191.00</span></li>
+            <li class="wall-price wall-savings">You Save: <span>$48.00 (20%)</span></li>
+            </ul>
+       </div>
+       <div class="field wall-price">
+            <ul>
+                <li>Shipping: FREE</li>
+            </ul>
+       </div>
+       <div class="field wall-price total">
+            <ul>
+                <li>Total: $191.00</li>
+            </ul>
+       </div>
+        <div class="wall-actions">
+            <a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>" class="btn btn-primary btn-proof">Approve & Add to Cart </a>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    !function ($) {
+     $(function(){
+        $('.wall-question').tooltip();
+        });
+    }(window.jQuery)
+</script>

@@ -1,0 +1,280 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Report_Address_Show_Tab_Chart
+ */
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Module Status') ?></h4>
+    </div>
+    <div class="fieldset">
+        <table cellspacing="0" class="form-list" style="width: 100%;">
+            <tbody>
+                <tr>
+                    <td class="label"><?php echo $this->__('Module Status') ?></td>
+                    <td class="value">
+                        <?php if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/general/status')) { ?>
+                        <img title="<?php echo $this->__('Enabled');?>" alt="<?php echo $this->__('Enabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>">
+                        <?php echo $this->__('Enabled');?>
+                        <?php } else { ?>
+                        <img title="<?php echo $this->__('Disabled');?>" alt="<?php echo $this->__('Disabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/no.png'); ?>">
+                        <?php echo $this->__('Disabled');?>
+                        <?php } ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><?php echo $this->__('Module Version') ?></td>
+                    <td class="value">
+                        <?php
+                        $resource = Mage::getSingleton('core/resource');
+                        $read = $resource->getConnection('core_read');
+                        $select = 'SELECT `version` FROM `' . $resource->getTableName('core_resource') . '` WHERE `code` = \'crm4ecommerce_zohosynchronization_setup\'';
+                        $rs = $read->fetchAll($select);
+                        $version = array();
+                        foreach ($rs as $row) {
+                            $version = $row;
+                        }
+                        echo $version['version']; ?>
+                        <a href="http://www.crm4ecommerce.com/magento-zohocrm-bidirectional-synchronization-free-edition.html/" style="text-decoration: none;" target="_blank">(<?php echo $this->__('Find new version') ?>)</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><?php echo $this->__('Serial Key Information') ?></td>
+                    <td class="value">
+                        <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/general/serial_infor'); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><?php echo $this->__('Register Date') ?></td>
+                    <td class="value">
+                        <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/general/start_date'); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><?php echo $this->__('Expire Date') ?></td>
+                    <td class="value">
+                        <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/general/expire_date'); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><?php echo $this->__('Zoho Account') ?></td>
+                    <td class="value">
+                        <?php $username = Mage::getStoreConfig('crm4ecommerce_zohosynchronization/zoho/username');
+                        echo $username == '' ? $this->__('None') : '<a href="https://www.zoho.com/crm/lp/login.html">' . $username . '</a>';
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><?php echo $this->__('ZohoCRM API Limited Event') ?></td>
+                    <td class="value">
+                        <?php echo Mage::getModel('zohosynchronization/array_zohoAPILimitedEvent')->getDataType(Mage::getStoreConfig('crm4ecommerce_zohosynchronization/zoho/api_limited')); ?>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Synchronize Data') ?></h4>
+    </div>
+    <div class="fieldset">
+        <table cellspacing="0" class="form-list" style="width: 100%;">
+            <tbody>
+                <tr>
+                    <td class="label"><?php echo $this->__('Synchronize Queue Data in Cronjob') ?></td>
+                    <td class="value">
+                        <?php if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_cronjob/synchronize_in_cronjob')) { ?>
+                        <img title="<?php echo $this->__('Enabled');?>" alt="<?php echo $this->__('Enabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>">
+                        <?php } else { ?>
+                        <img title="<?php echo $this->__('Disabled');?>" alt="<?php echo $this->__('Disabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/no.png'); ?>">
+                        <?php } ?>
+                            
+                        <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_cronjob/is_synchronizing'); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><?php echo $this->__('Add Object into Queue'); $flag_queue = false; ?></td>
+                    <td class="value">
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/frontend_customer_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::ADD_INTO_QUEUE) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('Enabled');?>" alt="<?php echo $this->__('Enabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>"> <?php echo $this->__('After Customer Saved Data in Frontend'); $flag_queue = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/backend_customer_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::ADD_INTO_QUEUE) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('Enabled');?>" alt="<?php echo $this->__('Enabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>"> <?php echo $this->__('After Customer Saved Data in Backend'); $flag_queue = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/frontend_subscriber_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::ADD_INTO_QUEUE) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('Enabled');?>" alt="<?php echo $this->__('Enabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>"> <?php echo $this->__('After Subscriber Subscribed in Frontend'); $flag_queue = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/backend_subscriber_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::ADD_INTO_QUEUE) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('Enabled');?>" alt="<?php echo $this->__('Enabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>"> <?php echo $this->__('After Subscriber Changed Status in Backend'); $flag_queue = true; ?>
+                        </div>
+                        <?php } ?>
+                        
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/frontend_quote_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::ADD_INTO_QUEUE) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('Enabled');?>" alt="<?php echo $this->__('Enabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>"> <?php echo $this->__('After Cart Saved Data in Frontend'); $flag_instanly = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/backend_quote_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::ADD_INTO_QUEUE) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('Enabled');?>" alt="<?php echo $this->__('Enabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>"> <?php echo $this->__('After Cart Saved Data in Backend'); $flag_queue = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/frontend_order_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::ADD_INTO_QUEUE) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('Enabled');?>" alt="<?php echo $this->__('Enabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>"> <?php echo $this->__('After Order Saved Data in Frontend'); $flag_queue = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/backend_order_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::ADD_INTO_QUEUE) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('Enabled');?>" alt="<?php echo $this->__('Enabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>"> <?php echo $this->__('After Order Saved Data in Backend'); $flag_queue = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if ($flag_queue == false) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('None');?>" alt="<?php echo $this->__('None');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/no.png'); ?>"> <?php echo $this->__('None');?>
+                        </div>
+                        <?php } ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><?php echo $this->__('Synchronize Instantly'); $flag_instanly = false; ?></td>
+                    <td class="value">
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/frontend_customer_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::SYNCHRONIZE_INSTANTLY) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('Enabled');?>" alt="<?php echo $this->__('Enabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>"> <?php echo $this->__('After Customer Saved Data in Frontend'); $flag_instanly = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/backend_customer_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::SYNCHRONIZE_INSTANTLY) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('Enabled');?>" alt="<?php echo $this->__('Enabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>"> <?php echo $this->__('After Customer Saved Data in Backend'); $flag_instanly = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/frontend_subscriber_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::SYNCHRONIZE_INSTANTLY) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('Enabled');?>" alt="<?php echo $this->__('Enabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>"> <?php echo $this->__('After Subscriber Subscribed in Frontend'); $flag_queue = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/backend_subscriber_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::SYNCHRONIZE_INSTANTLY) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('Enabled');?>" alt="<?php echo $this->__('Enabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>"> <?php echo $this->__('After Subscriber Changed Status in Backend'); $flag_queue = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/frontend_quote_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::SYNCHRONIZE_INSTANTLY) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('Enabled');?>" alt="<?php echo $this->__('Enabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>"> <?php echo $this->__('After Cart Saved Data in Frontend'); $flag_instanly = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/backend_quote_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::SYNCHRONIZE_INSTANTLY) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('Enabled');?>" alt="<?php echo $this->__('Enabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>"> <?php echo $this->__('After Cart Saved Data in Backend'); $flag_instanly = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/frontend_order_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::SYNCHRONIZE_INSTANTLY) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('Enabled');?>" alt="<?php echo $this->__('Enabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>"> <?php echo $this->__('After Order Saved Data in Frontend'); $flag_instanly = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/backend_order_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::SYNCHRONIZE_INSTANTLY) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('Enabled');?>" alt="<?php echo $this->__('Enabled');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>"> <?php echo $this->__('After Order Saved Data in Backend'); $flag_instanly = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if ($flag_instanly == false) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('None');?>" alt="<?php echo $this->__('None');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/no.png'); ?>"> <?php echo $this->__('None');?>
+                        </div>
+                        <?php } ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><?php echo $this->__("Don't Synchronize"); $flag_dont = false; ?></td>
+                    <td class="value">
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/frontend_customer_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::DONT_SYNCHRONIZE) { ?>
+                        <div style="height: 23px;">
+                        <?php echo $this->__('After Customer Saved Data in Frontend'); $flag_dont = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/backend_customer_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::DONT_SYNCHRONIZE) { ?>
+                        <div style="height: 23px;">
+                        <?php echo $this->__('After Customer Saved Data in Backend'); $flag_dont = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/frontend_subscriber_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::DONT_SYNCHRONIZE) { ?>
+                        <div style="height: 23px;">
+                        <?php echo $this->__('After Subscriber Subscribed in Frontend'); $flag_dont = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/backend_subscriber_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::DONT_SYNCHRONIZE) { ?>
+                        <div style="height: 23px;">
+                        <?php echo $this->__('After Subscriber Changed Status in Backend'); $flag_dont = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/frontend_quote_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::DONT_SYNCHRONIZE) { ?>
+                        <div style="height: 23px;">
+                        <?php echo $this->__('After Cart Saved Data in Frontend'); $flag_dont = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/backend_quote_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::DONT_SYNCHRONIZE) { ?>
+                        <div style="height: 23px;">
+                        <?php echo $this->__('After Cart Saved Data in Backend'); $flag_dont = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/frontend_order_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::DONT_SYNCHRONIZE) { ?>
+                        <div style="height: 23px;">
+                        <?php echo $this->__('After Order Saved Data in Frontend'); $flag_dont = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if (Mage::getModel('zohosynchronization/cron')->getStoreConfig('crm4ecommerce_zohosynchronization/synchronize_data_by_events/backend_order_after_save') == CRM4Ecommerce_ZohoSynchronization_Model_Array_TypeOfSynchronize::DONT_SYNCHRONIZE) { ?>
+                        <div style="height: 23px;">
+                        <?php echo $this->__('After Order Saved Data in Backend'); $flag_dont = true; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if ($flag_dont == false) { ?>
+                        <div style="height: 23px;">
+                        <img title="<?php echo $this->__('None');?>" alt="<?php echo $this->__('None');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/no.png'); ?>"> <?php echo $this->__('None');?>
+                        </div>
+                        <?php } ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><?php echo $this->__('Send Mail After Synchronization') ?></td>
+                    <td class="value">
+                        <?php if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/send_mail_notification/send_mail')) { ?>
+                        <img title="<?php echo $this->__('Yes');?>" alt="<?php echo $this->__('Yes');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/yes.gif'); ?>"> <?php echo $this->__('Yes');?>
+                        <?php } else { ?>
+                        <img title="<?php echo $this->__('No');?>" alt="<?php echo $this->__('No');?>" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/no.png'); ?>"> <?php echo $this->__('No');?>
+                        <?php } ?>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>    
+    
+    <div class="fieldset" style="margin-top: 20px;">
+        <?php if (Mage::getSingleton('admin/session')->isAllowed('admin/system/config/crm4ecommerce_zohosynchronization')) { ?>
+        <button onclick="window.open('<?php echo $this->getUrl('adminhtml/system_config/edit/section/crm4ecommerce_zohosynchronization/'); ?>', '_blank');" class="scalable" type="button" >
+            <span><span><span><?php echo $this->__('Change Status & Settings')?></span></span></span>
+        </button>
+        <?php } ?>
+        
+        <button id="model-overview" class="scalable" type="button" >
+            <span><span><span><?php echo $this->__('Synchronization Model Overview')?></span></span></span>
+        </button>
+        
+        <button onclick="window.open('https://docs.google.com/gview?url=http://www.crm4ecommerce.com/docs/magento-zohocrm-bidirectional-synchronization-overview-and-user-guide.pdf', '_blank');" class="scalable" type="button" >
+            <span><span><span><?php echo $this->__('User Guide')?></span></span></span>
+        </button>
+    </div>
+</div>

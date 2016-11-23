@@ -1,0 +1,169 @@
+<div class="block-slideshow">
+    <div class="block-slideshow-content" style="position:relative;">
+                  <div id="slideshow" class="cycle-slideshow"
+                      data-cycle-fx="scrollHorz"
+                      data-cycle-swipe="true"
+                      data-cycle-timeout="<?php echo Mage::getStoreConfig('design/slideshow/delay', Mage::app()->getStore()) ?>"
+                      data-cycle-pause-on-hover="true"
+                      data-cycle-prev="#slideshowprev"
+                      data-cycle-next="#slideshownext"
+                      data-cycle-pager=".cycle-pager"
+                      data-cycle-slides="> div.slide"
+                      >
+
+<?php
+$slidescollection = Mage::getModel('slideshow/slide')->getCollection()
+//->addFieldToFilter('store_id', Mage::app()->getStore()->getStoreId())
+->addFieldToFilter('is_active', 1)
+->setOrder('position', 'ASC');
+$i = 1;
+foreach($slidescollection as $v):
+if($i==3) {   
+    echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe-slider.phtml')->toHtml();
+    $i++;
+}
+    $slide_type=$v->getSlideType();
+    switch ($slide_type) {
+        case '0' :
+           ?>
+      <div class="slide slide1" style="background:url('<?php echo Mage::getBaseUrl('media').$v->getPhoto() ?>') no-repeat top center; ">
+          <div class="container-full center">
+              <div class="container">
+                  <div class="row">
+                      <div class="span12">
+                          <div class="info translucence">
+                              <div class="container-fluid">
+                                <div class="row-fluid">
+                                    <div class="span6">
+                                    <?php echo $v->getContent() ?>
+                                    <?php
+                                    $btn_title=$v->getLinkTitle();
+                                    $btn_link=$v->getLink();
+                                    $btn1_title=$v->getLink1Title();
+                                    $btn1_link=$v->getLink1();
+                                    echo (trim($btn_title)!='' AND trim($btn_link)!='') ? '<a href="'.$btn_link.'" class="btn btn-primary">'.$btn_title.'</a>' : '';
+                                    echo (trim($btn_title)!='' AND trim($btn1_link)!='') ? '&nbsp;&nbsp;<a href="'.$btn1_link.'" class="btn btn-primary">'.$btn1_title.'</a>' : '';
+                                    ?>
+                                    </div>
+                                    <div class="span5 pic"><img src="<?php echo Mage::getBaseUrl('media').$v->getPhoto1() ?>" alt=" "></div>
+                                </div>
+                              </div>
+
+                          </div>
+                      </div>
+                  </div>
+                  <div class="seal"><img src="<?php echo Mage::getBaseUrl('media').$v->getPhoto2() ?>" alt="25+ Year Shelf Life"></div>
+              </div>
+          </div>
+      </div>
+           <?php
+            break;
+        case '2' :
+        ?>
+        <div class="slide slide3" style="background:url('<?php echo Mage::getBaseUrl('media').$v->getPhoto() ?>') no-repeat top center; ">
+          <div class="container-full center">
+              <div class="container">
+                <div class="row">
+                    <div class="span12">
+                        <div class="info translucence">
+                            <div class="container-fluid">
+                                <div class="row-fluid">
+                                    <div class="span5">
+                                        <?php echo $v->getContent() ?>
+                                        <?php
+                                            $btn_title=$v->getLinkTitle();
+                                            $btn_link=$v->getLink();
+                                            $btn1_title=$v->getLink1Title();
+                                            $btn1_link=$v->getLink1();
+                                            echo (trim($btn_title)!='' AND trim($btn_link)!='') ? '<a href="'.$btn_link.'" class="btn btn-primary">'.$btn_title.'</a>' : '';
+                                            echo (trim($btn_title)!='' AND trim($btn1_link)!='') ? '&nbsp;&nbsp;<a href="'.$btn1_link.'" class="btn btn-primary">'.$btn1_title.'</a>' : '';
+                                        ?>
+                                    </div>
+                                    <div class="span7">
+                                        <img src="<?php echo Mage::getBaseUrl('media').$v->getPhoto1() ?>" alt="">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+       </div>
+        <?php
+            break;
+        case '1' :
+            ?>
+            <div class="slide slide5" style="background:url('<?php echo $this->getSkinUrl(); ?>images/slideshow/slide5bg.jpg') no-repeat top center; ">
+              <div class="container-full center">
+                  <div class="container">
+                    <div class="row">
+                        <div class="span12">
+                            <div class="info translucence">
+                                <?php echo $v->getContent() ?>
+                                <?php
+                                    $btn_title=$v->getLinkTitle();
+                                    $btn_link=$v->getLink();
+                                    $btn1_title=$v->getLink1Title();
+                                    $btn1_link=$v->getLink1();
+                                    echo (trim($btn_title)!='' AND trim($btn_link)!='') ? '<a href="'.$btn_link.'" class="btn btn-primary">'.$btn_title.'</a>' : '';
+                                    echo (trim($btn_title)!='' AND trim($btn1_link)!='') ? '&nbsp;&nbsp;<a href="'.$btn1_link.'" class="btn btn-primary">'.$btn1_title.'</a>' : '';
+                              ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seal"><img src="<?php echo Mage::getBaseUrl('media').$v->getPhoto2() ?>"></div>
+                  </div>
+              </div>
+           </div>
+            <?php
+            break;
+        case '3' :
+            ?>
+          <div class="slide slide4" style="background:url('<?php echo $this->getSkinUrl(); ?>images/slideshow/slide4bg.jpg') no-repeat top center; ">
+              <div class="container-full center">
+                  <div class="container">
+                    <div class="row">
+                        <div class="span12">
+                            <div class="info translucence">
+                                <div class="container-fluid">
+                                    <div class="row-fluid">
+                                        <div class="span5 testimonial">
+                                            <!--<img src="<?php echo $this->getSkinUrl(); ?>images/slideshow/slide4quotes.png" alt="">-->
+                                            <?php echo $v->getContent() ?>
+                                            
+                                            
+                                            <?php
+                                            $btn_title=$v->getLinkTitle();
+                                            $btn_link=$v->getLink();
+                                            $btn1_title=$v->getLink1Title();
+                                            $btn1_link=$v->getLink1();
+                                            echo (trim($btn_title)!='' AND trim($btn_link)!='') ? '<a href="'.$btn_link.'" class="btn btn-primary">'.$btn_title.'</a>' : '';
+                                            echo (trim($btn_title)!='' AND trim($btn1_link)!='') ? '&nbsp;&nbsp;<a href="'.$btn1_link.'" class="btn btn-primary">'.$btn1_title.'</a>' : '';
+                                            ?>
+                                        </div>
+                                        <div class="span7 video">
+                                            <iframe width="670" height="431" src="https://www.youtube.com/embed/<?php echo $v->getVideoLink() ?>"> </iframe>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+           </div>
+                      
+            <?php
+            break;
+    }
+$i++;
+endforeach;
+?>                      
+                  </div>
+                  <div class="cycle-pager"></div>
+
+    </div>
+</div>

@@ -1,0 +1,98 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Report_Customer_Show_Tab_Chart
+ */
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Report Queue Status') ?></h4>
+    </div>
+    <div class="fieldset">
+        <?php
+        $resource = Mage::getSingleton('core/resource');
+        $read = $resource->getConnection('core_read');
+        $table_log = $resource->getTableName('crm4ecommerce_zohosynchronization_queue');
+        $sql = "SELECT COUNT(`queue_id`) AS 'count' FROM `" . $table_log . "`";
+        
+        $rs = $read->fetchAll($sql);
+        $total = 0;
+        foreach ($rs as $row) {
+            $total = (int) $row['count'];
+            break;
+        }
+        
+        $sql2 = "SELECT COUNT(`queue_id`) AS 'count' FROM `" . $table_log . "` WHERE status = " . CRM4Ecommerce_ZohoSynchronization_Model_Array_QueueStatus::STATUS_PENDING;
+        $rs2 = $read->fetchAll($sql2);
+        $number_pending = 0;
+        foreach ($rs2 as $row) {
+            $number_pending = (int) $row['count'];
+            break;
+        }
+        
+        $sql3 = "SELECT COUNT(`queue_id`) AS 'count' FROM `" . $table_log . "` WHERE status = " . CRM4Ecommerce_ZohoSynchronization_Model_Array_QueueStatus::STATUS_RUNNING;
+        $rs3 = $read->fetchAll($sql3);
+        $number_running = 0;
+        foreach ($rs3 as $row) {
+            $number_running = (int) $row['count'];
+            break;
+        }
+        
+        $sql4 = "SELECT COUNT(`queue_id`) AS 'count' FROM `" . $table_log . "` WHERE status = " . CRM4Ecommerce_ZohoSynchronization_Model_Array_QueueStatus::STATUS_INTERRUPTED;
+        $rs4 = $read->fetchAll($sql4);
+        $number_interrupted = 0;
+        foreach ($rs4 as $row) {
+            $number_interrupted = (int) $row['count'];
+            break;
+        }
+
+        $number_completed = $total - ($number_pending + $number_running + $number_interrupted);
+        $rate_completed = 0;
+        $rate_running = 0;
+        $rate_interrupted = 0;
+        if ($total > 0) {
+            $rate_completed = (int) round(((float) $number_completed / $total * 1000)) / 10;
+            $rate_running = (int) round(((float) $number_running / $total * 1000)) / 10;
+            $rate_interrupted = (int) round(((float) $number_interrupted / $total * 1000)) / 10;
+        }
+        $rate_pending = 100 - ($rate_completed + $rate_running + $rate_interrupted);
+
+        $label_pending = str_replace(' ', '+', $this->__('Pending') . ': ' . $rate_pending . '% (' . $number_pending . '/' . $total . ')');
+        $label_running = str_replace(' ', '+', $this->__('Running') . ': ' . $rate_running . '% (' . $number_running . '/' . $total . ')');
+        $label_interrupted = str_replace(' ', '+', $this->__('Interrupted') . ': ' . $rate_interrupted . '% (' . $number_interrupted . '/' . $total . ')');
+        $label_completed = str_replace(' ', '+', $this->__('Completed') . ': ' . $rate_completed . '% (' . $number_completed . '/' . $total . ')');
+        $label_title = '';
+        ?>
+        <img src="http://chart.apis.google.com/chart?chf=a,s,000000|bg,s,FAFAFA&chs=500x280&cht=p&chco=3CB861|3366CC|CC3300|EEEEEE&chd=t:<?php echo $rate_completed ?>,<?php echo $rate_running ?>,<?php echo $rate_interrupted ?>,<?php echo $rate_pending ?>&chdl=<?php echo $label_completed; ?>|<?php echo $label_running; ?>|<?php echo $label_interrupted; ?>|<?php echo $label_pending; ?>&chdlp=r&chma=0,0,0,10|0,10&chtt=<?php echo $label_title; ?>&chts=000000,0" width="500" height="280" alt="<?php echo $label_title; ?>" />
+    </div>
+    
+    <div class="fieldset" style="margin-top: 20px;">
+        <button onclick="window.open('<?php echo $this->getUrl('zohosynchronization/adminhtml_queue'); ?>', '_blank');" class="scalable" type="button" >
+            <span><span><span><?php echo $this->__('View Details')?></span></span></span>
+        </button>
+        
+        <?php if (Mage::getSingleton('admin/session')->isAllowed('zohosynchronization/queue/clear')) { ?>
+        <?php if ($total > 0) { ?><script type="text/javascript">
+        clearQueue = function() {
+            if(confirm("<?php echo Mage::helper('zohosynchronization')->__('Do you really want to clear all items of synchronization queue?');?>")) {
+                new Ajax.Request('<?php echo $this->getUrl('zohosynchronization/adminhtml_queue/clear', array('isAjax' => true)); ?>', {
+                    method: 'get',
+                    onComplete: function(transport) {
+                        if (200 == transport.status && transport.responseText == '1') {
+                            setLocation('<?php echo $this->getUrl('zohosynchronization/adminhtml_dashboard/index'); ?>');
+                        }
+                    }
+                });                    
+            }
+        };
+        </script><?php } ?>
+        <button <?php if ($total > 0) { ?>onclick="clearQueue();"<?php } ?> class="scalable delete<?php if ($total == 0) { ?> disabled<?php } ?>" type="button" >
+            <span><span><span><?php echo $this->__('Clear Queue')?></span></span></span>
+        </button>
+        <?php } ?>
+    </div>
+</div>

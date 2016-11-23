@@ -1,0 +1,516 @@
+<?xml version="1.0"?>
+<!--
+    @category   CRM4Ecommerce
+    @package    CRM4Ecommerce_ZohoSynchronization
+    @author     Philip Nguyen <philip@crm4ecommerce.com>
+    @link       http://crm4ecommerce.com
+-->
+<config>
+    <menu>
+        <zohosynchronization module="zohosynchronization" translate="title">
+            <title>ZohoCRM Free</title>
+            <sort_order>10</sort_order>
+            <children>
+                <dashboard module="zohosynchronization" translate="title">
+                    <title>Dashboard</title>
+                    <sort_order>0</sort_order>
+                    <action>zohosynchronization/adminhtml_dashboard</action>
+                </dashboard>
+                <settings module="zohosynchronization" translate="title">
+                    <title>Synchronization Settings</title>
+                    <sort_order>1</sort_order>
+                    <action>adminhtml/system_config/edit/section/crm4ecommerce_zohosynchronization/</action>
+                </settings>
+                <accounts module="zohosynchronization" translate="title">
+                    <title>ZohoCRM User Accounts</title>
+                    <sort_order>2</sort_order>
+                    <action>zohosynchronization/adminhtml_zoho_account/</action>
+                </accounts>
+                <mapping module="zohosynchronization" translate="title">
+                    <title>Mapping Attributes</title>
+                    <sort_order>3</sort_order>
+                    <children>
+                        <customers module="zohosynchronization" translate="title">
+                            <title>Customers</title>
+                            <sort_order>1</sort_order>
+                            <children>
+                                <zoho_leads module="zohosynchronization" translate="title">
+                                    <title><![CDATA[Mapping Zoho Leads]]></title>
+                                    <sort_order>0</sort_order>
+                                    <action>zohosynchronization/adminhtml_mapping_customer_lead</action>
+                                </zoho_leads>
+                                <zoho_accounts module="zohosynchronization" translate="title">
+                                    <title><![CDATA[Mapping Zoho Accounts]]></title>
+                                    <sort_order>1</sort_order>
+                                    <action>zohosynchronization/adminhtml_mapping_customer_account</action>
+                                </zoho_accounts>
+                                <zoho_contacts module="zohosynchronization" translate="title">
+                                    <title><![CDATA[Addresses & Zoho Contacts]]></title>
+                                    <sort_order>2</sort_order>
+                                    <action>zohosynchronization/adminhtml_mapping_customer_contact</action>
+                                </zoho_contacts>
+                            </children>                                    
+                        </customers>
+                        <subscribers module="zohosynchronization" translate="title">
+                            <title><![CDATA[Subscribers & Zoho Leads]]></title>
+                            <sort_order>2</sort_order>
+                            <action>zohosynchronization/adminhtml_mapping_subscriber</action>
+                        </subscribers>
+                        <potential module="zohosynchronization" translate="title">
+                            <title>Potentials</title>
+                            <sort_order>5</sort_order>
+                            <action>zohosynchronization/adminhtml_mapping_potential</action>
+                        </potential>
+                        <orders module="zohosynchronization" translate="title">
+                            <title>Sales Orders</title>
+                            <sort_order>7</sort_order>
+                            <children>
+                                <statuses_history module="zohosynchronization" translate="title">
+                                    <title><![CDATA[Statuses History & Zoho Events]]></title>
+                                    <sort_order>2</sort_order>
+                                    <action>zohosynchronization/adminhtml_mapping_order_statuseshistory</action>
+                                </statuses_history>
+                                <comments module="zohosynchronization" translate="title">
+                                    <title><![CDATA[Comments & Zoho Tasks]]></title>
+                                    <sort_order>3</sort_order>
+                                    <action>zohosynchronization/adminhtml_mapping_order_comment</action>
+                                </comments>
+                            </children>
+                        </orders>
+                        <invoices module="zohosynchronization" translate="title">
+                            <title>Invoices</title>
+                            <sort_order>8</sort_order>
+                            <children>
+                                <statuses_history module="zohosynchronization" translate="title">
+                                    <title><![CDATA[Statuses History & Zoho Events]]></title>
+                                    <sort_order>1</sort_order>
+                                    <action>zohosynchronization/adminhtml_mapping_invoice_statuseshistory</action>
+                                </statuses_history>
+                                <comments module="zohosynchronization" translate="title">
+                                    <title><![CDATA[Comments & Zoho Tasks]]></title>
+                                    <sort_order>2</sort_order>
+                                    <action>zohosynchronization/adminhtml_mapping_invoice_comment</action>
+                                </comments>
+                            </children>
+                        </invoices>                        
+                        <shipments module="zohosynchronization" translate="title">
+                            <title>Shipments</title>
+                            <sort_order>9</sort_order>
+                            <children>
+                                <statuses_history module="zohosynchronization" translate="title">
+                                    <title><![CDATA[Statuses History & Zoho Events]]></title>
+                                    <sort_order>0</sort_order>
+                                    <action>zohosynchronization/adminhtml_mapping_shipment_statuseshistory</action>
+                                </statuses_history>
+                                <comments module="zohosynchronization" translate="title">
+                                    <title><![CDATA[Comments & Zoho Tasks]]></title>
+                                    <sort_order>1</sort_order>
+                                    <action>zohosynchronization/adminhtml_mapping_shipment_comment</action>
+                                </comments>
+                            </children>
+                        </shipments>
+                        <creditmemos module="zohosynchronization" translate="title">
+                            <title>Credit Memos</title>
+                            <sort_order>10</sort_order>
+                            <children>
+                                <statuses_history module="zohosynchronization" translate="title">
+                                    <title><![CDATA[Statuses History & Zoho Events]]></title>
+                                    <sort_order>0</sort_order>
+                                    <action>zohosynchronization/adminhtml_mapping_creditmemo_statuseshistory</action>
+                                </statuses_history>
+                                <comments module="zohosynchronization" translate="title">
+                                    <title><![CDATA[Comments & Zoho Tasks]]></title>
+                                    <sort_order>1</sort_order>
+                                    <action>zohosynchronization/adminhtml_mapping_creditmemo_comment</action>
+                                </comments>
+                            </children>
+                        </creditmemos>
+                    </children>
+                </mapping>
+                <load_data_from_zohocrm>
+                    <title>Load Data from ZohoCRM</title>
+                    <sort_order>4</sort_order>
+                    <children>
+                        <remote module="zohosynchronization" translate="title">
+                            <title>Load Data Instantly</title>
+                            <sort_order>0</sort_order>
+                            <action>zohosynchronization/adminhtml_remote</action>
+                        </remote>
+                        <in_cron module="zohosynchronization" translate="title">
+                            <title>Load Data in Cronjob</title>
+                            <sort_order>1</sort_order>
+                            <action>zohosynchronization/adminhtml_remote_cronjob</action>
+                        </in_cron>
+                    </children>
+                </load_data_from_zohocrm>
+                <report module="zohosynchronization" translate="title">
+                    <title>Synchronization Reports</title>
+                    <sort_order>5</sort_order>
+                    <children>
+                        <customer module="zohosynchronization" translate="title">
+                            <title>Report Customers</title>
+                            <sort_order>0</sort_order>
+                            <action>zohosynchronization/adminhtml_report_customer</action>
+                        </customer>
+                        <address module="zohosynchronization" translate="title">
+                            <title>Report Addresses</title>
+                            <sort_order>1</sort_order>
+                            <action>zohosynchronization/adminhtml_report_address</action>
+                        </address>
+                        <subscriber module="zohosynchronization" translate="title">
+                            <title>Report Subscribers</title>
+                            <sort_order>2</sort_order>
+                            <action>zohosynchronization/adminhtml_report_subscriber</action>
+                        </subscriber>
+                        <quote module="zohosynchronization" translate="title">
+                            <title>Report Quotes</title>
+                            <sort_order>5</sort_order>
+                            <action>zohosynchronization/adminhtml_report_quote</action>
+                        </quote>
+                        <order module="zohosynchronization" translate="title">
+                            <title>Report Orders</title>
+                            <sort_order>6</sort_order>
+                            <action>zohosynchronization/adminhtml_report_order</action>
+                        </order>
+                    </children>
+                </report>
+                <queue module="zohosynchronization" translate="title">
+                    <title>Synchronization Queue</title>
+                    <sort_order>6</sort_order>
+                    <children>
+                        <manager module="zohosynchronization" translate="title">
+                            <title>Queue Manager</title>
+                            <sort_order>0</sort_order>
+                            <action>zohosynchronization/adminhtml_queue</action>
+                        </manager>                        
+                        <add_new module="zohosynchronization" translate="title">
+                            <title>Add New Queue Item</title>
+                            <sort_order>1</sort_order>
+                            <action>zohosynchronization/adminhtml_queue/new</action>
+                        </add_new>
+                    </children>
+                </queue>
+                <log module="zohosynchronization" translate="title">
+                    <title>Synchronization Logs</title>
+                    <sort_order>7</sort_order>
+                    <action>zohosynchronization/adminhtml_log</action>
+                </log>
+            </children>
+        </zohosynchronization>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <zohosynchronization module="zohosynchronization" translate="title">
+                        <title>ZohoCRM Free</title>
+                        <sort_order>10</sort_order>
+                        <children>
+                            <dashboard module="zohosynchronization" translate="title">
+                                <title>Dashboard</title>
+                                <sort_order>0</sort_order>
+                            </dashboard>
+                            <settings module="zohosynchronization" translate="title">
+                                <title>Synchronization Settings</title>
+                                <sort_order>1</sort_order>
+                            </settings>
+                            <accounts module="zohosynchronization" translate="title">
+                                <title>ZohoCRM User Accounts</title>
+                                <sort_order>2</sort_order>
+                            </accounts>
+                            <mapping module="zohosynchronization" translate="title">
+                                <title>Mapping Attributes</title>
+                                <sort_order>3</sort_order>
+                                <children>
+                                    <customers module="zohosynchronization" translate="title">
+                                        <title>Customers</title>
+                                        <sort_order>1</sort_order>
+                                        <children>
+                                            <zoho_leads module="zohosynchronization" translate="title">
+                                                <title><![CDATA[Mapping Zoho Leads]]></title>
+                                                <sort_order>0</sort_order>
+                                            </zoho_leads>
+                                            <zoho_accounts module="zohosynchronization" translate="title">
+                                                <title><![CDATA[Mapping Zoho Accounts]]></title>
+                                                <sort_order>1</sort_order>
+                                            </zoho_accounts>
+                                            <zoho_contacts module="zohosynchronization" translate="title">
+                                                <title><![CDATA[Addresses & Zoho Contacts]]></title>
+                                                <sort_order>2</sort_order>
+                                            </zoho_contacts>
+                                        </children>
+                                    </customers>
+                                    <subscribers module="zohosynchronization" translate="title">
+                                        <title><![CDATA[Subscribers & Zoho Leads]]></title>
+                                        <sort_order>2</sort_order>
+                                    </subscribers>
+                                    <potential module="zohosynchronization" translate="title">
+                                        <title>Potentials</title>
+                                        <sort_order>5</sort_order>
+                                    </potential>
+                                    <orders module="zohosynchronization" translate="title">
+                                        <title>Sales Orders</title>
+                                        <sort_order>7</sort_order>
+                                        <children>
+                                            <statuses_history module="zohosynchronization" translate="title">
+                                                <title><![CDATA[Statuses History & Zoho Events]]></title>
+                                                <sort_order>2</sort_order>
+                                            </statuses_history>
+                                            <comments module="zohosynchronization" translate="title">
+                                                <title><![CDATA[Comments & Zoho Tasks]]></title>
+                                                <sort_order>3</sort_order>
+                                            </comments>
+                                        </children>
+                                    </orders>
+                                    <invoices module="zohosynchronization" translate="title">
+                                        <title>Invoices</title>
+                                        <sort_order>8</sort_order>
+                                        <children>
+                                            <statuses_history module="zohosynchronization" translate="title">
+                                                <title><![CDATA[Statuses History & Zoho Events]]></title>
+                                                <sort_order>1</sort_order>
+                                            </statuses_history>
+                                            <comments module="zohosynchronization" translate="title">
+                                                <title><![CDATA[Comments & Zoho Tasks]]></title>
+                                                <sort_order>2</sort_order>
+                                            </comments>
+                                        </children>
+                                    </invoices>                        
+                                    <shipments module="zohosynchronization" translate="title">
+                                        <title>Shipments</title>
+                                        <sort_order>9</sort_order>
+                                        <children>
+                                            <statuses_history module="zohosynchronization" translate="title">
+                                                <title><![CDATA[Statuses History & Zoho Events]]></title>
+                                                <sort_order>0</sort_order>
+                                            </statuses_history>
+                                            <comments module="zohosynchronization" translate="title">
+                                                <title><![CDATA[Comments & Zoho Tasks]]></title>
+                                                <sort_order>1</sort_order>
+                                            </comments>
+                                        </children>
+                                    </shipments>
+                                    <creditmemos module="zohosynchronization" translate="title">
+                                        <title>Credit Memos</title>
+                                        <sort_order>10</sort_order>
+                                        <children>
+                                            <statuses_history module="zohosynchronization" translate="title">
+                                                <title><![CDATA[Statuses History & Zoho Events]]></title>
+                                                <sort_order>0</sort_order>
+                                            </statuses_history>
+                                            <comments module="zohosynchronization" translate="title">
+                                                <title><![CDATA[Comments & Zoho Tasks]]></title>
+                                                <sort_order>1</sort_order>
+                                            </comments>
+                                        </children>
+                                    </creditmemos>
+                                </children>
+                            </mapping>
+                            <load_data_from_zohocrm>
+                                <title>Load Data from ZohoCRM</title>
+                                <sort_order>4</sort_order>
+                                <children>
+                                    <remote module="zohosynchronization" translate="title">
+                                        <title>Load Data Instantly</title>
+                                        <sort_order>0</sort_order>
+                                    </remote>
+                                    <in_cron module="zohosynchronization" translate="title">
+                                        <title>Load Data in Cronjob</title>
+                                        <sort_order>1</sort_order>
+                                    </in_cron>
+                                </children>
+                            </load_data_from_zohocrm>
+                            <report module="zohosynchronization" translate="title">
+                                <title>Synchronization Reports</title>
+                                <sort_order>5</sort_order>
+                                <children>
+                                    <customer module="zohosynchronization" translate="title">
+                                        <title>Report Customers</title>
+                                        <sort_order>0</sort_order>
+                                        <children>
+                                            <login module="zohosynchronization" translate="title">
+                                                <title>Login via customer's account</title>
+                                                <sort_order>0</sort_order>
+                                            </login>
+                                            <reset module="zohosynchronization" translate="title">
+                                                <title>Reset Zoho id for individual customer</title>
+                                                <sort_order>1</sort_order>
+                                            </reset>
+                                            <reset_all module="zohosynchronization" translate="title">
+                                                <title>Reset Zoho id for all customers</title>
+                                                <sort_order>2</sort_order>
+                                            </reset_all>
+                                            <sync module="zohosynchronization" translate="title">
+                                                <title>Execute synchronizing customer in report</title>
+                                                <sort_order>3</sort_order>
+                                            </sync>
+                                            <add_to_queue module="zohosynchronization" translate="title">
+                                                <title>Add customer to synchronization queue in report</title>
+                                                <sort_order>4</sort_order>
+                                            </add_to_queue>
+                                        </children>
+                                    </customer>
+                                    <address module="zohosynchronization" translate="title">
+                                        <title>Report Addresses</title>
+                                        <sort_order>1</sort_order>
+                                        <children>
+                                            <reset module="zohosynchronization" translate="title">
+                                                <title>Reset Zoho id for individual customer's address</title>
+                                                <sort_order>0</sort_order>
+                                            </reset>
+                                            <reset_all module="zohosynchronization" translate="title">
+                                                <title>Reset Zoho id for all customer's addresses</title>
+                                                <sort_order>1</sort_order>
+                                            </reset_all>
+                                            <sync module="zohosynchronization" translate="title">
+                                                <title>Execute synchronizing customer's address in report</title>
+                                                <sort_order>2</sort_order>
+                                            </sync>
+                                            <add_to_queue module="zohosynchronization" translate="title">
+                                                <title>Add customer's address to synchronization queue in report</title>
+                                                <sort_order>3</sort_order>
+                                            </add_to_queue>
+                                        </children>
+                                    </address>
+                                    <subscriber module="zohosynchronization" translate="title">
+                                        <title>Report Subscribers</title>
+                                        <sort_order>2</sort_order>
+                                        <children>
+                                            <reset module="zohosynchronization" translate="title">
+                                                <title>Reset Zoho id for individual subscriber</title>
+                                                <sort_order>0</sort_order>
+                                            </reset>
+                                            <reset_all module="zohosynchronization" translate="title">
+                                                <title>Reset Zoho id for all subscribers</title>
+                                                <sort_order>1</sort_order>
+                                            </reset_all>
+                                            <sync module="zohosynchronization" translate="title">
+                                                <title>Execute synchronizing subscriber in report</title>
+                                                <sort_order>2</sort_order>
+                                            </sync>
+                                            <add_to_queue module="zohosynchronization" translate="title">
+                                                <title>Add subscriber to synchronization queue in report</title>
+                                                <sort_order>3</sort_order>
+                                            </add_to_queue>
+                                        </children>
+                                    </subscriber>
+                                    <quote module="zohosynchronization" translate="title">
+                                        <title>Report Quotes</title>
+                                        <sort_order>5</sort_order>
+                                        <children>
+                                            <reset module="zohosynchronization" translate="title">
+                                                <title>Reset Potential Zoho id for individual quote</title>
+                                                <sort_order>0</sort_order>
+                                            </reset>
+                                            <reset_all module="zohosynchronization" translate="title">
+                                                <title>Reset Potential Zoho id for all quotes</title>
+                                                <sort_order>1</sort_order>
+                                            </reset_all>
+                                            <sync module="zohosynchronization" translate="title">
+                                                <title>Execute synchronizing quote in report</title>
+                                                <sort_order>2</sort_order>
+                                            </sync>
+                                            <add_to_queue module="zohosynchronization" translate="title">
+                                                <title>Add quote to synchronization queue in report</title>
+                                                <sort_order>3</sort_order>
+                                            </add_to_queue>
+                                            <disable_quote module="zohosynchronization" translate="title">
+                                                <title>Disable quote</title>
+                                                <sort_order>5</sort_order>
+                                            </disable_quote>
+                                        </children>
+                                    </quote>
+                                    <order module="zohosynchronization" translate="title">
+                                        <title>Report Orders</title>
+                                        <sort_order>6</sort_order>
+                                        <children>
+                                            <reset module="zohosynchronization" translate="title">
+                                                <title>Reset Potential Zoho id for individual order</title>
+                                                <sort_order>0</sort_order>
+                                            </reset>
+                                            <reset_all module="zohosynchronization" translate="title">
+                                                <title>Reset Potential Zoho id for all orders</title>
+                                                <sort_order>1</sort_order>
+                                            </reset_all>
+                                            <sync module="zohosynchronization" translate="title">
+                                                <title>Execute synchronizing order in report</title>
+                                                <sort_order>2</sort_order>
+                                            </sync>
+                                            <add_to_queue module="zohosynchronization" translate="title">
+                                                <title>Add order to synchronization queue in report</title>
+                                                <sort_order>3</sort_order>
+                                            </add_to_queue>                                            
+                                            <reset_event module="zohosynchronization" translate="title">
+                                                <title><![CDATA[Reset Events' & Tasks' Zoho id of individual order]]></title>
+                                                <sort_order>4</sort_order>
+                                            </reset_event>
+                                            <reset_event_all module="zohosynchronization" translate="title">
+                                                <title><![CDATA[Reset Events' & Tasks' Zoho id of all orders]]></title>
+                                                <sort_order>5</sort_order>
+                                            </reset_event_all>
+                                        </children>
+                                    </order>
+                                </children>
+                            </report>                            
+                            <queue module="zohosynchronization" translate="title">
+                                <title>Synchronization Queue</title>
+                                <sort_order>6</sort_order>
+                                <children>
+                                    <manager module="zohosynchronization" translate="title">
+                                        <title>Queue Manager</title>
+                                        <sort_order>0</sort_order>
+                                    </manager>
+                                    <add_new module="zohosynchronization" translate="title">
+                                        <title>Add New Queue Item</title>
+                                        <sort_order>1</sort_order>
+                                    </add_new>
+                                    <clear module="zohosynchronization" translate="title">
+                                        <title>Clear Queue</title>
+                                        <sort_order>2</sort_order>
+                                    </clear>
+                                    <delete module="zohosynchronization" translate="title">
+                                        <title>Delete Queue Item</title>
+                                        <sort_order>3</sort_order>
+                                    </delete>
+                                    <runcron module="zohosynchronization" translate="title">
+                                        <title>Run Synchronize Data in Queue</title>
+                                        <sort_order>4</sort_order>
+                                    </runcron>
+                                </children>
+                            </queue>
+                            <log module="zohosynchronization" translate="title">
+                                <title>Synchronization Logs</title>
+                                <sort_order>7</sort_order>
+                                <children>
+                                    <truncate module="zohosynchronization" translate="title">
+                                        <title>Truncate Data</title>
+                                        <sort_order>0</sort_order>
+                                    </truncate>
+                                    <delete module="zohosynchronization" translate="title">
+                                        <title>Delete Log</title>
+                                        <sort_order>1</sort_order>
+                                    </delete>
+                                </children>
+                            </log>
+                        </children>
+                    </zohosynchronization>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <crm4ecommerce_zohosynchronization translate="title">
+                                        <title>CRM4Ecommerce ZohoCRM Free Settings</title>
+                                        <sort_order>0</sort_order>
+                                    </crm4ecommerce_zohosynchronization>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

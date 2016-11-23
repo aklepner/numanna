@@ -1,0 +1,171 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Mapping_Form_New
+ */
+?>
+<div class="entry-edit collapseable">
+    <form method="post" action="<?php echo $this->getSaveUrl(); ?>">
+        <input name="c_action" type="hidden" value="<?php echo Mage::registry('c_action'); ?>" />
+        <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+        <div class="entry-edit-head collapseable">
+            <a id="crm4ecommerce_zohosynchronization_potential_params-head" class="open" onclick="Fieldset.toggleCollapse('crm4ecommerce_zohosynchronization_potential_params'); return false;" href="#">
+                <?php echo $this->__('Zoho Potential Settings'); ?>
+            </a>
+        </div>
+        <fieldset id="crm4ecommerce_zohosynchronization_potential_params" style="" class="config collapseable">
+            <legend><?php echo $this->__('Zoho Potential Settings'); ?></legend>
+            <table cellspacing="0" class="form-list" style="width: 100%;">
+                <tbody>
+                    <tr>
+                        <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[potential_enabled]"><?php echo $this->__('Use Zoho Potential') ?></label></td>
+                        <td class="value">
+                            <select class="input-text" id="config[potential_enabled]" name="config[potential_enabled]" style="width: 97%">
+                                <option value="1" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_enabled') == '1' ? 'selected="selected"' : ''; ?>><?php echo $this->__('Yes'); ?></option>
+                                <option value="0" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_enabled') == '0' ? 'selected="selected"' : ''; ?>><?php echo $this->__('No'); ?></option>
+                                ?>
+                            </select>
+                            <p class="note" style="width: 97%;">
+                                <span><?php echo $this->__('Allow synchronizing quotes, orders with zoho potentials or not.'); ?></span>
+                            </p>
+                        </td>
+                    </tr>
+                    <?php if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_enabled') == '1') { ?>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[potential_duplicate_insert]"><?php echo $this->__('Duplicate Insert') ?></label></td>
+                            <td class="value">
+                                <select class="input-text" id="config[potential_duplicate_insert]" name="config[potential_duplicate_insert]" style="width: 97%"><?php
+                    $zohoDuplicateChecks = Mage::getModel('zohosynchronization/array_zohoDuplicateCheck')->toOptionArray();
+                    foreach ($zohoDuplicateChecks as $key => $value) {
+                            ?>
+                                        <option value="<?php echo $key; ?>" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_duplicate_insert') == $key ? 'selected="selected"' : ''; ?>><?php echo $value; ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                                <p class="note" style="width: 97%;">
+                                    <span><?php echo $this->__('Zoho Potential has key field is <b>Potential Name</b>.'); ?></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[potential_type_existing_business]"><?php echo $this->__('Potential Type with') ?></label></td>
+                            <td class="value">
+                                <label style="width: 120px; padding-right: 0px" for="config[potential_type_existing_business]"><?php echo $this->__('registered customers'); ?></label> <input type="text" class="input-text" id="config[potential_type_existing_business]" name="config[potential_type_existing_business]" style="width: 200px" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_type_existing_business'); ?>" />,
+                                <label style="width: 120px; padding-right: 0px" for="config[potential_type_new_business]"><?php echo $this->__('unregistered or new customers'); ?></label> <input type="text" class="input-text" id="config[potential_type_new_business]" name="config[potential_type_new_business]" style="width: 200px" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_type_new_business'); ?>" />
+                                <p class="note" style="width: 97%;">
+                                    <span><?php echo $this->__('New customers are registered customers but register after create quote (cart).'); ?></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[potential_closing_date]"><?php echo $this->__('Close Potential after') ?></label></td>
+                            <td class="value">
+                                <input type="text" class="input-text" id="config[potential_closing_date]" name="config[potential_closing_date]" style="width: 200px" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_closing_date'); ?>" />
+    <?php echo $this->__('day(s)'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[potential_stage_review_cart]"><?php echo $this->__('Stage Review Cart') ?></label></td>
+                            <td class="value">
+                                <input type="text" class="input-text" id="config[potential_stage_review_cart]" name="config[potential_stage_review_cart]" style="width: 97%" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_stage_review_cart'); ?>" />
+                                <p class="note" style="width: 97%;">
+                                    <span><?php echo $this->__('Stage of Potential when shopping cart of customer is created, viewed and added products. Generally, this is Qualification. Probability for this stage is 0%.'); ?></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[potential_stage_come_back]"><?php echo $this->__('Stage Come Back') ?></label></td>
+                            <td class="value">
+                                <input type="text" class="input-text" id="config[potential_stage_come_back]" name="config[potential_stage_come_back]" style="width: 200px" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_stage_come_back'); ?>" />
+                                <label style="width: 120px; padding-right: 0px" for="config[potential_stage_come_back_after_days]"><?php echo $this->__('change to after'); ?></label>
+                                <input type="text" class="input-text" id="config[potential_stage_come_back_after_days]" name="config[potential_stage_come_back_after_days]" style="width: 200px" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_stage_come_back_after_days'); ?>" />
+    <?php echo $this->__('day(s)'); ?>
+                                <p class="note" style="width: 97%;">
+                                    <span><?php echo $this->__('Stage of Potential when customers after some days (greater than 1 day) no visit they come back and re-handle with their shopping cart. Generally, this is Needs Analysis. Probability for this stage is 0%.'); ?></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[potential_stage_quote]"><?php echo $this->__('Stage Quote') ?></label></td>
+                            <td class="value">
+                                <input type="text" class="input-text" id="config[potential_stage_quote]" name="config[potential_stage_quote]" style="width: 97%" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_stage_quote'); ?>" />
+                                <p class="note" style="width: 97%;">
+                                    <span><?php echo $this->__("Stage of Potential when cart is updated add address and order hasn't just been created. Generally, this is Proposal/Price Quote. Probability for this stage is 0%."); ?></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[potential_stage_order_created]"><?php echo $this->__('Stage Order Created') ?></label></td>
+                            <td class="value">
+                                <input type="text" class="input-text" id="config[potential_stage_order_created]" name="config[potential_stage_order_created]" style="width: 97%" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_stage_order_created'); ?>" />
+                                <p class="note" style="width: 97%;">
+                                    <span><?php echo $this->__("Stage of Potential when order is created but it hasn't just been completed, canceled or closed. Generally, this stage is Negotiation/Review. Probability for this stage is based on calculation rate the complete orders of before orders that customer created."); ?></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[potential_stage_order_processing]"><?php echo $this->__('Stage Order Processing') ?></label></td>
+                            <td class="value">
+                                <input type="text" class="input-text" id="config[potential_stage_order_processing]" name="config[potential_stage_order_processing]" style="width: 97%" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_stage_order_processing'); ?>" />
+                                <p class="note" style="width: 97%;">
+                                    <span><?php echo $this->__('Stage of Potential when order is processing. Generally, this stage is Order Processing. Probability for this stage is probability in stage Order Created plus the part of probability is caculated from total paid.'); ?></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[potential_stage_closed_won]"><?php echo $this->__('Stage Closed Won') ?></label></td>
+                            <td class="value">
+                                <input type="text" class="input-text" id="config[potential_stage_closed_won]" name="config[potential_stage_closed_won]" style="width: 97%" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_stage_closed_won'); ?>" />
+                                <p class="note" style="width: 97%;">
+                                    <span><?php echo $this->__('Stage of Potential when it is closed and order created and order is completed. Generally, this stage is Closed Won. Probability for this stage is 100%.'); ?></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[potential_stage_closed_lost]"><?php echo $this->__('Stage Closed Lost') ?></label></td>
+                            <td class="value">
+                                <input type="text" class="input-text" id="config[potential_stage_closed_lost]" name="config[potential_stage_closed_lost]" style="width: 97%" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_stage_closed_lost'); ?>" />
+                                <p class="note" style="width: 97%;">
+                                    <span><?php echo $this->__('Stage of Potential when it is closed and no order created or order is created but it is Closed or Canceled. Generally, this stage is Closed Lost. Probability for this stage is 0%.'); ?></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[potential_quote_order_details]"><?php echo $this->__('Quote / Order Details') ?></label></td>
+                            <td class="value">
+                                <textarea type="text" class="input-text" id="config[potential_quote_order_details]" name="config[potential_quote_order_details]" style="width: 97%; height: 150px;"><?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_quote_order_details'); ?></textarea>
+                                <p class="note" style="width: 97%;">
+                                    <span><?php echo $this->__("Default is: <b>\"%s\"</b>.<br/><b>Attention:</b> {{if coupon_code}} this mean check coupon_code is true / not null / not empty or not.", str_replace("\n", "<br/>", Mage::helper('zohosynchronization')->getDefaultConfig('crm4ecommerce_zohosynchronization/params/potential_quote_order_details'))); ?></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[potential_item_format]"><?php echo $this->__('Items Format') ?></label></td>
+                            <td class="value">
+                                <textarea type="text" class="input-text" id="config[potential_item_format]" name="config[potential_item_format]" style="width: 97%; height: 150px;"><?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_item_format'); ?></textarea>
+                                <p class="note" style="width: 97%;">
+                                    <span><?php echo $this->__("Default is: <b>\"%s\"</b>.", str_replace("\n", "<br/>", Mage::helper('zohosynchronization')->getDefaultConfig('crm4ecommerce_zohosynchronization/params/potential_item_format'))); ?></span>
+                                </p>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+            <div style="text-align: right; margin-top: 5px; padding-top: 10px; border-top: 2px solid #CCCCCC;">        
+                <table style="width: 100%;"><tr><td>                    
+                            <button name="submit" value="save" class="scalable save" style="" type="submit">
+                                <span><span><span><?php echo $this->__('Save'); ?></span></span></span>
+                            </button></td></tr>
+                </table>
+            </div>
+        </fieldset>
+        <script type="text/javascript">
+            Fieldset.applyCollapse('crm4ecommerce_zohosynchronization_potential_params');
+        </script>
+    </form>
+</div>

@@ -1,0 +1,57 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Report_Order_Show_Tab_Chart
+ */
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Report Chart') ?></h4>
+    </div>
+    <div class="fieldset">
+        <?php
+        $zoho_id_field = 'zoho_id';
+        if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/order_enabled') == CRM4Ecommerce_ZohoSynchronization_Model_Array_YesNo::NO && Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_enabled') == CRM4Ecommerce_ZohoSynchronization_Model_Array_YesNo::YES) {
+            $zoho_id_field = 'potential_zoho_id';
+        }
+        
+        $total = Mage::getModel('sales/order')->getCollection()->count();
+        $number_synchronized = 0;
+        
+        $coreResource = Mage::getSingleton('core/resource');
+        $read = $coreResource->getConnection('core_read');
+        $rs = $read->fetchAll('SHOW TABLES');
+        $sales_flat_order_grid_existed = false;
+        foreach ($rs as $row) {
+            foreach ($row as $k => $v) {
+                if ($v == $coreResource->getTableName('sales_flat_order_grid')) {
+                    $sales_flat_order_grid_existed = true;
+                }
+            }
+        }
+        if ($sales_flat_order_grid_existed) {
+            $number_synchronized = Mage::getResourceModel('sales/order_grid_collection')
+                            ->addAttributeToFilter($zoho_id_field, array('neq' => ''))->count();
+        } else {
+            $number_synchronized = Mage::getModel('sales/order')->getCollection()
+                            ->addAttributeToFilter($zoho_id_field, array('neq' => ''))->count();
+        }
+
+        $number_not_synchronized = $total - $number_synchronized;
+        $rate_synchronized = 0;
+        if ($total > 0) {
+            $rate_synchronized = round(((float) $number_synchronized / $total * 1000)) / 10;
+        }
+        $rate_not_synchronized = 100 - $rate_synchronized;
+
+        $label_synchronized = str_replace(' ', '+', $this->__('Synchronized Orders') . ': ' . $rate_synchronized . '% (' . $number_synchronized . '/' . $total . ')');
+        $label_not_synchronized = str_replace(' ', '+', $this->__('Not Synchronized Orders') . ': ' . $rate_not_synchronized . '% (' . $number_not_synchronized . '/' . $total . ')');
+        $label_title = $this->__('Report Synchronized Orders');
+        ?>
+        <img src="http://chart.apis.google.com/chart?chf=a,s,000000|bg,s,FAFAFA&chs=500x320&cht=p&chco=3366CC|CC3300&chd=t:<?php echo $rate_synchronized ?>,<?php echo $rate_not_synchronized ?>&chdl=<?php echo $label_synchronized; ?>|<?php echo $label_not_synchronized; ?>&chdlp=r&chma=0,0,0,50|0,10&chtt=<?php echo $label_title; ?>&chts=000000,12" width="500" height="320" alt="<?php echo $label_title; ?>" />
+    </div>
+</div>

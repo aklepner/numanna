@@ -1,0 +1,109 @@
+<div class="row" id="browser">
+    <div class="span12">
+
+        <!--
+        <div id="image-selection">
+            <div class="choose">
+                <p>Choose your image by search or the below categories.</p>
+                <span>or check out the</span>
+                <a href="http://wallawall.com/managecategory" title="Walla Artists Gallery">Walla Artists Gallery</a>
+                <span>or</span>
+                <a href="http://wallawall.com/uploadproduct/">Upload Your Own Image</a>
+            </div>
+        </div>
+        -->
+        <div class="searchform">
+            <form class="container form-search">
+                <!--<div class="label">Step 1:</div> -->
+                <input type="text" class="search-query span4" value="Find the perfect image..." onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;"/ style="margin-left:60px;">
+                <button type="submit" class="btn btn-primary">Search</button>
+                <div class="options">
+                    <a href="#">Walla Artists Gallery</a>
+                    <a href="?php echo $this->getUrl('') ?>/details">Upload Your Own Image</a>
+                </div>
+            </form>
+        </div>
+        <div id="categories">
+            <div class="categories-list">
+                <div class="bread center"><?php  echo $this->getLayout()->getBlock("breadcrumbs")->toHtml()?></div>
+                <h1 class="center">Browse Images by Categories</h1>
+                <br/><br/>
+                <ul class="thumbnails" id="cats">
+                    <li class="li-page1">
+                        <a href="?php echo $this->getUrl('') ?>/category" title="Animals" class="thumbnail"><img src="http://static8.bigstockphoto.com/thumbs/7/3/1/small3/137522948.jpg" alt="Animals"/></a>
+                        <span class="cat-name">
+                            <a href="<?php echo $this->getUrl('') ?>/category" title="Abstract">Lipsum category</a>
+                        </span>
+                    </li>
+                    <li class="li-page1">
+                        <a href="<?php echo $this->getUrl('') ?>/category" title="Animals" class="thumbnail"><img src="http://static8.bigstockphoto.com/thumbs/7/3/1/small3/137522948.jpg" alt="Animals"/></a>
+                        <span class="cat-name">
+                            <a href="<?php echo $this->getUrl('') ?>/category" title="Abstract">Lipsum category</a>
+                        </span>
+                    </li>
+                    <li class="li-page1">
+                        <a href="<?php echo $this->getUrl('') ?>/category" title="Animals" class="thumbnail"><img src="http://static8.bigstockphoto.com/thumbs/7/3/1/small3/137522948.jpg" alt="Animals"/></a>
+                        <span class="cat-name">
+                            <a href="<?php echo $this->getUrl('') ?>/category" title="Abstract">Lipsum category</a>
+                        </span>
+                    </li>
+                    <li class="li-page1">
+                        <a href="<?php echo $this->getUrl('') ?>/category" title="Animals" class="thumbnail"><img src="http://static8.bigstockphoto.com/thumbs/7/3/1/small3/137522948.jpg" alt="Animals"/></a>
+                        <span class="cat-name">
+                            <a href="<?php echo $this->getUrl('') ?>/category" title="Abstract">Lipsum category</a>
+                        </span>
+                    </li>
+                    <li class="li-page1">
+                        <a href="<?php echo $this->getUrl('') ?>/category" title="Animals" class="thumbnail"><img src="http://static8.bigstockphoto.com/thumbs/7/3/1/small3/137522948.jpg" alt="Animals"/></a>
+                        <span class="cat-name">
+                            <a href="<?php echo $this->getUrl('') ?>/category" title="Abstract">Lipsum category</a>
+                        </span>
+                    </li>
+                    <li class="li-page1">
+                        <a href="<?php echo $this->getUrl('') ?>/category" title="Animals" class="thumbnail"><img src="http://static8.bigstockphoto.com/thumbs/7/3/1/small3/137522948.jpg" alt="Animals"/></a>
+                        <span class="cat-name">
+                            <a href="<?php echo $this->getUrl('') ?>/category" title="Abstract">Lipsum category</a>
+                        </span>
+                    </li>
+                    <li class="li-page1">
+                        <a href="<?php echo $this->getUrl('') ?>/category" title="Animals" class="thumbnail"><img src="http://static8.bigstockphoto.com/thumbs/7/3/1/small3/137522948.jpg" alt="Animals"/></a>
+                        <span class="cat-name">
+                            <a href="<?php echo $this->getUrl('') ?>/category" title="Abstract">Lipsum category</a>
+                        </span>
+                    </li>
+                    <li class="li-page1">
+                        <a href="<?php echo $this->getUrl('') ?>/category" title="Animals" class="thumbnail"><img src="http://static8.bigstockphoto.com/thumbs/7/3/1/small3/137522948.jpg" alt="Animals"/></a>
+                        <span class="cat-name">
+                            <a href="<?php echo $this->getUrl('') ?>/category" title="Abstract">Lipsum category</a>
+                        </span>
+                    </li>
+                    <li class="li-page1">
+                        <a href="<?php echo $this->getUrl('') ?>/category" title="Animals" class="thumbnail"><img src="http://static8.bigstockphoto.com/thumbs/7/3/1/small3/137522948.jpg" alt="Animals"/></a>
+                        <span class="cat-name">
+                            <a href="<?php echo $this->getUrl('') ?>/category" title="Abstract">Lipsum category</a>
+                        </span>
+                    </li>
+                    <li class="li-page1">
+                        <a href="<?php echo $this->getUrl('') ?>/category" title="Animals" class="thumbnail"><img src="http://static8.bigstockphoto.com/thumbs/7/3/1/small3/137522948.jpg" alt="Animals"/></a>
+                        <span class="cat-name">
+                            <a href="<?php echo $this->getUrl('') ?>/category" title="Abstract">Lipsum category</a>
+                        </span>
+                    </li>
+                    <li class="li-page1">
+                        <a href="<?php echo $this->getUrl('') ?>/category" title="Animals" class="thumbnail"><img src="http://static8.bigstockphoto.com/thumbs/7/3/1/small3/137522948.jpg" alt="Animals"/></a>
+                        <span class="cat-name">
+                            <a href="<?php echo $this->getUrl('') ?>/category" title="Abstract">Lipsum category</a>
+                        </span>
+                    </li>
+                    <li class="li-page1">
+                        <a href="<?php echo $this->getUrl('') ?>/category" title="Animals" class="thumbnail"><img src="http://static8.bigstockphoto.com/thumbs/7/3/1/small3/137522948.jpg" alt="Animals"/></a>
+                        <span class="cat-name">
+                            <a href="<?php echo $this->getUrl('') ?>/category" title="Abstract">Lipsum category</a>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>

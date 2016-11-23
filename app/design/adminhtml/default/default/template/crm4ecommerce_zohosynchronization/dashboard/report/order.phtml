@@ -1,0 +1,170 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Report_Order_Show_Tab_Chart
+ */
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Report Synchronized Orders') ?></h4>
+    </div>
+    <div class="fieldset">
+        <?php
+        $zoho_id_field = 'zoho_id';
+        if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/order_enabled') == CRM4Ecommerce_ZohoSynchronization_Model_Array_YesNo::NO && Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/potential_enabled') == CRM4Ecommerce_ZohoSynchronization_Model_Array_YesNo::YES) {
+            $zoho_id_field = 'potential_zoho_id';
+        }
+        
+        $total = Mage::getModel('sales/order')->getCollection()->count();
+        $number_synchronized = 0;
+
+        $coreResource = Mage::getSingleton('core/resource');
+        $read = $coreResource->getConnection('core_read');
+        $rs = $read->fetchAll('SHOW TABLES');
+        $sales_flat_order_grid_existed = false;
+        foreach ($rs as $row) {
+            foreach ($row as $k => $v) {
+                if ($v == $coreResource->getTableName('sales_flat_order_grid')) {
+                    $sales_flat_order_grid_existed = true;
+                }
+            }
+        }
+        if ($sales_flat_order_grid_existed) {
+            $number_synchronized = Mage::getResourceModel('sales/order_grid_collection')
+                            ->addAttributeToFilter($zoho_id_field, array('neq' => ''))->count();
+        } else {
+            $number_synchronized = Mage::getModel('sales/order')->getCollection()
+                            ->addAttributeToFilter($zoho_id_field, array('neq' => ''))->count();
+        }
+
+        $number_not_synchronized = $total - $number_synchronized;
+        $rate_synchronized = 0;
+        if ($total > 0) {
+            $rate_synchronized = (int) round(((float) $number_synchronized / $total * 1000)) / 10;
+        }
+        $rate_not_synchronized = 100 - $rate_synchronized;
+
+        $label_synchronized = str_replace(' ', '+', $this->__('Synchronized Orders') . ': ' . $rate_synchronized . '% (' . $number_synchronized . '/' . $total . ')');
+        $label_not_synchronized = str_replace(' ', '+', $this->__('Not Synchronized Orders') . ': ' . $rate_not_synchronized . '% (' . $number_not_synchronized . '/' . $total . ')');
+        $label_title = '';
+        ?>
+        <img src="http://chart.apis.google.com/chart?chf=a,s,000000|bg,s,FAFAFA&chs=500x280&cht=p&chco=3366CC|CC3300&chd=t:<?php echo $rate_synchronized ?>,<?php echo $rate_not_synchronized ?>&chdl=<?php echo $label_synchronized; ?>|<?php echo $label_not_synchronized; ?>&chdlp=r&chma=0,0,0,10|0,10&chtt=<?php echo $label_title; ?>&chts=000000,0" width="500" height="280" alt="<?php echo $label_title; ?>" />
+    </div>
+
+    <div class="fieldset" style="margin-top: 20px;">
+        <button onclick="window.open('<?php echo $this->getUrl('zohosynchronization/adminhtml_report_order'); ?>', '_blank');" class="scalable" type="button" >
+            <span><span><span><?php echo $this->__('Report Details') ?></span></span></span>
+        </button>
+        
+        <?php if (Mage::getSingleton('admin/session')->isAllowed(CRM4Ecommerce_ZohoSynchronization_Helper_Data::ACL_RESET_TASKS_FOR_ALL_ORDERS)) { ?>
+            <?php
+                $enabled = false;
+                $rs = $read->fetchAll("SELECT count(entity_id) AS 'count' FROM `" . $coreResource->getTableName('sales_flat_order_status_history') . "` WHERE `activity_zoho_id` <> ''");
+                foreach ($rs as $row) {
+                    if ((int) $row['count'] > 0) {
+                        $enabled = true;
+                    }                    
+                }
+                if (!$enabled) {
+                    $rs = $read->fetchAll("SELECT count(entity_id) AS 'count' FROM `" . $coreResource->getTableName('sales_flat_invoice') . "` WHERE `activity_zoho_id` <> ''");
+                    foreach ($rs as $row) {
+                        if ((int) $row['count'] > 0) {
+                            $enabled = true;
+                        }                    
+                    }
+                }
+                if (!$enabled) {
+                    $rs = $read->fetchAll("SELECT count(entity_id) AS 'count' FROM `" . $coreResource->getTableName('sales_flat_invoice_comment') . "` WHERE `activity_zoho_id` <> ''");
+                    foreach ($rs as $row) {
+                        if ((int) $row['count'] > 0) {
+                            $enabled = true;
+                        }                    
+                    }
+                }
+                if (!$enabled) {
+                    $rs = $read->fetchAll("SELECT count(entity_id) AS 'count' FROM `" . $coreResource->getTableName('sales_flat_shipment') . "` WHERE `activity_zoho_id` <> ''");
+                    foreach ($rs as $row) {
+                        if ((int) $row['count'] > 0) {
+                            $enabled = true;
+                        }                    
+                    }
+                }
+                if (!$enabled) {
+                    $rs = $read->fetchAll("SELECT count(entity_id) AS 'count' FROM `" . $coreResource->getTableName('sales_flat_shipment_comment') . "` WHERE `activity_zoho_id` <> ''");
+                    foreach ($rs as $row) {
+                        if ((int) $row['count'] > 0) {
+                            $enabled = true;
+                        }                    
+                    }
+                }
+                if (!$enabled) {
+                    $rs = $read->fetchAll("SELECT count(entity_id) AS 'count' FROM `" . $coreResource->getTableName('sales_flat_shipment_track') . "` WHERE `activity_zoho_id` <> ''");
+                    foreach ($rs as $row) {
+                        if ((int) $row['count'] > 0) {
+                            $enabled = true;
+                        }                    
+                    }
+                }
+                if (!$enabled) {
+                    $rs = $read->fetchAll("SELECT count(entity_id) AS 'count' FROM `" . $coreResource->getTableName('sales_flat_creditmemo') . "` WHERE `activity_zoho_id` <> ''");
+                    foreach ($rs as $row) {
+                        if ((int) $row['count'] > 0) {
+                            $enabled = true;
+                        }                    
+                    }
+                }
+                if (!$enabled) {
+                    $rs = $read->fetchAll("SELECT count(entity_id) AS 'count' FROM `" . $coreResource->getTableName('sales_flat_creditmemo_comment') . "` WHERE `activity_zoho_id` <> ''");
+                    foreach ($rs as $row) {
+                        if ((int) $row['count'] > 0) {
+                            $enabled = true;
+                        }                    
+                    }
+                }
+                if ($enabled) {
+            ?>
+            <script type="text/javascript">
+                resetAllEventsTasks = function() {
+                    if(confirm("<?php echo Mage::helper('zohosynchronization')->__('Do you really want to reset Zoho id of Tasks of all orders?'); ?>")) {
+                        new Ajax.Request('<?php echo $this->getUrl('zohosynchronization/adminhtml_report_order/resetAllEventsTasks', array('isAjax' => true)); ?>', {
+                            method: 'get',
+                            onComplete: function(transport) {
+                                if (200 == transport.status && transport.responseText == '1') {
+                                    setLocation('<?php echo $this->getUrl('zohosynchronization/adminhtml_dashboard/index'); ?>');
+                                }
+                            }
+                        }); 
+                    }
+                };
+            </script>
+            <?php } ?>
+            <button <?php if ($enabled) {?>onclick="resetAllEventsTasks();"<?php } ?> class="scalable<?php if (!$enabled) {?> disabled<?php } ?>" type="button" >
+                <span><span><span><?php echo $this->__("Reset All Events & Tasks Zoho Id") ?></span></span></span>
+            </button>
+        <?php } ?>
+
+        <?php if (Mage::getSingleton('admin/session')->isAllowed(CRM4Ecommerce_ZohoSynchronization_Helper_Data::ACL_RESET_ZOHO_ID_ALL_ORDERS)) { ?>
+            <?php if ($number_synchronized > 0) { ?><script type="text/javascript">
+                    resetAllOrders = function() {
+                        if(confirm("<?php echo Mage::helper('zohosynchronization')->__('Do you really want to reset Zoho id for all orders?'); ?>")) {
+                            new Ajax.Request('<?php echo $this->getUrl('zohosynchronization/adminhtml_report_order/resetAll', array('isAjax' => true)); ?>', {
+                                method: 'get',
+                                onComplete: function(transport) {
+                                    if (200 == transport.status && transport.responseText == '1') {
+                                        setLocation('<?php echo $this->getUrl('zohosynchronization/adminhtml_dashboard/index'); ?>');
+                                    }
+                                }
+                            }); 
+                        }
+                    };
+                </script><?php } ?>
+            <button <?php if ($number_synchronized > 0) { ?>onclick="resetAllOrders();"<?php } ?> class="scalable<?php if ($number_synchronized == 0) { ?> disabled<?php } ?>" type="button" >
+                <span><span><span><?php echo $this->__('Reset All Zoho Ids') ?></span></span></span>
+            </button>
+        <?php } ?>
+    </div>
+</div>

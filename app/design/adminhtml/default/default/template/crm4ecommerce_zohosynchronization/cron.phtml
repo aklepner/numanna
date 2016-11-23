@@ -1,0 +1,275 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_Zohosynchronization_Block_Cron
+ */
+?>
+<script type="text/javascript" src="<?php echo $this->getJsUrl('prototype/prototype.js'); ?>"></script>
+<style type="text/css">
+    body { margin: 3px; color: #2F2F2F; font: 12px arial,helvetica; background: #FAFAFA; }
+    pre { margin: 0; }
+
+    .runcron-title { border: 2px solid #800000; background: none repeat scroll 0 0 #990000; padding: 3px; }
+    .runcron-title h4 { color: #FFFFFF; font-size: 1em; margin: 0; }
+    .runcron-status { margin: 5px 0; padding: 3px; border: 2px solid #990000; color: #CC0000; }
+    #datatype-status {  }
+    .runcron-log { height: 250px; border: 2px solid #666666; background-color: #FFFFFF;
+                   font: 11px Lucida Console,Courier New,serif;
+                   margin: 0;
+                   padding: 3px;
+                   overflow-y: auto;
+    }
+    #runcron-log { line-height: 24px;
+                   white-space: pre-wrap; /* css-3 */
+                   white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+                   white-space: -pre-wrap; /* Opera 4-6 */
+                   white-space: -o-pre-wrap; /* Opera 7 */
+                   word-wrap: break-word; /* Internet Explorer 5.5+ */ }
+    .runcron-status-footer div {
+        background-color: #FFCCCC;
+        color: #800040;
+        font-size: 0.95em;
+        font-weight: bold;
+        margin: 5px 0;
+        padding: 5px;
+    }
+    .time { font-weight: bolder; color: #FF6600; }
+
+    .button { border: 2px solid #990000; font-size: 10px; font-weight: bold; background-color: #CC3300; padding: 3px 5px 3px 5px; color: #FFFFFF; text-transform: uppercase; position: relative; top: 5px; cursor: pointer; }
+    .button:hover, .button-disable { border: 2px solid #666666; background-color: #FFFFFF; padding: 3px 5px 3px 5px; color: #666666; }
+
+    .bold { font-weight: bold; }
+    .red { color: #990000; }
+</style>
+<div class="runcron-title">
+    <h4><?php echo $this->__('ZohoCRM Free') . ': ' . $this->__('Run Synchronize Data in Queue'); ?></h4>
+</div>
+
+<div class="runcron-status">
+    <?php echo $this->__('Running'); ?>: <span id="datatype-status"></span>
+    <span id="img-running" style="display: block; float:right; background: url(<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/running.gif'); ?>);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+</div>
+
+<div class="runcron-log"><pre id="runcron-log"><i><?php echo $this->__('Data Logging'); ?>...<br></i></pre>
+</div>
+
+<div class="runcron-status-footer">
+    <div id="runcron-status-footer"></div>
+    <a onclick="location.reload();" id="refresh" class="button"><?php echo $this->__('Refresh'); ?></a>
+    <a onclick="deleteLog();" id="delete" class="button"><?php echo $this->__('Delete Log'); ?></a>
+    <a onclick="stop();" id="stop" class="button"><?php echo $this->__('Stop'); ?></a>
+    <a onclick="run();" id="run" class="button button-disable"><?php echo $this->__('Run'); ?></a>
+</div>
+<script type="text/javascript">
+    var is_stop = false;
+    
+    deleteLog = function() {
+        document.getElementById('runcron-log').innerHTML = '<i><?php echo $this->__('Data Logging'); ?>...<br></i>';
+    };
+
+    stop = function() {
+        is_stop = true;
+        $('stop').addClassName('button-disable');
+        $('run').removeClassName('button-disable');
+    };
+
+    run = function() {
+        if (is_stop) {
+            is_stop = false;
+            $('run').addClassName('button-disable');
+            $('stop').removeClassName('button-disable');
+            ajaxLoad();
+        }
+    };
+
+    getTime = function() {
+        var d = new Date();
+        month = parseInt(d.getMonth()+1);
+        month = month > 9 ? month : '0' + month;
+        date = d.getDate() > 9 ? d.getDate() : '0' + d.getDate();
+        hour = d.getHours() > 9 ? d.getHours() : '0' + d.getHours();
+        minute = d.getMinutes() > 9 ? d.getMinutes() : '0' + d.getMinutes();
+        second = d.getSeconds() > 9 ? d.getSeconds() : '0' + d.getSeconds();
+
+        return '<span class="time">[' + d.getFullYear() + '/' + (month) + '/' + date + ' ' + hour + ':' + minute + ':' + second + ']</span>: ';
+    };
+
+    var log = $('runcron-log');
+    data = log.innerHTML;
+    data = '<i><?php echo $this->__('Data Logging'); ?>...<br></i>' + getTime() + '<?php echo $this->__('Start Synchronize Data'); ?>' + '<br>';
+    log.update(data);
+
+    is_get_infor = true;
+    var url = '<?php echo $this->getRunCronUrl(); ?>';
+
+    ajaxLoad = function() {
+        if (is_stop) {
+            $('runcron-status-footer').update('<?php echo $this->__('Stopped'); ?>');
+            return;
+        } else {
+            $('runcron-status-footer').update('');
+        }
+        $('img-running').setStyle({'display':'block'});
+
+        if (is_get_infor) {
+            $('datatype-status').update('<b><?php echo $this->__('Initializing...'); ?></b>');
+        }
+
+        new Ajax.Request(url, {
+            method: 'get',
+            onComplete: function(transport) {
+                if (200 == transport.status) {
+                    complete = false;
+                    xml = transport.responseText;
+                    xml = xml.split('</crm4ecommerce>');
+                    txt = xml[0] + '</crm4ecommerce>';
+                    
+                    if (window.DOMParser) {
+                        parser = new DOMParser();
+                        xml = parser.parseFromString(txt, "text/xml");
+                    } else {
+                        xml = new ActiveXObject("Microsoft.XMLDOM");
+                        xml.async = false;
+                        xml.loadXML(txt); 
+                    }
+                    
+                    log_data = getTime();
+
+                    is_ex = false;
+                    try {
+                        if (!is_get_infor) {
+                            try {
+                                log_data += '<?php echo $this->__('Synchronize'); ?>: ' + '<span class="bold">' + xml.getElementsByTagName('datatype_synchronization')[0].firstChild.nodeValue + '</span>, ';
+                            
+                                try {
+                                    log_data += '<?php echo $this->__('From Id'); ?> <span class="bold red">' + xml.getElementsByTagName('from_id')[0].firstChild.nodeValue + '</span>, ';
+                                } catch (e) {
+                                    log_data += '<span class="bold red"><?php echo $this->__('From First Id'); ?></span>, ';
+                                }
+                                try {
+                                    log_data += '<?php echo $this->__('To Id'); ?> <span class="bold red">' + xml.getElementsByTagName('to_id')[0].firstChild.nodeValue + '</span>, ';
+                                } catch (e) {
+                                    log_data += '<span class="bold red"><?php echo $this->__('To Lastest Id'); ?></span>, ';
+                                }
+                                try {
+                                    log_data += '<?php echo $this->__('Synchronized'); ?> <span class="bold red">' + xml.getElementsByTagName('number_success')[0].firstChild.nodeValue + '</span>, '
+                                        + '<?php echo $this->__('In Time'); ?> <span class="bold red">' + xml.getElementsByTagName('log_in_time')[0].firstChild.nodeValue + '</span> <?php echo $this->__('second(s)') ?>, ';
+                                } catch (e) {
+                                    log_data += '<?php echo $this->__('Synchronized'); ?> <span class="bold red">0</span>, '
+                                }
+
+                                try {
+                                    if (xml.getElementsByTagName('log_status')[0].firstChild.nodeValue == '1') {
+                                        log_data += '<span style="border: 2px solid #006699'
+                                            + '; font-size: 10px; font-weight: bold; background-color: #3366CC'
+                                            + '; padding: 3px 5px 3px 5px; color: #FFFFFF'
+                                            + '; text-transform: uppercase;"> <?php echo Mage::helper('zohosynchronization')->__('Successfully'); ?></span> ';
+                                    } else {
+                                        throw 'log_status_is_0';
+                                    }
+                                } catch (e) {
+                                    log_data += '<span style="border: 2px solid #990000'
+                                        + '; font-size: 10px; font-weight: bold; background-color: #CC3300'
+                                        + '; padding: 3px 5px 3px 5px; color: #FFFFFF'
+                                        + '; text-transform: uppercase;"> <?php echo Mage::helper('zohosynchronization')->__('Unsuccessfully'); ?></span> ';
+                                }
+                                log_data += '<a href="'+xml.getElementsByTagName('log_view')[0].firstChild.nodeValue+'" target="_blank"><?php echo $this->__('Log Details') ?></a>';
+                            } catch (e) {}
+
+                            try {
+                                if (xml.getElementsByTagName('is_complete')[0].firstChild.nodeValue == '1') {
+                                    log_data += '<br/><span style="padding-left: 146px; background-image: url(<?php echo $this->getSkinUrl('images/save_btn_icon.gif'); ?>); background-position: right; background-repeat: no-repeat;"></span>  <?php echo $this->__('Synchronization'); ?> ' + '<span class="bold red">' + xml.getElementsByTagName('datatype_synchronization')[0].firstChild.nodeValue + ' <?php echo $this->__('is complete'); ?></span>';
+                                }
+                            } catch (e) {
+
+                            }
+
+                            $('datatype-status').update('<i><?php echo $this->__('None'); ?></i>');
+                            url = '<?php echo $this->getRunCronUrl(); ?>';
+                        } else { //get infor
+                            status_data = '<?php echo $this->__('Synchronize'); ?> ' + '<span class="bold">' + xml.getElementsByTagName('datatype_synchronization')[0].firstChild.nodeValue + '</span>, ';
+
+                            try {
+                                status_data += '<?php echo $this->__('From Id'); ?> <span class="bold red">' + xml.getElementsByTagName('from_id')[0].firstChild.nodeValue + '</span>, ';
+                            } catch (e) {
+                                status_data += '<span class="bold red"><?php echo $this->__('From First Id'); ?></span>, ';
+                            }
+
+                            try {
+                                status_data += '<?php echo $this->__('To Id'); ?> <span class="bold red">' + xml.getElementsByTagName('to_id')[0].firstChild.nodeValue + '</span>, ';
+                            } catch (e) {
+                                status_data += '<span class="bold red"><?php echo $this->__('To Lastest Id'); ?></span>, ';
+                            }
+                            try {
+                                status_data += '<?php echo $this->__('Size'); ?> <span class="bold red">' + xml.getElementsByTagName('size')[0].firstChild.nodeValue + '</span>';
+                            } catch (e) { }
+
+                            $('datatype-status').update(status_data);
+                            url = '<?php echo $this->getRunCronUrl(false); ?>';
+                        }
+                    } catch(e) {
+                        $('datatype-status').update('<i><?php echo $this->__('None'); ?></i>');
+                        $('img-running').setStyle({'display':'none'});
+                        is_ex = true;
+                    }
+                
+                    try {
+                        if (xml.getElementsByTagName('complete_queue')[0].firstChild.nodeValue == '1') {
+                            $('runcron-status-footer').update('<?php echo $this->__('Queue Synchronization was Completed.'); ?>');
+                            if (is_ex) {
+                                log_data += '<span class="bold red"><?php echo $this->__('Queue Synchronization was Completed.'); ?></span>';
+                            } else {
+                                log_data += '<br/><span style="padding-left: 146px; background-image: url(<?php echo $this->getSkinUrl('images/save_btn_icon.gif'); ?>); background-position: right; background-repeat: no-repeat;"></span>  ' + '<span class="bold red"><?php echo $this->__('Queue Synchronization was Completed'); ?></span>';
+                            }
+                            complete = true;
+
+                            $('run').addClassName('button-disable');
+                            $('stop').removeClassName('button-disable');
+                        } else if (xml.getElementsByTagName('complete_queue')[0].firstChild.nodeValue == '-1') {
+                            $('runcron-status-footer').update('<?php echo $this->__('Queue Synchronization was Stopped: Zoho user license was limited.'); ?>');
+                            if (is_ex) {
+                                log_data += '<span class="bold red"><?php echo $this->__('Queue Synchronization was Stopped: Zoho user license was limited.'); ?></span>';
+                            } else {
+                                log_data += '<br/><span style="padding-left: 146px; background-image: url(<?php echo $this->getSkinUrl('images/save_btn_icon.gif'); ?>); background-position: right; background-repeat: no-repeat;"></span>  ' + '<span class="bold red"><?php echo $this->__('Queue Synchronization was Completed'); ?></span>';
+                            }
+                            complete = true;
+
+                            $('run').addClassName('button-disable');
+                            $('stop').removeClassName('button-disable');
+                        }
+                    } catch (e) {
+                    
+                    }
+
+                    if (!is_get_infor || complete) {
+                        var log = $('runcron-log');
+                        data = log.innerHTML.replace('<i><?php echo $this->__('Data Logging'); ?>...<br></i>', '');
+                        data = '<i><?php echo $this->__('Data Logging'); ?>...<br></i>' + log_data + '<br>' + data;
+                        log.update(data);
+                    }
+                    $('img-running').setStyle({'display':'none'});
+
+                    if (!complete) {
+                        is_get_infor = is_get_infor ? false : true;
+                        ajaxLoad();
+                    } else {
+                        stop();
+                    }                
+                } else {
+                    if (!complete) {
+                        is_get_infor = is_get_infor ? false : true;
+                        ajaxLoad();
+                    } else {
+                        stop();
+                    }
+                }
+            }
+        });
+    };
+
+    ajaxLoad();
+</script>

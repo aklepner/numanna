@@ -1,0 +1,122 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Queue_Edit_Tab_Form
+ */
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Queue Item Information') ?></h4>
+    </div>
+    <div class="fieldset">
+        <table cellspacing="0" class="form-list">
+            <tbody>
+                <tr>
+                    <td class="label"><label for="title"><?php echo $this->__('Data Type') ?></label></td>
+                    <td class="value" style="font-weight: bold; white-space: nowrap;">
+                        <a style="text-decoration: none;"><?php
+                            echo Mage::getModel('zohosynchronization/array_logDataType')->getQueueDataType(Mage::registry('queue_data')->getData('type_data'))
+                        ?></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="title"><?php echo $this->__('Event add to Queue') ?></label></td>
+                    <td class="value" style="font-weight: bold; white-space: nowrap;">
+                        <a style="text-decoration: none;"><?php
+                            echo Mage::getModel('zohosynchronization/array_eventAddToQueue')->getDataType(Mage::registry('queue_data')->getData('event'))
+                        ?></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="title"><?php echo $this->__('From Id') ?></label></td>
+                    <td class="value" style="white-space: nowrap;">
+                        <b><?php
+                            echo Mage::registry('queue_data')->getFromId()
+                        ?></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="title"><?php echo $this->__('To Id') ?></label></td>
+                    <td class="value" style="white-space: nowrap;">
+                        <b><?php
+                            echo Mage::registry('queue_data')->getToId()
+                        ?></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="title"><?php echo $this->__('Size') ?></label></td>
+                    <td class="value">
+                        <b><?php
+                            echo Mage::registry('queue_data')->getSize()
+                        ?></b>
+                        <p id="note_size" class="note">
+                            <span>
+                                <?php echo $this->__('Number objects will be synchronized in each time cronjob is executed. Default is <b>1</b>.');?>
+                            </span>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="title"><?php echo $this->__('Current Id') ?></label></td>
+                    <td class="value" style="white-space: nowrap;">
+                        <?php
+                            echo Mage::registry('queue_data')->getCurrentId() > 0 ? '<b>' . Mage::registry('queue_data')->getCurrentId() . '</b>' : $this->__('None')
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="title"><?php echo $this->__('Status') ?></label></td>
+                    <td class="value" style="font-weight: bold;">
+                        <?php
+                            switch (Mage::registry('queue_data')->getStatus()) {
+                                case CRM4Ecommerce_ZohoSynchronization_Model_Array_QueueStatus::STATUS_PENDING:
+                                    echo '<span style="border: 2px solid #666666; font-size: 10px; font-weight: bold; background-color: #EEEEEE; padding: 3px 5px 3px 5px; color: #666666; text-transform: uppercase;">' . Mage::getModel('zohosynchronization/array_queueStatus')->getDataType(Mage::registry('queue_data')->getStatus()) . '</span>';
+                                    break;
+                                case CRM4Ecommerce_ZohoSynchronization_Model_Array_QueueStatus::STATUS_RUNNING:
+                                    echo '<span style="border: 2px solid #006699; font-size: 10px; font-weight: bold; background-color: #3366CC; padding: 3px 5px 3px 5px; color: #FFFFFF; text-transform: uppercase;">' . Mage::getModel('zohosynchronization/array_queueStatus')->getDataType(Mage::registry('queue_data')->getStatus()) . '</span>';
+                                    break;
+                                case CRM4Ecommerce_ZohoSynchronization_Model_Array_QueueStatus::STATUS_INTERRUPTED:
+                                    echo '<span style="border: 2px solid #990000; font-size: 10px; font-weight: bold; background-color: #CC3300; padding: 3px 5px 3px 5px; color: #FFFFFF; text-transform: uppercase;">' . Mage::getModel('zohosynchronization/array_queueStatus')->getDataType(Mage::registry('queue_data')->getStatus()) . '</span>';
+                                    break;
+                                case CRM4Ecommerce_ZohoSynchronization_Model_Array_QueueStatus::STATUS_COMPLETED:
+                                    echo '<span style="border: 2px solid #009033; font-size: 10px; font-weight: bold; background-color: #3CB861; padding: 3px 5px 3px 5px; color: #FFFFFF; text-transform: uppercase;">' . Mage::getModel('zohosynchronization/array_queueStatus')->getDataType(Mage::registry('queue_data')->getStatus()) . '</span>';
+                                    break;
+                            }
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="title"><?php echo $this->__('Created At') ?></label></td>
+                    <td class="value">
+                        <?php
+                            $created_at = Mage::registry('queue_data')->getCreatedTime();
+                            echo Mage::app()->getLocale()->date($created_at, Varien_Date::DATETIME_INTERNAL_FORMAT)->toString();
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="title"><?php echo $this->__('Start Time') ?></label></td>
+                    <td class="value">
+                        <?php
+                            $start_time = Mage::registry('queue_data')->getStartTime();
+                            echo $start_time != '' ? Mage::app()->getLocale()->date($start_time, Varien_Date::DATETIME_INTERNAL_FORMAT)->toString() : $this->__('None');
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="title"><?php echo $this->__('End Time') ?></label></td>
+                    <td class="value">
+                        <?php
+                            $end_time = Mage::registry('queue_data')->getEndTime();
+                            echo $end_time != '' ? Mage::app()->getLocale()->date($end_time, Varien_Date::DATETIME_INTERNAL_FORMAT)->toString() : $this->__('None');
+                        ?>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

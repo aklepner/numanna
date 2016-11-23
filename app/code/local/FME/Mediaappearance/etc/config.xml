@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <FME_Mediaappearance>
+            <version>1.14.0</version>
+        </FME_Mediaappearance>
+    </modules>
+    <frontend>
+        <translate>
+            <modules>
+                <FME_Mediaappearance>
+                    <files>
+                        <default>FME_Mediaappearance.csv</default>
+                    </files>
+                </FME_Mediaappearance>
+            </modules>
+        </translate>
+        <routers>
+            <mediaappearance>
+                <use>standard</use>
+                <args>
+                    <module>FME_Mediaappearance</module>
+                    <frontName>mediaappearance</frontName>
+                </args>
+            </mediaappearance>
+        </routers>
+        <layout>
+            <updates>
+                <mediaappearance>
+                    <file>mediaappearance.xml</file>
+                </mediaappearance>
+            </updates>
+        </layout>
+    </frontend>
+
+    <admin>
+        <!-- <routers>
+			<mediaappearanceadmin>
+				<use>admin</use>
+				<args>
+					<module>FME_Mediaappearance</module>
+					<frontName>mediaappearanceadmin</frontName>
+				</args>
+			</mediaappearanceadmin>
+        </routers> -->
+
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <fme_mediaappearance after="Mage_Adminhtml">FME_Mediaappearance_Adminhtml</fme_mediaappearance>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+
+        <translate>
+            <modules>
+                <FME_Mediaappearance>
+                    <files>
+                        <default>FME_Mediaappearance.csv</default>
+                    </files>
+                </FME_Mediaappearance>
+            </modules>
+        </translate>
+    </admin>
+
+
+    <adminhtml>
+		<menu>
+            <fmebase>
+                <children>
+        			<mediaappearance module="mediaappearance">
+        				<title>Media</title>
+        				<sort_order>71</sort_order>               
+        				<children>
+        					<videoblocks module="mediaappearance">
+        						<title>Manage Media Blocks</title>
+        						<sort_order>1</sort_order>
+        						<action>adminhtml/fme_videoblocks</action>
+        					</videoblocks>
+        					<items module="mediaappearance">
+        						<title>Manage Media</title>
+        						<sort_order>0</sort_order>
+        						<action>adminhtml/fme_mediaappearance</action>
+        					</items>
+        					<config translate="title">
+        						<title>Configuration</title>
+        						<sort_order>2</sort_order>
+        						<action>adminhtml/system_config/edit/section/mediaappearance</action>
+        					</config>
+        				</children>
+        			</mediaappearance>
+                </children>
+            </fmebase>
+		</menu>	
+		<acl>
+			<all>
+				<title>Allow Everything</title>
+			</all>
+            <resources>
+                <admin>
+                    <children>
+                        <fmebase>
+                            <children>
+        						<mediaappearance>
+        							<title>Media Module</title>
+        							<children>
+        								<videoblocks translate="title">
+        									<title>Manage Media Blocks</title>
+        								</videoblocks>
+        								<items translate="title">
+        									<title>Manage Media</title>
+        								</items>
+        								<config translate="title">
+        									<title>Configuration</title>
+        								</config>
+        							</children>
+        							<sort_order>10</sort_order>
+        						</mediaappearance>
+                            </children>
+                        </fmebase>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <mediaappearance translate="title" module="mediaappearance">
+                                            <title>Mediaappearance Section</title>
+                                            <sort_order>39</sort_order>
+                                        </mediaappearance>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+		<layout>
+			<updates>
+				<mediaappearance>
+					<file>mediaappearance.xml</file>
+				</mediaappearance>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <mediaappearance>
+                <class>FME_Mediaappearance_Model</class>
+                <resourceModel>mediaappearance_mysql4</resourceModel>
+            </mediaappearance>
+            <mediaappearance_mysql4>
+                <class>FME_Mediaappearance_Model_Mysql4</class>
+                <entities>
+                    <mediaappearance>
+                        <table>mediaappearance</table>
+                    </mediaappearance>
+					<media_store>
+		                <table>media_store</table>
+		            </media_store>
+					<media_category_video>
+		                <table>media_category_video</table>
+		            </media_category_video>
+					<videoblocks>
+		                <table>media_blocks</table>
+		            </videoblocks>
+					<media_block_videos>
+		                <table>media_block_videos</table>
+		            </media_block_videos>
+                </entities>
+            </mediaappearance_mysql4>
+        </models>
+		
+		<blocks>
+			<mediaappearance>
+				<class>FME_Mediaappearance_Block</class>
+			</mediaappearance>
+		</blocks>
+		
+		<helpers>
+            <mediaappearance>
+                <class>FME_Mediaappearance_Helper</class>
+            </mediaappearance>
+        </helpers>
+		<events>
+            <controller_front_init_routers>
+                <observers>
+                    <mediaappearance>
+                        <type>singleton</type>
+                        <class>FME_Mediaappearance_Controller_Router</class>
+                        <method>initControllerRouters</method>
+                    </mediaappearance>
+                </observers>
+            </controller_front_init_routers>
+        </events>
+        <resources>
+            <mediaappearance_setup>
+                <setup>
+                    <module>FME_Mediaappearance</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </mediaappearance_setup>
+            <mediaappearance_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </mediaappearance_write>
+            <mediaappearance_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </mediaappearance_read>
+        </resources>
+		
+    </global>
+</config>

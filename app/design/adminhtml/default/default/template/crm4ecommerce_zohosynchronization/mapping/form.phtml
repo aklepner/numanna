@@ -1,0 +1,198 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Mapping_Form_New
+ */
+?>
+<div class="entry-edit" style="width: 300px;">
+    <script type="text/javascript">
+        mappingConfirmSave = function() {
+            return confirm('<?php echo $this->__('Do you really want to save this mapping?'); ?>');
+        };
+    </script>
+    <form method="post" action="<?php echo $this->getSaveUrl(); ?>" onsubmit="return mappingConfirmSave();">
+        <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+        <input name="zoho_model" type="hidden" value="<?php echo Mage::registry('zoho_model'); ?>" />
+        <input name="magento_model" type="hidden" value="<?php echo Mage::registry('magento_model'); ?>" />
+        <input name="mapping_type" type="hidden" value="<?php echo Mage::registry('mapping_type'); ?>" />
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->getFormTitle(); ?></h4>
+        </div>
+        <div class="fieldset">
+            <table cellspacing="0" class="form-list" style="width: 100%;">
+                <tbody>
+                    <tr>
+                        <td class="label" style="width: 80px;"><label style="width: 80px; padding-right: 0px" for="f_attribute"><?php echo $this->__('Attribute') ?></label></td>
+                        <td class="value">
+                            <?php
+                            $options = Mage::registry('attributes');
+                            $group_options = null;
+                            if ($options != '') {
+                                $group_options = explode('@@', $options);
+                            }
+                            ?>
+                            <select id="f_attribute" name="f_attribute" class="input-text" style="<?php if (Mage::registry('has_datalist')) { ?>position: relative; top: -2px; width: 89%;<?php } else { ?>width: 100%<?php } ?>">
+                                <option value="--none--"<?php echo Mage::registry('mapping_data_attribute_code') == '' ? ' selected="true"' : ''; ?>><?php echo $this->__('No mapping (only set zoho default value)'); ?></option>
+                                <?php
+                                foreach ($group_options as $group_option) {
+                                    $group_option = explode('@', $group_option);
+                                    ?>
+                                    <optgroup label="<?php echo $group_option[0]; ?>">
+                                        <?php
+                                        $options = explode(';', $group_option[1]);
+                                        foreach ($options as $option) {
+                                            $option = explode(',', $option);
+                                            if (count($option) == 2) {
+                                                ?>
+                                                <option <?php echo (Mage::registry('mapping_data_attribute_code') == $option[0]) ? 'selected="true"' : ''; ?> value="<?php echo $option[0]; ?>"><?php echo $option[1]; ?></option>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </optgroup>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                            <?php if (Mage::registry('has_datalist')) { ?>
+                                <a href="<?php echo $this->getGetAttributeValuesUrl(Mage::registry('mapping_data_attribute_code')); ?>"><img title="<?php echo $this->__('Get values of attribute'); ?>" style="cursor: pointer; position: relative; top: 3px;" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/values.png'); ?>"></a>
+<?php } ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label" style="width: 80px;"><label style="width: 80px; padding-right: 0px" for="f_zoho_field"><?php echo $this->__('Zoho Field') ?></label></td>
+                        <td class="value">
+                            <?php
+                            $options = Mage::getModel('core/config_data')->getCollection()->addFieldToFilter('path', 'crm4ecommerce_zohosynchronization/mapping_fields/logs/' . Mage::registry('zoho_model'))->getFirstItem()->value;
+                            $group_options = explode('@@', $options);
+                            ?>
+                            <select id="f_zoho_field" name="f_zoho_field" class="input-text" style="position: relative; top: -4px; width: 89%;">
+                                <?php
+                                foreach ($group_options as $group_option) {
+                                    $group_option = explode('@', $group_option);
+                                    ?>
+                                    <optgroup label="<?php echo $group_option[0]; ?>">
+                                        <?php
+                                        $options = explode(';', $group_option[1]);
+                                        foreach ($options as $option) {
+                                            $option = explode(',', $option);
+                                            if (count($option) == 3) {
+                                                if (!strcmp(Mage::registry('zoho_model'), 'Leads') && !strcmp(Mage::registry('magento_model'), 'Leads') && !strcmp($option[0], 'Company')) {
+                                                    continue;
+                                                } else if (!strcmp(Mage::registry('zoho_model'), 'Accounts') && !strcmp($option[0], 'Account Name')) {
+                                                    continue;
+                                                }
+                                                ?>
+                                                <option <?php echo (Mage::registry('mapping_data_zoho_field') == $option[0]) ? 'selected="true"' : ''; ?> value="<?php echo $option[0]; ?>"><?php echo $option[1]; ?></option>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </optgroup>
+    <?php
+}
+?>
+                            </select>
+                            <script type="text/javascript">
+                                loadZohoFields = function() {
+                                    $('img-load').src = "<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/ajax-loader.gif'); ?>";
+
+                                    new Ajax.Request('<?php echo $this->getLoadZohoFieldsUrl(Mage::registry('zoho_model')); ?>', {
+                                        method: 'get',
+                                        onSuccess: function(transport) {
+                                            text = transport.responseText;
+                                            if (text == '1') {
+                                                setLocation(location.href);
+                                            } else {
+                                                alert("<?php echo $this->__('ERROR: Load fields is failured. Maybe module is disabled!'); ?>");
+                                                $('img-load').src = "<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/load.png'); ?>";
+                                            }
+                                        },
+                                        onFailure: function(transport) {
+                                            alert('<?php echo $this->__('ERROR: Connection is failure.'); ?>');
+                                            $('img-load').src = "<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/load.png'); ?>";
+                                        }
+                                    });
+                                }
+                            </script>
+                            <img title="<?php echo $this->__('Refresh list ZohoCRM fields'); ?>" style="cursor: pointer;" src="<?php echo $this->getSkinUrl('images/crm4ecommerce/zohosynchronization/load.png'); ?>" onclick="loadZohoFields()" id="img-load">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label" style="width: 80px;"><label style="width: 80px; padding-right: 0px" for="f_default_value"><?php echo $this->__('Default Value') ?></label></td>
+                        <td class="value">
+                            <input type="text" class="input-text" id="f_default_value" name="f_default_value" style="width: 97%" value="<?php echo Mage::registry('mapping_data') ? Mage::registry('mapping_data')->getZohoDefaultValue() : ''; ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label" style="width: 80px;"><label style="width: 80px; padding-right: 0px" for="f_using_default"><?php echo $this->__('Using Default') ?><label></td>
+                                    <td class="value">
+                                        <select id="f_using_default" name="f_using_default" class="input-text" style="width: 100%">
+                                            <?php foreach (Mage::getModel('zohosynchronization/array_defaultValueMode')->toOptionArray() as $v => $l) { ?>
+                                                <option <?php echo Mage::registry('mapping_data') && Mage::registry('mapping_data')->getZohoUsingDefault() == $v ? 'selected="true"' : ''; ?> value="<?php echo $v; ?>"><?php echo $l; ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </td>
+                                    </tr>
+<?php if (Mage::registry('c_action') == 'edit') { ?>
+                                        <tr>
+                                            <td class="label" style="width: 80px;"><label style="width: 80px; padding-right: 0px" for="f_mapping_order"><?php echo $this->__('Sort Order') ?></label></td>
+                                            <td class="value">
+                                                <input type="text" class="input-text" id="f_mapping_order" name="f_mapping_order" style="width: 97%" value="<?php echo Mage::registry('mapping_data') ? Mage::registry('mapping_data')->getMappingOrder() : ''; ?>" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label" style="width: 80px;"><label style="width: 80px; padding-right: 0px" for="f_status"><?php echo $this->__('Status') ?></label></td>
+                                            <td class="value">
+                                                <select id="f_status" name="f_status" class="input-text" style="width: 100%">
+                                                    <option <?php if (Mage::registry('mapping_data')) {
+        echo Mage::registry('mapping_data')->getStatus() == '1' ? 'selected="true"' : '';
+    } ?> value="1"><?php echo $this->__('Active'); ?></option>
+                                                    <option <?php if (Mage::registry('mapping_data')) {
+        echo Mage::registry('mapping_data')->getStatus() == '0' ? 'selected="true"' : '';
+    } ?> value="0"><?php echo $this->__('Inactive'); ?></option>
+                                                </select>
+                                            </td>
+                                        </tr>
+<?php } ?>
+                                    </tbody>
+                                    </table>
+                                    </div>
+                                    <div style="text-align: right;">        
+                                        <table style="width: 100%;"><tr><td>                    
+                                                    <button name="submit" value="save" class="scalable save" style="" type="submit">
+                                                        <span><span><span><?php echo $this->__('Save'); ?></span></span></span>
+                                                    </button>
+
+                                                    <?php if (Mage::registry('c_action') == 'new') { ?>
+                                                        <button title="<?php echo $this->__('Save & Continue New'); ?>" name="submit" value="save-continue" class="scalable save" style="" type="submit" onclick="deleteMapping();">
+                                                            <span><span><span><?php echo $this->__('Save & Reset'); ?></span></span></span>
+                                                        </button>
+<?php } ?>
+
+<?php if (Mage::registry('c_action') == 'edit') { ?>
+                                                        <script type="text/javascript">
+                                                            deleteMapping = function() {
+                                                                if (confirm('<?php echo $this->__('Do you really want to delete this mapping attribute?'); ?>')) {
+                                                                    setLocation('<?php echo $this->getDeleteUrl(); ?>');
+                                                                }
+                                                            };
+                                                        </script>
+                                                        <button class="scalable delete" style="" type="button" onclick="deleteMapping();">
+                                                            <span><span><span><?php echo $this->__('Delete'); ?></span></span></span>
+                                                        </button>
+<?php } ?>
+
+                                                    <button class="scalable cancel" style="" type="button" onclick="setLocation('<?php echo $this->getCancelUrl(); ?>')">
+                                                        <span><span><span><?php echo $this->__('Cancel'); ?></span></span></span>
+                                                    </button></td></tr>
+                                        </table>
+                                    </div>
+                                    </form>
+                                    </div>

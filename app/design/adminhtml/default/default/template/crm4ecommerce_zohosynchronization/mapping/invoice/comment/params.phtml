@@ -1,0 +1,103 @@
+<?php
+/**
+ * 
+ * @category   CRM4Ecommerce
+ * @package    CRM4Ecommerce_ZohoSynchronization
+ * @author     Philip Nguyen <philip@crm4ecommerce.com>
+ * @link       http://crm4ecommerce.com
+ * @see        CRM4Ecommerce_ZohoSynchronization_Block_Adminhtml_Mapping_Form_New
+ */
+?>
+<div class="entry-edit collapseable">
+    <form method="post" action="<?php echo $this->getSaveUrl(); ?>">
+        <input name="c_action" type="hidden" value="<?php echo Mage::registry('c_action'); ?>" />
+        <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+        <div class="entry-edit-head collapseable">
+            <a id="crm4ecommerce_zohosynchronization_task_params-head" class="open" onclick="Fieldset.toggleCollapse('crm4ecommerce_zohosynchronization_task_params'); return false;" href="#">
+                <?php echo $this->__('Zoho Task Settings'); ?>
+            </a>
+        </div>
+        <fieldset id="crm4ecommerce_zohosynchronization_task_params" style="" class="config collapseable">
+            <legend><?php echo $this->__('Zoho Task Settings'); ?></legend>
+            <table cellspacing="0" class="form-list" style="width: 100%;">
+                <tbody>
+                    <tr>
+                        <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[invoice_task_enabled]"><?php echo $this->__('Use Zoho Task') ?></label></td>
+                        <td class="value">
+                            <select class="input-text" id="config[invoice_task_enabled]" name="config[invoice_task_enabled]" style="width: 97%">
+                                <option value="1" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/invoice_task_enabled') == '1' ? 'selected="selected"' : ''; ?>><?php echo $this->__('Yes'); ?></option>
+                                <option value="0" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/invoice_task_enabled') == '0' ? 'selected="selected"' : ''; ?>><?php echo $this->__('No'); ?></option>
+                                ?>
+                            </select>
+                            <p class="note" style="width: 97%;">
+                                <span><?php echo $this->__("Allow synchronizing Invoice's Comments to Zoho Tasks or not."); ?></span>
+                            </p>
+                        </td>
+                    </tr>
+                    <?php if (Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/invoice_task_enabled') == '1') { ?>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[invoice_task_subject_comment_added]"><?php echo $this->__('Task Subject') ?></label></td>
+                            <td class="value">
+                                <input type="text" class="input-text" id="config[invoice_task_subject_comment_added]" name="config[invoice_task_subject_comment_added]" style="width: 97%" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/invoice_task_subject_comment_added'); ?>" />
+                                <p class="note" style="width: 97%;">
+                                    <span><?php echo $this->__("This is format of subject field of Zoho Tasks that corresponding with comments when Invoice was added comment.<br/>Default is: <b>\"%s\"</b>.", Mage::helper('zohosynchronization')->getDefaultConfig('crm4ecommerce_zohosynchronization/params/invoice_task_subject_comment_added')); ?></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[invoice_task_duplicate_insert]"><?php echo $this->__('Duplicate Insert') ?></label></td>
+                            <td class="value">
+                                <select class="input-text" id="config[invoice_task_duplicate_insert]" name="config[invoice_task_duplicate_insert]" style="width: 97%"><?php
+                    $zohoDuplicateChecks = Mage::getModel('zohosynchronization/array_zohoDuplicateCheck')->toOptionArray();
+                    foreach ($zohoDuplicateChecks as $key => $value) {
+                            ?>
+                                        <option value="<?php echo $key; ?>" <?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/invoice_task_duplicate_insert') == $key ? 'selected="selected"' : ''; ?>><?php echo $value; ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                                <p class="note" style="width: 97%;">
+                                    <span><?php echo $this->__('Zoho Task has key field is <b>Subject</b>.'); ?></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[invoice_task_due_date]"><?php echo $this->__('Due Date after') ?></label></td>
+                            <td class="value">
+                                <input type="text" class="input-text" id="config[invoice_task_due_date]" name="config[invoice_task_due_date]" style="width: 200px" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/invoice_task_due_date'); ?>" />
+                                <?php echo $this->__('day(s)'); ?>
+                                <p class="note" style="width: 97%">
+                                    <span><?php echo $this->__('Due date will be calculated from start date and is synchronized only once when task is created.'); ?></span>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label" colspan="2"><b><?php echo $this->__("Zoho Task Status when Invoice's Status is") ?>:</b></td>
+                        </tr>
+                        <?php 
+                            foreach (Mage_Sales_Model_Order_Invoice::getStates() as $state => $stateLabel) { ?>
+                        <tr>
+                            <td class="label" style="width: 120px;"><label style="width: 120px; padding-right: 0px" for="config[invoice_task_status_<?php echo $state;?>]"><?php echo $stateLabel ?></label></td>
+                            <td class="value">
+                                <input type="text" class="input-text" id="config[invoice_task_status_<?php echo $state;?>]" name="config[invoice_task_status_<?php echo $state;?>]" style="width: 97%" value="<?php echo Mage::getStoreConfig('crm4ecommerce_zohosynchronization/params/invoice_task_status_' . $state); ?>" />
+                            </td>
+                        </tr>        
+                        <?php
+                            }
+                        ?>
+                    <?php } ?>
+                </tbody>
+            </table>
+            <div style="text-align: right; margin-top: 5px; padding-top: 10px; border-top: 2px solid #CCCCCC;">        
+                <table style="width: 100%;"><tr><td>                    
+                            <button name="submit" value="save" class="scalable save" style="" type="submit">
+                                <span><span><span><?php echo $this->__('Save'); ?></span></span></span>
+                            </button></td></tr>
+                </table>
+            </div>
+        </fieldset>
+        <script type="text/javascript">
+            Fieldset.applyCollapse('crm4ecommerce_zohosynchronization_task_params');
+        </script>
+    </form>
+</div>
