@@ -57,7 +57,7 @@ $blockpars = $block->getWidgetParameters();
                   <div class="owl-carousel-wrapper">
                   <div id="owl-carousel1" class="owl-carousel">
                       <?php
-                      $cat_id = "23";
+                      $cat_id = "24";
                       $_productCollection = Mage::getResourceModel('catalog/product_collection')
                       ->addAttributeToSelect(array('name', 'price', 'small_image', 'short_description'), 'inner')
                       ->addCategoryFilter(Mage::getModel('catalog/category')->load($cat_id));
