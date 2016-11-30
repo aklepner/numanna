@@ -9495,9 +9495,7 @@ ul.add-to-links li a.link-compare span.icon {
 }
 
 .seen-box h2 {
- /*    display: inline-block;
-    float: left;
-    padding-top: 50px;*/
+
 color: #fff;
     position: relative;
     padding-left: 20px
