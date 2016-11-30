@@ -9490,16 +9490,17 @@ ul.add-to-links li a.link-compare span.icon {
     background: #e25926;
     padding: 20px;
     margin-bottom: 20px;
-    position: relative
+    position: relative;
+    text-align: center;
 }
 
 .seen-box h2 {
     display: inline-block;
-    color: #fff;
     float: left;
-    position: relative;
     padding-top: 50px;
-    padding-left: 20px
+/*    color: #fff;
+    position: relative;
+    padding-left: 20px*/
 }
 
 .seen-box .logos {
