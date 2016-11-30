@@ -5070,13 +5070,21 @@ ul.social a span.iconplus {
     margin-bottom: 20px;
     background: url(/skin/frontend/numanna/default/images/misc/davejanda.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
     color: #fff;
+    text-shadow: 2px 3px 4px #000;
 }
 .radio-int h2{
-    width: 50%;
+    width: 75%;
+    margin: 0 auto;
 }
 .radio-int p{
     width: 70%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+.radio-int .audiojs {
+    width: 460px;
 }
 
 .navigation {
