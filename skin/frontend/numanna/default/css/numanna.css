@@ -5074,6 +5074,12 @@ ul.social a span.iconplus {
     color: #fff;
     text-shadow: 2px 3px 4px #000;
 }
+@media screen and (max-width: 768px) {
+    .radio-int {
+        padding: 20px;
+    }
+}
+
 .radio-int h2{
     width: 75%;
     margin: 0 auto;
@@ -5086,6 +5092,19 @@ ul.social a span.iconplus {
 .radio-int .audiojs {
     width: 460px;
 }
+@media screen and (max-width: 400px) {
+    .radio-int h2{
+        width: 75%;
+        margin: 0 auto;
+        font-size: 18px;
+        line-height: 20px;
+    }
+    .radio-int .audiojs {
+    width: 260px;
+}
+}
+
+
 
 .navigation {
     background: #fff;
