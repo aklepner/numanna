@@ -1,3 +1,17 @@
-.banner-area{
-  background: url(http://23.235.200.9/media/s1rpl1.jpg) center top no-repeat;
+.cms-organic .banner-area {
+    background: url(../media/s1rpl1.jpg) center top no-repeat;
+    background-size: cover;
+    padding: 150px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 10px #000;
+}
+
+@media screen and (max-width: 480px) {
+  .cms-organic .banner-area {
+      padding: 20px;
+  }
+  .cms-organic .banner-area h2{
+      font-size: 18px;
+  }
 }
