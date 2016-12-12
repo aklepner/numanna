@@ -1,3 +1,7 @@
+.cms-organic .container{
+
+}
+
 .cms-organic .banner-area {
     background: url(../media/s1rpl1.jpg) center top no-repeat;
     background-size: cover;
@@ -5,7 +9,6 @@
     text-align: center;
     color: #fff;
     text-shadow: 1px 1px 10px #000;
-    margin-bottom: 30px;
 }
 .cms-organic .banner-area h2 {
     line-height: 40px;
@@ -21,4 +24,15 @@
   .cms-organic .banner-area h2{
       line-height: 28px;
   }
+}
+
+
+
+.cms-organic .greyarea.sec1 {
+    font-size: 16px;
+    line-height: 28px;
+}
+.cms-organic .greyarea.sec1 img {
+    float: right;
+    margin: 10px;
 }
