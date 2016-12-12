@@ -60,3 +60,11 @@
     float: left;
     width: 45%;
 }
+
+.cms-organic .btn-primary {
+    margin-bottom: 25px;
+}
+
+.cms-organic .lefty {
+    text-align: left;
+}
