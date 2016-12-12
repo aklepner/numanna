@@ -34,7 +34,7 @@
                                    <div class="container" style="background:url('<?php echo $_imgUrl; ?>') no-repeat; background-size:cover;">
                                        <div class="info">
                                          <div class="bread"><?php  echo $this->getLayout()->getBlock("breadcrumbs")->toHtml()?></div>
-                                         <div class="category-title"><h1><?php echo $currentCategory->getName(); ?></h1></div>
+                                         <div class="category-title"><h1>test<?php echo $currentCategory->getName(); ?></h1></div>
                                          <?php if(Mage::getSingleton('catalog/layer')->getCurrentCategory()->getDescription()): ?>
                                          <div class="category-description std clearfix">
                                              <?php echo Mage::getSingleton('catalog/layer')->getCurrentCategory()->getDescription(); ?>
