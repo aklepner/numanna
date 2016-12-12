@@ -37,14 +37,9 @@
     float: right;
     margin: 0 10px;
 }
-.cms-organic .orangearea.sec2 {
-    background-color: #e25827;
-    /*padding: 6px;
-    margin: 20px 0;*/
-    color: #fff;
-}
+
 .cms-organic .orangearea.sec2 h3 {
-    margin: 5px 0 0 0;
+    margin: 2% 0 0 0;
 }
 .cms-organic .orangearea.sec2 .subsec1 {
     width: 23%;
@@ -67,4 +62,12 @@
 
 .cms-organic .lefty {
     text-align: left;
+}
+.row.orangearea.sec2  {
+    color: #fff;
+    background-color: #e25827;
+}
+.row.orangearea.sec2 img {
+    margin: 3%;
+    width: 94%;
 }
