@@ -42,10 +42,14 @@
             <li>
                 <label for="subject"><?php echo Mage::helper('contacts')->__('Subject') ?></label>
                 <div class="input-box">
-                    <select name="subject" id="subject" title="<?php echo Mage::helper('contacts')->__('Subject') ?>" class="input-text" >
+              <!--       <select name="subject" id="subject" title="<?php echo Mage::helper('contacts')->__('Subject') ?>" class="input-text" >
                         <option>Option 1</option>
                         <option>Option 2</option>
-                    </select>
+                    </select> -->
+
+                    <input name="subject" id="subject" title="<?php echo Mage::helper('contacts')->__('Subject') ?>" value="" class="input-text" type="text" />
+
+
                 </div>
             </li>
             <li class="wide">
