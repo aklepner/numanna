@@ -1,8 +1,9 @@
 
 <!DOCTYPE html>
 <html lang="<?php echo $this->getLang() ?>">
-<head class="test">
+<head >
         <?php echo $this->getChildHtml('head') ?>
+        <link rel="stylesheet" type="text/css" href="../BIAdditions.css" media="all">
 </head>
 <body <?php echo $this->getBodyClass() ? ' class="' . $this->getBodyClass() . '"' : '' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>
@@ -19,7 +20,7 @@
 
                 <div class="<?php $ref = new Mage_Page_Block_Html_Header(); if ($ref->getIsHomePage()):?>is-homepage<?php else:?>makebox is-inner<?php endif?>">
  <div class="banner-area">
-<?php echo $this->getChildHtml('content') ?>3</div>
+<?php echo $this->getChildHtml('content') ?></div>
                          </div>
 
 
