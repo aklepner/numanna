@@ -18,7 +18,13 @@
                 <?php else:?> <?php endif?>
 
                 <div class="<?php $ref = new Mage_Page_Block_Html_Header(); if ($ref->getIsHomePage()):?>is-homepage<?php else:?>makebox is-inner<?php endif?>">
-xxx
+<div class="banner-area">
+
+
+
+</div>
+
+
                 <div class="<?php $ref = new Mage_Page_Block_Html_Header(); if ($ref->getIsHomePage()):?>homepage-container<?php else:?>container<?php endif?> main-content">
 
                     <?php if (Mage::registry('current_category')) { ?>
@@ -62,7 +68,7 @@ xxx
 
                   <?php $ref = new Mage_Page_Block_Html_Header(); if ($ref->getIsHomePage()):?>
                      <?php echo $this->getChildHtml('global_messages') ?>
-                     <?php echo $this->getChildHtml('content') ?>
+                     1<?php echo $this->getChildHtml('content') ?>
                   <?php else:?>
                     <div class="row">
                          <div class="span12">
@@ -70,7 +76,7 @@ xxx
                                <?php if(Mage::registry('current_product')) { ?>
                                 <div class="bread attop"><?php  echo $this->getLayout()->getBlock("breadcrumbs")->toHtml()?></div>
                                <?php } else { ?><?php } ?>
-                            <?php echo $this->getChildHtml('content') ?>
+                            2<?php echo $this->getChildHtml('content') ?>
                          </div>
                     </div>
                   <?php endif?>
