@@ -46,17 +46,17 @@
 .cms-organic .orangearea.sec2 h3 {
     margin: 5px 0 0 0;
 }
-.cms-organic .orangearea.sec2.subsec1 {
+.cms-organic .orangearea.sec2 .subsec1 {
     width: 23%;
     float: left;
     padding: 2% 5% 0 2%;
 }
-.cms-organic .orangearea.sec2.subsec2 {
+.cms-organic .orangearea.sec2 .subsec2 {
     width: 25%;
     float: left;
     padding: 2% 0 0 0;
 }
-.cms-organic .orangearea.sec2.subsec3 {
+.cms-organic .orangearea.sec2 .subsec3 {
     float: left;
     width: 45%;
 }
