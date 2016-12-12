@@ -6,6 +6,9 @@
     color: #fff;
     text-shadow: 1px 1px 10px #000;
 }
+.cms-organic .banner-area h2 {
+    line-height: 40px;
+}
 
 @media screen and (max-width: 480px) {
   .cms-organic .banner-area {
@@ -13,5 +16,8 @@
   }
   .cms-organic .banner-area h2{
       font-size: 18px;
+  }
+  .cms-organic .banner-area h2{
+      line-height: 28px;
   }
 }
