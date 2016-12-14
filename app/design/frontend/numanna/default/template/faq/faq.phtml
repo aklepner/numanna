@@ -42,20 +42,9 @@ NuManna packages are specifically chosen to be flexible and mix well with other 
 
 <form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post">
     <div class="fieldset rel">
-        <div class="contact-info">
-            <address>
-                    <h2><strong class="name"><?php echo Mage::getStoreConfig('general/store_information/name'); ?></strong></h2>
-                    <p><?php echo Mage::getStoreConfig('general/store_information/address');    ?></p>
-                    <p><strong>Phone: <?php echo Mage::getStoreConfig('general/store_information/phone'); ?></strong></p>
-                    <!--<p><strong><?php echo Mage::getStoreConfig('trans_email/ident_general/name');?></strong> :<br /> <a href="mailto:<?php echo Mage::getStoreConfig('trans_email/ident_general/email'); ?>"><?php echo Mage::getStoreConfig('trans_email/ident_general/email'); ?></a></p>
-                    <p><strong><?php echo Mage::getStoreConfig('trans_email/ident_sales/name');?></strong> :<br /> <a href="mailto:<?php echo Mage::getStoreConfig('trans_email/ident_sales/email'); ?>"><?php echo Mage::getStoreConfig('trans_email/ident_sales/email'); ?></a></p>-->
-                    <p><strong><?php echo Mage::getStoreConfig('trans_email/ident_support/name');?></strong> :<br /> <a href="mailto:<?php echo Mage::getStoreConfig('trans_email/ident_support/email'); ?>"><?php echo Mage::getStoreConfig('trans_email/ident_support/email'); ?></a></p>
-            </address>
-        </div>
+
         <ul class="form-list">
-            <!--<li class="wide">
-                <p>Fusce congue enim ut leo tristique commodo a at tellus. Fusce congue enim ut leo tristique commodo a congue enim ut leo tristique commodo.</p>
-            </li>-->
+
             <li class="fields">
                 <div class="field">
                     <label for="name" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Name') ?></label>
