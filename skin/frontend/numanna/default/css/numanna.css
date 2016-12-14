@@ -18526,3 +18526,13 @@ div.MagicToolboxSelectorsContainer a {
 .affix {
     position: fixed
 }
+.question_form {
+    max-width: 600px;
+}
+.question_form input {
+    width: 100%;
+}
+
+.question_form textarea#comment {
+    width: 100%;
+}
