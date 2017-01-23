@@ -41,9 +41,9 @@
             <default_setup>
                 <connection>
                     <host><![CDATA[localhost]]></host>
-                    <username><![CDATA[numannad_db]]></username>
-                    <password><![CDATA[~{&7x?ENQIKI]]></password>
-                    <dbname><![CDATA[numannad_db]]></dbname>
+                    <username><![CDATA[numanna_db]]></username>
+                    <password><![CDATA[q$Q^MVkqca?G]]></password>
+                    <dbname><![CDATA[numanna_db]]></dbname>
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
                     <model><![CDATA[mysql4]]></model>
                     <type><![CDATA[pdo_mysql]]></type>
