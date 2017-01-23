@@ -10071,3 +10071,1710 @@
 2016-11-23T19:01:48+00:00 DEBUG (7): 
 2016-11-23T19:05:32+00:00 DEBUG (7): http://23.235.200.9/
 2016-11-23T19:09:08+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-24T00:24:49+00:00 DEBUG (7): http://23.235.200.9/products/defender-packs.html
+2016-11-24T00:32:59+00:00 DEBUG (7): 
+2016-11-24T05:50:40+00:00 DEBUG (7): 
+2016-11-24T06:22:55+00:00 DEBUG (7): http://23.235.200.9/ingredients
+2016-11-24T08:04:50+00:00 DEBUG (7): http://23.235.200.9/products/defender-packs.html
+2016-11-24T08:11:09+00:00 DEBUG (7): http://23.235.200.9/products/defender-packs.html
+2016-11-24T10:02:54+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-24T10:58:34+00:00 DEBUG (7): 
+2016-11-24T11:52:08+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-24T12:30:57+00:00 DEBUG (7): http://23.235.200.9/sample-pack
+2016-11-24T12:42:15+00:00 DEBUG (7): 
+2016-11-24T16:42:15+00:00 DEBUG (7): 
+2016-11-24T17:34:50+00:00 DEBUG (7): http://23.235.200.9/products/defender-packs.html
+2016-11-24T18:12:54+00:00 DEBUG (7): 
+2016-11-24T18:12:55+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-11-24T18:18:32+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-11-24T18:21:40+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-11-24T18:22:59+00:00 DEBUG (7): http://23.235.200.9/products/organic.html?limit=24
+2016-11-24T18:27:31+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-11-24T18:32:56+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-11-24T20:35:43+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-24T21:50:45+00:00 DEBUG (7): 
+2016-11-24T22:33:03+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-24T23:32:49+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-11-25T01:02:33+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-11-25T01:05:27+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-11-25T02:12:13+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-25T04:24:15+00:00 DEBUG (7): 
+2016-11-25T05:39:55+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-25T05:47:48+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-11-25T05:52:54+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-11-25T05:59:58+00:00 DEBUG (7): http://23.235.200.9/products/organic.html?limit=24
+2016-11-25T06:02:53+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-11-25T06:07:56+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-11-25T06:13:29+00:00 DEBUG (7): 
+2016-11-25T06:13:29+00:00 DEBUG (7): http://23.235.200.9/products/organic.html?limit=all
+2016-11-25T06:15:25+00:00 DEBUG (7): http://23.235.200.9/products/organic.html?limit=20
+2016-11-25T06:16:26+00:00 DEBUG (7): http://23.235.200.9/products/organic.html?limit=15
+2016-11-25T08:48:26+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-25T10:13:36+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-25T11:24:19+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-11-25T11:29:15+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-11-25T11:33:37+00:00 DEBUG (7): http://23.235.200.9/products/general.html?limit=24
+2016-11-25T11:38:22+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-11-25T12:02:04+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-11-25T12:08:33+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-25T12:57:12+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-25T17:37:46+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-11-25T17:43:05+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-11-25T17:50:57+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html?limit=36
+2016-11-25T17:52:19+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-11-25T17:57:03+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html?limit=36
+2016-11-25T17:58:01+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html?limit=15
+2016-11-25T17:59:08+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html?limit=all
+2016-11-25T20:48:07+00:00 DEBUG (7): 
+2016-11-25T20:48:09+00:00 DEBUG (7): 
+2016-11-25T20:48:11+00:00 DEBUG (7): 
+2016-11-25T21:32:29+00:00 DEBUG (7): 
+2016-11-25T21:32:30+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-25T21:47:50+00:00 DEBUG (7): http://23.235.200.9/refund-policy
+2016-11-25T23:32:51+00:00 DEBUG (7): 
+2016-11-25T23:39:30+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-25T23:50:18+00:00 DEBUG (7): http://23.235.200.9/refund-policy
+2016-11-25T23:54:16+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-11-26T00:05:28+00:00 DEBUG (7): http://23.235.200.9/sample-pack/reviews/
+2016-11-26T00:10:29+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzMxLyNyZXZpZXctZm9ybQ,,/
+2016-11-26T00:45:31+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-11-26T03:23:16+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-11-26T04:03:33+00:00 DEBUG (7): 
+2016-11-26T04:52:56+00:00 DEBUG (7): 
+2016-11-26T05:09:46+00:00 DEBUG (7): 
+2016-11-26T05:22:57+00:00 DEBUG (7): 
+2016-11-26T08:47:52+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-26T08:48:12+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-26T08:48:14+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-26T08:53:00+00:00 DEBUG (7): http://23.235.200.9/premium-organic-milk-powder-40-serving-pouch.html
+2016-11-26T09:38:56+00:00 DEBUG (7): 
+2016-11-26T09:38:56+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-11-26T10:40:17+00:00 DEBUG (7): http://23.235.200.9/products/water-purifiers.html
+2016-11-26T11:41:31+00:00 DEBUG (7): http://23.235.200.9/affiliates
+2016-11-26T11:43:08+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-11-26T11:47:05+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-26T12:42:48+00:00 DEBUG (7): 
+2016-11-26T16:31:33+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-26T17:04:54+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-26T18:12:56+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-11-26T18:20:56+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-11-26T18:24:12+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html?limit=36
+2016-11-26T18:39:13+00:00 DEBUG (7): http://23.235.200.9/terms-of-use
+2016-11-26T19:52:38+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-26T20:51:24+00:00 DEBUG (7): 
+2016-11-26T21:06:25+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-26T21:31:55+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-11-26T21:48:59+00:00 DEBUG (7): 
+2016-11-26T22:28:00+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-26T23:34:56+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/praesent-feugiat-faucibus-porta/
+2016-11-26T23:35:57+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/vestibulum-mollis-consequat-tortor/
+2016-11-26T23:49:42+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-27T00:37:53+00:00 DEBUG (7): http://23.235.200.9/100-cases.html
+2016-11-27T00:44:52+00:00 DEBUG (7): http://23.235.200.9/100-cases/reviews/
+2016-11-27T00:46:49+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yNy8jcmV2aWV3LWZvcm0,/
+2016-11-27T00:49:18+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzI3LyNyZXZpZXctZm9ybQ,,/
+2016-11-27T01:10:20+00:00 DEBUG (7): 
+2016-11-27T01:42:20+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-27T06:52:46+00:00 DEBUG (7): http://23.235.200.9/mega-pack.html
+2016-11-27T06:59:48+00:00 DEBUG (7): http://23.235.200.9/mega-pack/reviews/
+2016-11-27T07:01:42+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-27T07:03:14+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzEwLyNyZXZpZXctZm9ybQ,,/
+2016-11-27T07:35:21+00:00 DEBUG (7): 
+2016-11-27T07:52:30+00:00 DEBUG (7): http://23.235.200.9/hormone-free-usda-non-fat-milk-powder-6-pack.html
+2016-11-27T08:43:20+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-27T09:44:24+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-11-27T09:45:33+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html?limit=36
+2016-11-27T09:50:40+00:00 DEBUG (7): 
+2016-11-27T09:50:41+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-11-27T09:51:44+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html?limit=36
+2016-11-27T09:54:13+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html?limit=36
+2016-11-27T09:55:08+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-11-27T09:55:55+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html?limit=36
+2016-11-27T09:56:54+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-11-27T09:58:34+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-11-27T10:00:29+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html?limit=all
+2016-11-27T10:00:40+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-11-27T10:00:47+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html?limit=36
+2016-11-27T10:01:39+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-11-27T10:03:02+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html?limit=36
+2016-11-27T10:04:09+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html?limit=20
+2016-11-27T10:05:09+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-11-27T10:05:49+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-11-27T10:07:35+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-11-27T10:08:55+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-11-27T11:28:50+00:00 DEBUG (7): http://23.235.200.9/affiliates
+2016-11-27T11:37:40+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-27T12:57:47+00:00 DEBUG (7): http://23.235.200.9/grab-n-go.html
+2016-11-27T13:03:50+00:00 DEBUG (7): http://23.235.200.9/grab-n-go/reviews/
+2016-11-27T13:06:49+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC83LyNyZXZpZXctZm9ybQ,,/
+2016-11-27T13:09:04+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzcvI3Jldmlldy1mb3Jt/
+2016-11-27T17:14:28+00:00 DEBUG (7): 
+2016-11-27T17:47:30+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-27T18:08:03+00:00 DEBUG (7): http://23.235.200.9/hormone-free-usda-non-fat-milk-powder-40-serving-pouch.html
+2016-11-27T18:37:49+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-11-27T19:59:21+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/vestibulum-mollis-consequat-tortor/
+2016-11-27T19:59:23+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-27T21:25:29+00:00 DEBUG (7): http://23.235.200.9/sample-pack.html
+2016-11-27T22:42:02+00:00 DEBUG (7): 
+2016-11-27T22:42:04+00:00 DEBUG (7): http://23.235.200.9/products/defender-packs.html
+2016-11-27T22:52:43+00:00 DEBUG (7): http://23.235.200.9/contacts/
+2016-11-27T23:20:36+00:00 DEBUG (7): http://23.235.200.9/hormone-free-usda-non-fat-milk-powder-6-pack.html
+2016-11-27T23:58:19+00:00 DEBUG (7): http://23.235.200.9/products/convenience-packs.html
+2016-11-28T00:07:55+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-11-28T00:23:49+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/praesent-feugiat-faucibus-porta/
+2016-11-28T02:16:10+00:00 DEBUG (7): 
+2016-11-28T02:16:13+00:00 DEBUG (7): 
+2016-11-28T02:16:15+00:00 DEBUG (7): 
+2016-11-28T02:16:17+00:00 DEBUG (7): 
+2016-11-28T02:16:18+00:00 DEBUG (7): 
+2016-11-28T02:16:20+00:00 DEBUG (7): 
+2016-11-28T03:31:47+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-28T03:36:47+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-28T05:05:38+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-28T05:30:48+00:00 DEBUG (7): 
+2016-11-28T06:43:33+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-11-28T07:37:13+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-28T08:54:01+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-28T09:34:29+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-28T10:30:37+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/praesent-feugiat-faucibus-porta/
+2016-11-28T11:11:09+00:00 DEBUG (7): 
+2016-11-28T11:11:11+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-11-28T13:39:04+00:00 DEBUG (7): 
+2016-11-28T13:48:07+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zMS8jcmV2aWV3LWZvcm0,/
+2016-11-28T14:04:33+00:00 DEBUG (7): http://23.235.200.9/affiliates
+2016-11-28T14:38:28+00:00 DEBUG (7): 
+2016-11-28T14:40:23+00:00 DEBUG (7): http://23.235.200.9/refund-policy
+2016-11-28T15:56:24+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-28T16:42:04+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/praesent-feugiat-faucibus-porta/
+2016-11-28T17:04:26+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/vestibulum-mollis-consequat-tortor/
+2016-11-28T17:32:07+00:00 DEBUG (7): http://23.235.200.9/sample-pack
+2016-11-28T17:47:54+00:00 DEBUG (7): http://23.235.200.9/affiliates
+2016-11-28T18:21:01+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-28T19:42:10+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-28T19:42:22+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-11-28T19:52:43+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-11-28T20:50:55+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-28T21:00:53+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-28T21:27:55+00:00 DEBUG (7): http://23.235.200.9/family-pack.html
+2016-11-28T21:35:21+00:00 DEBUG (7): http://23.235.200.9/family-pack/reviews/
+2016-11-28T21:37:08+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC81LyNyZXZpZXctZm9ybQ,,/
+2016-11-28T21:41:14+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzUvI3Jldmlldy1mb3Jt/
+2016-11-28T22:33:04+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-28T22:59:46+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-28T23:18:03+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-11-28T23:18:03+00:00 DEBUG (7): 
+2016-11-28T23:39:04+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-29T00:35:11+00:00 DEBUG (7): http://23.235.200.9/refund-policy
+2016-11-29T01:08:49+00:00 DEBUG (7): http://23.235.200.9/refund-policy
+2016-11-29T01:59:37+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-29T04:37:25+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-29T04:42:00+00:00 DEBUG (7): http://23.235.200.9/triple-combo.html
+2016-11-29T04:45:07+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xMy8jcmV2aWV3LWZvcm0,/
+2016-11-29T04:47:42+00:00 DEBUG (7): http://23.235.200.9/refund-policy
+2016-11-29T05:05:55+00:00 DEBUG (7): 
+2016-11-29T05:12:52+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/praesent-feugiat-faucibus-porta/
+2016-11-29T05:44:33+00:00 DEBUG (7): 
+2016-11-29T07:20:00+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/praesent-feugiat-faucibus-porta/
+2016-11-29T07:55:29+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-29T10:58:11+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-29T10:59:25+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-11-29T11:15:16+00:00 DEBUG (7): 
+2016-11-29T11:22:53+00:00 DEBUG (7): 
+2016-11-29T11:22:54+00:00 DEBUG (7): http://23.235.200.9/power-iodine.html
+2016-11-29T11:30:44+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zMi8jcmV2aWV3LWZvcm0,/
+2016-11-29T11:51:37+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-11-29T15:43:22+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-29T15:43:50+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-11-29T15:43:59+00:00 DEBUG (7): http://23.235.200.9/products/convenience-packs.html
+2016-11-29T16:40:16+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-29T16:40:58+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-29T16:42:35+00:00 DEBUG (7): 
+2016-11-29T16:48:44+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-29T17:51:47+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-29T18:02:56+00:00 DEBUG (7): http://23.235.200.9/5040-servings.html
+2016-11-29T18:11:27+00:00 DEBUG (7): http://23.235.200.9/5040-servings/reviews/
+2016-11-29T18:23:54+00:00 DEBUG (7): 
+2016-11-29T18:27:06+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzE4LyNyZXZpZXctZm9ybQ,,/
+2016-11-29T19:27:32+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-29T19:39:08+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-29T19:59:29+00:00 DEBUG (7): http://23.235.200.9/refund-policy
+2016-11-29T22:41:39+00:00 DEBUG (7): http://23.235.200.9/affiliates
+2016-11-29T22:43:04+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/praesent-feugiat-faucibus-porta/
+2016-11-30T00:18:59+00:00 DEBUG (7): 
+2016-11-30T00:44:07+00:00 DEBUG (7): http://23.235.200.9/grab-n-go-triple.html
+2016-11-30T01:11:49+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T01:22:55+00:00 DEBUG (7): http://23.235.200.9/3360-servings.html
+2016-11-30T01:32:48+00:00 DEBUG (7): http://23.235.200.9/3360-servings/reviews/
+2016-11-30T01:32:59+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T01:33:02+00:00 DEBUG (7): 
+2016-11-30T01:33:04+00:00 DEBUG (7): 
+2016-11-30T01:35:46+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xNy8jcmV2aWV3LWZvcm0,/
+2016-11-30T01:42:25+00:00 DEBUG (7): 
+2016-11-30T01:47:12+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzE3LyNyZXZpZXctZm9ybQ,,/
+2016-11-30T02:00:37+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T04:53:01+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T06:49:37+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T07:56:16+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T08:11:34+00:00 DEBUG (7): http://23.235.200.9/1680-servings.html
+2016-11-30T08:24:51+00:00 DEBUG (7): http://23.235.200.9/1680-servings/reviews/
+2016-11-30T08:27:05+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xMi8jcmV2aWV3LWZvcm0,/
+2016-11-30T08:39:10+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzEyLyNyZXZpZXctZm9ybQ,,/
+2016-11-30T08:41:55+00:00 DEBUG (7): 
+2016-11-30T10:13:16+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T10:37:27+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/vestibulum-mollis-consequat-tortor/
+2016-11-30T10:46:05+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T11:02:00+00:00 DEBUG (7): 
+2016-11-30T11:10:42+00:00 DEBUG (7): 
+2016-11-30T11:50:15+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T12:45:56+00:00 DEBUG (7): 
+2016-11-30T12:45:58+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T13:21:36+00:00 DEBUG (7): http://23.235.200.9/propur-nomad-water-filter.html
+2016-11-30T13:58:50+00:00 DEBUG (7): 
+2016-11-30T14:02:07+00:00 DEBUG (7): http://23.235.200.9/refund-policy
+2016-11-30T15:33:00+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T15:34:30+00:00 DEBUG (7): http://23.235.200.9/affiliates
+2016-11-30T16:04:01+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T16:13:17+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T16:16:29+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T16:21:31+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T16:24:36+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T16:28:16+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T16:31:08+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/vestibulum-mollis-consequat-tortor/
+2016-11-30T16:31:20+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T16:33:07+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T16:36:47+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T16:38:15+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T16:38:21+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T16:38:31+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T16:45:59+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T16:48:01+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T16:50:27+00:00 DEBUG (7): http://23.235.200.9/refund-policy
+2016-11-30T16:53:29+00:00 DEBUG (7): http://23.235.200.9/testimonials
+2016-11-30T17:01:40+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T17:06:56+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T17:16:54+00:00 DEBUG (7): http://23.235.200.9/defender-dozen.html
+2016-11-30T17:25:57+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/praesent-feugiat-faucibus-porta/
+2016-11-30T17:34:50+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xNi8jcmV2aWV3LWZvcm0,/
+2016-11-30T18:09:31+00:00 DEBUG (7): 
+2016-11-30T18:09:53+00:00 DEBUG (7): 
+2016-11-30T18:15:30+00:00 DEBUG (7): 
+2016-11-30T18:22:21+00:00 DEBUG (7): http://23.235.200.9/testimonials
+2016-11-30T18:36:09+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T18:37:07+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T18:37:10+00:00 DEBUG (7): 
+2016-11-30T18:38:53+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T18:38:56+00:00 DEBUG (7): 
+2016-11-30T18:41:16+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T18:43:01+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T18:48:20+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T18:50:16+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T18:51:16+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:05:47+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:05:54+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:06:07+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:12:18+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:12:31+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:12:37+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:12:59+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:14:12+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:14:28+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:17:40+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:19:04+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:19:14+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:19:50+00:00 DEBUG (7): http://23.235.200.9/testimonials
+2016-11-30T19:20:46+00:00 DEBUG (7): http://23.235.200.9/testimonials
+2016-11-30T19:20:49+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:21:47+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:37:15+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:37:53+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:38:12+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:46:56+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:53:27+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T19:55:42+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T20:05:31+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T20:31:08+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-11-30T20:31:24+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-11-30T20:31:35+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-11-30T20:31:48+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-11-30T20:32:56+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-11-30T20:32:58+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T20:33:08+00:00 DEBUG (7): http://23.235.200.9/family-pack.html
+2016-11-30T20:52:54+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T20:55:32+00:00 DEBUG (7): http://23.235.200.9/family-pack-45.html
+2016-11-30T20:56:16+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T20:56:26+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-11-30T20:56:44+00:00 DEBUG (7): http://23.235.200.9/family-pack.html
+2016-11-30T20:56:49+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-11-30T20:56:55+00:00 DEBUG (7): http://23.235.200.9/organic-family-pack.html
+2016-11-30T21:00:33+00:00 DEBUG (7): 
+2016-11-30T21:04:19+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC80NS8jcmV2aWV3LWZvcm0,/
+2016-11-30T21:04:27+00:00 DEBUG (7): http://23.235.200.9/organic-family-pack.html
+2016-11-30T21:05:26+00:00 DEBUG (7): http://23.235.200.9/organic-family-pack.html
+2016-11-30T21:06:08+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T21:06:25+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T21:06:45+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T21:07:56+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T21:09:10+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-11-30T21:09:57+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-11-30T21:11:54+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T21:12:57+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-11-30T21:13:07+00:00 DEBUG (7): http://23.235.200.9/3-pack-of-premium-organic-milk-powder-40-serving-pouch.html
+2016-11-30T21:13:14+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-11-30T21:13:19+00:00 DEBUG (7): http://23.235.200.9/organic-family-pack.html
+2016-11-30T21:13:39+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T21:13:51+00:00 DEBUG (7): http://23.235.200.9/family-pack.html
+2016-11-30T21:17:03+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T21:17:11+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-11-30T21:18:43+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T21:45:02+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T21:45:16+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T21:46:18+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T21:46:41+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T21:46:51+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T21:46:52+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T21:47:19+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T21:47:26+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T21:47:36+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T22:00:43+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T22:01:06+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T22:18:24+00:00 DEBUG (7): http://23.235.200.9/refund-policy
+2016-11-30T22:23:59+00:00 DEBUG (7): http://23.235.200.9/refund-policy
+2016-11-30T22:25:26+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-11-30T22:35:29+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T23:28:29+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T23:31:46+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T23:37:29+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T23:40:03+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T23:44:29+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T23:45:30+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T23:45:40+00:00 DEBUG (7): http://23.235.200.9/what-we-avoid
+2016-11-30T23:46:14+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T23:47:23+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T23:47:53+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T23:49:52+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-11-30T23:50:28+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-11-30T23:50:34+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-11-30T23:50:35+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-11-30T23:50:43+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-11-30T23:50:46+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-11-30T23:51:16+00:00 DEBUG (7): http://23.235.200.9/
+2016-11-30T23:53:54+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-01T00:02:58+00:00 DEBUG (7): http://23.235.200.9/caravan-package.html
+2016-12-01T00:15:51+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yMC8jcmV2aWV3LWZvcm0,/
+2016-12-01T00:35:44+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-01T00:35:45+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-01T00:42:55+00:00 DEBUG (7): http://23.235.200.9/organic-family-pack.html
+2016-12-01T00:50:35+00:00 DEBUG (7): 
+2016-12-01T01:03:22+00:00 DEBUG (7): http://23.235.200.9/organic-family-pack/reviews/
+2016-12-01T01:10:10+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzQ1LyNyZXZpZXctZm9ybQ,,/
+2016-12-01T02:04:57+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-01T04:50:22+00:00 DEBUG (7): http://23.235.200.9/terms-of-use
+2016-12-01T05:45:56+00:00 DEBUG (7): 
+2016-12-01T10:14:46+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-01T14:25:12+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-01T15:37:56+00:00 DEBUG (7): 
+2016-12-01T15:37:58+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/03/hello-world/
+2016-12-01T15:40:41+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-01T16:05:46+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/praesent-feugiat-faucibus-porta/
+2016-12-01T22:04:54+00:00 DEBUG (7): http://23.235.200.9/no-gluten-378-servings.html
+2016-12-01T22:05:55+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-01T22:06:57+00:00 DEBUG (7): http://23.235.200.9/propur-big-water-filter.html
+2016-12-01T22:48:02+00:00 DEBUG (7): http://23.235.200.9/grab-n-go-triple.html
+2016-12-01T22:59:42+00:00 DEBUG (7): http://23.235.200.9/grab-n-go-triple/reviews/
+2016-12-01T23:02:18+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC85LyNyZXZpZXctZm9ybQ,,/
+2016-12-01T23:09:57+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzkvI3Jldmlldy1mb3Jt/
+2016-12-02T02:49:56+00:00 DEBUG (7): http://23.235.200.9/hormone-free-usda-non-fat-milk-powder-40-serving-pouch.html
+2016-12-02T09:58:19+00:00 DEBUG (7): 
+2016-12-02T09:58:22+00:00 DEBUG (7): http://23.235.200.9/triple-family-pack.html
+2016-12-02T09:58:48+00:00 DEBUG (7): http://23.235.200.9/triple-combo.html
+2016-12-02T10:06:41+00:00 DEBUG (7): http://23.235.200.9/triple-family-pack/reviews/
+2016-12-02T10:14:20+00:00 DEBUG (7): http://23.235.200.9/ingredients
+2016-12-02T10:19:51+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzgvI3Jldmlldy1mb3Jt/
+2016-12-02T10:42:35+00:00 DEBUG (7): 
+2016-12-02T10:42:36+00:00 DEBUG (7): 
+2016-12-02T17:43:10+00:00 DEBUG (7): http://23.235.200.9/canned-water-1-case.html
+2016-12-02T17:47:19+00:00 DEBUG (7): http://23.235.200.9/grab-n-go-triple.html
+2016-12-02T17:57:01+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-12-02T17:57:12+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yNi8jcmV2aWV3LWZvcm0,/
+2016-12-02T17:57:14+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-02T18:52:07+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-02T18:57:42+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-02T19:02:50+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-02T19:03:17+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-02T19:03:20+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-02T19:03:32+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-02T19:03:51+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-02T19:04:15+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-02T19:04:37+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-12-02T19:07:00+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-02T19:14:41+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-02T20:21:43+00:00 DEBUG (7): 
+2016-12-02T20:21:46+00:00 DEBUG (7): 
+2016-12-02T20:21:48+00:00 DEBUG (7): 
+2016-12-02T20:21:49+00:00 DEBUG (7): 
+2016-12-02T21:01:09+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-02T21:01:10+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-02T21:27:21+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-02T21:27:33+00:00 DEBUG (7): http://23.235.200.9/affiliates
+2016-12-02T21:51:06+00:00 DEBUG (7): http://23.235.200.9/proone-g2-0-m-filter-element.html
+2016-12-02T23:12:49+00:00 DEBUG (7): 
+2016-12-02T23:12:52+00:00 DEBUG (7): http://23.235.200.9/homesteader-package.html
+2016-12-02T23:20:19+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xOS8jcmV2aWV3LWZvcm0,/
+2016-12-02T23:21:49+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-03T03:41:53+00:00 DEBUG (7): http://23.235.200.9/no-gluten-family-pack.html
+2016-12-03T04:26:45+00:00 DEBUG (7): http://23.235.200.9/propur-water-pitcher.html
+2016-12-03T04:29:29+00:00 DEBUG (7): http://23.235.200.9/propur-water-pitcher/reviews/
+2016-12-03T04:31:46+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yMy8jcmV2aWV3LWZvcm0,/
+2016-12-03T04:35:00+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzIzLyNyZXZpZXctZm9ybQ,,/
+2016-12-03T07:27:47+00:00 DEBUG (7): http://23.235.200.9/hormone-free-usda-non-fat-milk-powder-40-serving-pouch.html
+2016-12-03T09:45:08+00:00 DEBUG (7): http://23.235.200.9/propur-water-pitcher.html
+2016-12-03T10:38:06+00:00 DEBUG (7): http://23.235.200.9/family-bug-in-package.html
+2016-12-03T10:46:48+00:00 DEBUG (7): http://23.235.200.9/family-bug-in-package/reviews/
+2016-12-03T10:50:33+00:00 DEBUG (7): 
+2016-12-03T10:51:23+00:00 DEBUG (7): 
+2016-12-03T14:19:45+00:00 DEBUG (7): 
+2016-12-03T14:34:20+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-03T15:34:28+00:00 DEBUG (7): http://23.235.200.9/canned-water-1-case.html
+2016-12-03T17:08:00+00:00 DEBUG (7): http://23.235.200.9/no-gluten-family-pack.html
+2016-12-03T17:16:02+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC82LyNyZXZpZXctZm9ybQ,,/
+2016-12-03T18:49:30+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-03T21:29:54+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-03T21:33:01+00:00 DEBUG (7): http://23.235.200.9/defender-dozen.html
+2016-12-03T21:53:20+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-03T23:08:14+00:00 DEBUG (7): http://23.235.200.9/no-gluten-378-servings.html
+2016-12-03T23:14:26+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yMS8jcmV2aWV3LWZvcm0,/
+2016-12-04T00:25:18+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-04T03:22:41+00:00 DEBUG (7): 
+2016-12-04T03:22:43+00:00 DEBUG (7): http://23.235.200.9/propur-nomad-water-filter.html
+2016-12-04T05:15:51+00:00 DEBUG (7): http://23.235.200.9/grab-n-go.html
+2016-12-04T05:18:07+00:00 DEBUG (7): http://23.235.200.9/superfoods
+2016-12-04T05:24:54+00:00 DEBUG (7): http://23.235.200.9/superfoods
+2016-12-04T06:17:45+00:00 DEBUG (7): http://23.235.200.9/defender-nutritive-pack-triple.html
+2016-12-04T08:47:43+00:00 DEBUG (7): 
+2016-12-04T08:47:45+00:00 DEBUG (7): 
+2016-12-04T08:47:46+00:00 DEBUG (7): 
+2016-12-04T08:47:47+00:00 DEBUG (7): 
+2016-12-04T08:47:54+00:00 DEBUG (7): 
+2016-12-04T08:49:00+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-04T09:01:45+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-04T09:19:53+00:00 DEBUG (7): http://23.235.200.9/products/convenience-packs.html
+2016-12-04T09:21:44+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-04T09:29:58+00:00 DEBUG (7): http://23.235.200.9/products/defender-packs.html
+2016-12-04T09:44:51+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-04T09:50:31+00:00 DEBUG (7): http://23.235.200.9/propur-big-water-filter.html
+2016-12-04T09:50:33+00:00 DEBUG (7): http://23.235.200.9/mega-pack.html
+2016-12-04T09:50:37+00:00 DEBUG (7): http://23.235.200.9/100-cases.html
+2016-12-04T09:50:40+00:00 DEBUG (7): http://23.235.200.9/grab-n-go.html
+2016-12-04T09:50:44+00:00 DEBUG (7): http://23.235.200.9/sample-pack.html
+2016-12-04T09:50:47+00:00 DEBUG (7): http://23.235.200.9/family-pack.html
+2016-12-04T09:50:51+00:00 DEBUG (7): http://23.235.200.9/power-iodine.html
+2016-12-04T09:50:55+00:00 DEBUG (7): http://23.235.200.9/triple-combo.html
+2016-12-04T09:51:03+00:00 DEBUG (7): http://23.235.200.9/1680-servings.html
+2016-12-04T09:51:10+00:00 DEBUG (7): http://23.235.200.9/5040-servings.html
+2016-12-04T09:51:17+00:00 DEBUG (7): http://23.235.200.9/3360-servings.html
+2016-12-04T09:51:25+00:00 DEBUG (7): http://23.235.200.9/defender-dozen.html
+2016-12-04T09:51:32+00:00 DEBUG (7): http://23.235.200.9/caravan-package.html
+2016-12-04T09:51:39+00:00 DEBUG (7): http://23.235.200.9/grab-n-go-triple.html
+2016-12-04T09:51:46+00:00 DEBUG (7): http://23.235.200.9/triple-family-pack.html
+2016-12-04T09:51:53+00:00 DEBUG (7): http://23.235.200.9/homesteader-package.html
+2016-12-04T09:52:01+00:00 DEBUG (7): http://23.235.200.9/canned-water-1-case.html
+2016-12-04T09:52:09+00:00 DEBUG (7): http://23.235.200.9/organic-family-pack.html
+2016-12-04T09:52:15+00:00 DEBUG (7): http://23.235.200.9/propur-water-pitcher.html
+2016-12-04T09:52:22+00:00 DEBUG (7): http://23.235.200.9/family-bug-in-package.html
+2016-12-04T09:52:30+00:00 DEBUG (7): http://23.235.200.9/no-gluten-family-pack.html
+2016-12-04T09:52:37+00:00 DEBUG (7): http://23.235.200.9/no-gluten-756-servings.html
+2016-12-04T09:52:44+00:00 DEBUG (7): http://23.235.200.9/no-gluten-378-servings.html
+2016-12-04T09:52:52+00:00 DEBUG (7): http://23.235.200.9/defender-nutritive-pack.html
+2016-12-04T09:52:59+00:00 DEBUG (7): http://23.235.200.9/universal-faucet-adapter.html
+2016-12-04T09:53:06+00:00 DEBUG (7): http://23.235.200.9/propur-nomad-water-filter.html
+2016-12-04T09:53:14+00:00 DEBUG (7): http://23.235.200.9/proone-g2-0-m-filter-element.html
+2016-12-04T09:53:21+00:00 DEBUG (7): http://23.235.200.9/defender-nutritive-pack-mega.html
+2016-12-04T09:53:28+00:00 DEBUG (7): http://23.235.200.9/defender-nutritive-pack-triple.html
+2016-12-04T09:53:35+00:00 DEBUG (7): http://23.235.200.9/the-new-aqua-pail-from-numanna-83.html
+2016-12-04T09:53:42+00:00 DEBUG (7): http://23.235.200.9/duraflo-water-filter-replacement.html
+2016-12-04T09:53:50+00:00 DEBUG (7): http://23.235.200.9/propur-countertop-system-w-promax.html
+2016-12-04T09:53:57+00:00 DEBUG (7): http://23.235.200.9/replacement-promax-countertop-filter.html
+2016-12-04T09:54:04+00:00 DEBUG (7): http://23.235.200.9/proone-g2-0-7-slimline-filter-element.html
+2016-12-04T09:54:12+00:00 DEBUG (7): http://23.235.200.9/proone-g2-0-7-slimline-filter-element-2.html
+2016-12-04T09:54:19+00:00 DEBUG (7): http://23.235.200.9/hormone-free-usda-non-fat-milk-powder-6-pack.html
+2016-12-04T09:54:26+00:00 DEBUG (7): http://23.235.200.9/premium-organic-milk-powder-40-serving-pouch.html
+2016-12-04T09:54:34+00:00 DEBUG (7): http://23.235.200.9/3-pack-of-premium-organic-milk-powder-40-serving-pouch.html
+2016-12-04T09:54:41+00:00 DEBUG (7): http://23.235.200.9/hormone-free-usda-non-fat-milk-powder-40-serving-pouch.html
+2016-12-04T09:55:13+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xMC9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:55:34+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zNS9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:55:39+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC85L2NhdGVnb3J5LzMvI3Jldmlldy1mb3Jt/
+2016-12-04T09:55:43+00:00 DEBUG (7): http://23.235.200.9/the-new-aqua-pail-from-numanna-83.html
+2016-12-04T09:55:48+00:00 DEBUG (7): http://23.235.200.9/the-new-aqua-pail-from-numanna-83/reviews/
+2016-12-04T09:55:55+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC80NC9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:56:02+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zNC9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:56:09+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xNS9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:56:15+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC80NS9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:56:22+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yNS9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:56:29+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zMC9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:56:36+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC83L2NhdGVnb3J5LzMvI3Jldmlldy1mb3Jt/
+2016-12-04T09:56:43+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yOC9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:56:49+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zNi9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:56:56+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xMS9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:57:03+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xMi9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:57:10+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC80L2NhdGVnb3J5LzMvI3Jldmlldy1mb3Jt/
+2016-12-04T09:57:16+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zNy9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:57:23+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xOS9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:57:30+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC82L2NhdGVnb3J5LzMvI3Jldmlldy1mb3Jt/
+2016-12-04T09:57:37+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xNi9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:57:43+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yOS9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:57:50+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zOC9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:57:57+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yNy9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:58:04+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yMi9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:58:10+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC84L2NhdGVnb3J5LzMvI3Jldmlldy1mb3Jt/
+2016-12-04T09:58:17+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yMS9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:58:24+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zMi9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:58:31+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xNy9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:58:38+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC81L2NhdGVnb3J5LzMvI3Jldmlldy1mb3Jt/
+2016-12-04T09:58:44+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yNi9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:58:51+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zMy9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:58:58+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yMy9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:59:05+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yNC9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:59:11+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xOC9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:59:18+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zMS9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:59:25+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yMC9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:59:32+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC80My9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:59:39+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xMy9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T09:59:46+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC80Mi9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T11:58:44+00:00 DEBUG (7): http://23.235.200.9/no-gluten-756-servings.html
+2016-12-04T12:04:48+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yMi8jcmV2aWV3LWZvcm0,/
+2016-12-04T12:17:01+00:00 DEBUG (7): http://23.235.200.9/refund-policy
+2016-12-04T15:18:55+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-12-04T16:54:44+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-04T17:56:13+00:00 DEBUG (7): 
+2016-12-04T17:56:15+00:00 DEBUG (7): http://23.235.200.9/defender-nutritive-pack.html
+2016-12-04T18:02:53+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC80LyNyZXZpZXctZm9ybQ,,/
+2016-12-04T18:47:57+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-04T20:34:50+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xNC9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-04T21:02:51+00:00 DEBUG (7): http://23.235.200.9/grab-n-go-triple.html
+2016-12-04T21:13:39+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-04T21:16:02+00:00 DEBUG (7): http://23.235.200.9/products/water-purifiers.html
+2016-12-04T21:24:56+00:00 DEBUG (7): http://23.235.200.9/terms-of-use
+2016-12-05T00:11:24+00:00 DEBUG (7): http://23.235.200.9/propur-big-water-filter.html
+2016-12-05T00:14:51+00:00 DEBUG (7): http://23.235.200.9/propur-big-water-filter/reviews/
+2016-12-05T00:17:05+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yNS8jcmV2aWV3LWZvcm0,/
+2016-12-05T00:20:35+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzI1LyNyZXZpZXctZm9ybQ,,/
+2016-12-05T06:11:20+00:00 DEBUG (7): 
+2016-12-05T06:34:05+00:00 DEBUG (7): 
+2016-12-05T06:48:11+00:00 DEBUG (7): http://23.235.200.9/universal-faucet-adapter.html
+2016-12-05T06:54:53+00:00 DEBUG (7): http://23.235.200.9/universal-faucet-adapter/reviews/
+2016-12-05T06:57:22+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC80NC8jcmV2aWV3LWZvcm0,/
+2016-12-05T07:00:29+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzQ0LyNyZXZpZXctZm9ybQ,,/
+2016-12-05T09:48:01+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-05T10:38:08+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-05T12:02:58+00:00 DEBUG (7): 
+2016-12-05T12:26:22+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-05T13:18:52+00:00 DEBUG (7): http://23.235.200.9/sample-pack
+2016-12-05T15:14:51+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-05T15:14:56+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-05T15:15:16+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-05T15:15:20+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-05T15:16:40+00:00 DEBUG (7): http://23.235.200.9/testimonials
+2016-12-05T15:19:43+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-12-05T15:19:56+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-05T15:20:05+00:00 DEBUG (7): http://23.235.200.9/testimonials
+2016-12-05T15:20:17+00:00 DEBUG (7): http://23.235.200.9/testimonials
+2016-12-05T15:23:41+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-05T15:23:43+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-05T15:34:11+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-05T16:36:28+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-05T17:48:39+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-05T18:11:41+00:00 DEBUG (7): 
+2016-12-05T19:23:45+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-05T21:02:34+00:00 DEBUG (7): http://23.235.200.9/triple-combo.html
+2016-12-05T22:47:20+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-05T23:08:05+00:00 DEBUG (7): http://23.235.200.9/propur-nomad-water-filter.html
+2016-12-05T23:17:52+00:00 DEBUG (7): http://23.235.200.9/propur-nomad-water-filter/reviews/
+2016-12-05T23:22:24+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yNC8jcmV2aWV3LWZvcm0,/
+2016-12-05T23:32:43+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzI0LyNyZXZpZXctZm9ybQ,,/
+2016-12-06T00:49:50+00:00 DEBUG (7): http://23.235.200.9/no-gluten-378-servings.html
+2016-12-06T01:10:02+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-06T04:44:59+00:00 DEBUG (7): http://23.235.200.9/propur-big-water-filter.html
+2016-12-06T05:43:20+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-06T06:31:59+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-06T06:32:02+00:00 DEBUG (7): 
+2016-12-06T06:32:03+00:00 DEBUG (7): 
+2016-12-06T06:34:33+00:00 DEBUG (7): 
+2016-12-06T06:34:36+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-06T08:08:31+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/praesent-feugiat-faucibus-porta/
+2016-12-06T08:51:32+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-06T08:52:34+00:00 DEBUG (7): http://23.235.200.9/proone-g2-0-m-filter-element.html
+2016-12-06T10:35:00+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-06T11:33:08+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-06T11:42:50+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-06T12:07:58+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-06T12:39:32+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-06T12:49:32+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-06T14:40:26+00:00 DEBUG (7): http://23.235.200.9/grab-n-go-triple.html
+2016-12-06T15:47:22+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-06T16:03:33+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-06T17:35:59+00:00 DEBUG (7): http://23.235.200.9/no-gluten-family-pack.html
+2016-12-06T18:31:27+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-06T18:38:22+00:00 DEBUG (7): 
+2016-12-06T18:38:22+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?limit=36
+2016-12-06T18:46:23+00:00 DEBUG (7): http://23.235.200.9/organic-family-pack.html
+2016-12-06T18:52:48+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC80NS9jYXRlZ29yeS8xNy8jcmV2aWV3LWZvcm0,/
+2016-12-06T19:47:02+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-06T19:57:47+00:00 DEBUG (7): 
+2016-12-06T20:28:54+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-06T20:42:12+00:00 DEBUG (7): http://23.235.200.9/propur-water-pitcher.html
+2016-12-06T21:42:17+00:00 DEBUG (7): http://23.235.200.9/blog
+2016-12-06T22:13:13+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-06T22:13:35+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-06T22:14:44+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-06T22:15:00+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-06T22:15:29+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-07T02:00:30+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-07T02:18:02+00:00 DEBUG (7): http://23.235.200.9/products/general.html?limit=15
+2016-12-07T02:26:46+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-07T02:34:15+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-07T02:35:53+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-07T02:36:53+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-07T02:43:10+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-07T02:43:54+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-07T02:48:52+00:00 DEBUG (7): http://23.235.200.9/products/general.html?limit=36
+2016-12-07T02:53:42+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-07T02:53:43+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-07T03:27:56+00:00 DEBUG (7): 
+2016-12-07T05:23:59+00:00 DEBUG (7): 
+2016-12-07T05:26:54+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-07T06:41:29+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-07T06:41:29+00:00 DEBUG (7): 
+2016-12-07T06:57:54+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-07T07:49:32+00:00 DEBUG (7): 
+2016-12-07T08:08:39+00:00 DEBUG (7): http://23.235.200.9/products/general.html?limit=24
+2016-12-07T09:18:22+00:00 DEBUG (7): 
+2016-12-07T10:41:41+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-07T10:41:42+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-07T10:42:24+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-07T11:51:40+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-07T12:19:50+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-07T13:33:51+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-07T17:23:09+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-07T18:14:11+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-07T18:14:16+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-07T18:14:20+00:00 DEBUG (7): http://23.235.200.9/blog/uncategorized/
+2016-12-07T18:14:23+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-07T19:15:22+00:00 DEBUG (7): 
+2016-12-07T19:15:24+00:00 DEBUG (7): http://23.235.200.9/3-pack-of-premium-organic-milk-powder-40-serving-pouch.html
+2016-12-07T19:22:16+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zNi9jYXRlZ29yeS8xOS8jcmV2aWV3LWZvcm0,/
+2016-12-07T20:01:09+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-07T20:21:29+00:00 DEBUG (7): http://23.235.200.9/propur-nomad-water-filter.html
+2016-12-07T20:35:32+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-07T20:51:40+00:00 DEBUG (7): http://23.235.200.9/canned-water-1-case.html
+2016-12-07T21:57:41+00:00 DEBUG (7): http://23.235.200.9/defender-dozen.html
+2016-12-07T22:58:10+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-07T23:08:10+00:00 DEBUG (7): http://23.235.200.9/defender-nutritive-pack-triple.html
+2016-12-07T23:28:45+00:00 DEBUG (7): http://23.235.200.9/hormone-free-usda-non-fat-milk-powder-40-serving-pouch.html
+2016-12-07T23:48:50+00:00 DEBUG (7): http://23.235.200.9/premium-organic-milk-powder-40-serving-pouch.html
+2016-12-07T23:53:50+00:00 DEBUG (7): http://23.235.200.9/sample-pack.html
+2016-12-08T00:44:11+00:00 DEBUG (7): http://23.235.200.9/products/general.html?limit=36
+2016-12-08T00:58:04+00:00 DEBUG (7): http://23.235.200.9/affiliates
+2016-12-08T00:59:40+00:00 DEBUG (7): http://23.235.200.9/blog
+2016-12-08T01:03:02+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T01:08:03+00:00 DEBUG (7): http://23.235.200.9/hormone-free-usda-non-fat-milk-powder-6-pack.html
+2016-12-08T01:33:16+00:00 DEBUG (7): http://23.235.200.9/refund-policy
+2016-12-08T01:53:33+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-08T02:23:12+00:00 DEBUG (7): 
+2016-12-08T02:23:13+00:00 DEBUG (7): 
+2016-12-08T02:23:17+00:00 DEBUG (7): 
+2016-12-08T02:23:21+00:00 DEBUG (7): 
+2016-12-08T02:32:18+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-08T06:33:47+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?limit=20
+2016-12-08T06:42:24+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T06:42:33+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T06:42:44+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?limit=20
+2016-12-08T06:51:06+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T06:51:13+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?limit=all
+2016-12-08T06:51:21+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?limit=15
+2016-12-08T06:51:36+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?p=2
+2016-12-08T06:51:51+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?limit=20
+2016-12-08T06:52:06+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?p=2
+2016-12-08T06:52:22+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T06:54:24+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T06:54:39+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T06:54:52+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T06:55:05+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T06:55:20+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T06:55:37+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?p=2
+2016-12-08T06:55:55+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?limit=36
+2016-12-08T06:56:23+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?limit=20
+2016-12-08T06:57:05+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?limit=24
+2016-12-08T06:57:58+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?p=2
+2016-12-08T06:58:07+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T06:58:14+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?p=2
+2016-12-08T06:58:22+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?p=2
+2016-12-08T06:58:33+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?p=2
+2016-12-08T06:58:53+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T06:59:01+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T06:59:12+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?limit=15
+2016-12-08T06:59:29+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?limit=all
+2016-12-08T06:59:46+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T07:00:06+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T07:00:19+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T07:00:36+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T07:00:53+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T07:01:10+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T07:01:27+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T07:03:55+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-08T09:49:05+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-08T13:23:27+00:00 DEBUG (7): 
+2016-12-08T13:23:29+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/vestibulum-mollis-consequat-tortor/
+2016-12-08T18:11:44+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?limit=24
+2016-12-08T21:28:43+00:00 DEBUG (7): http://23.235.200.9/testimonials
+2016-12-09T00:18:08+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?limit=15
+2016-12-09T00:24:50+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-09T00:27:25+00:00 DEBUG (7): http://23.235.200.9/sample-pack
+2016-12-09T00:28:55+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?p=2
+2016-12-09T00:32:59+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-09T01:53:06+00:00 DEBUG (7): 
+2016-12-09T01:53:07+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-09T02:03:14+00:00 DEBUG (7): 
+2016-12-09T02:03:16+00:00 DEBUG (7): 
+2016-12-09T02:03:18+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-09T02:03:20+00:00 DEBUG (7): 
+2016-12-09T03:13:50+00:00 DEBUG (7): 
+2016-12-09T04:57:29+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-09T05:53:14+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?limit=24
+2016-12-09T08:39:24+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-09T11:28:39+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-09T11:48:14+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-09T12:18:07+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-09T12:24:50+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html?p=2
+2016-12-09T12:29:05+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-09T13:24:08+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-09T13:33:00+00:00 DEBUG (7): http://23.235.200.9/sample-pack
+2016-12-09T15:57:04+00:00 DEBUG (7): 
+2016-12-09T15:57:06+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-09T17:00:41+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-09T18:21:23+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-09T18:21:52+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-09T18:22:06+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-09T18:25:45+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-09T18:26:04+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-09T18:26:18+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-09T18:26:30+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-09T18:26:38+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-12-09T18:26:56+00:00 DEBUG (7): http://23.235.200.9/contacts/
+2016-12-09T18:28:03+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/aliquam-erat-volutpat-sollicitudin/
+2016-12-09T21:09:12+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-09T21:09:34+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-09T21:14:20+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-09T21:21:45+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-09T21:24:42+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-09T22:17:23+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-10T00:12:51+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/donec-imperdiet-dignissim-mauris/
+2016-12-10T00:46:53+00:00 DEBUG (7): http://23.235.200.9/sample-pack
+2016-12-10T04:36:55+00:00 DEBUG (7): 
+2016-12-10T04:36:57+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-10T04:47:12+00:00 DEBUG (7): 
+2016-12-10T05:42:50+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/praesent-feugiat-faucibus-porta/
+2016-12-10T09:24:45+00:00 DEBUG (7): 
+2016-12-10T10:08:58+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-10T11:31:16+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/vivamus-sollicitudin-quis-nulla/
+2016-12-10T11:34:35+00:00 DEBUG (7): 
+2016-12-10T12:32:47+00:00 DEBUG (7): 
+2016-12-10T13:52:16+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-10T13:58:09+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/praesent-feugiat-faucibus-porta/
+2016-12-10T14:38:30+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/vestibulum-mollis-consequat-tortor/
+2016-12-10T16:09:46+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-10T16:10:00+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-10T17:28:04+00:00 DEBUG (7): 
+2016-12-10T17:28:06+00:00 DEBUG (7): http://23.235.200.9/proone-g2-0-m-filter-element.html
+2016-12-10T17:33:41+00:00 DEBUG (7): http://23.235.200.9/proone-g2-0-m-filter-element/reviews/
+2016-12-10T17:37:09+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zMC8jcmV2aWV3LWZvcm0,/
+2016-12-10T17:40:19+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzMwLyNyZXZpZXctZm9ybQ,,/
+2016-12-10T20:40:29+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-12-10T21:25:28+00:00 DEBUG (7): 
+2016-12-10T21:25:30+00:00 DEBUG (7): 
+2016-12-10T21:25:31+00:00 DEBUG (7): 
+2016-12-10T21:25:33+00:00 DEBUG (7): 
+2016-12-11T00:01:42+00:00 DEBUG (7): http://23.235.200.9/what-we-avoid
+2016-12-11T00:07:08+00:00 DEBUG (7): http://23.235.200.9/what-we-avoid
+2016-12-11T02:22:25+00:00 DEBUG (7): 
+2016-12-11T03:21:06+00:00 DEBUG (7): 
+2016-12-11T04:00:09+00:00 DEBUG (7): 
+2016-12-11T05:19:04+00:00 DEBUG (7): 
+2016-12-11T05:48:05+00:00 DEBUG (7): 
+2016-12-11T05:48:07+00:00 DEBUG (7): http://23.235.200.9/defender-nutritive-pack-mega.html
+2016-12-11T05:59:11+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xNS8jcmV2aWV3LWZvcm0,/
+2016-12-11T11:28:04+00:00 DEBUG (7): http://23.235.200.9/defender-nutritive-pack-triple.html
+2016-12-11T11:32:33+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xMS8jcmV2aWV3LWZvcm0,/
+2016-12-11T11:42:38+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-11T17:27:56+00:00 DEBUG (7): 
+2016-12-11T21:11:40+00:00 DEBUG (7): 
+2016-12-11T21:11:42+00:00 DEBUG (7): http://23.235.200.9/blog/uncategorized/
+2016-12-11T23:09:31+00:00 DEBUG (7): http://23.235.200.9/blog/uncategorized/
+2016-12-12T00:11:03+00:00 DEBUG (7): http://23.235.200.9/duraflo-water-filter-replacement.html
+2016-12-12T00:13:40+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zNy8jcmV2aWV3LWZvcm0,/
+2016-12-12T02:03:00+00:00 DEBUG (7): http://23.235.200.9/3-pack-of-premium-organic-milk-powder-40-serving-pouch.html
+2016-12-12T03:11:07+00:00 DEBUG (7): 
+2016-12-12T03:11:09+00:00 DEBUG (7): 
+2016-12-12T03:11:11+00:00 DEBUG (7): 
+2016-12-12T03:11:12+00:00 DEBUG (7): 
+2016-12-12T03:11:14+00:00 DEBUG (7): 
+2016-12-12T03:11:15+00:00 DEBUG (7): 
+2016-12-12T03:38:51+00:00 DEBUG (7): http://23.235.200.9/no-gluten-378-servings.html
+2016-12-12T03:38:52+00:00 DEBUG (7): http://23.235.200.9/no-gluten-378-servings.html
+2016-12-12T04:04:20+00:00 DEBUG (7): http://23.235.200.9/propur-big-water-filter.html
+2016-12-12T05:58:05+00:00 DEBUG (7): http://23.235.200.9/propur-countertop-system-w-promax.html
+2016-12-12T06:10:16+00:00 DEBUG (7): http://23.235.200.9/propur-countertop-system-w-promax/reviews/
+2016-12-12T06:16:38+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzQzLyNyZXZpZXctZm9ybQ,,/
+2016-12-12T09:40:18+00:00 DEBUG (7): 
+2016-12-12T09:40:21+00:00 DEBUG (7): 
+2016-12-12T10:00:43+00:00 DEBUG (7): 
+2016-12-12T10:00:45+00:00 DEBUG (7): http://23.235.200.9/propur-big-water-filter.html
+2016-12-12T12:06:31+00:00 DEBUG (7): http://23.235.200.9/the-new-aqua-pail-from-numanna-83.html
+2016-12-12T12:08:15+00:00 DEBUG (7): http://23.235.200.9/the-new-aqua-pail-from-numanna-83/reviews/
+2016-12-12T13:00:05+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-12T15:15:16+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-12T15:16:04+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T15:16:13+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-12T15:16:42+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-12-12T17:22:03+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-12T17:22:05+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-12T17:26:12+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-12T17:26:19+00:00 DEBUG (7): http://23.235.200.9/contacts/
+2016-12-12T17:40:32+00:00 DEBUG (7): http://23.235.200.9/contacts/
+2016-12-12T17:42:34+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-12T17:43:51+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T18:15:18+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T18:18:25+00:00 DEBUG (7): 
+2016-12-12T18:23:47+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T18:24:57+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T18:25:04+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T18:26:33+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T18:33:48+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T18:41:34+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T18:46:45+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T18:48:00+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T18:52:35+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T18:54:49+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T18:56:27+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T18:56:46+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T18:57:09+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-12T18:57:21+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-12T19:10:07+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T19:10:08+00:00 DEBUG (7): 
+2016-12-12T19:10:50+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T19:10:51+00:00 DEBUG (7): 
+2016-12-12T19:19:19+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T19:19:21+00:00 DEBUG (7): 
+2016-12-12T19:21:49+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T19:21:51+00:00 DEBUG (7): 
+2016-12-12T19:21:56+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T19:21:58+00:00 DEBUG (7): 
+2016-12-12T19:23:49+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T19:23:56+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T19:33:37+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T19:33:53+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T19:34:50+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T19:40:30+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T20:11:07+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T20:14:36+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T20:22:05+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T20:24:10+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T20:45:42+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-12T21:05:25+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:06:12+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:09:49+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:09:59+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:12:43+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-12T21:12:49+00:00 DEBUG (7): http://23.235.200.9/organic-family-pack.html
+2016-12-12T21:17:44+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-12T21:18:14+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:18:36+00:00 DEBUG (7): http://23.235.200.9/3-pack-of-premium-organic-milk-powder-40-serving-pouch.html
+2016-12-12T21:20:23+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:21:41+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:22:50+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:24:45+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:24:51+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:27:19+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:27:55+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:30:05+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:35:22+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:40:21+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:42:12+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:43:16+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:47:23+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:52:28+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:52:35+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:54:02+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:54:26+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:54:27+00:00 DEBUG (7): 
+2016-12-12T21:54:28+00:00 DEBUG (7): 
+2016-12-12T21:54:42+00:00 DEBUG (7): http://23.235.200.9/3-pack-of-premium-organic-milk-powder-40-serving-pouch.html
+2016-12-12T21:54:48+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T21:57:00+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T22:19:54+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-12T22:20:12+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-12T22:21:32+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-12T22:21:43+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-12T23:32:52+00:00 DEBUG (7): 
+2016-12-12T23:32:53+00:00 DEBUG (7): http://23.235.200.9/proone-g2-0-m-filter-element.html
+2016-12-12T23:48:17+00:00 DEBUG (7): 
+2016-12-13T00:11:12+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-13T00:11:30+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-13T01:14:21+00:00 DEBUG (7): http://23.235.200.9/no-gluten-family-pack.html
+2016-12-13T02:30:42+00:00 DEBUG (7): http://23.235.200.9/defender-nutritive-pack-triple.html
+2016-12-13T02:34:22+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-13T03:04:34+00:00 DEBUG (7): http://23.235.200.9/no-gluten-378-servings.html
+2016-12-13T03:26:09+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-13T03:26:11+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-13T03:40:11+00:00 DEBUG (7): http://23.235.200.9/canned-water-1-case.html
+2016-12-13T05:53:24+00:00 DEBUG (7): http://23.235.200.9/propur-water-pitcher.html
+2016-12-13T06:08:00+00:00 DEBUG (7): http://23.235.200.9/replacement-promax-countertop-filter.html
+2016-12-13T07:43:57+00:00 DEBUG (7): http://23.235.200.9/replacement-promax-countertop-filter/reviews/
+2016-12-13T07:45:43+00:00 DEBUG (7): http://23.235.200.9/defender-dozen.html
+2016-12-13T07:47:21+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC80Mi8jcmV2aWV3LWZvcm0,/
+2016-12-13T08:26:33+00:00 DEBUG (7): http://23.235.200.9/triple-combo.html
+2016-12-13T09:41:58+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/praesent-feugiat-faucibus-porta/
+2016-12-13T11:31:03+00:00 DEBUG (7): 
+2016-12-13T11:31:05+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzQyLyNyZXZpZXctZm9ybQ,,/
+2016-12-13T12:19:09+00:00 DEBUG (7): 
+2016-12-13T12:19:10+00:00 DEBUG (7): http://23.235.200.9/affiliates
+2016-12-13T13:19:36+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-13T16:12:58+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-13T16:38:18+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-12-13T18:19:29+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-13T18:22:47+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-12-13T18:23:28+00:00 DEBUG (7): http://23.235.200.9/proone-g2-0-7-slimline-filter-element.html
+2016-12-13T18:48:32+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/vestibulum-mollis-consequat-tortor/
+2016-12-13T19:07:04+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-13T19:07:25+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-12-13T19:13:32+00:00 DEBUG (7): 
+2016-12-13T19:13:43+00:00 DEBUG (7): 
+2016-12-13T19:13:57+00:00 DEBUG (7): 
+2016-12-13T19:15:18+00:00 DEBUG (7): 
+2016-12-13T19:15:45+00:00 DEBUG (7): 
+2016-12-13T19:15:50+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-13T19:15:54+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-12-13T19:25:19+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-12-13T19:40:51+00:00 DEBUG (7): 
+2016-12-13T19:54:00+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/15/vestibulum-mollis-consequat-tortor/
+2016-12-13T20:46:44+00:00 DEBUG (7): http://23.235.200.9/1680-servings.html
+2016-12-13T21:28:27+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-13T21:28:38+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-13T21:28:53+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-13T21:29:13+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-12-13T22:08:45+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-13T22:25:55+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-13T22:28:20+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-13T22:28:41+00:00 DEBUG (7): http://23.235.200.9/defender-nutritive-pack-triple.html
+2016-12-13T22:28:56+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-13T22:38:15+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-13T23:35:05+00:00 DEBUG (7): http://23.235.200.9/proone-g2-0-7-slimline-filter-element/reviews/
+2016-12-13T23:37:04+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yOC8jcmV2aWV3LWZvcm0,/
+2016-12-14T02:08:13+00:00 DEBUG (7): 
+2016-12-14T02:08:16+00:00 DEBUG (7): http://23.235.200.9/proone-g2-0-7-slimline-filter-element-2.html
+2016-12-14T02:20:08+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzI4LyNyZXZpZXctZm9ybQ,,/
+2016-12-14T03:19:17+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yOS8jcmV2aWV3LWZvcm0,/
+2016-12-14T03:22:18+00:00 DEBUG (7): http://23.235.200.9/proone-g2-0-7-slimline-filter-element-2/reviews/
+2016-12-14T04:07:27+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9yZXZpZXcvcHJvZHVjdC9saXN0L2lkLzI5LyNyZXZpZXctZm9ybQ,,/
+2016-12-14T05:46:55+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/
+2016-12-14T05:47:07+00:00 DEBUG (7): 
+2016-12-14T05:47:08+00:00 DEBUG (7): 
+2016-12-14T05:47:10+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-14T05:47:12+00:00 DEBUG (7): 
+2016-12-14T08:40:42+00:00 DEBUG (7): 
+2016-12-14T11:03:04+00:00 DEBUG (7): http://23.235.200.9/hormone-free-usda-non-fat-milk-powder-6-pack.html
+2016-12-14T11:10:06+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zNi8jcmV2aWV3LWZvcm0,/
+2016-12-14T15:51:23+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-14T16:00:13+00:00 DEBUG (7): 
+2016-12-14T16:12:34+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-14T16:32:13+00:00 DEBUG (7): 
+2016-12-14T16:32:14+00:00 DEBUG (7): http://23.235.200.9/premium-organic-milk-powder-40-serving-pouch.html
+2016-12-14T16:40:54+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zNC8jcmV2aWV3LWZvcm0,/
+2016-12-14T17:16:10+00:00 DEBUG (7): http://23.235.200.9/propur-water-pitcher.html
+2016-12-14T18:01:38+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-14T18:10:03+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-14T18:10:03+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-14T18:35:35+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-12-14T18:36:59+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-14T18:37:00+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-14T18:37:05+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-12-14T18:39:03+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-12-14T18:47:29+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-12-14T19:36:30+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-12-14T19:37:18+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-12-14T19:38:56+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-12-14T19:38:56+00:00 DEBUG (7): 
+2016-12-14T19:39:19+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-12-14T19:39:40+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-12-14T19:40:12+00:00 DEBUG (7): http://23.235.200.9/products/convenience-packs.html
+2016-12-14T19:41:58+00:00 DEBUG (7): http://23.235.200.9/products/convenience-packs.html
+2016-12-14T19:42:31+00:00 DEBUG (7): http://23.235.200.9/products/convenience-packs.html
+2016-12-14T19:43:34+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-14T19:44:42+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-14T19:44:49+00:00 DEBUG (7): http://23.235.200.9/caravan-package.html
+2016-12-14T19:45:43+00:00 DEBUG (7): http://23.235.200.9/products/defender-packs.html
+2016-12-14T19:46:27+00:00 DEBUG (7): http://23.235.200.9/products/defender-packs.html
+2016-12-14T19:47:00+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-14T19:49:08+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-14T19:49:15+00:00 DEBUG (7): http://23.235.200.9/family-bug-in-package.html
+2016-12-14T19:51:48+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-14T19:51:50+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-14T19:51:54+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-12-14T19:52:07+00:00 DEBUG (7): http://23.235.200.9/no-gluten-756-servings.html
+2016-12-14T19:52:11+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-12-14T19:52:30+00:00 DEBUG (7): http://23.235.200.9/products/milk.html
+2016-12-14T19:53:30+00:00 DEBUG (7): http://23.235.200.9/products/milk.html
+2016-12-14T19:53:52+00:00 DEBUG (7): http://23.235.200.9/products/milk.html
+2016-12-14T19:56:03+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-14T19:59:31+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-14T20:01:32+00:00 DEBUG (7): http://23.235.200.9/contacts/
+2016-12-14T20:09:57+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-14T20:13:40+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-14T20:32:29+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-14T20:32:50+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-14T20:33:18+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-14T20:33:55+00:00 DEBUG (7): http://23.235.200.9/organic-freeze-dried-chicken-breast.html
+2016-12-14T20:34:05+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-14T20:34:15+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-14T20:35:13+00:00 DEBUG (7): http://23.235.200.9/refund-policy
+2016-12-14T20:39:07+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-14T20:41:35+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-14T20:41:43+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-14T20:42:05+00:00 DEBUG (7): http://23.235.200.9/blog
+2016-12-14T20:42:18+00:00 DEBUG (7): http://23.235.200.9/affiliates
+2016-12-14T20:42:25+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-12-14T20:42:34+00:00 DEBUG (7): http://23.235.200.9/affiliates
+2016-12-14T20:46:04+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-14T20:46:50+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-14T20:48:03+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-14T20:52:09+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-14T20:52:19+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-14T20:54:37+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-14T20:55:32+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-14T20:56:31+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-14T21:08:44+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-14T21:08:48+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-14T21:16:24+00:00 DEBUG (7): 
+2016-12-14T21:26:32+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-14T21:26:48+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-14T21:27:12+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-14T21:27:45+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-14T21:29:04+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-14T21:29:09+00:00 DEBUG (7): 
+2016-12-14T21:31:04+00:00 DEBUG (7): http://23.235.200.9/products/no-gluten.html
+2016-12-14T21:47:53+00:00 DEBUG (7): http://23.235.200.9/mega-pack.html
+2016-12-14T21:55:54+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xMC9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-14T22:17:03+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-14T22:25:33+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-14T22:31:14+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-14T22:31:27+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-14T23:01:39+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-14T23:02:04+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-14T23:02:11+00:00 DEBUG (7): http://23.235.200.9/3-pack-of-premium-organic-milk-powder-40-serving-pouch.html
+2016-12-14T23:32:59+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-14T23:33:42+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-14T23:33:54+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-14T23:35:06+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-14T23:35:21+00:00 DEBUG (7): http://23.235.200.9/organic-family-pack.html
+2016-12-14T23:36:11+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-14T23:36:23+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-12-14T23:36:38+00:00 DEBUG (7): http://23.235.200.9/terms-of-use
+2016-12-14T23:36:52+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-12-14T23:37:13+00:00 DEBUG (7): http://23.235.200.9/privacy-policy
+2016-12-15T02:41:35+00:00 DEBUG (7): 
+2016-12-15T02:41:37+00:00 DEBUG (7): 
+2016-12-15T02:41:38+00:00 DEBUG (7): 
+2016-12-15T02:41:40+00:00 DEBUG (7): 
+2016-12-15T02:41:41+00:00 DEBUG (7): 
+2016-12-15T02:44:24+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T03:03:30+00:00 DEBUG (7): http://23.235.200.9/family-bug-in-package.html
+2016-12-15T03:28:50+00:00 DEBUG (7): http://23.235.200.9/3-pack-of-premium-organic-milk-powder-40-serving-pouch.html
+2016-12-15T03:47:55+00:00 DEBUG (7): http://23.235.200.9/100-cases.html
+2016-12-15T03:58:30+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T03:58:35+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yNy9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-15T05:28:45+00:00 DEBUG (7): 
+2016-12-15T08:49:55+00:00 DEBUG (7): http://23.235.200.9/grab-n-go-triple.html
+2016-12-15T09:32:57+00:00 DEBUG (7): 
+2016-12-15T09:32:58+00:00 DEBUG (7): http://23.235.200.9/grab-n-go.html
+2016-12-15T09:39:01+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC83L2NhdGVnb3J5LzMvI3Jldmlldy1mb3Jt/
+2016-12-15T11:29:53+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T13:48:42+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T13:54:49+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T13:55:05+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T14:22:44+00:00 DEBUG (7): http://23.235.200.9/terms-of-use
+2016-12-15T14:37:12+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T14:47:28+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T14:58:00+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T14:58:00+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T15:12:58+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T15:16:07+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-15T15:17:31+00:00 DEBUG (7): http://23.235.200.9/affiliates
+2016-12-15T15:20:03+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T15:22:11+00:00 DEBUG (7): http://23.235.200.9/affiliates
+2016-12-15T15:22:38+00:00 DEBUG (7): http://23.235.200.9/affiliates
+2016-12-15T15:23:25+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-12-15T15:29:43+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-15T16:10:05+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T16:13:36+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-15T16:16:04+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T16:17:14+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T16:18:18+00:00 DEBUG (7): http://23.235.200.9/superfoods
+2016-12-15T16:18:33+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T16:18:39+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-15T16:29:53+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-12-15T16:30:03+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-15T16:30:13+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T18:05:22+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-15T18:05:42+00:00 DEBUG (7): http://23.235.200.9/the-new-aqua-pail-from-numanna-83.html
+2016-12-15T18:07:00+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-15T18:07:06+00:00 DEBUG (7): http://23.235.200.9/duraflo-water-filter-replacement.html
+2016-12-15T18:23:00+00:00 DEBUG (7): http://23.235.200.9/sample-pack.html
+2016-12-15T18:29:27+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zMS9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-15T18:32:16+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-15T18:32:56+00:00 DEBUG (7): http://23.235.200.9/family-pack.html
+2016-12-15T18:34:38+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-15T18:43:50+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-15T18:44:01+00:00 DEBUG (7): http://23.235.200.9/family-pack.html
+2016-12-15T18:47:56+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-15T18:51:10+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T18:51:38+00:00 DEBUG (7): http://23.235.200.9/products/water-purifiers.html
+2016-12-15T18:51:55+00:00 DEBUG (7): http://23.235.200.9/products/water-purifiers.html?p=2
+2016-12-15T18:51:58+00:00 DEBUG (7): http://23.235.200.9/products/water-purifiers.html
+2016-12-15T18:52:04+00:00 DEBUG (7): http://23.235.200.9/the-new-aqua-pail-from-numanna-83.html
+2016-12-15T19:02:44+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T20:08:59+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-15T20:12:12+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-12-15T20:12:19+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-15T20:12:43+00:00 DEBUG (7): http://23.235.200.9/affiliates
+2016-12-15T20:12:54+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-12-15T20:16:01+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T20:16:42+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-15T20:16:47+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-15T20:18:10+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T20:18:18+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T20:18:50+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-15T20:18:57+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T20:19:29+00:00 DEBUG (7): http://23.235.200.9/testimonials
+2016-12-15T20:19:58+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T20:22:28+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-15T21:55:33+00:00 DEBUG (7): http://23.235.200.9/organic-family-pack.html
+2016-12-15T21:55:34+00:00 DEBUG (7): http://23.235.200.9/organic-family-pack.html
+2016-12-15T22:27:50+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-15T22:28:19+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-15T23:13:02+00:00 DEBUG (7): 
+2016-12-15T23:13:04+00:00 DEBUG (7): http://23.235.200.9/family-pack.html
+2016-12-15T23:18:58+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC81L2NhdGVnb3J5LzMvI3Jldmlldy1mb3Jt/
+2016-12-16T00:23:43+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T01:48:23+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-16T04:18:19+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T04:18:42+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-12-16T04:18:53+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-16T04:19:00+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-12-16T04:19:07+00:00 DEBUG (7): http://23.235.200.9/affiliates
+2016-12-16T04:19:18+00:00 DEBUG (7): http://23.235.200.9/refund-policy
+2016-12-16T04:19:32+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-16T04:22:57+00:00 DEBUG (7): http://23.235.200.9/power-iodine.html
+2016-12-16T04:28:29+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zMi9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-16T05:01:32+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T06:26:45+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T06:27:32+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T07:56:39+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T09:28:29+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T10:27:19+00:00 DEBUG (7): 
+2016-12-16T10:27:21+00:00 DEBUG (7): http://23.235.200.9/triple-combo.html
+2016-12-16T10:33:08+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xMy9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-16T10:49:40+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T11:02:32+00:00 DEBUG (7): 
+2016-12-16T12:56:11+00:00 DEBUG (7): 
+2016-12-16T12:56:13+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T13:28:29+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T13:36:51+00:00 DEBUG (7): http://23.235.200.9/affiliates
+2016-12-16T14:47:41+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T15:36:19+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T16:16:36+00:00 DEBUG (7): http://23.235.200.9/1680-servings.html
+2016-12-16T16:19:47+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xMi9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-16T17:06:00+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T17:20:23+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T17:26:49+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T17:29:13+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-12-16T17:29:20+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-12-16T17:29:24+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-16T17:30:13+00:00 DEBUG (7): http://23.235.200.9/organic-family-pack.html
+2016-12-16T19:10:52+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T19:22:21+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T20:04:23+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T21:55:32+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T22:06:30+00:00 DEBUG (7): http://23.235.200.9/5040-servings.html
+2016-12-16T22:10:19+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T22:14:10+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-16T22:14:53+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-16T22:15:10+00:00 DEBUG (7): http://23.235.200.9/organic-family-pack.html
+2016-12-16T22:15:23+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-16T22:15:42+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-16T22:15:47+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-12-16T22:15:58+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-16T22:27:18+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xOC9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-17T01:10:09+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-17T02:11:37+00:00 DEBUG (7): 
+2016-12-17T03:13:17+00:00 DEBUG (7): 
+2016-12-17T03:15:46+00:00 DEBUG (7): 
+2016-12-17T03:28:06+00:00 DEBUG (7): 
+2016-12-17T03:28:08+00:00 DEBUG (7): http://23.235.200.9/3-pack-of-premium-organic-milk-powder-40-serving-pouch.html
+2016-12-17T03:33:30+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zMy8jcmV2aWV3LWZvcm0,/
+2016-12-17T04:08:39+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-17T05:03:52+00:00 DEBUG (7): 
+2016-12-17T06:20:04+00:00 DEBUG (7): 
+2016-12-17T07:00:37+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-17T08:55:09+00:00 DEBUG (7): http://23.235.200.9/1680-servings.html
+2016-12-17T08:56:17+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-17T09:01:47+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-17T09:37:59+00:00 DEBUG (7): http://23.235.200.9/3360-servings.html
+2016-12-17T09:44:27+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xNy9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-17T12:50:47+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-17T13:31:37+00:00 DEBUG (7): http://23.235.200.9/propur-nomad-water-filter.html
+2016-12-17T13:52:39+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-17T15:14:11+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-17T15:14:15+00:00 DEBUG (7): 
+2016-12-17T15:33:27+00:00 DEBUG (7): http://23.235.200.9/grab-n-go.html
+2016-12-17T15:52:58+00:00 DEBUG (7): 
+2016-12-17T15:52:59+00:00 DEBUG (7): http://23.235.200.9/hormone-free-usda-non-fat-milk-powder-40-serving-pouch.html
+2016-12-17T15:58:43+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8zNS8jcmV2aWV3LWZvcm0,/
+2016-12-17T17:24:47+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-17T18:40:47+00:00 DEBUG (7): http://23.235.200.9/sample-pack.html
+2016-12-17T18:41:09+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-17T19:26:07+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-17T19:47:06+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-17T19:51:30+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-17T19:51:51+00:00 DEBUG (7): http://23.235.200.9/caravan-package.html
+2016-12-17T19:52:14+00:00 DEBUG (7): http://23.235.200.9/products/general.html?limit=36
+2016-12-17T19:52:52+00:00 DEBUG (7): http://23.235.200.9/homesteader-package.html
+2016-12-17T19:53:38+00:00 DEBUG (7): http://23.235.200.9/products/general.html?limit=24
+2016-12-17T19:53:42+00:00 DEBUG (7): http://23.235.200.9/family-bug-in-package.html
+2016-12-17T19:54:49+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-17T19:55:54+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xNC9jYXRlZ29yeS8xOS8jcmV2aWV3LWZvcm0,/
+2016-12-17T19:55:57+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xOS9jYXRlZ29yeS8xOS8jcmV2aWV3LWZvcm0,/
+2016-12-17T19:56:04+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yMC9jYXRlZ29yeS8xOS8jcmV2aWV3LWZvcm0,/
+2016-12-17T19:58:06+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-17T20:09:34+00:00 DEBUG (7): 
+2016-12-17T20:21:04+00:00 DEBUG (7): 
+2016-12-17T20:21:09+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-17T20:21:12+00:00 DEBUG (7): 
+2016-12-17T20:21:13+00:00 DEBUG (7): 
+2016-12-17T20:21:14+00:00 DEBUG (7): 
+2016-12-17T22:16:36+00:00 DEBUG (7): http://23.235.200.9/defender-dozen.html
+2016-12-17T22:18:57+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xNi9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-18T04:33:08+00:00 DEBUG (7): 
+2016-12-18T05:48:12+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-18T07:03:52+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-18T09:31:03+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-18T09:58:03+00:00 DEBUG (7): http://23.235.200.9/caravan-package.html
+2016-12-18T10:03:35+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8yMC9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-18T12:32:00+00:00 DEBUG (7): http://23.235.200.9/contacts
+2016-12-18T16:03:13+00:00 DEBUG (7): http://23.235.200.9/grab-n-go-triple.html
+2016-12-18T16:08:10+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC85L2NhdGVnb3J5LzMvI3Jldmlldy1mb3Jt/
+2016-12-18T16:34:25+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-18T18:41:46+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-18T20:51:09+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-18T21:43:10+00:00 DEBUG (7): 
+2016-12-18T21:43:11+00:00 DEBUG (7): http://23.235.200.9/triple-family-pack.html
+2016-12-18T21:45:00+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-18T21:48:30+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC84L2NhdGVnb3J5LzMvI3Jldmlldy1mb3Jt/
+2016-12-18T22:31:11+00:00 DEBUG (7): http://23.235.200.9/products/general.html
+2016-12-19T00:58:59+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T02:15:09+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T02:52:55+00:00 DEBUG (7): http://23.235.200.9/testimonials
+2016-12-19T03:52:50+00:00 DEBUG (7): 
+2016-12-19T03:52:50+00:00 DEBUG (7): 
+2016-12-19T03:52:50+00:00 DEBUG (7): 
+2016-12-19T03:52:50+00:00 DEBUG (7): 
+2016-12-19T03:52:50+00:00 DEBUG (7): 
+2016-12-19T03:52:50+00:00 DEBUG (7): 
+2016-12-19T03:52:50+00:00 DEBUG (7): 
+2016-12-19T03:52:50+00:00 DEBUG (7): 
+2016-12-19T03:58:04+00:00 DEBUG (7): http://23.235.200.9/homesteader-package.html
+2016-12-19T04:03:15+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/referer/aHR0cDovLzIzLjIzNS4yMDAuOS9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xOS9jYXRlZ29yeS8zLyNyZXZpZXctZm9ybQ,,/
+2016-12-19T04:29:10+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T04:47:29+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T04:48:39+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-12-19T04:48:40+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-12-19T04:53:42+00:00 DEBUG (7): http://23.235.200.9/refund-policy
+2016-12-19T09:48:13+00:00 DEBUG (7): 
+2016-12-19T09:48:13+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T12:42:13+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T12:55:10+00:00 DEBUG (7): http://23.235.200.9/contacts
+2016-12-19T13:01:02+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T13:15:11+00:00 DEBUG (7): http://23.235.200.9/family-bug-in-package.html
+2016-12-19T13:15:26+00:00 DEBUG (7): http://23.235.200.9/family-bug-in-package.html
+2016-12-19T14:40:12+00:00 DEBUG (7): 
+2016-12-19T14:40:14+00:00 DEBUG (7): 
+2016-12-19T14:40:16+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T14:40:19+00:00 DEBUG (7): 
+2016-12-19T15:10:19+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T15:40:08+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T15:40:34+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-12-19T15:40:49+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-12-19T15:40:54+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-19T15:41:02+00:00 DEBUG (7): http://23.235.200.9/refund-policy
+2016-12-19T15:42:42+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T15:42:49+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-19T15:43:01+00:00 DEBUG (7): http://23.235.200.9/organic-family-pack.html
+2016-12-19T15:44:14+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-19T15:44:27+00:00 DEBUG (7): http://23.235.200.9/organic-family-pack.html
+2016-12-19T19:09:10+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T19:09:12+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T19:55:07+00:00 DEBUG (7): http://23.235.200.9/contacts/
+2016-12-19T20:15:30+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T22:15:17+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T22:15:47+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-19T22:16:44+00:00 DEBUG (7): http://23.235.200.9/faq
+2016-12-19T22:16:51+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T22:17:35+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-19T23:14:55+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T23:15:11+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T23:17:13+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-19T23:17:49+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-19T23:42:29+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T23:42:36+00:00 DEBUG (7): http://23.235.200.9/testimonials
+2016-12-19T23:49:22+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-19T23:49:28+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-12-19T23:50:14+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-19T23:50:19+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-19T23:51:35+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-12-19T23:58:58+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-20T00:02:20+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-20T00:03:19+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-20T00:03:47+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-20T00:03:52+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-12-20T01:05:52+00:00 DEBUG (7): 
+2016-12-20T02:58:46+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-20T03:34:23+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-20T04:15:26+00:00 DEBUG (7): http://23.235.200.9/hormone-free-usda-non-fat-milk-powder-40-serving-pouch.html
+2016-12-20T04:37:44+00:00 DEBUG (7): 
+2016-12-20T05:03:16+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-20T08:36:25+00:00 DEBUG (7): 
+2016-12-20T11:46:00+00:00 DEBUG (7): http://23.235.200.9/products/defender-packs.html
+2016-12-20T11:57:12+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-20T12:08:35+00:00 DEBUG (7): 
+2016-12-20T12:08:37+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-20T12:08:39+00:00 DEBUG (7): 
+2016-12-20T12:08:41+00:00 DEBUG (7): 
+2016-12-20T12:08:43+00:00 DEBUG (7): 
+2016-12-20T12:08:44+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-20T12:08:46+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-20T15:19:28+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-20T15:25:35+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-20T15:25:45+00:00 DEBUG (7): http://23.235.200.9/contacts/
+2016-12-20T15:26:36+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-12-20T15:26:46+00:00 DEBUG (7): 
+2016-12-20T15:26:56+00:00 DEBUG (7): http://23.235.200.9/aitcheckout/checkout/
+2016-12-20T15:29:34+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-20T17:25:44+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-20T17:25:55+00:00 DEBUG (7): http://23.235.200.9/resellers
+2016-12-20T17:25:59+00:00 DEBUG (7): http://23.235.200.9/blog/
+2016-12-20T17:26:09+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-20T17:53:02+00:00 DEBUG (7): http://23.235.200.9/no-gluten-family-pack.html
+2016-12-20T18:26:30+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-20T18:28:08+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-21T06:23:24+00:00 DEBUG (7): http://23.235.200.9/contacts/
+2016-12-21T10:06:25+00:00 DEBUG (7): 
+2016-12-21T10:06:27+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-21T10:06:52+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-21T10:40:01+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-21T12:23:25+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-21T15:11:06+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-21T15:54:35+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-21T16:05:49+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-21T18:30:25+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-21T19:33:34+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-21T19:44:25+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-21T20:23:17+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-21T23:15:55+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-22T03:25:16+00:00 DEBUG (7): 
+2016-12-22T03:25:18+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-22T04:05:37+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-22T05:11:45+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-22T06:07:59+00:00 DEBUG (7): http://23.235.200.9/no-gluten-family-pack.html
+2016-12-22T11:41:23+00:00 DEBUG (7): 
+2016-12-22T11:42:20+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-22T12:05:00+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-22T15:36:32+00:00 DEBUG (7): 
+2016-12-22T17:21:21+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-22T22:52:36+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-22T23:05:47+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-23T01:35:06+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-23T02:51:26+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-23T02:51:28+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-23T05:53:03+00:00 DEBUG (7): 
+2016-12-23T08:21:13+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-23T08:55:38+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-23T09:55:50+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-23T09:56:07+00:00 DEBUG (7): 
+2016-12-23T12:00:20+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-23T12:00:22+00:00 DEBUG (7): 
+2016-12-23T12:00:23+00:00 DEBUG (7): 
+2016-12-23T12:20:56+00:00 DEBUG (7): 
+2016-12-23T12:20:57+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-23T14:58:36+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-23T15:18:27+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-23T17:36:07+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-23T17:36:09+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-23T18:25:20+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-23T19:44:54+00:00 DEBUG (7): 
+2016-12-23T19:44:56+00:00 DEBUG (7): 
+2016-12-23T19:44:57+00:00 DEBUG (7): 
+2016-12-23T19:44:58+00:00 DEBUG (7): 
+2016-12-23T19:44:59+00:00 DEBUG (7): 
+2016-12-23T19:45:01+00:00 DEBUG (7): 
+2016-12-23T19:45:02+00:00 DEBUG (7): 
+2016-12-23T20:09:01+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-23T20:39:29+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-23T21:22:51+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-23T21:59:22+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-23T23:47:41+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-23T23:47:56+00:00 DEBUG (7): 
+2016-12-24T01:42:31+00:00 DEBUG (7): 
+2016-12-24T01:42:32+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-24T04:01:48+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-24T04:01:50+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-24T04:24:15+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-24T04:24:58+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-24T04:25:00+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-24T04:48:18+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-24T04:48:19+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-24T07:46:37+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-24T08:42:39+00:00 DEBUG (7): http://23.235.200.9/products/water-purifiers.html
+2016-12-24T08:59:21+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-24T13:55:54+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-24T16:32:19+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-24T17:39:18+00:00 DEBUG (7): http://23.235.200.9/blog
+2016-12-24T18:24:28+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-24T18:24:39+00:00 DEBUG (7): 
+2016-12-24T18:41:48+00:00 DEBUG (7): 
+2016-12-24T18:41:50+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-24T20:03:17+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-24T20:59:10+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-25T00:44:21+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-25T00:44:23+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-25T00:44:40+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-25T2016-12-26T11:02:12+00:00 DEBUG (7): 
+2016-12-26T11:02:13+00:00 DEBUG (7): 
+2016-12-26T11:02:15+00:00 DEBUG (7): 
+2016-12-26T11:02:16+00:00 DEBUG (7): 
+2016-12-26T11:02:17+00:00 DEBUG (7): 
+2016-12-26T11:02:19+00:00 DEBUG (7): 
+2016-12-26T11:02:20+00:00 DEBUG (7): 
+2016-12-26T11:02:21+00:00 DEBUG (7): 
+2016-12-26T11:02:23+00:00 DEBUG (7): 
+2016-12-26T11:02:24+00:00 DEBUG (7): 
+2016-12-26T11:02:25+00:00 DEBUG (7): 
+2016-12-26T11:02:27+00:00 DEBUG (7): 
+2016-12-26T11:02:28+00:00 DEBUG (7): 
+2016-12-26T11:02:29+00:00 DEBUG (7): 
+2016-12-26T11:02:31+00:00 DEBUG (7): 
+2016-12-26T11:02:32+00:00 DEBUG (7): 
+2016-12-26T11:02:33+00:00 DEBUG (7): 
+2016-12-26T11:02:35+00:00 DEBUG (7): 
+2016-12-26T11:02:36+00:00 DEBUG (7): 
+2016-12-26T11:02:38+00:00 DEBUG (7): 
+2016-12-26T11:02:39+00:00 DEBUG (7): 
+2016-12-26T11:50:34+00:00 DEBUG (7): 
+2016-12-26T11:50:36+00:00 DEBUG (7): http://23.235.200.9/blog/2016/09/
+2016-12-26T13:17:15+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-26T14:41:51+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-26T14:48:34+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-26T14:50:56+00:00 DEBUG (7): http://23.235.200.9/products/defender-packs.html
+2016-12-26T15:37:24+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-26T19:03:24+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-26T19:26:56+00:00 DEBUG (7): http://23.235.200.9/hormone-free-usda-non-fat-milk-powder-40-serving-pouch.html
+2016-12-27T01:07:03+00:00 DEBUG (7): http://23.235.200.9/about-us
+2016-12-27T04:03:04+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-27T04:03:06+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-27T10:40:07+00:00 DEBUG (7): 
+2016-12-27T10:40:18+00:00 DEBUG (7): 
+2016-12-27T15:05:55+00:00 DEBUG (7): http://23.235.200.9/products/family-packs.html
+2016-12-27T21:28:47+00:00 DEBUG (7): http://23.235.200.9/hormone-free-usda-non-fat-milk-powder-40-serving-pouch.html
+2016-12-27T23:09:26+00:00 DEBUG (7): 
+2016-12-28T01:11:40+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T01:35:08+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T01:42:58+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T04:03:09+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T04:03:11+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T05:22:41+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T05:48:12+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T07:24:11+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T07:28:20+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T07:28:55+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T08:10:11+00:00 DEBUG (7): http://23.235.200.9/products.html
+2016-12-28T08:21:13+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T08:21:31+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T09:29:44+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T09:30:20+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T09:31:01+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T10:10:03+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T10:10:05+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T10:10:06+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T10:22:56+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T10:28:39+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T10:29:15+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T10:54:52+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T11:28:54+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T11:29:18+00:00 DEBUG (7): 
+2016-12-28T11:29:19+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T11:29:31+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T12:25:28+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T12:25:56+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T13:26:35+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T13:27:07+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T14:30:17+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T14:30:57+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T15:29:56+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T15:30:40+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T16:23:55+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T16:38:16+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-28T17:24:41+00:00 DEBUG (7): http://23.235.200.9/
+202016-12-29T21:22:43+00:00 DEBUG (7): 
+2016-12-29T21:22:45+00:00 DEBUG (7): 
+2016-12-29T21:22:47+00:00 DEBUG (7): 
+2016-12-29T21:22:49+00:00 DEBUG (7): 
+2016-12-29T21:22:52+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-29T21:22:54+00:00 DEBUG (7): 
+2016-12-29T21:22:56+00:00 DEBUG (7): 
+2016-12-29T21:22:58+00:00 DEBUG (7): 
+2016-12-29T21:28:24+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-29T21:29:00+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-29T22:11:05+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-29T22:26:27+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-29T22:26:57+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-29T22:40:25+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-29T23:16:31+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-29T23:17:13+00:00 DEBUG (7): http://23.235.200.9/the-new-aqua-pail-from-numanna-83.html
+2016-12-29T23:18:18+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-29T23:26:07+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-29T23:26:37+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T00:23:05+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T00:23:27+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T01:27:20+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T01:27:52+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T02:20:50+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T02:21:08+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T02:34:36+00:00 DEBUG (7): 
+2016-12-30T03:31:18+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T03:31:59+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T03:54:35+00:00 DEBUG (7): 
+2016-12-30T03:54:35+00:00 DEBUG (7): 
+2016-12-30T03:54:35+00:00 DEBUG (7): 
+2016-12-30T03:54:35+00:00 DEBUG (7): 
+2016-12-30T03:54:35+00:00 DEBUG (7): 
+2016-12-30T03:54:35+00:00 DEBUG (7): 
+2016-12-30T03:54:35+00:00 DEBUG (7): 
+2016-12-30T03:54:35+00:00 DEBUG (7): 
+2016-12-30T04:01:51+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T04:01:53+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T04:23:00+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T04:23:23+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T04:38:13+00:00 DEBUG (7): 
+2016-12-30T05:25:35+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T05:26:00+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T06:25:03+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T06:25:31+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T06:49:17+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T07:11:15+00:00 DEBUG (7): http://23.235.200.9/organic
+2016-12-30T07:13:17+00:00 DEBUG (7): 
+2016-12-30T07:13:19+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T07:27:42+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T07:28:17+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T08:21:43+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T08:21:52+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T08:38:33+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T09:28:06+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T09:28:45+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T09:39:52+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T10:06:50+00:00 DEBUG (7): http://23.235.200.9/products/defender-packs.html
+2016-12-30T10:22:11+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T10:22:31+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T11:28:58+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T11:29:33+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T12:07:44+00:00 DEBUG (7): http://23.235.200.9/products/organic.html
+2016-12-30T12:25:53+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T12:26:22+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T13:25:57+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T13:26:26+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T14:20:37+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T14:20:56+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T15:29:39+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T15:30:19+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T16:24:08+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T16:24:32+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T16:45:44+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T17:26:06+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-30T12016-12-31T20:22:07+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-31T20:22:27+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-31T21:21:42+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-31T21:22:02+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-31T22:21:28+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-31T22:21:47+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-31T23:26:42+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-31T23:27:14+00:00 DEBUG (7): http://23.235.200.9/
+2016-12-31T23:37:00+00:00 DEBUG (7): 
+2016-12-31T23:54:00+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T00:23:42+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T00:24:07+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T01:27:26+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T01:28:00+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T02:20:37+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T02:20:55+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T03:30:27+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T03:31:09+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T03:31:19+00:00 DEBUG (7): 
+2017-01-01T04:01:50+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T04:01:51+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T04:22:47+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T04:23:10+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T05:13:01+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T05:18:46+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T05:26:43+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T05:27:09+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T05:41:14+00:00 DEBUG (7): http://23.235.200.9/customer/account/login/
+2017-01-01T06:24:38+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T06:25:06+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T07:27:24+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T07:27:57+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T07:54:21+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T08:21:30+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T08:21:48+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T09:28:14+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T09:28:49+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T09:58:36+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T10:08:54+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T10:21:19+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T10:21:57+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T11:29:53+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T11:30:32+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T12:14:56+00:00 DEBUG (7): 
+2017-01-01T12:14:58+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T12:24:21+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T12:24:47+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T13:26:13+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T13:26:44+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T14:20:14+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T14:20:30+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T15:28:16+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T15:29:41+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T15:30:20+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T16:24:16+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T16:24:42+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T17:27:24+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T17:27:53+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T18:56:25+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T19:26:58+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T19:27:31+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T20:28:29+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T20:29:06+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T21:08:43+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T21:08:45+00:00 DEBUG (7): 
+2017-01-01T21:08:47+00:00 DEBUG (7): 
+2017-01-01T21:28:46+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T21:29:21+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T22:21:19+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T22:21:38+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T23:26:47+00:00 DEBUG (7): http://23.235.200.9/
+2017-01-01T23:27:20+00:00 DEBUG (7): http://23.235.200.

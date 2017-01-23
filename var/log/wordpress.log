@@ -86,3 +86,12 @@ Stack trace:
 #4 /home/numannadev/public_html/app/Mage.php(684): Mage_Core_Model_App->run(Array)
 #5 /home/numannadev/public_html/index.php(83): Mage::run('', 'store')
 #6 {main}
+2016-12-13T19:08:03+00:00 DEBUG (7): exception 'Exception' with message 'WordPress Admin details not set.' in /home/numannadev/public_html/app/code/community/Fishpig/Wordpress/controllers/Adminhtml/WordpressController.php:31
+Stack trace:
+#0 /home/numannadev/public_html/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Fishpig_Wordpress_Adminhtml_WordpressController->loginAction()
+#1 /home/numannadev/public_html/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('login')
+#2 /home/numannadev/public_html/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#3 /home/numannadev/public_html/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#4 /home/numannadev/public_html/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#5 /home/numannadev/public_html/index.php(83): Mage::run('', 'store')
+#6 {main}
