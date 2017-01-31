@@ -43,12 +43,12 @@ $blockpars = $block->getWidgetParameters();
 
 /**** slider ****/
 
-#slider, ul
+#slider-testimonials ul
 {
   height: 200px;
 }
 
-#slider
+#slider-testimonials
 {
   margin: auto;
   overflow: hidden;
@@ -58,7 +58,7 @@ $blockpars = $block->getWidgetParameters();
   width: 525px;
 }
 
-#slider li
+#slider-testimonials li
 {
   float: left;
   position: relative;
@@ -67,7 +67,7 @@ $blockpars = $block->getWidgetParameters();
   height: 200px;
 }
 
-#slider ul
+#slider-testimonials ul
 {
   list-style: none;
   position: absolute;
@@ -126,14 +126,14 @@ $blockpars = $block->getWidgetParameters();
   100% {left:0px; opacity:0;}
 }
 
-#slider ul
+#slider-testimonials ul
 {
   -webkit-animation: slide-animation 25s infinite;
 }
 
 /* use to paused the content on mouse over */
 
-#slider ul:hover
+#slider-testimonials ul:hover
 {
   -moz-animation-play-state: paused;
   -webkit-animation-play-state: paused;
@@ -144,7 +144,7 @@ $blockpars = $block->getWidgetParameters();
 
                 <h3>Client Testimonials</h3>
 
-<div id="slider">
+<div id="slider-testimonials">
 <ul>
   <li>
   <div class="slider-container">
