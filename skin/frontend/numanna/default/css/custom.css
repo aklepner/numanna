@@ -1,4 +1,14 @@
+.question_form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.question_form input {
+    width: 100%;
+}
 
+.question_form textarea#comment {
+    width: 100%;
+}
 
 #slider, ul.testslider
 {
