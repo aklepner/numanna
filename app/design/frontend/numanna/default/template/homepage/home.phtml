@@ -33,296 +33,159 @@ $blockpars = $block->getWidgetParameters();
 
 <div class="testimonials">
 
-<script type="text/javascript">
 
-$(document).ready(function () {
-    //rotation speed and timer
-    var speed = 5000;
-
-    var run = setInterval(rotate, speed);
-    var slides = $('.slide');
-    var container = $('#slides ul');
-    var elm = container.find(':first-child').prop("tagName");
-    var item_width = container.width();
-    var previous = 'prev'; //id of previous button
-    var next = 'next'; //id of next button
-    slides.width(item_width); //set the slides to the correct pixel width
-    container.parent().width(item_width);
-    container.width(slides.length * item_width); //set the slides container to the correct total width
-    container.find(elm + ':first').before(container.find(elm + ':last'));
-    resetSlides();
-
-
-    //if user clicked on prev button
-
-    $('#buttons a').click(function (e) {
-        //slide the item
-
-        if (container.is(':animated')) {
-            return false;
-        }
-        if (e.target.id == previous) {
-            container.stop().animate({
-                'left': 0
-            }, 1500, function () {
-                container.find(elm + ':first').before(container.find(elm + ':last'));
-                resetSlides();
-            });
-        }
-
-        if (e.target.id == next) {
-            container.stop().animate({
-                'left': item_width * -2
-            }, 1500, function () {
-                container.find(elm + ':last').after(container.find(elm + ':first'));
-                resetSlides();
-            });
-        }
-
-        //cancel the link behavior
-        return false;
-
-    });
-
-    //if mouse hover, pause the auto rotation, otherwise rotate it
-    container.parent().mouseenter(function () {
-        clearInterval(run);
-    }).mouseleave(function () {
-        run = setInterval(rotate, speed);
-    });
-
-
-    function resetSlides() {
-        //and adjust the container so current is in the frame
-        container.css({
-            'left': -1 * item_width
-        });
-    }
-
-});
-//a simple function to click next link
-//a timer will call this function, and the rotation will begin
-
-function rotate() {
-    $('#next').click();
-}
-
-
-</script>
 
 
 <style>
 
-#carousel_testimonials_numanna {
-position: relative;
-width:60%;
-margin:0 auto;
+
+a
+{
+  text-decoration: none;
+  color: #111b47;
 }
 
-#slides {
-overflow: hidden;
-position: relative;
-width: 100%;
-height: 250px;
+a:hover
+{
+  border-bottom: 1px dashed #ED971F;
+  color: #ED971F;
 }
 
-#slides ul {
-list-style: none;
-width:100%;
-height:250px;
-margin: 0;
-padding: 0;
-position: relative;
+/**** slider ****/
+
+#slider, ul
+{
+  height: 200px;
 }
 
- #slides li {
-width:100%;
-height:250px;
-float:left;
-text-align: center;
-position: relative;
-font-family:lato, sans-serif;
-}
-/* Styling for prev and next buttons */
-.btn-bar{
-width:60%;
-margin:0 auto;
-display:block;
-position:relative;
-top:40px;
+#slider
+{
+  margin: auto;
+  overflow: hidden;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  margin-top: 50px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.25);
+  position: relative;
+  width: 600px;
 }
 
- #buttons {
-padding:0 0 5px 0;
-float:right;
+#slider li
+{
+  float: left;
+  position: relative;
+  width: 600px;
+  display: inline-block;
+  height: 200px;
 }
 
-#buttons a {
-text-align:center;
-display:block;
-font-size:50px;
-float:left;
-outline:0;
-margin:0 60px;
-color:#b14943;
-text-decoration:none;
-display:block;
-padding:9px;
-width:35px;
+#slider ul
+{
+  list-style: none;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 9000px;
+  transition: left .3s linear;
+  -moz-transition: left .3s linear;
+  -o-transition: left .3s linear;
+  -webkit-transition: left .3s linear;
+  margin-left: -25px;
+  font-family: century gothic;
+  color: #666;
 }
 
-a#prev:hover, a#next:hover {
-color:#FFF;
-text-shadow:.5px 0px #b14943;
+/*** Content ***/
+
+.slider-container
+{
+  margin: 0 auto;
+  padding: 0;
+  width: 550px;
+  min-height: 180px;
+  border-bottom: 1px solid #ccc;
 }
 
-.quote-phrase, .quote-author {
-font-family:sans-serif;
-font-weight:300;
-display: table-cell;
-vertical-align: middle;
-padding: 5px 20px;
-font-family:'Lato', Calibri, Arial, sans-serif;
+.slider-container h4
+{
+  color: #0A7FAD;
+  text-shadow: -1px 0px 0px rgba(0, 0, 0, 0.50);
 }
 
-.quote-phrase {
-height: 200px;
-font-size:24px;
-color:#FFF;
-font-style:italic;
-text-shadow:.5px 0px #b14943;
+.slider-container  p
+{
+  margin: 10px 25px;
+  font-weight: semi-bold;
+  line-height: 150%;
+  text-align: justify;
 }
 
-.quote-marks {
-font-size:30px;
-padding:0 3px 3px;
-position:inherit;
+/*** target hooks ****/
+
+@-webkit-keyframes slide-animation {
+  0% {opacity:0;}
+  2% {opacity:1;}
+  20% {left:0px; opacity:1;}
+  22.5% {opacity:0.6;}
+  25% {left:-600px; opacity:1;}
+  45% {left:-600px; opacity:1;}
+  47.5% {opacity:0.6;}
+  50% {left:-1200px; opacity:1;}
+  70% {left:-1200px; opacity:1;}
+  72.5% {opacity:0.6;}
+  75% {left:-1800px; opacity:1;}
+  95% {opacity:1;}
+  98% {left:-1800px; opacity:0;}
+  100% {left:0px; opacity:0;}
 }
 
-.quote-author {
-font-style:normal;
-font-size:20px;
-color:#b14943;
-font-weight:400;
-height: 30px;
+#slider ul
+{
+  -webkit-animation: slide-animation 25s infinite;
 }
 
-.quoteContainer, .authorContainer {
-display: table;
-width: 100%;
+/* use to paused the content on mouse over */
+
+#slider ul:hover
+{
+  -moz-animation-play-state: paused;
+  -webkit-animation-play-state: paused;
 }
+
 </style>
 
 
                 <h3>Client Testimonials</h3>
 
-<div id="carousel_testimonials_numanna">
-  <div class="btn-bar">
-    <div id="buttons"><a id="prev" href="#"><</a><a id="next" href="#">></a> </div></div>
-    <div id="slides">
-        <ul>
-      <li class="slide">
-      <div class="quoteContainer">
-      <p class="quote-phrase"><span class="quote-marks">"</span> "I have tried several different brands of storable foods and NuManna has been the best. The food looks like actual food. Although it was difficult to pick a favorite as all are delicious...makes my mouth salivate just typing about it! Thank you NuManna for making incredible food!""</p>
-      </div>
-
-      <div class="authorContainer">
-      <p class="quote-author"><strong>— Jayme, Texas</strong></p>
-      </div>
-      </li>
-      <li class="slide">
-      <div class="quoteContainer">
-      <p class="quote-phrase"><span class="quote-marks">"</span> "I really appreciate the high quality non GMO products you carry and I especially like the packaging. Very professional to say the least. I really like spicy chili and your habanero chili is the best, in my opinion. Thanks for the custom order.<br />
-      You make it so that having an emergency supply doesn't have to feel like I'm "roughing it" so thanks for that! I've had to reorder since I sometimes enjoy Numanna even in the good times...""</p>
-      </div>
-
-      <div class="authorContainer">
-      <p class="quote-author"><strong>— James, San Antonio, Lone Star State</strong></p>
-      </div>
-      </li>
-      <li class="slide">
-      <div class="quoteContainer">
-      <p class="quote-phrase"><span class="quote-marks">"</span> "I have tried all kinds of food storage...this is the best tasting food of any I've tried.""</p>
-      </div>
-
-      <div class="authorContainer">
-      <p class="quote-author"><strong>— Gayle, Springville, UT</strong></p>
-      </div>
-      </li>
-      <li class="slide">
-      <div class="quoteContainer">
-      <p class="quote-phrase"><span class="quote-marks">"</span> "I was very surprised after eating NuManna. First it tastes great. Second, most storable foods give me a bit of an uneasy feeling after eating them. I have food sensitivities. I did not experience any of the typical stomach problems for eating a dehydrated food product. NuManna is the best I have ever had.""</p>
-      </div>
-
-      <div class="authorContainer">
-      <p class="quote-author"><strong>— Tim C., California</strong></p>
-      </div>
-      </li>
-      <li class="slide">
-      <div class="quoteContainer">
-      <p class="quote-phrase"><span class="quote-marks">"</span> "This stuff is awesome. My wife has been away for a while so I ate NuManna while she was gone. It was simple and everything I had was really good. I wish NuManna was around when I bought a bunch of bulk food in the past from the Mormons. I don’t want to have all these ingredients and put them together. NuManna was simple and great tasting. I gave away all my other bulk food.""</p>
-      </div>
-
-      <div class="authorContainer">
-      <p class="quote-author"><strong>— Reagan B., Mexico</strong></p>
-      </div>
-      </li>
-      <li class="slide">
-      <div class="quoteContainer">
-      <p class="quote-phrase"><span class="quote-marks">"</span> "I host a national radio show and I have been around this industry for a long time and seen just about everything that is out there. I have never tasted storable food as good as NuManna and I’ll put my name on that. My wife and I took some of the Pasta Primavera to a church function and people couldn’t believe this was storable food. It was so creamy. The Habanero chili could win a cook-off it’s that good. NuManna is the brand we recommend because it is the best we have ever tasted and the People behind the company are first rate.""</p>
-      </div>
-
-      <div class="authorContainer">
-      <p class="quote-author"><strong>— Pastor Butch, West Virginia</strong></p>
-      </div>
-      </li>
-      <li class="slide">
-      <div class="quoteContainer">
-      <p class="quote-phrase"><span class="quote-marks">"</span> "I’ve been in search of a storable food product that would help you and your family. I’ve tested a number of products and I’ve researched a number of companies and I actually have finally come up with a company and a product line that I believe that you need to utilize to help protect yourself and your family. The name of the company is NuManna.""</p>
-      </div>
-
-      <div class="authorContainer">
-      <p class="quote-author"><strong>— Dr. Dave Janda</strong></p>
-      </div>
-      </li>
-      <li class="slide">
-      <div class="quoteContainer">
-      <p class="quote-phrase"><span class="quote-marks">"</span> "I received the sampler pack last week and was pleasantly surprised at how good the food is. The portion size was perfect for both my husband and I to try. His comment was, ‘this is actually really good tasting’. Also, the fact that this is non-gmo food is a major plus! We will definitely be ordering from you again. Thank you so much for a great product, and offering the sample packs to try.""</p>
-      </div>
-
-      <div class="authorContainer">
-      <p class="quote-author"><strong>— Sherrie S.</strong></p>
-      </div>
-      </li>
-      <li class="slide">
-      <div class="quoteContainer">
-      <p class="quote-phrase"><span class="quote-marks">"</span> "I have done a lot of research over the past 5 to 6 months. I keep coming back to your brand and business model time after time when comparing to other survival foods. I look forward to receiving your products soon. Cheers.""</p>
-      </div>
-
-      <div class="authorContainer">
-      <p class="quote-author"><strong>— David W.</strong></p>
-      </div>
-      </li>
-      <li class="slide">
-      <div class="quoteContainer">
-      <p class="quote-phrase"><span class="quote-marks">"</span> "I believe that this is one of the best investments that you can make for your family to be prepared for what ever the future might hold. Remember… you can’t eat gold, but you can eat NuManna Food Storage during a time of crisis.""</p>
-      </div>
-
-      <div class="authorContainer">
-      <p class="quote-author"><strong>— Joyce Riley host of The Power Hour</strong></p>
-      </div>
-      </li>
-      <li class="slide">
-      <div class="quoteContainer">
-      <p class="quote-phrase"><span class="quote-marks">"</span> "There are excesses of organizations stuffing their pails with sugary beverage blends and abandons. NuManna has genuine nourishment that manages you in a crisis circumstance... GMO Free, simple to alter dinners and natural superfoods. Simple to transport and 25 or more year time span of usability. Everybody needs to consider their independence. NuManna has turned into the foundation of my long haul sustenance stockpiling. NuManna is nourishment stockpiling you’ll adore to eat.""</p>
-      </div>
-
-      <div class="authorContainer">
-      <p class="quote-author"><strong>— Steve Quayle</strong></p>
-      </div>
-      </li>
+<div id="slider">
+<ul>
+  <li>
+  <div class="slider-container">
+    <h4>Pure CSS slider Content</h4>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
+  </div>
+  </li>
+    <li>
+    <div class="slider-container">
+       <h4>Pure CSS slider Content</h4>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
+  </div>
+  </li>
+    <li>
+    <div class="slider-container">
+       <h4>Pure CSS slider Content</h4>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
+  </div>
+  </li>
+    <li>
+    <div class="slider-container">
+      <h4>Pure CSS slider Content</h4>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
+  </div>
+  </li>
 </ul>
-    </div>
+</div>
 </div>
 
 
